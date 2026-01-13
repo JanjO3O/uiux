@@ -1,0 +1,37 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+body{
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #3d3d3d;
+    line-height: 1.5;
+}
+.wrapper{ /* html에서 "<div class="wrapper">" --> <!--class를 쓰고 wrapper를 쓰는거임 wrapper는 홈페이지의 넓이를 정하고 가운데 정렬하는 요소-->  */
+    width: 1260px; /* 넓이를 지정하고 마진을 주는거임 */
+    margin: 0 auto;/* 위아래 여백 없음 - 좌우여백 알아서 반반 */  /* class를 불러올 땐 css파일에서 "."을 붙이고 명칭을 써야 함 */
+}
+*{  /* *은 와일드카드로 모든 태그를 지칭함 */
+    /* 브라우저에서 주는 스타일을 제거 -- 스타일 초기화라고 함 */
+    margin: 0;
+}
+h1, h2, h3, h4, h5, h6{
+    font-size: inherit; /* -> 브라우저가 주는 속성은 적용 안하고, body에서 준 값을 상속하겠다는 속성 */
+    font-weight: inherit;
+}
+strong{
+    font-weight: inherit;
+    }
+h2{ 
+    font-size: 40px;
+    font-weight: 700;
+    color: #1d1d1d;
+    margin: 112px 0 28px 0;
+}
+.sub_tit{ /* html에서 " class="sub_tit" "를 써야 css에서 따로 불러서 지정 가능함 "sub_tit"은 큰 제목이 아닌 하단에 들어가는 작은 타이틀을 칭하는 것 */    font-size: 24px;
+    font-weight: 700;
+    color: #1d1d1d;
+    margin: 0 0 16px 0;
+}
+strong{
+    color: #003b83; /* 나중에 말한 줄의 상속이 더 우선순위임 */
+}
