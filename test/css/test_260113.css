@@ -21,17 +21,35 @@ h1, h2, h3, h4, h5, h6{
 strong{
     font-weight: inherit;
     }
-h2{ 
+.blue h2{ 
     font-size: 40px;
     font-weight: 700;
     color: #1d1d1d;
     margin: 112px 0 28px 0;
 }
-.sub_tit{ /* html에서 " class="sub_tit" "를 써야 css에서 따로 불러서 지정 가능함 "sub_tit"은 큰 제목이 아닌 하단에 들어가는 작은 타이틀을 칭하는 것 */    font-size: 24px;
+.blue .sub_tit{ /* html에서 " class="sub_tit" "를 써야 css에서 따로 불러서 지정 가능함 "sub_tit"은 큰 제목이 아닌 하단에 들어가는 작은 타이틀을 칭하는 것 */    font-size: 24px;
     font-weight: 700;
     color: #1d1d1d;
     margin: 0 0 16px 0;
 }
-strong{
+.blue .sub_tit strong{
     color: #003b83; /* 나중에 말한 줄의 상속이 더 우선순위임 */
+}
+.red{
+     text-align: center;
+}
+.red h2{
+     font-size: 45px;
+     font-weight: 800;
+     color: #db0032;
+     margin: 112px 0 28px 0;
+}
+.red .sub_tit{
+    font-size: 22px;
+    color: #1d1d1d;
+     margin: 0 0 16px 0;
+}
+.red .sub_tit strong{
+    font-weight: 800;
+    color: #db0032;
 }
