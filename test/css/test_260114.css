@@ -113,14 +113,14 @@ body{
             url을 사용할 땐 "../"를 써야 경로 입력됨*/
     background: url(../images/lh_visual2.jpg) no-repeat center center / cover;
     height: 481px;
-    color: #fff;
+    color: #fff; /* color를 쓰는 이유는 배경에 이미지가 들어갔기에 폰트 색상을 임시로 아예 지정하는 것 */
     margin: 235px 0 0 0;
 }
 .visual h2{
     font-size: 60px;
     font-weight: 700;
     text-align: center;
-    padding: 150px 0 0 0;
+    padding: 150px 0 0 0; /* margin을 먼저 적용한 뒤, 사이트에 가서 확인을 하고 적용이 안됐을 경우 padding으로 바꿔서 주기 */
 }
 
 .work .tit{
@@ -149,7 +149,7 @@ body{
 
 .esg{
     background: #f4f4f4;
-    margin: 131px 0 150px 0;
+    margin: 131px 0 150px 0; /* margin의 하단 여백은 안주면 텍스트가 화면 아래에 박히기 때문에,, 측정을 해서 주는 것이 아니라 가독성을 위해 임의로 주는 것임 */
     height: 598px;
     text-align: center
 }
