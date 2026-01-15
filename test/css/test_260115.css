@@ -1,16 +1,20 @@
 @import url(pretendard.css); /* @import url => css 파일을 불러오는 것임. 파일을 불러올땐 맨 윗줄에 써야 함 */
 /*********************** Start : 태그의 초기화 ************************************/
 h1,h2,h3,h4,h5,h6{
-    font-weight: inherit;
+    font-weight: inherit;  /* 글자의 스타일만 상속받음 */
     font-size: inherit;
 }
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;/* 얘를 줘야 project의 'ul li a' 가 padding값만큼 늘어나는 것을 방지함 (css.hwp 10p 내용) */ 
 }
 a{
     color: inherit;
     text-decoration: none; /* 밑줄삭제 */
+}
+ul,ol,li{
+    list-style: none; /* 앞에 도형 제거 */
 }
 /*************************End : 태그의 초기화 **********************************/
 
@@ -35,12 +39,115 @@ body{
     font-size: 40px;
     font-weight: 700;
     color: #1d1d1d;
-    margin: 133px 0 12px 0;
+    margin: 133px 0 12px 0; /* 여백을 줄 때 body의 기본값으로 주는 p는 최대한 건들이지 않는게 좋기 때문에 h2에서 상/하단 여백을 주는 것임 */
 }
 .share a{
     background-color: #00664f;
     color: #fff; /* 텍스트 색상 값임*/
     font-weight: 700;
-    width: 128px;
-    height: 30px;
+    padding: 3px 16px; /* 위아래는 '높이'로 측정, 좌우는 '넓이'로 측정 */
+    display: inline-block; /* ==> inline의 요소를 없애는 것임 */  /* display는 속성을 변경시키는건데, a라는 태그는 인라인 속성이기 때문에 속성을 변경시켜주는 display를 입력하고 속성 변경해줘야 함 */
+    margin: 22px 0 0 0; /* 상단여백만 준것임  */
+}
+
+.first{
+    background: url(../images/eh_first.jpg) no-repeat center center / cover;  /* cover=> 화면을 꽉 채우라는 뜻. 그럼 큰 화면에서도 꽉 차 보임*/
+    color: #fff;
+    text-align: center;
+    margin: 65px 0 0 0; 
+    height: 375px; /* 사진이 들어가는 상자의 높이를 입력해줘야 포토샵에서 디자인한것처럼 브라우저에서도 똑같이 적용됨 */
+}
+.first h2{
+    font-size: 40px;
+    font-weight: 700;
+    padding: 117px 0 12px 0;
+}
+.first a{
+    background-color: #fff;
+    color: #00664f; 
+    font-weight: 700;
+    padding: 3px 16px; 
+    display: inline-block; 
+    margin: 22px 0 0 0; 
+    border-radius: 50px;
+}
+
+.history{
+    background-color: #00664f;
+    color: #fff;
+    height: 645px;  /* 백그라운드 높이를 주기 때문에 " .history a " 에서 하단의 margin을 안줘도 됨. */
+}
+.history h2{
+    font-size: 40px;
+    font-weight: 700;
+    padding: 174px 0 12px 0;
+}
+.history a{
+    margin: 23px 0 0 0;
+    display: inline-block;
+    border: 1px solid #fff;
+    padding: 2px 18px;
+    border-radius: 30px;
+}
+
+.project h2{
+    font-size: 40px;
+    font-weight: 700;
+    color: #1d1d1d;
+    margin: 92px 0 32px 0;
+}
+/* li와 a의 사이즈를 동일하게 할 때 반드시 li에는 넓이를, a에는 높이를 줘야 함 */
+.project ul{
+    display: flex;  /* li를 좌우로 배치 */
+    justify-content: space-between;  /* 포토샵에서 주었던 사이사이 공간 여백에 맞게 여백을 띄워서 주는 것 */
+}
+.project ul li{ 
+    width: 297px;
+}
+.project ul li a{
+    display: block;
+    height: 285px;  
+    background: url(../images/eh_pro1.jpg) no-repeat center center / cover;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+    padding: 217px 0 0 41px;  
+    /* 디자인할 땐 여백을 밑과 왼쪽에서 쟀지만 코딩할 땐 홈페이지를 보고 위와 왼쪽의 여백을 재고 그거에 맞게 코딩해야 함 */
+}
+/* li.bg2(여백없어야 함) li들 중에서 bg2라는 클래스명을 가진 li를 이야기 함 */
+.project ul li.bg2 a{
+    background-image: url(../images/eh_pro2.jpg);
+}
+.project ul li.bg3 a{
+    background-image: url(../images/eh_pro3.jpg);
+}
+.project ul li.bg4 a{
+    background-image: url(../images/eh_pro4.jpg);
+}
+
+.emp{
+    margin: 78px 0 0 0;
+}
+.emp .wrapper{
+    background-color: #00664f;
+    color: #fff;
+    height: 290px;
+    display: flex; /* tit & a를 좌우로 배치하기 위함 */  /* 속성을 줄 땐 직접적으로 감싸고 있는 애를 불러와야 함 */
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px; 
+}
+.emp .tit h2{
+    font-size: 40px;
+    font-weight: 700;
+}
+.emp a{
+    display: inline-block;
+    border: 1px solid #fff;
+    padding: 2px 18px;
+    border-radius: 30px;
+}
+
+body{
+    margin: 0 0 200px 0; /* 하단 여백이 답답해서 주는 것임 */
 }
