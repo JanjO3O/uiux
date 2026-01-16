@@ -1,7 +1,7 @@
 @import url(pretendard.css); /* @import url => css 파일을 불러오는 것임. 파일을 불러올땐 맨 윗줄에 써야 함 */
 /*********************** Start : 태그의 초기화 ************************************/
 h1,h2,h3,h4,h5,h6{
-    font-weight: inherit;  /* 글자의 스타일만 상속받음 */
+    font-weight: inherit;  /* inherit=> 글자의 스타일만 상속받음 */
     font-size: inherit;
 }
 *{
@@ -54,7 +54,7 @@ body{
     background: url(../images/eh_first.jpg) no-repeat center center / cover;  /* cover=> 화면을 꽉 채우라는 뜻. 그럼 큰 화면에서도 꽉 차 보임*/
     color: #fff;
     text-align: center;
-    margin: 65px 0 0 0; 
+    margin: 82px 0 0 0; 
     height: 375px; /* 사진이 들어가는 상자의 높이를 입력해줘야 포토샵에서 디자인한것처럼 브라우저에서도 똑같이 적용됨 */
 }
 .first h2{
@@ -94,9 +94,9 @@ body{
     font-size: 40px;
     font-weight: 700;
     color: #1d1d1d;
-    margin: 92px 0 32px 0;
+    margin: 92px 0 23px 0;
 }
-/* li와 a의 사이즈를 동일하게 할 때 반드시 li에는 넓이를, a에는 높이를 줘야 함 */
+/**** li와 a의 사이즈를 동일하게 할 때 반드시 li에는 넓이를, a에는 높이를 줘야 함 ****/
 .project ul{
     display: flex;  /* li를 좌우로 배치 */
     justify-content: space-between;  /* 포토샵에서 주었던 사이사이 공간 여백에 맞게 여백을 띄워서 주는 것 */
@@ -111,8 +111,8 @@ body{
     color: #fff;
     font-size: 28px;
     font-weight: 700;
-    padding: 217px 0 0 41px;  
-    /* 디자인할 땐 여백을 밑과 왼쪽에서 쟀지만 코딩할 땐 홈페이지를 보고 위와 왼쪽의 여백을 재고 그거에 맞게 코딩해야 함 */
+    padding: 211px 0 0 41px;  
+    /* 디자인할 땐 여백을 밑과 왼쪽에서 재서 줬지만, 코딩할 땐 홈페이지에 적용된걸 보고!! 위와 왼쪽의 여백이 존재하기에 위&왼쪽의 여백을 재고 그거에 맞게 코딩해야 함 */
 }
 /* li.bg2(여백없어야 함) li들 중에서 bg2라는 클래스명을 가진 li를 이야기 함 */
 .project ul li.bg2 a{
@@ -126,12 +126,12 @@ body{
 }
 
 .emp{
-    margin: 78px 0 0 0;
+    margin: 103px 0 0 0;
 }
 .emp .wrapper{
     background-color: #00664f;
     color: #fff;
-    height: 290px;
+    height: 260px;
     display: flex; /* tit & a를 좌우로 배치하기 위함 */  /* 속성을 줄 땐 직접적으로 감싸고 있는 애를 불러와야 함 */
     justify-content: space-between;
     align-items: center;
