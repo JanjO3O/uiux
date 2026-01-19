@@ -46,7 +46,7 @@ body{
     color: #fff; /* 텍스트 색상 값임*/
     font-weight: 700;
     padding: 3px 16px; /* 위아래는 '높이'로 측정, 좌우는 '넓이'로 측정 */
-    display: inline-block; /* ==> inline의 요소를 없애는 것임 */  /* display는 속성을 변경시키는건데, a라는 태그는 인라인 속성이기 때문에 속성을 변경시켜주는 display를 입력하고 속성 변경해줘야 함 */
+    display: inline-block;  /* display는 속성을 변경시키는건데, a라는 태그는 인라인 속성이기 때문에 속성을 변경시켜주는 display를 입력하고 속성 변경해줘야 함 */
     margin: 22px 0 0 0; /* 상단여백만 준것임  */
 }
 
