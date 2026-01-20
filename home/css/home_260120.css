@@ -1,0 +1,58 @@
+@import url(common.css);
+@import url(fonts.css);
+
+.visual{
+    background: url(../images/lh_visual.jpg) no-repeat center center / cover;
+    height: 481px;
+    color: #fff;
+    margin: 235px 0 0 0;
+}
+.visual h2{
+    font-size: 60px;
+    font-weight: 700;
+    text-align: center;
+    padding: 150px 0 0 0;
+}
+
+.work .tit{
+    text-align: center;
+}
+.work .tit h2{
+    font-weight: 700;
+    color: #0067db;
+    margin: 71px 0 0 0;
+}
+.work .sub_tit{
+    font-size: 40px;
+    font-weight: 700;
+    color: #1d1d1d;
+    margin: 37px 0 38px 0;
+}
+.work h3{
+    font-size: 32px;
+    font-weight: 700;
+    color: #1d1d1d;
+    margin: 102px 0 14px 0;
+}
+.work .photo{
+    margin: 23px 0 0 0;
+}
+
+.esg{
+    background-color: #f4f4f4;
+    height: 598px;
+    text-align: center;
+    margin: 131px 0 150px 0;
+}
+.esg h2{
+    font-weight: 700;
+    color: #0067db;
+    margin: 71px 0 0 0;
+    padding: 225px 0 0 0;
+}
+.esg .sub_tit{
+    font-size: 40px;
+    font-weight: 700;
+    color: #1d1d1d;
+    padding: 38px 0 38px 0;
+}

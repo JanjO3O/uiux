@@ -15,7 +15,8 @@
 }
 .header .gnb ul li a{
     display: block;
-    padding: 0 28px;
+    /* 예를 들어, 회사소개 버튼을 눌렀을 때 좌우 여백이 있으면 더 넓고, 편하게 누를 수 있기 때문  */
+    padding: 0 28px;  
     line-height: 100px;  /******* 높이를 먼저 줘야 ".header .wrapper" 의 "align-items: center;" 가 적용됨*******/
     /* header의 높이와 동일하게 - 글자의 높이가 100이 되고, 위아래 가운데 배치됨*/
     font-size: 22px;
