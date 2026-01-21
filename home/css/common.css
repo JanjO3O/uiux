@@ -10,6 +10,12 @@ a{
 ul,ol,li{
     list-style: none;  /* 리스트 앞에 있는 도형 삭제 */
 }
+strong{
+    font-weight: inherit;
+}
+em,address{
+    font-style: normal; /* "font-style: italic;" ==> 이렇게 글자가 기울어진걸 바로잡아줌 */
+}
 *{
     margin: 0;
     padding: 0;
@@ -27,4 +33,8 @@ body{
 .wrapper{
     width: 1260px;
     margin: 0 auto; /* 화면 가운데 정렬 */
+}
+#wrap{
+    /* (wrapper)1260+(좌여백)30+(우여백)30 = 1320 */
+    min-width: 1320px;  /* 전체를 감싸는 애한테 최소의 전체너비 줌 */
 }
