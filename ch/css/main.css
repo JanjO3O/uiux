@@ -13,9 +13,9 @@
     display: flex;
 }
 .header .gnb ul li a{
-    display: block;
-    line-height: 100px;  /* (강의 다시 듣기 pm.2:55)메뉴의 마우스를 오버하고 움직일 때 메뉴에서 아웃되는걸 방지하고자, 행간을 header의 높이와 동일하게 위아래를 주는 것임 */
-    padding: 0 26px;
+    display: block;  /* a 만나면 display를 무조건적으로 주기 */
+    line-height: 100px;  /* 메뉴의 마우스를 오버하고 하위메뉴로 이동할 때 메뉴에서 아웃되는걸 방지하고자, 행간을 header의 높이와 동일하게 위아래로 주는 것임 */
+    padding: 0 26px;  
     font-size: 22px;
     font-weight: 700;
     color: #1d1d1d;
@@ -27,7 +27,7 @@
     text-align: right;
 }
 .visual .wrapper{  /* wrapper를 건들일 땐, common.css에 적용된 기본 속성값인 "width & margin" 절대 건들면 안됨. 두개를 제외한 나머지를 변경하기*/
-    height: 885px;  /* (강의 다시 듣기 pm.3:20)비주얼 안에 래퍼가 있기 때문에 visual의 높이를 주지 않고, wrapper에 높이를 주면 자동으로 visual의 높이도 같아짐  */
+    height: 885px;  /* visual 안에 wrapper가 있기 때문에 visual에 높이를 주지 않고, wrapper에 높이를 주면, 자동으로 visual의 높이도 같아짐  */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -64,7 +64,7 @@
     width: 297px;
 }
 .biz .list ul li a{  
-    display: block;  /* a는 무조건 display: block 줘야 됨 */
+    display: block;  /* a는 무조건 display 줘야 됨 */
 }
 .biz .list ul li a .txt{
     text-align: center;
@@ -93,7 +93,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;  /* pm.5:20 강의 듣기 align-items은 flex의 속성(해당되는 영역들의 너비와 높이가 같아지는)을 없애기 위함  가운데 정렬이 아닌 왼쪽 정렬이라면, flex-start를 주면 됨*/
+    align-items: center;  /* ♥ 가운데 정렬이 아닌 왼쪽 정렬이라면, flex-start를 주면 됨*/
+     /* ♥ display: flex를 주면 width와 height가 같게 잡아당기는 기능이 생김 => align-items은 flex의 그런 속성(해당되는 영역들의 너비와 높이가 같아지는)을 없애기 위함 */
 }
 .brand h2{
     font-weight: 700;

@@ -8,7 +8,7 @@
 .header .wrapper{
     display: flex; /* logo & gnb 좌우배치 */
     justify-content: space-between; /* 좌우 양끝 */
-    align-items: center; /* 위아래 가운데 */
+    align-items: center; /* 위아래 가운데 =>>  얘를 주면 홈페이지의 사이즈가 줄어들어도 헤더에서 로고의 위치가 위아래 가운데 정렬됨 */
 }
 .header .gnb ul{
     display: flex; /* li들 좌우로 배치 */ /* flex를 쓸 경우엔 바로 위에 있는 부모를 데려와야 함 */
@@ -17,8 +17,7 @@
     display: block;
     /* 예를 들어, 회사소개 버튼을 눌렀을 때 좌우 여백이 있으면 더 넓고, 편하게 누를 수 있기 때문  */
     padding: 0 28px;  /* ▶▶▶메뉴탭은 글자만 눌리는게 아니라,, 좌우도 조금씩 더 눌려야 하기 때문에 a한테 padding을(여백의 반) 무조건적임◀◀◀ */
-    line-height: 100px;  /******* 높이를 먼저 줘야 ".header .wrapper" 의 "align-items: center;" 가 적용됨*******/
-    /* header의 높이와 동일하게 - 글자의 높이가 100이 되고, 위아래 가운데 배치됨*/
+    line-height: 100px;  /* header의 높이와 동일하게 - 글자의 높이가 100이 되고, 위아래 가운데 정렬됨*/
     font-size: 22px;
     color: #1d1d1d;
 }
