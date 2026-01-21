@@ -1,0 +1,130 @@
+@import url(fonts.css);
+@import url(common.css);
+
+.header{
+    height: 100px;
+}
+.header .wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header .gnb ul{
+    display: flex;
+}
+.header .gnb ul li a{
+    display: block;
+    line-height: 100px;  /* (강의 다시 듣기 pm.2:55)메뉴의 마우스를 오버하고 움직일 때 메뉴에서 아웃되는걸 방지하고자, 행간을 header의 높이와 동일하게 위아래를 주는 것임 */
+    padding: 0 26px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1d1d1d;
+}
+
+.visual{
+    background: url(../images/visual_bg.jpg) no-repeat center center / cover;
+    color: #fff;
+    text-align: right;
+}
+.visual .wrapper{  /* wrapper를 건들일 땐, common.css에 적용된 기본 속성값인 "width & margin" 절대 건들면 안됨. 두개를 제외한 나머지를 변경하기*/
+    height: 885px;  /* (강의 다시 듣기 pm.3:20)비주얼 안에 래퍼가 있기 때문에 visual의 높이를 주지 않고, wrapper에 높이를 주면 자동으로 visual의 높이도 같아짐  */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 0 79px 0;
+}
+.visual h2{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 10px 0;
+}
+
+.biz{   /* 컨텐츠 영역이 바뀌니까 다음 컨텐츠 영역에서 margin을 주면 됨 */
+    margin: 157px 0 140px 0;
+}
+.biz h2{
+    font-weight: 700;
+    color: #102F5D;
+}
+.biz .tit p{
+    font-size: 40px;
+    font-weight: 700;
+    color: #1d1d1d;
+    margin: 19px 0 0 0;
+}
+.biz .list{
+    margin:55px 0 0 0;
+}
+.biz .list ul{
+    display: flex;
+    justify-content: space-between;
+}
+.biz .list ul li{
+    width: 297px;
+}
+.biz .list ul li a{  
+    display: block;  /* a는 무조건 display: block 줘야 됨 */
+}
+.biz .list ul li a .txt{
+    text-align: center;
+    margin: 0 40px;
+}
+.biz .list ul li a .txt h3{
+    font-size: 32px;
+    line-height: 1.3;
+    color: #1d1d1d;
+    margin: 12px 0 18px 0;
+}
+.biz .list ul li a .txt span{
+    border: 1px solid #ccc;
+    margin: 18px 0 0 0;
+    display: block; 
+    padding: 5px 71px;
+}
+
+.brand{
+    background: url(../images/brand_bg.jpg) no-repeat center center / cover;
+    color: #fff;
+    text-align: center;
+}
+.brand .wrapper{
+    height: 469px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  /* pm.5:20 강의 듣기 align-items은 flex의 속성(해당되는 영역들의 너비와 높이가 같아지는)을 없애기 위함  가운데 정렬이 아닌 왼쪽 정렬이라면, flex-start를 주면 됨*/
+}
+.brand h2{
+    font-weight: 700;
+    color: #102F5D;
+}
+.brand p{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 5px 0 33px 0;
+}
+.brand a{
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 6px 25px;
+}
+
+.footer{
+    background-color: #F0F0F0;
+    color: #666; 
+    padding: 77px 0; /* footer의 여백은 padding으로 주는게 좋음 */
+}
+.footer .f_nav ul{
+    display: flex;
+    gap: 0 45px; 
+}
+.footer .f_nav ul li.privacy{
+    font-weight: 700;
+}
+.footer .f_info{
+    margin: 26px 0;
+    display: flex;
+    gap: 0 21px;
+}
