@@ -45,10 +45,10 @@
 .biz{
     margin: 129px 0 159px 0;
 }
-/* music, art 둘 다에 스타일이 적용 됨 */
 .biz .art{
     margin: 104px 0 0 0;
 }
+/* music, art 둘 다에 스타일이 적용 됨 */
 .biz .group{
     display: flex; /* tit-photo 좌우로 주기 위함 */
     justify-content: space-between;
@@ -75,7 +75,7 @@
 }
 .biz .group .tit .btn_wrap{
     display: flex;  /* a를 좌우배치 */
-    margin: 52px 0 0 0;
+    margin: 32px 0 0 0;
     gap: 6px 6px; /* flex로 정렬된 a 사이의 여백으로, 위아래여백 / 좌우여백 임 */
     flex-wrap: wrap;  /* ★★★★ flex로 좌우배치되는 a를 두줄로 배치되는 것을 허락하는 것★★★★ */
 }
@@ -83,8 +83,9 @@
     display: block;
     color: #93042F;
     border: 1px solid #93042F;
-    padding: 14px 45px;
+    padding: 13px 45px;
     border-radius: 50px;
+    line-height: 1.3;
 }  /*
  (a 는 공통으로 해당값을 가지는데, active는 따로 설정)
  <a></a>
@@ -108,4 +109,69 @@
 }
 .biz .group .tit .btn_wrap a.active:hover{
     color: #93042F;
+}
+.biz .group .photo{
+    width: 618px;
+    height: 536px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.biz .group .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.community{
+    background: url(../images/community_bg.jpg) no-repeat center top ;  /* top을 줘야 bg가 디자인한것처럼 위로 옴 */
+    color: #fff;
+}
+.community .notice{
+    padding: 162px 0 156px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.community .notice .tit h3{
+    font-weight: 700;
+    color: #FFD8D9;
+}
+.community .notice .tit p{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 15px 0 0 0;
+}
+.community .notice .list{
+    width: 721px;  /* 너비를 안주면 justify-content: space-between = 이거 때문에 오른쪽 끝에 가 있게 됨. 하여 너비를 줌으로써 디자인한 것과 같은 자리를 지키게 함 > */
+}
+.community .notice .list ul li{
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+/* li:first-child li중 첫 번재 항목을 뜻함 */
+.community .notice .list ul li:first-child{
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+.community .notice .list ul li a{
+    display: flex; /*  span - h4가 좌우로 들어가야 하기 때문에 */
+    /* display 속성 하나에는 flex 나 block 둘 중 하나만 들어가야 함 */
+    justify-content: space-between;  /* h4 - span 좌우배치 */
+    padding: 26px 0 23px 0;  /* 위에 선 때문에??? */    
+    align-items: center;
+}
+.community .notice .list ul li a:hover{
+    color: #FFD8D9;
+}
+.community .notice .list ul li a h4{
+    font-size: 20px;
+}
+.community .notice .list ul li a span{
+    color: rgba(255, 255, 255, 0.8);
+}
+.community .notice .list ul li a:hover span{  /* a한테 오버했을 때 a 안에 있는 span 태그의 색상이 바뀌는 것이기 때문에 a:hover span이라고 해줘야 됨 */
+    color: #FFD8D9;
+}
+
+
+.footer{
+    margin: 0 0 500px 0;
 }
