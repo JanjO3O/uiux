@@ -57,7 +57,7 @@
     위로부터 20px 떨어졌으면 ==> margin 주면 됨 */
 }
 .biz .group .tit{
-    width: 510px;
+    width: 510px;  /* 디자인할 때 p를 기준으로 너비를 제한했으니  똑같이 줘야 함,,, 넓이 안주면 자기 맘대로 들어가기 때문*/
 }
 .biz .group .tit h3{
     font-weight: 700;
@@ -68,14 +68,14 @@
     font-weight: 700;
     line-height: 1.3;
     color: #191E26;
-    margin: 26px 0;
+    margin: 24px 0 25px 0;
 }
 .biz .group .tit .sub_tit strong{
     color: #93042F;
 }
 .biz .group .tit .btn_wrap{
     display: flex;  /* a를 좌우배치 */
-    margin: 32px 0 0 0;
+    margin: 33px 0 0 0;
     gap: 6px 6px; /* flex로 정렬된 a 사이의 여백으로, 위아래여백 / 좌우여백 임 */
     flex-wrap: wrap;  /* ★★★★ flex로 좌우배치되는 a를 두줄로 배치되는 것을 허락하는 것★★★★ */
 }
@@ -105,7 +105,6 @@
 .biz .group .tit .btn_wrap a:hover{
     background-color: #F4E6EA;
     font-weight: 700;
-    /* color: #93042F; => 색상이 같으면 이렇게 줘도 됨 */
 }
 .biz .group .tit .btn_wrap a.active:hover{
     color: #93042F;
@@ -113,13 +112,13 @@
 .biz .group .photo{
     width: 618px;
     height: 536px;
-    overflow: hidden;
+    overflow: hidden;  /* css.hwp 7p 참고 */  /* ★★★★사진 사이즈 관련 처리 방식★★★★ */
     border-radius: 10px;
 }
-.biz .group .photo img{
+.biz .group .photo img{  /* overflow:hidden;으로 넘치는 컨텐츠를 자를 경우 영역은 넓이와 높이가 있어야 한다. / css.hwp 7p 참고 */
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover;  /* 사진의 영역을 지정한 높이와 넓이에 꽉 차게(사진이 짤릴 수 있음) */
 }
 
 .community{
@@ -133,7 +132,7 @@
 }
 .community .notice .tit h3{
     font-weight: 700;
-    color: #FFD8D9;
+    color: #ecde87;
 }
 .community .notice .tit p{
     font-size: 40px;
@@ -142,10 +141,10 @@
     margin: 15px 0 0 0;
 }
 .community .notice .list{
-    width: 721px;  /* 너비를 안주면 justify-content: space-between = 이거 때문에 오른쪽 끝에 가 있게 됨. 하여 너비를 줌으로써 디자인한 것과 같은 자리를 지키게 함 > */
+    width: 721px;  /* 넓이를 안주면 justify-content: space-between = 이거 때문에 오른쪽 끝에 가 있게 됨. 하여 넓이를 줌으로써 디자인한 것과 같은 자리를 지키게 함 > */
 }
 .community .notice .list ul li{
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);  /* 글자 아래에 디자인한것과 같은 밑줄 생성 */
 }
 /* li:first-child li중 첫 번재 항목을 뜻함 */
 .community .notice .list ul li:first-child{
@@ -156,10 +155,10 @@
     /* display 속성 하나에는 flex 나 block 둘 중 하나만 들어가야 함 */
     justify-content: space-between;  /* h4 - span 좌우배치 */
     padding: 26px 0 23px 0;  /* 위에 선 때문에??? */    
-    align-items: center;
+    align-items: center;  /* h4 와 span 안에 글자의 행간이 다르기 때문에 위아래 가운데 정렬을 해줌으로써, span도 위아래 가운데 정렬이 됨 */
 }
 .community .notice .list ul li a:hover{
-    color: #FFD8D9;
+    color: #ecde87;
 }
 .community .notice .list ul li a h4{
     font-size: 20px;
@@ -168,10 +167,67 @@
     color: rgba(255, 255, 255, 0.8);
 }
 .community .notice .list ul li a:hover span{  /* a한테 오버했을 때 a 안에 있는 span 태그의 색상이 바뀌는 것이기 때문에 a:hover span이라고 해줘야 됨 */
-    color: #FFD8D9;
+    color: #ecde87;
+}
+.community .youtube .tit h3{
+    font-weight: 700;
+    color: #ecde87;
+}
+.community .youtube .tit p{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 15px 0 0 0;
+}
+.community .youtube .list{
+    margin: 52px 0 0 0;
+}
+.community .youtube .list ul{
+    display: flex;
+    justify-content: space-between;
+}
+.community .youtube .list ul li{
+    width: 404px;
+}
+.community .youtube .list ul li a{
+    display: block;
+    color: #191E26;  /* 글자색상은 h4보단 a한테 주는게 좋음 => a한테 오버했을 때 글자색이 변하는 경우가 많기 때문에 */
+}
+.community .youtube .list ul li a .photo{
+    height: 227px;
+    border-radius: 10px;
+    border: 2px solid #93042F;
+    overflow: hidden;  /* photo엔 overflow: hidden; => 꼭 주기*/
+}
+.community .youtube .list ul li a .photo img{  /* photo엔 overflow: hidden; ==> 이거 때문에 img 불러서 넓이와 높이 사진 꽉 차게 총 3개의 속성을 줘야 함 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s; /* ==> 마우스를 오버했을 때 변경되는 값을 천천히 실행하라는 의미임 */
+}
+.community .youtube .list ul li a:hover .photo img{
+    transform: scale3d(1.125, 1.125, 1);  /* 마우스 오버했을 때 사진 사이즈 확대 가로,세로,가운데 중심=1 을 의미함 */
+}
+.community .youtube .list ul li a h4{
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 27px 0 0 0;
+    text-align: center;
 }
 
-
 .footer{
-    margin: 0 0 500px 0;
+    border-top: 1px solid rgba(69, 75, 82, 0.6);
+    color: #454B52;
+    margin: 104px 0 200px 0;
+    padding: 57px 0;
+}
+.footer .f_nav ul{
+    display: flex;
+    gap: 0 41px;  /* li사이의 여백 */
+}
+.footer .f_info{
+    margin: 26px 0;
+    display: flex;
+    gap: 0 20px;
 }
