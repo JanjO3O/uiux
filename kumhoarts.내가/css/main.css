@@ -204,9 +204,11 @@
     height: 100%;
     object-fit: cover;
     transition: 0.5s; /* ==> 마우스를 오버했을 때 변경되는 값을 천천히 실행하라는 의미임 */
+    /* transition => 효과가 나타나기 전에 상태에게 주는 속성임 */
 }
 .community .youtube .list ul li a:hover .photo img{
     transform: scale3d(1.125, 1.125, 1);  /* 마우스 오버했을 때 사진 사이즈 확대 가로,세로,가운데 중심=1 을 의미함 */
+    /* transform => 효과를 나타나게 하는 속성 */
 }
 .community .youtube .list ul li a h4{
     font-size: 20px;
