@@ -1,0 +1,117 @@
+@import url(pretendard.css);
+@import url(common.css);
+.box{
+    width: 500px;
+    height: 400px;
+    background-color: yellowgreen;
+    position: relative; /* point의 정렬의 기준이 되기 위해서 / position: relative; => 얘는 스타일을 안주는 것과 거의 유사함 */
+}
+.box .point{
+    display: inline-block;
+    padding: 30px;
+    background-color: red;
+    color: #fff;
+    position: absolute; /* point는 자신을 감싸고 있는 box를 기준으로 정렬 */
+    right: 0;
+    bottom: 0;
+}
+
+.notice{
+    margin: 100px 0;
+}
+.notice .wrapper{
+    display: flex; /* h2-list 좌우배치 */
+    justify-content: space-between;
+    position: relative; /* ==> more의 정렬의 기준이 되기 위해 준 속성 / 실질적으로 나타나는 효과 없음*/
+}
+.notice h2{
+    font-size: 40px;
+    font-weight: 700;
+    color: #1d1d1d;
+}
+.notice .list{
+    width: 721px;
+}
+.notice .list ul li{
+    border-bottom: 1px solid #ccc;
+}
+.notice .list ul li:first-child{
+    border-top: 1px solid #ccc;
+}
+.notice .list ul li a{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.notice .list ul li a h3{
+    font-size: 20px;
+    font-weight: 700;
+    color: #1d1d1d;
+/* 무조건 1줄로 제한 */
+    white-space: nowrap;
+    text-overflow: ellipsis; /* 잘리는 글자 끝에 ... 추가해주는 속성 */
+    overflow: hidden; /* 공간에서 넘치는 글자 잘라주는 속성 (css.hwp 2p 참고) */
+    
+    width: calc(100% - 121px);
+    /* 나를 감싸는 요소의 넓이 100%에서 121px을 !빼고! 나머지 전부 => 넓이가 있어야지 적용할 수 있는 속성 */
+}
+.notice .list ul li a span{
+    color: #666;
+}
+.notice .more{
+    /* display: none; => 잠깐 숨겨놓음 */
+    position: absolute;  /* position을 사용할 땐 어딜 기준으로 잡아야 하는지 명확히 알고 해야 됨 // 지금은 wrapper를 기준으로 정렬해야 됨 /기준을 안정하면 body를 기본으로 속성이 적용됨 */
+    left: 0;
+    top: 100px;  /* 브라우저에서 적용해서 가져오는 것도 좋은 방법임 */
+    border: 1px solid #ccc;
+    padding: 12px 22px;
+    border-radius: 30px;
+}
+.notice .more:hover{
+    background-color: #1d1d1d;
+    color: #fff;
+    border-color: #1d1d1d;
+    /* 
+        오버전에 border가 있었다면, 오버후에도 border는 유지해야 됨 - border의 색상이 bg 색상과 같다고 border:0; 처리하면 버튼 크기가 변함..
+        border-color만 변경하고 border의 두께는 유지하기
+    */
+}
+.f_nav{
+    margin: 100px 0;
+}
+.f_nav ul{
+    display: flex;
+    gap: 30px;
+}
+.f_nav ul li{
+    position: relative; /* before 정렬 기준 */
+}
+.f_nav ul li::before{
+    content: "";  /* div가 생성된 거랑 유사함. before/after 가상선택자 필수 => html엔 없고, css상에서만 존재함*/
+    /* before/after는 반드시 absolute로 제어 */
+    position: absolute;  /* li를 기준으로 정렬 */
+    left: -14px;
+    top: 7px;
+    width: 1px;  /* 테두리 값임 */
+    height: 13px;
+    background-color: rgba(69, 75, 82, 0.2);
+}
+.f_nav ul li:first-child::before{
+    display: none; /* 첫 번째 lid의 before를 숨김 */
+}
+.f_nav ul li a{
+    display: block;
+    position: relative; /* after 정렬의 기준 */
+}
+.f_nav ul li a::after{  /* 그냥 본인이 속한 애한테 비포애프터 주면 됨 */
+    content: "";
+    position: absolute;  /* a를 기준으로 정렬 */
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: #454B52;
+    transition: 0.5s;  /* 마우스 오버하면 넓이가 바뀔 예정 -> 천천히 변경되게 하기 위해서 */
+}.f_nav ul li a:hover::after{
+    width: 100%; /* 100% => a의 넓이대로, 딱 글자의 길이만큼만 들어가라는 뜻 */
+}
