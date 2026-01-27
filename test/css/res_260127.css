@@ -1,3 +1,175 @@
-img{
+@import url(common.css);
+@import url(pretendard.css);
+.test img{
     width: 325px;
+}
+
+.biz{
+    margin: 100px 0;
+}
+.biz .group{
+    display: flex; /* tit - photo 좌우 배치 */
+    justify-content: space-between;
+}
+/*
+    .group.art
+    group이라는 클래스명과 art라는 클래스명을 동시에 가진 요소
+*/
+.biz .group.art{
+    flex-direction: row-reverse;
+    margin: 104px 0 0 0;
+}
+.biz .group .tit{
+    width: 510px;
+}
+.biz .group .tit h2{
+    font-weight: 700;
+    color: #93042F;
+}
+.biz .group .tit .sub_tit{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #191E26;
+    margin: 26px 0;
+}
+.biz .group .tit .sub_tit strong{
+    color: #93042F;
+}
+.biz .group .tit .btn_wrap{
+    margin: 52px 0 0 0;
+    display: flex; /* a를 좌우 배치 */
+    gap: 6px 6px;
+    flex-wrap: wrap; /* 여러줄 허용 */
+}
+.biz .group .tit .btn_wrap a{
+    display: block;
+    border: 1px solid #93042F;
+    color: #93042F;
+    line-height: 1.3;
+    padding: 14px 45px;
+    border-radius: 30px;
+    white-space: nowrap; /* 줄바꿈 금지 */
+}
+.biz .group .tit .btn_wrap a.active{
+    background-color: #93042F;
+    color: #fff;
+}
+.biz .group .photo{
+    /* photo => overflow: hidden; 무조건 줘야 함 */
+    overflow: hidden;
+    width: 618px;
+    height: 536px;
+    border-radius: 10px;
+    /* img 태그한테 주면 가뜩이나 사진이 overflow: hidden; => 이 속성으로 잘리는데, 거기다 border-radius 이걸 주면 잘린 사진에 소용없음  */
+}
+.biz .group .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width:768px){  /* 브라우저 넓이가 768 이하일 때  / 바뀌는 애들은 바꿔서 써주고, 그대로인 애들은 지운다 */
+                            .biz .group{
+                                display: block; /* flex 해제 => 위아래로 배치하기 위함 */ 
+                                /* justify-content: space-between; --> flex 일때만 적용 -> block으로 바꾸면 적용 X = 그래서 놔둬도 됨*/
+                            }
+                            .biz .group.art{
+                                /* flex-direction: row-reverse; 
+                                 flex 일때만 적용 -> block으로 바꾸면 적용 X = 그래서 놔둬도 됨*/
+                                margin: 94px 0 0 0;
+                            }
+                            .biz .group .tit{
+                                width: auto; /* 넓이를 제한하지 않고 브라우저의 사이즈에 맞게 조절하라는 뜻 */
+                            }
+                            .biz .group .tit .sub_tit{
+                                font-size: 27px;
+                                margin: 24px 0;
+                            }
+                            .biz .group .tit .btn_wrap{
+                                margin: 24px 0 34px 0;
+                            }
+                            .biz .group .tit .btn_wrap a{
+                                padding: 10px 30px;
+                            }
+                            .biz .group .photo{
+                                /* photo => overflow: hidden; 무조건 줘야 함 */
+                                width: auto; /* 브라우저 넓이에 맞춰서 들어가야 하기 때문 */
+                                height: 185px;
+                                border-radius: 5px;
+                                /* img 태그한테 주면 가뜩이나 사진이 overflow: hidden; => 이 속성으로 잘리는데, 거기다 border-radius 이걸 주면 잘린 사진에 소용없음  */
+                            }
+                            .biz .group .photo img{
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+} /* @media */
+
+.photo_wrap{
+    margin: 100px 0;
+}
+.photo_wrap h2{
+    margin: 50px 0 10px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #191E26;
+}
+.photo_wrap .photo_hfix{
+    overflow: hidden;
+    border: 2px solid #93042F;
+    border-radius: 30px;
+    height: 868px;
+}
+.photo_wrap .photo_hfix img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+@media screen and (max-width:768px){
+    .photo_wrap .photo_hfix{
+        height: 300px;
+    }
+}/*media*/
+
+
+.photo_wrap .photo_resize{
+    overflow: hidden;
+    border: 2px solid #93042F;
+    border-radius: 30px;
+    height: 868px;
+}
+.photo_wrap .photo_resize img{
+    width: 100%;
+    height: 100%;
+}
+@media screen and (max-width:768px){
+    .photo_wrap .photo_resize{
+        height: 300px;
+    }
+}/*media*/
+
+
+.photo_wrap .photo_font{
+    overflow: hidden;
+    border: 2px solid #93042F;
+    border-radius: 30px;
+    font-size: 0;
+    line-height: 0;
+}
+.photo_wrap .photo_font img{
+    width: 100%; /* 넓이나 높이 하나만 줘도 나머지는 비율에 맞게 따라 옴 */
+}
+
+
+.photo_wrap .photo_all{
+    overflow: hidden;
+    border: 2px solid #93042F;
+    border-radius: 30px;
+}
+.photo_wrap .photo_all img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
 }
