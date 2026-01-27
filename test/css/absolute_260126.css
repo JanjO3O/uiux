@@ -47,13 +47,13 @@
     font-size: 20px;
     font-weight: 700;
     color: #1d1d1d;
-/* 무조건 1줄로 제한 */
-    white-space: nowrap;
+    
+    white-space: nowrap; /* 무조건 1줄로 제한 */
     text-overflow: ellipsis; /* 잘리는 글자 끝에 ... 추가해주는 속성 */
     overflow: hidden; /* 공간에서 넘치는 글자 잘라주는 속성 (css.hwp 2p 참고) */
     
-    width: calc(100% - 121px);
-    /* 나를 감싸는 요소의 넓이 100%에서 121px을 !빼고! 나머지 전부 => 넓이가 있어야지 적용할 수 있는 속성 */
+    width: calc(100% - 121px); /* 121px은 날짜에서부터 h4 사이의 넓이를 잰 것임 */
+    /* 나를 감싸는 요소의 넓이="a" 100%에서 121px을 !빼고! 나머지 전부 => 넓이가 있어야지 적용할 수 있는 속성 */
 }
 .notice .list ul li a span{
     color: #666;

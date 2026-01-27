@@ -24,17 +24,31 @@ em,address{
 
 /********** 공통 스타일 *************/
 body{
-    font-family: "pretendard";
+    font-family: "Noto Sans KR" , sans-serif;
     font-weight: 400;
     font-size: 17px;
-    color: #3d3d3d;
+    color: #454B52;
     line-height: 1.5; /* 배수 */ 
+    word-break: keep-all;/* 단어 단위로 줄바꿈 */
 }
 .wrapper{
     width: 1260px;
     margin: 0 auto; /* 화면 가운데 정렬 */
 }
 #wrap{
-    /* (wrapper)1260+(좌여백)30+(우여백)30 = 1320 */
-    min-width: 1320px;  /* 전체를 감싸는 애한테 최소의 전체너비 줌 */
+    /* (wrapper)1260+(좌여백)40+(우여백)40 = 1340 */
+    min-width: 1340px;  /* 화면 전체를 감싸는 애한테 최소의 전체너비 줌 */
+}
+/* html 표준때문에 입력해야하는 태그이지만 홈페이지에 나오지 않는
+   태그에 주는 클래스 */
+.sr-only, .skip, .blind {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
 }
