@@ -135,7 +135,7 @@
     margin: 15px 0 0 0;
 }
 .community .notice .list{
-    width: 721px;
+    width: 721px;  /* 넓이 제한해야 함 꼭 */
 }
 .community .notice .list ul li{
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -198,6 +198,7 @@
 }
 .community .youtube .list ul li{ /* => 까먹고 안줌 */
     width: 404px;  /* li한테 넓이 주는 거임!! */
+    /* list에 넓이를 제한하는 선이 있으면 list 전체적으로 넓이를 제한해주기 */
 }
 .community .youtube .list ul li a{ /* => 까먹고 안줌 */
     display: block;
@@ -208,7 +209,6 @@
     height: 227px;
     border-radius: 10px;
     border: 2px solid #93042F; /* => 까먹고 안줌 */
-    overflow: hidden; /* => 까먹고 안줌 */
 }
 .community .youtube .list ul li a .photo img{
     width: 100%;
@@ -241,6 +241,7 @@
     border: 1px solid #fff;
 }
 
+
 .footer{
     margin: 104px 0 200px 0;
     border-top: 1px solid rgba(69, 75, 82, 0.6);
@@ -265,4 +266,26 @@
 }
 .footer .f_nav ul li:first-child::before{
     display: none;
+}
+.footer .f_nav ul li a{ /* 제대로 입력 못함 */
+    display: block;
+    position: relative; /* after 정렬 기준 */
+}
+.footer .f_nav ul li a::after{ /* 제대로 입력 못함 => :hover 가 아니라 ::after임,, */
+    content: ""; /* before & after를 입력하면 그냥 따라오는 값 */
+    position: absolute; /* a를 기준으로 정렬 */
+    left: 0;
+    bottom: -1px;
+    width: 0;  /* 글자의 길이가 달라서 지정 X */
+    height: 1px;
+    background-color: #454B52;
+    transition: 0.3s;  /* 효과의 속도 직접 주기 */
+}
+.footer .f_nav ul li a:hover::after{
+    width: 100%;  /* 딱 글자의 길이만큼 들어가라는 의미 */
+}
+.footer .f_ino{
+    display: flex;
+    gap: 0 20px;
+    margin: 20px 0;
 }

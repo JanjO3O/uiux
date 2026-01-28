@@ -111,7 +111,7 @@
     width: 0;
     height: 1px;
     background-color: #454B52;
-    transition: 0.5s;  /* 마우스 오버하면 넓이가 바뀔 예정 -> 천천히 변경되게 하기 위해서 */
+    transition: 0.5s;  /* 마우스 오버했을 때, 천천히 변경되게 하기 위해서 */
 }.f_nav ul li a:hover::after{
     width: 100%; /* 100% => a의 넓이대로, 딱 글자의 길이만큼만 들어가라는 뜻 */
 }
