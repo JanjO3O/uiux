@@ -1,0 +1,27 @@
+/* 
+    default.css (reset.css 라고도 함)
+    태그의 초기화 - 브라우저가 주는 스타일을 모두 삭제
+    한 번 정의되면 바뀔일이 없음
+*/
+h1, h2, h3, h4, h5, h6{
+    font-size: inherit;
+    font-weight: inherit;
+}
+a{
+    color: inherit;
+    text-decoration: none;   /* => 밑줄 삭제 */
+}
+ul,ol,li{
+    list-style: none;  /* 리스트 앞에 있는 도형 삭제 */
+}
+strong{
+    font-weight: inherit;
+}
+em,address{
+    font-style: normal; /* "font-style: italic;" ==> 이렇게 글자가 기울어진걸 바로잡아줌 */
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* css 10p 참조 */
+}

@@ -1,0 +1,54 @@
+@import url(default.css);
+@import url(fonts.css);
+@import url(common.css);
+
+.visual{
+    background: url(../images/visual_bg.jpg) no-repeat center center / cover;
+    color: #fff;
+    border-radius: 0 0 200px 0; /* 시계방향 */
+    text-align: center;
+}
+.visual .wrapper{
+    height: 900px;  /* visual에 있던 높이를 wrapper에게 줘서, picture 정렬의 기준으로 position: relative 를 줄 수 있기 때문*/
+    position: relative; /* picture 정렬의 기준 */
+}
+.visual h2{
+    padding: 316px 0 0 0 ;
+}
+.visual .picture{
+    display: block;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;  /* => 무조건 정 원 */
+    background-color: #0724D7;
+    line-height: 1.3;
+    padding: 98px 0 0 0;
+    position: absolute; /* wrapper를 기준으로 */
+    right: -85px; /* 높이의 반 (180/2) */
+    bottom: -85px; /* 넓이의 반 (180/2) */
+}  /* 글자 근처에 아이콘이나 글자 위·아래·좌·우에 선이 들어가면 before & after를 사용 */
+.visual .picture::before{
+    content: "";
+    position: absolute; /* picture를 기준으로 정렬 */
+    left: 0;
+    top: 48px;
+    width: 100%;
+    height: 34px;  /* 아이콘 사이즈 = 높이 */
+    /* 아이콘을 배경으로 줄 땐 사이즈를 안주면 원래 사이즈대로 들어감 / cover는 주면 안됨 */
+    background: url(../images/visual_picture.svg) no-repeat center center;
+}
+.visual .picture:hover{
+    color: #78E6DD;
+    font-weight: 700;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.1);
+}
+.visual .picture:hover::before{
+    background-image: url(../images/visual_picture_on.svg);
+    /* background-image => 이미지만 교체되고 위치나 반복값은 그대로 상속됨 */
+}
+
+
+
+footer{
+    margin: 500px 0 0 0;
+}
