@@ -294,7 +294,7 @@
     position: absolute;  /* a를 기준으로 정렬 */
     left: 0;
     bottom: -1px;
-    width: 0; /* ※※※글자의 길이가 달라서 넓이를 지정하지 않는다※※※ */
+    width: 0; /* ※※※글자의 넓이는 hover했을 때 변경되는 영역이기 때문에 hover 상태에서 입력함※※※ */
     height: 1px;
     background-color: #454B52;
     transition: 0.3s;

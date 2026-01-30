@@ -8,7 +8,29 @@
 </head>
 <body>
     <div id="wrap">
-        <header class="header"></header>
+        <header class="header">
+            <div class="wrapper">
+                <h1 class="logo"><a href="index.html"><img src="images/logo.svg" alt="완도군 청산도"></a></h1>
+                <nav class="gnb">
+                    <!-- 클릭했을 때 페이지를 이동하는건 a 태그고, 메뉴가 열리는 기능이 작동하면 button 태그 -->
+                    <button class="gnb_open"><span class="sr-only">메뉴열기</span></button>
+                    <div class="gnb_wrap">
+                        <ul>
+                            <li><a href="#n">청산도 소개</a></li>
+                            <li><a href="#n">관광안내</a></li>
+                            <li><a href="#n">추천여행</a></li>
+                            <li><a href="#n">커뮤니티</a></li>
+                        </ul>
+                    </div><!--//gnb_wrap-->
+                </nav>
+                <div class="util">
+                    <div class="weather">
+                        <strong>2.9℃</strong>
+                        <span>맑음</span>
+                    </div><!--//weather-->
+                </div><!--//util-->
+            </div>
+        </header>
         <main class="container">
             <section class="visual">
                 <div class="wrapper"> <!--div는 태그와 태그를 감싸고,  span 은 아무 의미 없는 글자에게 사용-->
@@ -16,8 +38,78 @@
                     <a href="#n" class="picture"><span>은하수<br>사진공방</span></a>
                 </div><!--//wrapper-->
             </section><!--//visual-->
-            <section class="culture"></section><!--//culture-->
-            <section class="tour"></section><!--//tour-->
+            <section class="culture">
+                <div class="wrapper">
+                    <div class="tit">
+                        <h2>청산도,<br> 일상의 느린 기록</h2>  <!-- 모바일에선 줄바꿈이 들어가기 때문에 br 태그를 준 것임 -->
+                        <p>"느릿한 걸음으로 만나는 풍경" 화려한 수식어보다 정겨운 돌담과 파도 소리가 먼저 반겨주는 곳.<br>서두르지 않아 더 선명하게 보이는 청산도의 소박한 일상을 담았습니다. 당신의 마음에 푸른 쉼표를 찍어보세요.</p>
+                    </div>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <a href="#n">
+                                    <div class="photo"><img src="images/culture01.jpg" alt="느림 우체통"></div>
+                                    <!-- h3가 block 태그이기 때문에 마우스를 오버했을 때 밑줄이 글자를 벗어나서까지 그어지게 됨 => inline요소인 span 태그를 h3 안에 써줌으로써 밑줄을 글자의 길이만큼만 생성시킨다-->
+                                    <h3><span>느림 우체통</span></h3>
+                                    <p>느린걸음 느린카페에는 보내고 싶은 달(月)에 편지를 보낼 수 있는 12개의 느림보 우체통이 카페 안밖에 있다.</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#n">
+                                    <div class="photo"><img src="images/culture02.jpg" alt="청산 파시문화거리"></div>
+                                    <h3><span>청산 파시문화거리</span></h3>
+                                    <p>좁다란 골목길 치열한 삶의 잔상들이 발걸음을 오래도록 붙잡는다. 도청리/슬로길 11코스</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#n">
+                                    <div class="photo"><img src="images/culture03.jpg" alt="미로 속 미로"></div>
+                                    <h3><span>미로 속 미로</span></h3>
+                                    <p>속도를 내지 못하게 길마저 구불구불 돌아가라 한다. 이곳에선 잠시 길을 잃고 헤매는 것도 좋겠다. 도청리/슬로길 11코스</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#n" class="more"><span>더보기</span></a> <!--//모바일에선 글자가 안보이니까 span 태그로 감싸줌-->
+                </div>
+            </section><!--//culture-->
+            <section class="tour">
+                <div class="wrapper">
+                    <div class="tit">
+                        <h2>가장 느린 걸음으로<br> 만나는 푸른 조각들</h2>
+                    </div>
+                    <div class="list">
+                        <ul>
+                            <!-- tour01 & active 두개로 불림 -->
+                            <li class="tour01 active">
+                                <a href="">
+                                    <h3>청산진성</h3>
+                                    <p>청산진성터에 오르면 청산도의 아름다운 풍경이<br> 마치 파노라마처럼 펼쳐집니다.</p>
+                                </a>
+                            </li>
+                            <li class="tour02">
+                                <a href="">
+                                    <h3>숭모사</h3>
+                                    <p>숭모사는 김류선생의 학행을 추모하기<br> 위하여 세웠다는 서당입니다.</p>
+                                </a>
+                            </li>
+                            <li class="tour03">
+                                <a href="">
+                                    <h3>백련암</h3>
+                                    <p>청산도에 있는 유일한절로 오랜 절의 역사와 함께<br> 동백나무 군락이 특별한 경치를 자아냅니다.</p>
+                                </a>
+                            </li>
+                            <li class="tour04">
+                                <a href="">
+                                    <h3>고인돌</h3>
+                                    <p>청산진성을 따라 읍리로 들어서면 인고의 세월을 묵묵히 괴고 있는 청동기 시대<br> 대표적인 무덤, 고인돌을 만날 수 있습니다.</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#n" class="more"><span>더보기</span></a>
+                </div>
+            </section><!--//tour-->
             <section class="community"></section><!--//community-->
         </main>
         <footer class="footer"></footer>

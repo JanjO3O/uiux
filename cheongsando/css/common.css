@@ -19,6 +19,7 @@ body{
 #wrap{
     /* (wrapper)1260+(좌여백)100+(우여백)100 = 1460 */
     min-width: 1460px;  /* 전체를 감싸는 애한테 최소한의 전체너비를 줌 */
+    position: relative; /* header 정렬의 기준 */
 }
 @media screen and (max-width:768px){  /* 브라우저 넓이가 768이하일 때 */
                 body{

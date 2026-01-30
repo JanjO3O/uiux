@@ -20,6 +20,15 @@ strong{
 em,address{
     font-style: normal; /* "font-style: italic;" ==> 이렇게 글자가 기울어진걸 바로잡아줌 */
 }
+button{
+    border: none;  /* 테두리 아예 없애기 */
+    background: none;  /* transparent(투명) => 색깔에만 적용되는 속성으로 이미지에는 적용 X */
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+    line-height: inherit;
+}
 *{
     margin: 0;
     padding: 0;
