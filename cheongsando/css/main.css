@@ -3,7 +3,7 @@
 @import url(common.css);
 
 .header{
-    position: absolute;  /* wrap을 기준으로 정렬 => body를 기준으로 정렬하면 화면 사이즈가 줄어들면 헤더의 영역이 좁아짐*/
+    position: absolute;  /* common.css - wrap을 기준으로 정렬 => body를 기준으로 정렬하면 화면 사이즈가 줄어들면 헤더의 영역이 좁아짐*/
     left: 0;
     top: 0;
     z-index: 100; /* 맨위로 위치하게 하라는 의미 / 절대 이 숫자보다 높은 숫자를 주면 안됨 */
@@ -86,7 +86,6 @@
     background: url(../images/visual_bg.jpg) no-repeat center center / cover;
     color: #fff;
     border-radius: 0 0 200px 0; /* 시계방향 */
-    text-align: center;  /* 이미지로 들어간 h2와 a 안에 들어간 span 태그 안의 글자 가운데 정렬됨 */
     position: relative; /* before 정렬의 기준 */
 }
 .visual::before{
@@ -104,19 +103,20 @@
     position: relative; /* picture 정렬의 기준 */
 }
 .visual h2{
-    padding: 316px 0 0 0 ;
+    padding: 316px 0 0 450px ; 
 }
 .visual .picture{
     display: block;  /* a를 만나면 줘야 하는 기본 값 */
-    width: 180px;   
-    height: 180px;
+    text-align: center;  /* a 안에 들어간 span 태그 안의 글자 가운데 정렬 */
+    width: 180px;   /* 원의 넓이 */
+    height: 180px;  /* 원의 높이 */
     border-radius: 50%;  /* => 무조건 정 원 */
     background-color: #0724D7;
     line-height: 1.3;
-    padding: 98px 0 0 0;  /* 글자를 원의 위에서부터 떨어지는 거리 */
+    padding: 98px 0 0 0;  /* 글자가 원의 위에서부터 떨어지는 거리 */
     position: absolute; /* wrapper를 기준으로 */  /* before 정렬의 기준도 됨 */
-    right: -90px; /* 넓이의 반 (180/2) */
-    bottom: -89px; /* 높이의 반 (180/2) */
+    right: -90px; /* 높이의 반 (180/2) */
+    bottom: -89px; /* 넓이의 반 (180/2) */
 }  /* 글자 위·아래·좌·우에 선이나 아이콘이 들어가면 before & after를 사용 */
 .visual .picture::before{
     content: "";
@@ -125,9 +125,9 @@
     top: 48px; /* 아이콘이 원의 위에서부터 떨어지는 거리 */
     width: 100%;  /* 원의 꽉 차는 사각형이 존재한다고 생각 */
     height: 34px;  /* 아이콘 사이즈 = 높이 */
-    /* 아이콘을 배경으로 줄 땐 사이즈를 안주면 원래 사이즈대로 들어감 / cover는 주면 안됨 */
-    background: url(../images/visual_picture.svg) no-repeat center center / contain; /* contain은 사진의 사이즈가 바뀔 때만 주는 것임 */
-    /* contain은 배경이미지를 하나도 짤리지 않게 꽉 차게 리사이즈하는 것  => 아이콘을 배경으로 줄 때 사용함 / */
+    /* 아이콘을 배경으로 줄 땐 사이즈(cover)를 안주면 원래 사이즈대로 들어감 / 아이콘엔 cover 주면 안됨 */
+    background: url(../images/visual_picture.svg) no-repeat center center / contain; /* contain은 아이콘     의 사이즈가 바뀔 때만 주는 것임 */
+    /* contain은 배경이미지를 하나도 짤리지 않게 꽉 차게 주는 것으로, 리사이즈가 필요할 때 주는 것  => 아이콘을 배경으로 줄 때 사용함 */
 }
 .visual .picture:hover{  /* 핸드폰에선 마우스 오버할 수가 없음 */
     color: #78E6DD;
