@@ -112,7 +112,8 @@
 .biz .group .photo{
     width: 618px;
     height: 536px;
-    overflow: hidden;  /* css.hwp 7p 참고 */  /* ★★★★사진 사이즈 관련 처리 방식★★★★ */
+    overflow: hidden; /* ★★★★사진 사이즈 관련 처리 방식★★★★ */
+    /* overflow-hidden으로 넘치는 콘텐츠를 자를 경우엔, width와 height가 있어야 함 -> css.hwp 7p 참고 */
     border-radius: 10px;
 }
 .biz .group .photo img{  /* overflow:hidden;으로 넘치는 컨텐츠를 자를 경우 영역은 넓이와 높이가 있어야 한다. / css.hwp 7p 참고 */
