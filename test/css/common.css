@@ -18,6 +18,15 @@ strong{
 em,address{
     font-style: normal; /* "font-style: italic;" ==> 이렇게 글자가 기울어진걸 바로잡아줌 */
 }
+button{
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    cursor: pointer; /* 커서를 손가락 모양으로 바꿔줌 */
+}
 *{
     margin: 0;
     padding: 0;
