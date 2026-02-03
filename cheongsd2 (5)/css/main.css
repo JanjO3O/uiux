@@ -1,0 +1,836 @@
+@import url(default.css);
+@import url(fonts.css);
+@import url(common.css);
+
+.header{
+    position: absolute;  /* body를 기준으로 정렬하면 body는 줄어든 화면만큼만 존재하기 때문에 화면 사이즈가 줄어들면
+    헤더의 넓이도 같이 좁아짐 => 그래서 common.css - wrap을 기준으로 정렬해야 됨 => */
+    left: 0;
+    top: 0;
+    z-index: 100; /* 맨위로 위치하게 하라는 의미. 현재 css에서 이 숫자보다 높은 숫자를 주면 절대 안됨 */
+    /* position이 필수로 들어가야 입력할 수 있음. 높은 값을 주면 됨 */
+    color: #fff;
+    width: 100%;  /*  header에 z-index가 들어갈 경우, 넓이 100% 무조건 줘야 함 */
+    height: 100px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* header 아래 선 */
+    /* transition: 0.3s;  header가 딸그락거리지 않고 자연스럽게 나오게 하는 효과 */
+    transition: 0.3s; /* top 속성이 변하면 transition 줌 */
+}
+.header .wrapper{
+    display: flex;  /* logo - gnb - util 좌우배치 */
+    justify-content: space-between;
+    align-items: center;
+}
+.header .logo a{
+    display: block; /* header의 logo를 위아래 가운데 위치시키기 위해 a한텐 block을, img한텐 vertical을 줌 */
+    /* a한테 넓이와 높이를 주는 이유는 그대로 눌릴 거기 때문 */
+    width: 159px;
+    height: 32px;
+    background: url(../images/logo.svg) no-repeat center center / contain;  /* 로고는 잘리면 안되기 때문에 contain으로 줌 */
+}
+
+
+.header .gnb .gnb_open{
+    display: none; /* 모바일에서만 보임  */
+}
+.header .gnb .gnb_wrap ul{
+    display: flex;  /* li 좌우배치 */
+}
+.header .gnb .gnb_wrap ul li a{
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 100px;  /* header의 높이와 동일하게 => 메뉴가 위아래도 눌려야 하기 때문에*/
+    padding: 0 22px;  /* 메뉴가 눌리는 영역(좌우) */
+}
+.header .util .weather{
+    position: relative; /* before 정렬 기준 */
+    padding: 0 0 0 36px; /* 왼쪽에 아이콘이 들어갈 공간을 주기 위함 */
+    display: flex;  /* strong - span 태그 정렬하기 위해 */
+    flex-direction: column; /* 위아래 위치 */
+    line-height: 1.3;
+}
+.header .util .weather strong{
+    font-weight: 700;
+}
+.header .util .weather::before{  /* 아이콘을 주기 위해 불러온 before임 */
+    position: absolute; /* weather를 기준 */
+    content: "";
+    left: 0;  /*  weather에서 padding 으로 왼쪽 공간을 만들어줬기 때문에 left=0임 */
+    top: 5px;
+    width: 31px;  /* 아이콘 넓이 */
+    height: 28px; /* 아이콘 높이 */
+    background: url(../images/util_weather.svg) no-repeat center center;
+}
+
+    /************* header가 고정됐을 때 START  ******************/
+        .header.fixed{
+            position: fixed;  /* fixed는 무조건 body랑 정렬함. 근데 header는 wrap이랑 정렬함 그래서 main.css->wrap의 최소넓이랑 동일하게 주면 됨(반응형으로 바뀌면 해결됨) */
+            background-color: #fff;
+            color: #3d3d3d;
+            border-color: #ccc;
+            min-width: 1460px;
+        }
+        .header.fixed.hide{
+            top: -105px;  /* header 높이보다 살짝 넉넉하게 줘서 숨김 처리 */
+        }
+        .header.fixed .logo a{
+            background-image: url(../images/logo_c.svg);
+        }
+        .header.fixed .gnb .gnb_wrap ul li a{
+            color: #1d1d1d;
+        }
+        .header.fixed .util .weather::before{
+            background-image: url(../images/util_weather_c.svg);
+        }
+    /************* header가 고정됐을 때 END  ******************/
+
+@media screen and (max-width:768px){ /* media 쿼리는 pc형 코딩 바로 아래줄에 있어야 함 */
+                .header{
+                    height: 56px;
+                }
+                .header .wrapper{
+                    margin-right: 0; /* 오른쪽 여백 삭제 => 모바일에선 오른쪽 여백 없이 메뉴가 눌리기 때문*/
+                }
+                .header .logo a{
+                    width: 88px;  /* img의 크기를 줄이려면 img를 불러와서 넓이만 주면 높이가 알아서 들어감 둘 다 줄 필요 없음 */
+                }
+                .header .gnb .gnb_open{
+                    display: block; /* 모바일에서만 보임 */
+                    /* width와 height를 header의 높이만큼 주는 이유는 메뉴 아이콘이 그만큼 눌릴 영역이기 때문 */
+                    width: 56px; /* header의 높이 */
+                    height: 56px; /* header의 높이 */  
+                    background: url(../images/gnb_open.svg) no-repeat center center;
+                }
+                .header .gnb .gnb_wrap{
+                    display: none;  /* 모바일에서는 메뉴가 눌러야 나옴 */
+                }
+                .header .util{
+                    display: none; /* 모바일에서는 안나옴 */
+                }
+                .header.fixed{
+                    min-width: 0;
+                }
+                .header.fixed .gnb .gnb_open{
+                    background-image: url(../images/gnb_open_b.svg);
+                }
+}/* @media */
+
+
+.visual{
+    background: url(../images/visual_bg.jpg) no-repeat center center / cover;
+    color: #fff;
+    border-radius: 0 0 200px 0; /* 시계방향 */
+    position: relative; /* before 정렬의 기준 */
+}
+.visual::before{  /* background-color를 주기 위해 주는 것 */
+    position: absolute;  /* visual을 기준으로 */
+    content: "";
+    left: 0;
+    top: 0;
+    z-index: -1; 
+    /* z-index -(마이너스)를 줌으로써 배경 밑으로 ba-color가 디자인한것처럼 라운드 밑 영역에 배경색이 들어가게 해줌 */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(204, 204, 204, 0.18);
+}
+.visual .wrapper{
+    height: 900px; 
+    /* 원래 visual에 있던 높이를 wrapper에게 줘서, picture 정렬의 기준=position: relative 를 줄 수 있기 때문*/
+    position: relative; /* picture 정렬의 기준 */
+}
+.visual h2{
+    padding: 316px 0 0 450px ; 
+}
+.visual .picture{
+    display: block;  /* a를 만나면 줘야 하는 기본 값 */
+    text-align: center;  /* a 안의 span 태그의 글자를 가운데 정렬 */
+    width: 180px;   /* 원의 넓이 */
+    height: 180px;  /* 원의 높이 */
+    border-radius: 50%;  /* => 무조건 정 원 */
+    background-color: #0724D7;
+    line-height: 1.3;
+    padding: 98px 0 0 0;  /* 글자가 원의 위에서부터 떨어지는 거리 */
+    position: absolute; /* wrapper를 기준으로 */  /* before 정렬의 기준도 됨 */
+    right: -90px; /* 넓이의 반 (180/2) */
+    bottom: -89px; /* 높이의 반 (180/2) */
+}  /* 글자 위·아래·좌·우에 선이나 아이콘이 들어가면 before & after를 사용 */
+.visual .picture::before{
+    content: "";
+    position: absolute; /* picture를 기준으로 정렬 */
+    left: 0;
+    top: 48px; /* 아이콘이 원의 위에서부터 떨어지는 거리 */
+    width: 100%;  /* 원의 꽉 차는 사각형이 존재한다고 생각 */
+    height: 34px;  /* 아이콘 사이즈 = 높이 */
+    /* 아이콘을 배경으로 줄 땐 사이즈(cover)를 안줘야 원래 사이즈대로 들어감 / 아이콘엔 cover 주면 안됨 */
+    background: url(../images/visual_picture.svg) no-repeat center center / contain; /* contain은 아이콘의 사이즈가 바뀔 때만 주는 것임 */
+    /* contain은 배경이미지를 하나도 짤리지 않게 꽉 차게 주는 것으로, 리사이즈가 필요할 때 주는 것  => 아이콘을 배경으로 줄 때 사용함 */
+}
+.visual .picture:hover{  /* 핸드폰에선 마우스 오버할 수가 없음 */
+    color: #78E6DD;
+    font-weight: 700;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.1);
+}
+.visual .picture:hover::before{
+    background-image: url(../images/visual_picture_on.svg);
+    /* background-image => 이미지만 교체되고 위치나 반복값은 그대로 상속됨 */
+}
+@media screen and (max-width:768px){ /* media 쿼리는 pc형 코딩 바로 아래줄에 있어야 함 */
+                .visual{
+                    border-radius: 0 0 30px 30px; /* 시계방향 */
+                    background-position: right 45% center 0;  /* 사진의 위치 조절 */
+                    /* 또는 모바일의 사진을 따로 저장해서 다시 줘도 됨 */
+                }
+                .visual .wrapper{
+                    height: 650px;  /* visual에 있던 높이를 wrapper에게 줘서, picture 정렬의 기준으로 position: relative 를 줄 수 있기 때문*/
+                    display: flex;  /* flex,justify,align => h2 태그를 화면 가운데 배치시키기 위해 주는 값임 */
+                    justify-content: center; /* 좌우의 가운데 */
+                    align-items: center;  /* 위아래 가운데 */
+                }
+                .visual h2{
+                    padding: 0 ;  /* 글자의 상단여백이 바뀌었기 때문에 바꿔줘야 함 */
+                }
+                .visual h2 img{  /* img는 자기 자신한테 넓이를 줘야 함 */
+                    width: 80%; /* => img를 감싸는 h2 태그의 넓이의 80% */
+                    /* 넓이나 높이 둘 중에 하나만 줘도 비율에 맞게 들어감 -> 두개 동시에 주면 찌그러짐 */
+                    max-width: 400px;  /* 최대넓이 제한 */
+                }
+                .visual .picture{
+                    width: 120px;   
+                    height: 120px;
+                    font-size: 15px;
+                    line-height: 1.2;
+                    padding: 67px 0 0 0;
+                    right: 0; /* wrapper의 오른쪽에 딱 맞게 들어가기 때문에 0 임 */
+                    bottom: -60px; /* 높이의 반 (120/2) */
+                }  /* 글자 근처에 아이콘이나 글자 위·아래·좌·우에 선이 들어가면 before & after를 사용 */
+                .visual .picture::before{
+                    top: 22px; /* 아이콘이 원의 위에서부터 떨어지는 거리 */
+                    height: 32px;  /* 아이콘 사이즈 = 높이 */
+                }
+}/* @media */  
+
+
+.culture{
+    padding: 156px 0 104px 0; /* bg색 들어가기 때문에 상단과 하단의 여백을 padding으로 줘야 함. bg색 안들어가면 margin으로 상단 여백만 주면 됨*/
+    background-color: rgba(204, 204, 204, 0.18);
+}
+.culture .wrapper{
+    position: relative; /* more 정렬의 기준 */
+}
+.culture .tit{
+    margin: 0 130px 0 0; /* 브라우저 사이즈가 줄어들었을 때, 더보기가 들어갈 자리의 여백을 줌 => 더보기에서부터 사이즈 측정 */
+}
+.culture .tit h2{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #1d1d1d;
+    margin: 0 0 26px 0;  /* p와의 여백 */
+}
+.culture .tit h2 br{
+    display: none; /* pc에선 줄바꿈 안함 */
+}
+.culture .list{
+    margin: 52px 0 0 0;
+}
+.culture .list ul{
+    display: flex;
+    justify-content: space-between;
+}
+.culture .list ul li{
+    width: calc(33.33% - 16px);  /* 반응형을 위해 넓이를 calc(계산법)으로 적용해줘야 함 */
+    /* 
+    (100% / li의 갯수) - (여백의 합 / li의 갯수)
+    (100% / 3) - (48 / 3)
+    = 33.33% - 16px
+     */
+     text-align: center;
+}
+.culture .list ul li a{
+    display: block;
+}
+.culture .list ul li a .photo{
+    overflow: hidden;
+}
+.culture .list ul li a .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;  /* 사진을 안잘리고 비율에 맞게 */
+    transition: 0.3s;  /* 사진이 0.3초 동안 천천히 확대되라는 의미 */
+}
+.culture .list ul li a:hover .photo img{
+    transform: scale3d(1.125, 1.125, 1);  /* 이미지 확대되는 효과 */
+}
+.culture .list ul li a h3{
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #1d1d1d;
+    margin: 27px 0 26px 0;
+}
+.culture .list ul li a h3 span{
+    position: relative; /* after 정렬의 기준 */
+}
+.culture .list ul li a h3 span::after{
+    content: "";
+    position: absolute;  /* span을 기준으로 */
+    left: 0;
+    bottom: -3px;
+    width: 0;  /* 마우스 오버했을 때 변하는 거니까 hover 속성에서 주면 됨 */
+    height: 1px;
+    background-color: #1d1d1d;  /* 선 색 */
+    transition: 0.3s;  /* 효과가 나타나는 속도 */
+}
+.culture .list ul li a:hover h3 span::after{
+    width: 100%;  /* 글자의 길이만큼 밑줄 생성 */
+}
+.culture .more{
+    position: absolute;  /* wrapper를 기준으로 */  /* after 정렬의 기준 */
+    right: 0;
+    top: 93px;
+    display: block; /* a 안에 있는 more이기 때문에 주는 거임 */
+    border: 1px solid #3d3d3d;
+    border-radius: 30px;  /* %말고 px로 주기 */
+    padding: 4px 39px 4px 23px;  /* 글자의 테두리로부터의 내부 여백 */
+}
+.culture .more::after{  /* 아이콘을 주기 위함 */
+    content: "";
+    position: absolute; /* more를 기준으로 */
+    right: 21px;
+    top: 12px;
+    width: 11px;  /* 아이콘 넓이 */
+    height: 11px;  /* 아이콘 높이 */
+    background: url(../images/more.svg) no-repeat center center / contain;
+}
+.culture .more:hover{
+    background-color: #0724D7;
+    border-color:  #0724D7;  /* 테두리 색만 바뀌면 되는거면 border-color로 색만 바꿔주되, 테두리가 있는데 border를 안주면 절대 안됨!!  */
+    color: #fff;
+}
+.culture .more:hover::after{
+    /* 아이콘의 색이 바뀌어서 아이콘을 바꿔줘야 할 경우, background-image 로 이미지만 변경해주기 => 이미지만 바꿔줘야 위에서 준 속성들 유지됨*/
+    background-image: url(../images/more_on.svg);
+}
+@media screen and (max-width:768px){
+                .culture{
+                    padding: 139px 0 103px 0; /* bg색 들어가기 때문에 상단과 하단의 여백이 padding으로 들어가야 함 / bg색 안들어가면 margin으로 상단 여백만 주면 됨*/
+                }
+                .culture .tit{
+                    margin: 0 50px 0 0; /* 브라우저 사이즈가 줄어들었을 때, 더보기가 들어갈 자리의 여백을 줌 */
+                }
+                .culture .tit h2{
+                    font-size: 28px;
+                    margin: 0 ;  /* p와의 여백이 사라지는거라서 0을 줘야 함 */
+                }
+                .culture .tit h2 br{
+                    display: block; /* 모바일에선 줄바꿈 */
+                }
+                .culture .tit p{
+                    display: none; /* 모바일에선 숨김 */
+                }
+                .culture .list{
+                    margin: 36px 0 0 0; /* h2와의 여백 */
+                }
+                .culture .list ul{
+                    flex-direction: column;  /* flex 유지 -> 아래방향으로 전환 */
+                    gap: 36px 0; /* 위아래 여백만 들어감 */
+                }
+                .culture .list ul li{
+                    width: auto;  /* 100%를 주는 것보다는 auto를 주는게 좋음 => block 요소는 auto를 주면 100%가 됨 */
+                }
+                .culture .list ul li a h3{
+                    font-size: 24px;
+                    margin: 22px 0 25px 0;
+                }
+                .culture .more{
+                    top: 39px;
+                    border-radius: 50%; /* 정 원 */
+                    padding: 0;  /* 글자가 빠지기 때문에 0임 */
+                    width: 36px;  /* 원의 넓이 */
+                    height: 36px;  /* 원의 높이 */
+                }
+                .culture .more::after{
+                    right: 12px;
+                    top: 12px;
+                    width: 10px;  /* 아이콘 넓이 */
+                    height: 10px;  /* 아이콘 넓이 */
+                }
+                .culture .more span{
+                    display: none; /* 글자를 모바일에서 숨기기 위함 */
+                }
+}/* @media */
+
+
+.tour{
+    background-color: rgba(7, 36, 215, 0.05);
+    padding: 156px 0 104px 0;
+}
+.tour .wrapper{
+    position: relative; /* more 정렬의 기준 */
+}
+.tour .tit{
+    margin: 0 130px 0 0; /* 브라우저 사이즈가 줄어들었을 때, 더보기가 들어갈 자리의 여백을 줌 */
+}
+.tour .tit h2{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #1d1d1d;
+}
+.tour .tit h2 br{
+    display: none; /* pc에선 줄바꿈 안함 */
+}
+.tour .list{
+    margin: 83px 0 0 0; /* h2와의 여백 */
+}
+.tour .list ul{
+    display: flex;
+    gap: 0 12px;  /* li사이의 여백 */
+}
+.tour .list ul li{
+    flex: 1 1 0%;  /* 사이즈가 바뀌기 전의 작은 li의 상자 크기 */
+    transition: 0.3s;
+    overflow: hidden;  /* 넘치는 요소 숨김=> p태그 */
+}
+.tour .list ul li.active{ /* active클래스가 있는 li */
+    flex: 3 1 0%; /* 사이즈가 바뀐 후의 큰 li의 상자 크기 */  /* 나는 너희들의 3배, 너네는 1 */
+}
+.tour .list ul li a{
+    display: flex;  /* h3 - p 좌우 정렬 */
+    flex-direction: column;  /* h3 - p 위아래 정렬 */
+    justify-content: flex-end; /* h3 - p 아래로 배치 */
+    height: 431px;  /* a한테 박스 높이 주는 거임 */
+    background: url(../images/tour01.jpg) no-repeat center center / cover;
+    color: #fff;
+    text-align: center;
+    padding: 0 0 48px 0;
+}
+.tour .list ul li.active a{
+    text-align: left; 
+    padding: 0 40px 40px 40px; /* (a안에 h3,p가 있는거임)디자인할 때 왼쪽 40px, 아래 40px씩 정해서 준걸 줘야 함 / 왼쪽의 준 여백만큼 오른쪽 여백이 들어감 */
+}
+.tour .list ul li a h3{  /* 작은 사이즈를 기준으로 먼저 정리해준다 */
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+.tour .list ul li.active a h3{
+    font-size: 32px;
+}
+.tour .list ul li a p{  /* 작은 사이즈를 먼저 기준으로 정리해준다 */
+    display: none;  /* 작은 사이즈에 있는 p 태그를 숨김 처리함 */
+    position: relative; /* after 정렬의 기준 */
+    margin: 20px 0 0 0 ; /* h3와의 여백 */
+    white-space: nowrap;  /* 줄바꿈 금지 */
+}
+.tour .list ul li.active a p{
+    display: block;  /* 큰 사이즈에 있는 p 태그를 화면에 보이게 함 */
+}
+.tour .list ul li.active a p::after{  /* p 옆에 있는 오른쪽 화살표 아이콘 */
+    content: "";
+    position: absolute;  /* p 태그를 기준으로 정렬 */
+    right: 0;
+    bottom: 13px;
+    width: 21px;
+    height: 21px;
+    background: url(../images/tour_more.svg) no-repeat center center / contain;
+}
+.tour .list ul li.tour02 a{
+    background-image: url(../images/tour02.jpg);
+    background-position: left 37% bottom 0;
+}
+.tour .list ul li.tour03 a{
+    background-image: url(../images/tour03.jpg);
+    background-position: left 49% top 0;
+}
+.tour .list ul li.tour04 a{
+    background-image: url(../images/tour04.jpg);
+}
+.tour .more{
+    position: absolute;  /* wrapper를 기준으로 */  /* moore의 정렬 기준 */
+    right: 0;
+    top: 9px;
+    display: block; /* a 안에 있는 more이기 때문에 주는 거임 */
+    border: 1px solid #3d3d3d;
+    border-radius: 30px;  /* %말고 px로 주기 */
+    padding: 4px 39px 4px 23px;
+}
+.tour .more::after{ /* + 아이콘을 주기 위함 */
+    content: "";
+    position: absolute; /* more를 기준으로 */
+    right: 21px;
+    top: 12px;
+    width: 11px;  /* 아이콘 넓이 */
+    height: 11px;  /* 아이콘 넓이 */
+    background: url(../images/more.svg) no-repeat center center / contain;
+}
+.tour .more:hover{
+    background-color: #0724D7;
+    border-color:  #0724D7;  /* 테두리 색만 바뀌면 되는거면 border-color로 색만 바꿔주되, 테두리가 있는데 border를 안주면 절대 안됨!!  */
+    color: #fff;
+}
+.tour .more:hover::after{
+    /* 배경이미지만 교체되면 background-image 로 이미지만 변경해주기 */
+    background-image: url(../images/more_on.svg);
+}
+@media screen and (max-width:768px){
+                .tour{
+                    padding: 108px 0 ; /* bg색 들어가기 때문에 상단과 하단의 여백이 padding으로 들어가야 함 / bg색 안들어가면 margin으로 상단 여백만 주면 됨*/
+                }
+                .tour .tit{
+                    margin: 0 50px 0 0; /* 브라우저 사이즈가 줄어들었을 때, 더보기가 들어갈 자리의 여백을 줌 */
+                }
+                .tour .tit h2{
+                    font-size: 28px;
+                    margin: 0 ;  /* p와의 여백이 사라지는거라서 0을 줘야 함 */
+                }
+                .tour .tit h2 br{
+                    display: block; /* 모바일에선 줄바꿈 */
+                }
+                .tour .list{
+                    margin: 26px 0 0 0;  /* h2와의 여백 */
+                    overflow-x: auto;
+                    /* list의 넓이보다 ul의 넓이가 작으면 스크롤바가 안생기고
+                       ul의 넒이가 더 넓으면 가로 스크롤바 생성 */
+                }
+                .tour .list ul{ /* li 4개와 여백들을 다 더한 값 */
+                    width: 1048px;
+                    /* 
+                      (li 넓이) 250 * 4(li 갯수) = 1000
+                      (li 사이사이 여백) 16 * 3(li 사이의 여백 갯수) = 48
+                      1000 + 48 = 1048
+                    */
+                    gap: 0 16px; /* li사이의 여백 */
+                }
+                .tour .list ul li.active{ /* active클래스가 있는 li */
+                    flex: 1 1 0%;
+                }
+                .tour .list ul li a{
+                    height: 320px;
+                    text-align: left;
+                    padding: 0 15px 15px 15px;   /* 디자인할 때 준 좌우아래 여백 */
+                }
+                .tour .list ul li.active a{
+                    padding: 0 15px 15px 15px; /* (a안에 h3,p가 있는거임)디자인할 때 왼쪽 15px, 아래 15px씩 정해서 준걸 줘야 함 / 왼쪽의 준 여백만큼 오른쪽 여백이 들어감 */
+                }
+                .tour .list ul li a h3{
+                    font-size: 24px;
+                }
+                .tour .list ul li.active a h3{
+                    font-size: 24px;
+                }
+                .tour .list ul li a p{
+                    display: block;
+                    margin: 10px 0 0 0 ; /* h3와의 여백 */
+                    white-space: normal; /* 한줄 해제 */
+                }
+                .tour .list ul li a p br{
+                    display: none; /* 줄바꿈 삭제 */
+                }
+                .tour .list ul li.active a p{
+                    margin: 10px 0 0 0 ; /* h3와의 여백 */
+                }
+                .tour .list ul li.active a p::after{
+                    display: none;  /* 모바일에선 아이콘 안나옴 */
+                }
+                .tour .more{
+                    top: 37px;
+                    border-radius: 50%; /* 정 원 */
+                    padding: 0;  /* 글자가 빠지기 때문에 0임 */
+                    width: 36px;  /* 원의 넓이 */
+                    height: 36px;  /* 원의 높이 */
+                }
+                .tour .more::after{ /* + 아이콘을 주기 위함 */
+                    right: 12px;
+                    top: 12px;
+                    width: 10px;  /* 아이콘 넓이 */
+                    height: 10px;  /* 아이콘 넓이 */
+                }
+                .tour .more span{
+                    display: none; /* 글자를 모바일에서 숨기기 위함 */
+                }
+}/* @media */
+
+
+.community{
+    background: url(../images/community_bg.jpg) no-repeat center center / cover;
+    color: #fff;
+    padding: 156px 0;
+}
+.community .wrapper{
+    display: flex; /*  tit - group 좌우배치*/
+    justify-content: space-between;
+}
+.community .tit h2{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+.community .group{
+    display: flex; /* notice - service 좌우 배치 */
+    gap: 0 12px;
+    align-items: flex-end; /* 아래를 기준으로 정렬 */
+}
+.community .group .notice{
+    width: 511px;
+    height: 450px;
+    border-radius: 10px;
+    background-color: rgba(57, 56, 70, 0.55);
+    padding: 40px 40px 0 40px; /* 높이가 있으면 절대 아래 여백 안줌(높이가 있는 상태에서 4곳의 여백을 모두 주면 안됨->콘텐츠가 늘어남) */
+    backdrop-filter:blur(10px);  /* 구글에 쳐서 가져오기 */
+    position: relative;  /* more 정렬의 기준 */
+}
+.community .group .notice h3{
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+.community .group .notice .list{
+    margin: 28px 0 0 0; /* h3에서 줘도 됨 */
+}
+.community .group .notice .list ul li{
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.community .group .notice .list ul li:first-child{
+    border-top: none; /* li중에서 첫 번째 li는 선 취소 */
+}
+.community .group .notice .list ul li a{
+    display: flex; /* h4 - span 태그 좌우 배치 */
+    justify-content: space-between;
+    padding: 13px 0 10px 0;  /* 디자인할 땐 편의상 행간을 준거고, 코딩할 땐 padding으로 행간을 주는 것 */
+}
+.community .group .notice .list ul li a h4{
+    width: calc(100% - 100px); /* h4의 넓이는 오른쪽에 날짜가 들어갈 공간 빼고 나머지 전체 다*/
+    white-space: nowrap; /* 1줄로 제한 */
+    overflow: hidden;  /* 넘치는 글자 자름 */
+    text-overflow: ellipsis;  /* 글자 끝에 ... 추가 */
+}
+.community .group .notice .more{
+    position: absolute; /* notice를 기준으로 정렬 */
+    right: 40px;
+    top: 43px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: url(../images/more_on.svg) no-repeat center center / 11px; /* => ba에 + 아이콘 사이즈의 넓이만 입력하면 높이는 알아서 들어감 */
+}
+/* .community .group .notice .more span{
+    display: none;  => 이렇게 줘도 되고
+} html에 class 로 sr-only 줘도 됨*/
+.community .group .service{
+    width: 283px;
+    /* li의 넓이 X 2 + 여백 */
+}
+.community .group .service ul{
+    display: flex;  /* li 좌우배치 */
+    flex-wrap: wrap; /* 여러줄 허용 */
+    gap: 12px 12px;  /* 위아래-좌우 여백 */
+}
+.community .group .service ul li{
+    width: calc(50% - 6px);
+    /* 
+       100% / 한줄에 표시될 li의 갯수 - 한줄의 중간 여백의 합 / 한줄에 표시될 li의 갯수
+       = 100% / 2 - 12 / 2
+       = 50% - 6px
+    */
+} 
+.community .group .service ul li a{
+    display: block;
+    height: 135px;  /* a한테 높이를 주는 조건은 a가 통째로 눌리면 a한테 높이 주면 됨 */
+    background-color: rgba(57, 56, 70, 0.55);
+    border-radius: 10px;
+    backdrop-filter:blur(10px);
+    padding: 37px 0 0 30px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+    position: relative; /* after 정렬의 기준 */
+}
+.community .group .service ul li a::after{
+    content: "";
+    position: absolute;
+    right: 28px;
+    bottom: 23px;
+    width: 24px; /* 아이콘 4개에 가상의 사각형을 그리는데, 동일한 크기로 그려서 넣는다 */
+    height: 22px;/* 아이콘 4개에 가상의 사각형을 그리는데, 동일한 크기로 그려서 넣는다 */
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.community .group .service ul li.ico01 a::after{
+    background-image: url(../images/service01.svg);
+}
+.community .group .service ul li.ico02 a::after{
+    background-image: url(../images/service02.svg);
+}
+.community .group .service ul li.ico03 a::after{
+    background-image: url(../images/service03.svg);
+}
+.community .group .service ul li.ico04 a::after{
+    background-image: url(../images/service04.svg);
+}
+
+/********* 오버했을 때 ********/
+.community .group .notice:hover{
+    background-color: #fff;
+    color: #1d1d1d;
+}
+.community .group .notice:hover .list ul li{
+    border-top: 1px solid #ccc;
+}
+.community .group .notice:hover .list ul li:first-child{
+    border-top: none; /* li중에서 첫 번째 li는 선 취소 */
+}
+.community .group .notice:hover .more{
+    background-color: #1d1d1d; /* 아이콘 배경색 */
+    border-color: #1d1d1d;  /* 아이콘 테두리색 */
+}
+.community .group .notice .list ul li a:hover h4{
+    font-weight: 700;
+}
+.community .group .notice:hover span{
+    color: #3d3d3d;
+}
+.community .group .service ul li a:hover{
+    background-color: #fff;
+    color: #1d1d1d;
+}
+.community .group .service ul li.ico01 a:hover::after{
+    background-image: url(../images/service01_on.svg);
+}
+.community .group .service ul li.ico02 a:hover::after{
+    background-image: url(../images/service02_on.svg);
+}
+.community .group .service ul li.ico03 a:hover::after{
+    background-image: url(../images/service03_on.svg);
+}
+.community .group .service ul li.ico04 a:hover::after{
+    background-image: url(../images/service04_on.svg);
+}
+/********* notice 오버했을 때 ********/
+@media screen and (max-width:768px){
+                .community{
+                    padding: 108px 0;
+                }
+                .community .wrapper{
+                    display: block; /* flex 해제 */
+                }
+                .community .tit h2{
+                    font-size: 24px;
+                    margin: 0 0 36px 0;
+                }
+                .community .tit h2 br{
+                    display: none; /* 줄바꿈 삭제 */
+                }
+                .community .group{
+                    display: block; /* notice - service 좌우 배치 해제 */
+                    /* gap: 0 12px;  flex 해제 
+                    align-items: flex-end;  => flex가 해제되면 작용 X */  
+                }
+                .community .group .notice{
+                    width: auto;
+                    height: auto;
+                    padding: 16px 16px 16px 16px; /* 높이가 없으면 아래 여백 줘야 됨 */
+                }
+                .community .group .notice h3{
+                    font-size: 24px;
+                }
+                .community .group .notice .list{
+                    margin: 23px 0 0 0; /* h3에서 줘도 됨 */
+                }
+                .community .group .notice .list ul li a{
+                    padding: 15px 0 12px 0;  /* 디자인할 땐 편의상 행간을 준거고, 코딩할 땐 padding으로 행간을 주는 것 */
+                }
+                .community .group .notice .more{
+                    right: 40px;
+                    top: 43px;
+                    width: 26px;
+                    height: 26px;
+                    background-size: 9px;  /* + 아이콘의 사이즈가 모바일에서 바뀌면 background-size -> 이걸로 사이즈만 바꿔주면 됨  */
+                }
+                /* .community .group .notice .more span{
+                    display: none;  => 이렇게 줘도 되고
+                } html에 class 로 sr-only 줘도 됨*/
+                .community .group .service{
+                    width: auto; 
+                    margin: 16px 0 0 0;  /* notice와의 여백 */
+                }
+                .community .group .service ul{
+                    gap: 16px 16px;  /* 위아래-좌우 여백 */
+                }
+                .community .group .service ul li{
+                    width: calc(50% - 8px);
+                    /* 
+                    100% / 한줄에 표시될 li의 갯수 - 한줄의 중간 여백의 합 / 한줄에 표시될 li의 갯수
+                    = 100% / 2 - 16 / 2
+                    = 50% - 8px
+                    */
+                } 
+                .community .group .service ul li a{
+                    height: 92px;  /* a한테 높이를 주는 조건은 a가 통째로 눌리면 a한테 높이 주면 됨 */
+                    padding: 31px 0 0 15px;
+                }
+                .community .group .service ul li a::after{
+                    right: 17px; 
+                    bottom: 34px;
+                    width: 26px;  /* 아이콘 4개에 가상의 사각형을 그리는데, 동일한 크기로 그려서 넣는다 */
+                    height: 24px; /* 아이콘 4개에 가상의 사각형을 그리는데, 동일한 크기로 그려서 넣는다 */
+                    background-size: contain;
+                }
+} /* @media */
+
+
+.footer{
+    background-color: #F0F0F0;
+    padding: 78px 0;  /* bg에 color가 들어가면 margin이 아니라 padding임 */
+    color: #767676;
+}
+.footer .f_nav ul{
+    display: flex; /* li 좌우배치 */
+    gap: 0 39px;
+    flex-wrap: wrap;  /* 모바일 때문에 여러줄 허용 => 사이즈가 줄어들면 여러줄로 변경되는 것*/
+}
+.footer .f_nav ul li{
+    position: relative; /* after 정렬의 기준 */
+}
+.footer .f_nav ul li::after{
+    content: "";
+    position: absolute;
+    right: -19px;  /* gap의 반 정도 주면 여백의 반임 */
+    top: 7px;
+    width: 1px;
+    height: 12px;
+    background-color: #767676;
+}
+.footer .f_nav ul li:last-child::after{
+    display: none;  /* 마지막 li의 선 삭제 */
+}
+.footer .f_nav ul li.privacy a{
+    font-weight: 700;
+}
+.footer .f_info{
+    display: flex; /* address - span 좌우배치*/
+    gap: 0 39px;
+    flex-wrap: wrap;  /* 모바일 때문에 여러줄 허용 => 사이즈가 줄어들면 여러줄로 변경되는 것*/
+    margin: 36px 0;
+}
+.footer .copyright .license{
+    font-size: 15px;
+    color: rgba(118, 118, 118, 0.8);
+    text-decoration: underline;  /* 밑줄 */
+    margin: 16px 0 0 0;
+}
+@media screen and (max-width:768px){
+    .footer{
+        font-size: 16px;
+        padding: 72px 0;
+    }
+    .footer .f_info{
+        margin: 25px 0;
+    }
+    .footer .copyright .license{
+        margin: 5px 0 0 0;
+    }
+}/* @media  */

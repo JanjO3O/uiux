@@ -1,6 +1,30 @@
 @import url(pretendard.css);
 @import url(common.css);
 
+.header{
+    position: fixed; /* 무조건 body와 정렬 */
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 90px;
+    background-color: #1d1d1d;
+    color: #fff;
+}
+.header h1{
+    text-align: center;
+    line-height: 90px;
+    font-size: 24px;
+    font-weight: 700;
+}
+.header.fixed{
+    background-color: #fff;
+    color: #1d1d1d;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
 .tour{
     margin: 100px 0;
 }
@@ -10,6 +34,11 @@
 }
 .tour .list ul li{
     width: 190px;
+    overflow: hidden;  /* p태그가 넓이보다 넘칠 경우 잘라버림 */
+    transition: 1s;
+}
+.tour .list ul li.active{
+    width: 654px;
 }
 .tour .list ul li a{
     height: 431px;
@@ -17,16 +46,155 @@
     flex-direction: column;
     justify-content: flex-end;
     color: #fff;
+    padding: 0 30px 30px 30px;
 } 
 .tour .list ul li:nth-child(1) a{
     background-color: #007888;
 }
 .tour .list ul li:nth-child(2) a{
-    background-color: ##0000FE;
+    background-color: #0000FE;
 }
 .tour .list ul li:nth-child(3) a{
-    background-color: ##011E24;
+    background-color: #011E24;
 }
 .tour .list ul li:nth-child(4) a{
-    background-color: ##0F52BA;
+    background-color: #0F52BA;
+}
+.tour .list ul li a h2{
+    font-size: 28px;
+    font-weight: 700;
+}
+.tour .list ul li a p{
+    display: none;
+    white-space: nowrap;
+}
+.tour .list ul li.active a p{
+    display: block;
+    margin: 20px 0 0 0;
+}
+@media screen and (max-width:768px){
+                .tour .list ul{
+                    flex-direction: column;  /* 아래로 정렬 */
+                    gap: 1px 0;  /* 위아래 여백 */
+                }
+                .tour .list ul li{
+                    width: auto;
+                    overflow: visible;  /* 안잘리고 다 나옴 */
+                }
+                .tour .list ul li.active{
+                    width: auto;
+                }
+                .tour .list ul li a{
+                    height: auto;
+                    padding: 30px 16px 30px 16px;
+                } 
+                .tour .list ul li a p{
+                    display: block;  /* none 취소 */
+                    white-space: normal;  /* nowrap 취소 -> 원래 줄바꿈대로 */
+                    margin: 20px 0 0 0;
+                }
+                .tour .list ul li a p br{
+                    display: none;  /* 강제 줄바꿈 삭제 */
+                }
+} /* @media */
+
+
+
+.culture{
+    margin: 100px 0;
+}
+.culture .list ul{
+    display: flex;  /* li 좌우 정렬 */
+    gap: 0 12px;  /* li 사이의 여백 */
+}
+.culture .list ul li{
+    flex: 1 1 0%;  /* 작은 li 상자의 넓이를 주는 값 --> 맨 앞의 숫자를 변경해야 상자의 넓이가 바뀜*/
+    overflow: hidden;  /* p태그가 넓이보다 넘칠 경우 잘라버림 */
+    transition: 1s;  /* 상자가 펼쳐지는 속도 */
+}
+.culture .list ul li.active{
+    flex: 3.445 1 0%;  /* 마우스 오버 된 큰 li 상자의 넓이를 주는 값 --> 맨 앞의 숫자를 변경해야 상자의 넓이가 바뀜 */
+}
+.culture .list ul li a{
+    display: block;
+    height: 431px;  /* 상자의 높이 */
+    color: #fff;
+    position: relative; /* txt 정렬의 기준 */
+} 
+.culture .list ul li:nth-child(1) a{
+    background-color: #007888;
+}
+.culture .list ul li:nth-child(2) a{
+    background-color: #0000FE;
+}
+.culture .list ul li:nth-child(3) a{
+    background-color: #011E24;
+}
+.culture .list ul li:nth-child(4) a{
+    background-color: #0F52BA;
+}
+.culture .list ul li a .txt{
+    position: absolute; /* a를 기준으로 정렬 */
+    left: 30px;
+    bottom: -30px;  /* 오버 전의 글자의 위치 */
+    transition: 0.3s;  /* 'li.active a .txt의 bottom: 40px;' 의 위치에 맞게 글자가 올라오는 속도 */
+}
+.culture .list ul li.active a .txt{
+    bottom: 40px; /* 오버 후의 글자의 위치 */
+}
+.culture .list ul li a h2{
+    font-size: 28px;
+    font-weight: 700;
+}
+.culture .list ul li a p{
+    /* display: none -> block으로 바뀌는 요소는 transition 불가 
+       안보였다가 보이는걸 자연스럽게 하고 싶으면 opacity가 변경되어야 함 */
+    /* display: none; */
+    opacity: 0;  /* p 태그의 글자를 안보이게 해줌 */
+    white-space: nowrap;  /* 무조건 한 줄로 */
+    margin: 20px 0 0 0;  /* margin 값은 active한테 주는게 아니라, 원래 li가 갖고 있어야 함 */
+    transition: 0.3s;  /* p의 글자가 나타나는 속도 */
+}
+.culture .list ul li.active a p{
+    /* display: block; */
+    opacity: 1;  /* p 태그의 글자를 보이게 해줌 */
+}
+@media screen and (max-width:768px){
+                .culture .list{
+                    overflow-x: auto;
+                    /* list의 넓이보다 ul의 넓이가 작으면 스크롤바가 안생기고
+                       ul의 넒이가 더 넓으면 가로 스크롤바 생성 */
+                }
+                .culture .list ul{
+                    gap: 0 16px;  /* li 사이의 여백 */
+                    width: 1000px;
+                }
+                .culture .list ul li.active{
+                    flex: 1 1 0%;  /* 마우스 오버 된 큰 li 상자의 넓이를 주는 값 --> 맨 앞의 숫자를 변경해야 상자의 넓이가 바뀜 */
+                }
+                .culture .list ul li a{
+                    height: 300px;  /* 상자의 높이 */
+                    padding: 30px 16px 0 16px;  /* 높이가 들어가서 아래 여백은 안 줌 */
+                } 
+                .culture .list ul li a .txt{
+                    /* absolute 해제 */
+                    position: relative;
+                    left: auto;  /* auto가 아예 안준거처럼 적용되는것 해제 */
+                    bottom: auto;  /* 해제 */
+                }
+                .culture .list ul li.active a .txt{
+                    bottom: auto;  /* 해제 */
+                }
+                .culture .list ul li a p{
+                    opacity: 1; 
+                    white-space: normal;  /* nowrap 해제 */
+                }
+                .culture .list ul li a p br{
+                    display: none; /* 강제 줄바꿈 금지 */
+                }
+}/* @media */
+
+
+body{
+    margin: 0 0 1000px 0;
 }
