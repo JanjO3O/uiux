@@ -1,0 +1,19 @@
+@import url(pretendard.css);
+@import url(common.css);
+
+.tour{
+    margin: 100px 0;
+}
+.tour .list ul{
+    display: flex;
+    justify-content: space-between;
+}
+.tour .list ul li{
+    width: 190px;
+}
+.tour .list ul li a{
+    height: 431px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+} 
