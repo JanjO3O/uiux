@@ -16,6 +16,16 @@ strong{
 em,address{
     font-style: normal; /* "font-style: italic;" ==> 이렇게 글자가 기울어진걸 바로잡아줌 */
 }
+button{
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    cursor: pointer; /* 커서를 손가락 모양으로 바꿔줌 */
+}
 *{
     margin: 0;
     padding: 0;
@@ -52,3 +62,18 @@ body{
     white-space: nowrap !important;
     border: 0 !important;
 }
+
+
+/* 미디어라서 우선순위가 높은게 아니기 때문에 pc를 먼저 선언하고, 미디어쿼리를 나중에 써줘야 함 => 그래야 반응형에서 선언될 수 있음 */
+@media screen and (max-width:768px){  /* 브라우저 넓이가 768 이하일 때 */
+    body{
+        font-size: 16px;
+    }
+    .wrapper{
+        width: auto;  /* auto는 margin 빼고 나머지에 꽉 채움 */
+        margin: 0 16px;
+    }
+    #wrap{
+        min-width: 0;  /* 전체를 감싸는 애한테 최소한의 전체너비를 줌 */
+    }
+} /* @media */

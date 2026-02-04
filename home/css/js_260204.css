@@ -1,0 +1,118 @@
+@import url(pretendard.css);
+@import url(common.css);
+
+.tour{
+    margin: 100px 0;
+}
+.tour .list ul{
+    display: flex;
+    justify-content: space-between;
+}
+.tour .list ul li{
+    width: 190px;
+    overflow: hidden;  /* p태그가 넓이보다 넘칠 경우 잘라버림 */
+    transition: 1s;
+}
+.tour .list ul li.active{
+    width: 654px;
+}
+.tour .list ul li a{
+    height: 431px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+    padding: 0 30px 30px 30px;
+} 
+.tour .list ul li:nth-child(1) a{
+    background-color: #007888;
+}
+.tour .list ul li:nth-child(2) a{
+    background-color: #0000FE;
+}
+.tour .list ul li:nth-child(3) a{
+    background-color: #011E24;
+}
+.tour .list ul li:nth-child(4) a{
+    background-color: #0F52BA;
+}
+.tour .list ul li a h2{
+    font-size: 28px;
+    font-weight: 700;
+}
+.tour .list ul li a p{
+    display: none;
+    white-space: nowrap;
+}
+.tour .list ul li.active a p{
+    display: block;
+    margin: 20px 0 0 0;
+}
+@media screen and (max-width:768px){}/*@media*/
+
+.culture{
+    margin: 100px 0;
+}
+.culture .list ul{
+    display: flex;
+    justify-content: space-between;
+    gap: 0 12px;
+}
+.culture .list ul li{
+    flex: 1 1 0%; /* 내가 1 너는 1 */
+    transition: 0.5s;
+    overflow: hidden;  /* p태그가 li의 넓이보다 넓을 경우, 화면에 아주 잠깐 가로 스크롤바가 생기는데 이를 방지하고자 p 태그의 넘치는 글자를 잘라버림 */
+} /* width로 li의 넓이를 주면 브라우저에서 마우스를 빠르게 li 사이를 왔다갔다하면, li 사이의 여백이 점점 커짐
+     이를 해결하기 위해서는, li의 넓이를 width로 주지 않고 flex로 작은 크기의 li에겐 1 1 0%를 주고
+     큰 li한텐 3.445 1 0% 주면 여백의 공간이 계속해서 커지는걸 막을 수 있음   */
+.culture .list ul li.active{
+    flex: 3.445 1 0%;  /* 나는 3.445 너는 1 */  
+}
+.culture .list ul li a{
+    height: 431px;
+    color: #fff;
+    position: relative; /* txt 정렬의 기준 */
+    display: block;
+    /* display: flex;
+    flex-direction: column;   --> 아래로 정렬 
+    justify-content: flex-end;  --> 아래로 배치*/
+    /* padding: 0 40px 40px 40px; */
+}
+.culture .list ul li:nth-child(1) a{
+    background-color: #007888;
+}
+.culture .list ul li:nth-child(2) a{
+    background-color: #0000FE;
+}
+.culture .list ul li:nth-child(3) a{
+    background-color: #011E24;
+}
+.culture .list ul li:nth-child(4) a{
+    background-color: #0F52BA;
+}
+.culture .list ul li a .txt{
+    position: absolute;  /* a를 기준으로 정렬 */
+    left: 40px;  /* 디자인에서 준 왼쪽 여백 */
+    bottom: -40px;  /* 오버 전에 txt(h2-p)를 아래로 배치시킴 */
+    transition: 0.5s;  /* p 태그가 올라오는 속도 */
+}
+.culture .list ul li.active a .txt{
+    bottom: 40px;  /* 디자인할 때 준 아래 여백--> 오버 후의 글자 위치 */
+}
+.culture .list ul li a h2{
+    font-size: 24px;
+    font-weight: 700;
+}
+.culture .list ul li a p{
+    /* display: none; */
+    opacity: 0;
+    white-space: nowrap; /* 줄바꿈 금지 */
+    margin: 20px 0 0 0;
+
+    transition: 0.3s;
+}
+.culture .list ul li.active a p{
+    /* display: block; */
+    opacity: 1;
+    /* margin: 20px 0 0 0; ---> margin 값을 active에게 주지 않고, 기존의 p태그한테 미리 줌으로써 달그락거리는 현상을 방지함*/
+}
