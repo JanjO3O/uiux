@@ -55,7 +55,7 @@
 }
 .culture .list ul{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; gap으로 여백 주면 됨 */
     gap: 0 12px;
 }
 .culture .list ul li{
