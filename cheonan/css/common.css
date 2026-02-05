@@ -1,0 +1,39 @@
+body{
+    font-family: "Pretendard", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    color: #3d3d3d;
+    line-height: 1.5; 
+    word-break: keep-all; 
+}
+.wrapper{
+    width: 1260px;
+    margin: 0 auto; 
+}
+#wrap{
+    min-width: 1460px; 
+}
+@media screen and (max-width:768px){
+                body{
+                    font-size: 16px;
+                }
+                .wrapper{
+                    width: auto;
+                    margin: 0 16px;
+                }
+                #wrap{
+                    min-width: 0;
+                }
+}/* @media */
+
+.sr-only ,.skip , .blind {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
