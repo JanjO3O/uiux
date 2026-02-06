@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 외부 라이브러리 파일을 먼저 불러야 함 -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    
+    <!-- 내가 만든 파일은 나중에 부름 -->
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <title>삼성꿈장학재단</title>
+</head>
+<body>
+    <div id="wrap">
+        <header class="header">
+            <div class="wrapper">
+            </div><!--//wrapper-->
+        </header>
+        <main class="container">
+            <section class="visual">
+                <div class="swiper"> <!-- 팝업의 높이와 넓이를 css에서 줄 수 있는 요소-->
+                    <ul class="swiper-wrapper"> <!-- 각 팝업 콘텐츠를 감싸는 요소-->
+                        <li class="swiper-slide pop1"> <!-- 팝업 요소들 (div로 해도 상관없음)-->
+                            <div class="wrapper">
+                                <strong>Samsung Dream Scholarship Foundation</strong> <!-- 보통 h2 위에 올라가면 strong / 아래 내려가면 p로 정의함 -->
+                                <h2>꿈을 향한 동행,<br> 희망을 여는 교육</h2>
+                            </div><!--//wrapper-->
+                        </li>
+                        <li class="swiper-slide pop2">
+                            <div class="wrapper">
+                                <strong>Samsung Dream Scholarship Foundation</strong>
+                                <h2>대한민국 모든<br> 청소년의 꿈에 날개를 달다</h2>
+                            </div><!--//wrapper-->
+                        </li>
+                        <li class="swiper-slide pop3">
+                            <div class="wrapper">
+                                <strong>Samsung Dream Scholarship Foundation</strong>
+                                <h2>네가 꿈꾸는 미래가<br> 오늘의 설렘이 되도록</h2>
+                            </div><!--//wrapper-->
+                        </li>
+                    </ul>
+                </div><!--//swiper-->
+                <div class="scroll"><span>Scroll Down</span></div>
+            </section><!--//visual-->
+            <section class="biz"></section><!--//biz-->
+            <section class="news"></section><!--//news-->
+            <section class="webzine"></section><!--//webzine-->
+            <section class="service"></section><!--//service-->
+        </main>
+        <footer class="footer"></footer>
+    </div>
+</body>
+</html>
