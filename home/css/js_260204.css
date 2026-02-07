@@ -1,6 +1,29 @@
 @import url(pretendard.css);
 @import url(common.css);
 
+.header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 90px;
+    background-color: #1d1d1d;
+    color: #fff;
+}
+.header h1{
+    text-align: center;
+    line-height: 90px;
+    font-size: 20px;
+    font-weight: 700;
+}
+.header.fixed{
+    background-color: #fff;
+    color: #1d1d1d;
+    border-bottom: 1px solid #ccc;
+    box-shadow:  0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .tour{
     margin: 100px 0;
 }
@@ -48,7 +71,31 @@
     display: block;
     margin: 20px 0 0 0;
 }
-@media screen and (max-width:768px){}/*@media*/
+@media screen and (max-width:768px){
+                .tour .list ul{
+                    flex-direction: column;
+                    gap: 1px 0;
+                }
+                .tour .list ul li{
+                    width: auto;
+                    overflow: visible;  /* p 태그가 안짤리고 다 나옴 */
+                }
+                .tour .list ul li.active{
+                    width: auto;
+                }
+                .tour .list ul li a{
+                    height: auto;
+                    padding: 30px 16px;
+                } 
+                .tour .list ul li a p{
+                    display: block;
+                    white-space: normal;
+                    margin: 20px 0 0 0;
+                }
+               .tour .list ul li a p br{
+                display: none;
+               }
+}/*@media*/
 
 .culture{
     margin: 100px 0;
@@ -62,7 +109,8 @@
     flex: 1 1 0%; /* 내가 1 너는 1 */
     transition: 0.5s;
     overflow: hidden;  /* p태그가 li의 넓이보다 넓을 경우, 화면에 아주 잠깐 가로 스크롤바가 생기는데 이를 방지하고자 p 태그의 넘치는 글자를 잘라버림 */
-} /* width로 li의 넓이를 주면 브라우저에서 마우스를 빠르게 li 사이를 왔다갔다하면, li 사이의 여백이 점점 커짐
+} 
+  /* width로 li의 넓이를 주면 브라우저에서 마우스를 빠르게 li 사이를 왔다갔다하면, li 사이의 여백이 점점 커짐
      이를 해결하기 위해서는, li의 넓이를 width로 주지 않고 flex로 작은 크기의 li에겐 1 1 0%를 주고
      큰 li한텐 3.445 1 0% 주면 여백의 공간이 계속해서 커지는걸 막을 수 있음   */
 .culture .list ul li.active{
@@ -115,4 +163,39 @@
     /* display: block; */
     opacity: 1;
     /* margin: 20px 0 0 0; ---> margin 값을 active에게 주지 않고, 기존의 p태그한테 미리 줌으로써 달그락거리는 현상을 방지함*/
+}
+@media screen and (max-width:768px){
+            .culture .list{
+                overflow-x: auto;
+            }
+            .culture .list ul{
+                gap: 0 16px;
+                width: 1000px;
+            }
+            .culture .list ul li.active{
+                flex: 1 1 0%;  /* 나는 3.445 너는 1 */  
+            }
+            .culture .list ul li a{
+                height: 300px;
+                padding: 30px 16px 0 16px;
+            }
+            .culture .list ul li a .txt{
+                position: relative;  /* a를 기준으로 정렬 */
+                left: auto;  /* 디자인에서 준 왼쪽 여백 */
+                bottom: auto;  /* 오버 전에 txt(h2-p)를 아래로 배치시킴 */
+            }
+            .culture .list ul li.active a .txt{
+                bottom: auto;  /* 디자인할 때 준 아래 여백--> 오버 후의 글자 위치 */
+            }
+            .culture .list ul li a p{
+                opacity: 1;
+                white-space: normal;
+            }
+            .culture .list ul li a p br{
+                display: none;
+            }
+}/*@media*/
+
+body{
+    margin: 0 0 1000px 0;
 }

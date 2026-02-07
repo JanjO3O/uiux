@@ -79,19 +79,19 @@
                 }
                 .tour .list ul li{
                     width: auto;
-                    overflow: visible;  /* 안잘리고 다 나옴 */
+                    overflow: visible;  /* p태그가 안잘리고 다 나옴 */
                 }
                 .tour .list ul li.active{
                     width: auto;
                 }
                 .tour .list ul li a{
-                    height: auto;
+                    height: auto; /* 높이를 지정하지 않을거면, auto를 주면 됨*/
                     padding: 30px 16px 30px 16px;
                 } 
                 .tour .list ul li a p{
                     display: block;  /* none 취소 */
                     white-space: normal;  /* nowrap 취소 -> 원래 줄바꿈대로 */
-                    margin: 20px 0 0 0;
+                    margin: 20px 0 0 0;  /* active에 있던 margin 준거임. active나 기본이나 스타일 똑같기 때문에 */
                 }
                 .tour .list ul li a p br{
                     display: none;  /* 강제 줄바꿈 삭제 */
@@ -108,12 +108,16 @@
     gap: 0 12px;  /* li 사이의 여백 */
 }
 .culture .list ul li{
-    flex: 1 1 0%;  /* 작은 li 상자의 넓이를 주는 값 --> 맨 앞의 숫자를 변경해야 상자의 넓이가 바뀜*/
-    overflow: hidden;  /* p태그가 넓이보다 넘칠 경우 잘라버림 */
-    transition: 1s;  /* 상자가 펼쳐지는 속도 */
+    flex: 1 1 0%;  /* 작은 li 상자의 넓이를 주는 값 --> 맨 앞의 숫자를 변경해야 상자의 넓이가 바뀜-> 내가 1 너는 1*/
+    overflow: hidden;   /* p태그가 li의 넓이보다 넓을 경우, 화면에 아주 잠깐 가로 스크롤바가 생기는데 이를 방지하고자 p 태그의 넘치는 글자를 잘라버림 -> 글자가 가로로 나가는건 자르는 거 유지해야 하기 때문에 반응형에서도 유지해야 함*/
+    transition: 0.5s;  /* 상자가 펼쳐지는 속도 */
 }
+/* width로 li의 넓이를 주면 브라우저에서 마우스를 빠르게 li 사이를 왔다갔다하면, li 사이의 여백이 점점 커짐
+     이를 해결하기 위해서는, li의 넓이를 width로 주지 않고 flex로 작은 크기의 li에겐 1 1 0%를 주고
+     큰 li한텐 3.445 1 0% 주면 여백의 공간이 계속해서 커지는걸 막을 수 있음   */
 .culture .list ul li.active{
-    flex: 3.445 1 0%;  /* 마우스 오버 된 큰 li 상자의 넓이를 주는 값 --> 맨 앞의 숫자를 변경해야 상자의 넓이가 바뀜 */
+    flex: 3.445 1 0%;
+    /* 마우스 오버 된 큰 li 상자의 넓이를 주는 값 --> 맨 앞의 숫자를 변경해야 상자의 넓이가 바뀜-> 나는 3.445 너는 1  */
 }
 .culture .list ul li a{
     display: block;
@@ -135,12 +139,12 @@
 }
 .culture .list ul li a .txt{
     position: absolute; /* a를 기준으로 정렬 */
-    left: 30px;
+    left: 30px;  /* 디자인에서 준 왼쪽 여백 */
     bottom: -30px;  /* 오버 전의 글자의 위치 */
-    transition: 0.3s;  /* 'li.active a .txt의 bottom: 40px;' 의 위치에 맞게 글자가 올라오는 속도 */
+    transition: 0.3s;  /* p 태그가 올라오는 속도 */
 }
 .culture .list ul li.active a .txt{
-    bottom: 40px; /* 오버 후의 글자의 위치 */
+    bottom: 40px; /* 디자인할 때 준 아래 여백--> 오버 후의 글자의 위치 */
 }
 .culture .list ul li a h2{
     font-size: 28px;
@@ -151,19 +155,23 @@
        안보였다가 보이는걸 자연스럽게 하고 싶으면 opacity가 변경되어야 함 */
     /* display: none; */
     opacity: 0;  /* p 태그의 글자를 안보이게 해줌 */
-    white-space: nowrap;  /* 무조건 한 줄로 */
+    white-space: nowrap; 
+    /* 줄바꿈 금지 속성인데, 지금 상황에선 p태그가 h2에서부터 li 상자의 여백 안에서만 써지기 하기 때문에, 오버전의 글자의 위치가 제각각이 된다
+       하여 줄바꿈 금지를 줌으로써 오버 전의 글자의 위치를 모두 동일하게 해줌 (단, html에서 준 p 태그안의 br은 유지함->br을 display:none 한게 아니기 때문에) 
+    */
     margin: 20px 0 0 0;  /* margin 값은 active한테 주는게 아니라, 원래 li가 갖고 있어야 함 */
-    transition: 0.3s;  /* p의 글자가 나타나는 속도 */
+    transition: 0.3s;  /* 오버한 상태에선 p의 글자가 화면에 나타나는 속도, 오버전 상태에선 화면에서 글자가 사라지는데 걸리는 속도 */
 }
 .culture .list ul li.active a p{
     /* display: block; */
     opacity: 1;  /* p 태그의 글자를 보이게 해줌 */
+    /* margin: 20px 0 0 0; ---> margin 값을 active에게 주지 않고, 기존의 p태그한테 미리 줌으로써 달그락거리는 현상을 방지함*/
 }
 @media screen and (max-width:768px){
                 .culture .list{
                     overflow-x: auto;
                     /* list의 넓이보다 ul의 넓이가 작으면 스크롤바가 안생기고
-                       ul의 넒이가 더 넓으면 가로 스크롤바 생성 */
+                       ul의 넒이가 더 넓으면 가로 스크롤바 생성 -> 브라우저에서 벗어나기 않게 함*/
                 }
                 .culture .list ul{
                     gap: 0 16px;  /* li 사이의 여백 */

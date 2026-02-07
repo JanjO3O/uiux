@@ -1,57 +1,44 @@
-/********** 태그의 초기화 *************/
-h1, h2, h3, h4, h5, h6{
-    font-size: inherit;
-    font-weight: inherit;
-}
-a{
-    color: inherit;
-    text-decoration: none;   /* => 밑줄 삭제 */
-}
-ul,ol,li{
-    list-style: none;  /* 리스트 앞에 있는 도형 삭제 */
-}
-strong{
-    font-weight: inherit;
-}
-em,address{
-    font-style: normal; /* "font-style: italic;" ==> 이렇게 글자가 기울어진걸 바로잡아줌 */
-}
-button{
-    border: none;
-    background: none;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-    color: inherit;
-    cursor: pointer; /* 커서를 손가락 모양으로 바꿔줌 */
-}
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;  /* css 10p 참조 */
-}
-
-/********** 공통 스타일 *************/
+/*
+    common.css (layout.css 라고도 함)
+    홈페이지 전체에 적용되는 공통 스타일
+    프로젝트마다 변경됨 - 이 css에 있는 속성을 수정하면 프로젝트 전체가 바뀜
+*/
 body{
-    font-family: "Noto Sans KR" , sans-serif;
+    font-family: "Paperozi", sans-serif;
+    /* => sans-serif => 지원되지 않으면 고딕체를 선택하라는 뜻 */ 
     font-weight: 400;
     font-size: 17px;
-    color: #454B52;
+    color: #3d3d3d;
     line-height: 1.5; /* 배수 */ 
-    word-break: keep-all;/* 단어 단위로 줄바꿈 */
+    word-break: keep-all;  /* 단어 단위로 줄바꿈 */
 }
 .wrapper{
     width: 1260px;
     margin: 0 auto; /* 화면 가운데 정렬 */
 }
 #wrap{
-    /* (wrapper)1260+(좌여백)40+(우여백)40 = 1340 */
-    min-width: 1340px;  /* 화면 전체를 감싸는 애한테 최소의 전체너비 줌 */
+    /* (wrapper)1260+(좌여백)100+(우여백)100 = 1460 */
+    /* picture가 wrapper에서 오른쪽으로 튀어나가는--> "right: -90px;" 이 값 때문에 브라우저 사이즈가 줄어들면 visual이 화면 오른쪽에 꽉 차게 안들어가짐
+    => right값보다 조금 널널하게 100px씩 좌우 여백(가운데라 좌우 양쪽여백을 동일하게 줘야 함)을 더 줌 */
+    min-width: 1460px;  /* 전체를 감싸는 애한테 최소한의 전체너비를 줌 */
+    position: relative; /* main.css - header 정렬의 기준 */
 }
-/* html 표준때문에 입력해야하는 태그이지만 홈페이지에 나오지 않는
-   태그에 주는 클래스 */
-.sr-only, .skip, .blind {
+@media screen and (max-width:768px){  /* 브라우저 넓이가 768이하일 때 */
+                body{
+                    font-size: 16px;
+                }
+                .wrapper{
+                    width: auto;  /* wrapper가 원래 가지고 있던 속성인 block(화면에 꽉 차는 거)을 가지라는 의미임 */
+                    margin: 0 16px;
+                }
+                #wrap{
+                    min-width: 0;
+                }
+}/* @media */
+
+
+/* html 표준때문에 입력해야하는 태그이지만, 홈페이지에 나오지 않는 태그에 주는 클래스 */
+.sr-only ,.skip , .blind {
     position: absolute !important;
     width: 1px !important;
     height: 1px !important;
@@ -62,18 +49,3 @@ body{
     white-space: nowrap !important;
     border: 0 !important;
 }
-
-
-/* 미디어라서 우선순위가 높은게 아니기 때문에 pc를 먼저 선언하고, 미디어쿼리를 나중에 써줘야 함 => 그래야 반응형에서 선언될 수 있음 */
-@media screen and (max-width:768px){  /* 브라우저 넓이가 768 이하일 때 */
-    body{
-        font-size: 16px;
-    }
-    .wrapper{
-        width: auto;  /* auto는 margin 빼고 나머지에 꽉 채움 */
-        margin: 0 16px;
-    }
-    #wrap{
-        min-width: 0;  /* 전체를 감싸는 애한테 최소한의 전체너비를 줌 */
-    }
-} /* @media */

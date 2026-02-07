@@ -48,6 +48,7 @@ $(document).ready(function(){
 
         //맨처음 html이 로딩된 이후에 단 1번 실행    
         let scrolling = $(window).scrollTop()
+        console.log(scrolling, '처음')  
         header_fixed() //함수를 실행
 
 
@@ -55,10 +56,10 @@ $(document).ready(function(){
             scrolling = $(window).scrollTop()  //스크롤 할 때마다 지금 스크롤 값을 다시 묻기
             console.log(scrolling)
     
-            if(scrolling > 0){ //만약에 스크롤 값이 0보다 크다면(0은 미포함)
-                $('.header').addClass('fixed')
-            }else{ //0이거나 0보다 작거나
-                $('.header').removeClass('fixed')
+            if(scrolling > 0){ //만약에 스크롤 값이 0보다 크다면(=내려가는 중)
+                $('.header').addClass('fixed')  //header 고정
+            }else{ //0이거나 0보다 작으면(=제일 상단)
+                $('.header').removeClass('fixed')  //header 고정 해제
             }
         }
 

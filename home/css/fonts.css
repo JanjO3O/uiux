@@ -1,24 +1,14 @@
 @font-face {
-	font-family: "pretendard";
-	font-weight: 800;
-	font-display: swap;
-	src: local("Pretendard ExtraBold"), 
-    url(../fonts/Pretendard-Black.woff2) format("woff2"), 
-    url(../fonts/Pretendard-Black.woff) format("woff");
+    font-family: 'Paperozi';
+    src: url('../fonts/Paperlogy-4Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
 }
+
 @font-face {
-	font-family: "pretendard";
-	font-weight: 700;
-	font-display: swap;
-	src: local("Pretendard Bold"), 
-    url(../fonts/Pretendard-Bold.woff2) format("woff2"), 
-    url(../fonts/Pretendard-Bold.woff) format("woff");
+    font-family: 'Paperozi';
+    src: url('../fonts/Paperlogy-7Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
 }
-@font-face {
-	font-family: "pretendard";
-	font-weight: 400;
-	font-display: swap;
-	src: local("Pretendard Regular"), 
-    url(../fonts/Pretendard-Regular.woff2) format("woff2"), 
-    url(../fonts/Pretendard-Regular.woff) format("woff");
-}
+/* google에서 paperlogy 치면 나오는 눈누 사이트에 들어가서 font 다운 받고, 사용할 폰트두께만 font file에 저장한 뒤, 이 cssㅇ 파일로 경로를 설정해서 불러옴 / Use as webfont에 나오는 css에 입력할 수 있는 문장 복사해서 css에 붙여넣기 => 디자인에서 사용한 폰트 두께만 적어서 쓸 것 */
