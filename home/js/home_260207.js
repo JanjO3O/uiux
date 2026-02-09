@@ -36,5 +36,17 @@ $(document).ready(function(){
     $(window).scroll(function(){ //브라우저가 스크롤 될 떄마다 1번 실행
         header_fixed() //함수의 실행
     })
+
+    /*****************************************
+     * tour의 li에 마우스를 올리면, 마우스를 올린 li에만 active 클래스 추가
+     * 1. 무조건 하나의 li에는 active가 있는 상태(맨 처음에는  html에 active가 써있음)
+     * 2. 이전에 오버했던 li의 active 클래스를 빼고, 오버한 li에만 active 클래스 추가
+     *****************************************/
+
+    $('.tour .list ul li').on('mouseenter', function(){
+        $('.tour .list ul li').removeClass('active')
+        $(this).addClass('active')
+    })
+
     
 })//$(document).ready

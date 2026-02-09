@@ -22,8 +22,8 @@
 }
 .header .logo a{
     display: block;
-    width: 158px;
-    height: 32px;
+    width: 159px;
+    height: 34px;
     background: url(../images/청산도/logo.svg) no-repeat center center / contain;  /* 로고는 짤리면 안되기 때문에 contain */
 }/* header의 logo를 위아래 가운데 위치시키기 위해 a한텐 block을, img한텐 vertical을 줌 */
 .header .gnb .gnb_open{
@@ -64,6 +64,8 @@
     background-color: #fff;
     color: #1d1d1d;
     border-color: #ccc;
+    min-width: 1460px;  
+    /* fixed는 무조건 body랑 정렬함 ->header는 wrap이랑 정렬함. 그래서 wrap의 최소넓이와 같은 값을 주면 됨 */
 }
 .header.fixed.hide{
     top: -105px; /*header의 높이보다 조금 더 높게 주면 사라짐*/
@@ -101,6 +103,10 @@
                 .header .util{
                     display: none; /* 모바일에서는 안나옴 */
                 }
+                .header.fixed{
+                min-width: 0;  
+    /* fixed는 무조건 body랑 정렬함 ->header는 wrap이랑 정렬함. 그래서 wrap의 최소넓이와 같은 값을 주면 됨 */
+}
                 .header.fixed .gnb .gnb_open{
                     background-image: url(../images/청산도/gnb_open_b.svg);
                 }
@@ -377,27 +383,46 @@
 }
 .tour .list ul{
     display: flex;
-    justify-content: space-between;
+    gap: 0 12px;  /* li에 flex를 주려면, gap으로 디자인할 떄의 여백을 줘야 됨 */
 }
-.tour .list ul li{
-    width: 190px;  /* 작은 애들 기준임 */
+.tour .list ul li{ /* 작은 애들 기준임 */
+    flex: 1 1 0%;
+    transition: 0.5s;
+    overflow: hidden; /* 넘치는 요소 숨김 => 여기선 p 태그임 */
 }
 .tour .list ul li.active{ /* active클래스가 있는 li */
-    width: 654px;
+    flex: 3.445 1 0%;
+    position: relative; /* after 정렬의 기준 */
+}
+.tour .list ul li.active::after{  /* p 옆에 있는 오른쪽 화살표 아이콘 */
+    content: "";
+    position: absolute;  /* p 태그를 기준으로 정렬 */
+    right: 30px;
+    bottom: 50px;
+    width: 21px;
+    height: 21px;
+    background: url(../images/청산도/tour_more.svg) no-repeat center center / contain;  /* 아이콘 안잘리고 그대로 나오라고 주는 contain임 */
 }
 .tour .list ul li a{
-    display: flex;  /* h3 - p 좌우 정렬 */
-    flex-direction: column;  /* h3 - p 위아래 정렬 */
-    justify-content: flex-end; /* h3 - p 아래로 배치 */
+    /* 의미없음 display: flex;  /* h3 - p 좌우 정렬 */
+    /* flex-direction: column;  /* h3 - p 위아래 정렬 */
+    /* justify-content: flex-end; /* h3 - p 아래로 배치 */
+    /*padding: 0 0 48px 0;  /* 작은 li의 여백은 디자인할 때 아래여백을 중점적으로 줌 */
+
+    display: block;
     height: 431px;  /* a한테 박스 높이 주는 거임 */
     background: url(../images/청산도/tour01.jpg) no-repeat center center / cover;
     color: #fff;
-    text-align: center;
-    padding: 0 0 48px 0;  /* 작은 li의 여백은 디자인할 때 아래여백을 중점적으로 줌 */
+    position: relative; /* txt 정렬의 기준 */
 }
-.tour .list ul li.active a{
-    text-align: left; 
-    padding: 0 40px 40px 40px; /* (a안에 h3,p가 있는거임)디자인할 때 왼쪽 40px, 아래 40px씩 정해서 준걸 줘야 함 / 왼쪽의 준 여백만큼 오른쪽 여백이 들어감 */
+.tour .list ul li a .txt{
+    position: absolute; /* a를 기준으로 정렬 */
+    left: 40PX;
+    bottom: -32PX;
+    transition: 0.5s;
+}
+.tour .list ul li.active a .txt{
+    bottom: 40PX;
 }
 .tour .list ul li a h3{  /* 작은 사이즈를 기준으로 먼저 정리해준다 */
     font-size: 28px;
@@ -408,22 +433,17 @@
     font-size: 32px;
 }
 .tour .list ul li a p{  /* 작은 사이즈를 먼저 기준으로 정리해준다 */
-    display: none;  /* 작은 사이즈에 있는 p 태그를 숨김 처리함 */
-    position: relative; /* after 정렬의 기준 */
+    /* display: none;  /* 작은 사이즈에 있는 p 태그를 숨김 처리함 */
+    opacity: 0;
+    margin: 20px 0 0 0 ; /* h3와의 여백 */
+    white-space: nowrap; /* 줄바꿈 금지 */
+    transition: 0.3s;
 }
 .tour .list ul li.active a p{
-    display: block;  /* 큰 사이즈에 있는 p 태그를 화면에 보이게 함 */
-    margin: 20px 0 0 0 ; /* h3와의 여백 */
+   /* display: block;  /* 큰 사이즈에 있는 p 태그를 화면에 보이게 함 */
+   opacity: 1;
 }
-.tour .list ul li.active a p::after{  /* p 옆에 있는 오른쪽 화살표 아이콘 */
-    content: "";
-    position: absolute;  /* p 태그를 기준으로 정렬 */
-    right: 0;
-    bottom: 13px;
-    width: 21px;
-    height: 21px;
-    background: url(../images/청산도/tour_more.svg) no-repeat center center / contain;  /* 아이콘 안잘리고 그대로 나오라고 주는 contain임 */
-}
+
 .tour .list ul li.tour02 a{
     background-image: url(../images/청산도/tour02.jpg);
     background-position: left 37% bottom 0;
@@ -488,12 +508,10 @@
                       (li 사이사이 여백) 16 * 3(li 사이의 여백 갯수) = 48
                       1000 + 48 = 1048
                     */
-                }
-                .tour .list ul li{
-                    width: 250px;  /* li 하나의 넓이 */
+                    gap: 0 16px;
                 }
                 .tour .list ul li.active{ /* active클래스가 있는 li */
-                    width: 250px;
+                    flex: 1 1 0%;
                 }
                 .tour .list ul li a{
                     height: 320px;
@@ -512,6 +530,8 @@
                 .tour .list ul li a p{
                     display: block;
                     margin: 10px 0 0 0 ; /* h3와의 여백 */
+                    white-space: normal;
+
                 }
                 .tour .list ul li a p br{
                     display: none; /* 줄바꿈 삭제 */
