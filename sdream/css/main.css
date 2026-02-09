@@ -6,7 +6,7 @@
     position: relative; /* scroll 정렬의 기준 */
 }
 .visual .swiper-slide{
-    height: 100vh; /* vh => 브라우저의 높이에 따라 영역을 계속해서 맞춰주는거 */
+    height: 100dvh; /* vh => 브라우저의 높이에 따라 영역을 계속해서 맞춰주는거 - 브라우저의 높이를 맞춰 들어감 */
     background: url(../images/visual_bg01.jpg) no-repeat center center / cover;
     color: #fff;
     display: flex;
