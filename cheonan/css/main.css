@@ -116,6 +116,12 @@
                     width: auto;
                     height: 156px;
                     margin: 0 0 84px 0;
+                    overflow: hidden;
+                }
+                .life .tit .photo img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
                 body{
                     margin: 0;
