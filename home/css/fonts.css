@@ -1,14 +1,24 @@
 @font-face {
-    font-family: 'Paperozi';
-    src: url('../fonts/Paperlogy-4Regular.woff2') format('woff2');
+    font-family: "NanumSquareNeo";
     font-weight: 400;
-    font-display: swap;
+    src: 
+    url(../fonts/NanumSquareNeoTTF-bRg.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/NanumSquareNeoTTF-bRg.woff2) format("woff2"),
+    url(../fonts/NanumSquareNeoTTF-bRg.woff) format("font-woff")
 }
-
 @font-face {
-    font-family: 'Paperozi';
-    src: url('../fonts/Paperlogy-7Bold.woff2') format('woff2');
+    font-family: "NanumSquareNeo";
     font-weight: 700;
-    font-display: swap;
+    src: 
+    url(../fonts/NanumSquareNeoTTF-cBd.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/NanumSquareNeoTTF-cBd.woff2) format("woff2"),
+    url(../fonts/NanumSquareNeoTTF-cBd.woff) format("font-woff")
 }
-/* google에서 paperlogy 치면 나오는 눈누 사이트에 들어가서 font 다운 받고, 사용할 폰트두께만 font file에 저장한 뒤, 이 cssㅇ 파일로 경로를 설정해서 불러옴 / Use as webfont에 나오는 css에 입력할 수 있는 문장 복사해서 css에 붙여넣기 => 디자인에서 사용한 폰트 두께만 적어서 쓸 것 */
+@font-face {
+    font-family: "NanumSquareNeo";
+    font-weight: 800;
+    src: 
+    url(../fonts/NanumSquareNeoTTF-dEb.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/NanumSquareNeoTTF-dEb.woff2) format("woff2"),
+    url(../fonts/NanumSquareNeoTTF-dEb.woff) format("font-woff")
+}

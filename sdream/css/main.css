@@ -4,7 +4,7 @@
 
 .header{
     position: fixed; /* body를 기준으로 정렬 */
-    /* min-width: ; */
+    /* min-width: ; ?????? */
     left: 0;
     top: 0;
     z-index: 100;  /* 내가 맨 위 */
@@ -19,7 +19,7 @@
     justify-content: space-between;
 }
 .header .logo{
-    margin: 21px 0 0 0;  /* 로고의 위에서부터의 여백 */
+    margin: 21px 0 0 0;  /* 로고의 위에서부터의 여백 wrapper에서 text-align:center로 주면 디자인처럼 정렬되는게 아니라서 margin을 줌.0*/
 }
 .header .logo a{
     display: block;
@@ -43,13 +43,14 @@
 }
 .header .util{
     display: flex; /* mypage - lang 좌우 배치 */
-    margin: 25px 0 0 0;  /* util의 위에서부터의 여백 */
+    margin: 25px 0 0 0;  /* 아이콘이 눌리는 상자의 위에서부터의 여백 */
 }
 .header .util .mypage{
     display: block;  /* mypage = a이기 때문에 a한테 주는걸 똑같이 주는거임 */
     width: 40px;  /* 아이콘이 눌리는 상자의 넓이 */
     height: 40px; /* 아이콘이 눌리는 상자의 높이 */
-    background: url(../images/mypage_w.svg) no-repeat center center; 
+    background: url(../images/mypage_w.svg) no-repeat center center;
+    /* contain을 주면 아이콘이 저장한거보다 더 크게 넓이,높이를 준 만큼 안짤리고 내가 준 영역에 꽉 차게 들어감  */
 }
 .header .util .lang .lang_open{
     display: block;  /* 눌러야 하는 애들은 display-block 주면 됨 */
@@ -59,6 +60,13 @@
 }
 
 /************ fixed / over 클래스가 추가됐을 때(스타일 동일함) ************/
+/* .header.fixed{
+    position: fixed;
+    min-width: 1320px;
+} */
+.header.fixed.hide{
+    top: -95px
+} 
 .header.fixed,
 .header.over{
     background-color: #fff;
@@ -171,26 +179,27 @@
     content: "";
     position: absolute;  /* scroll을 기준으로 정렬 */
     left: 0;
-    bottom: -12px;
+    bottom: -11px;
     width: 100%;
     height: 9px;  /* 아이콘 사이즈 */
     background: url(../images/visual_scroll.svg) no-repeat center center;
 }
 .visual .scroll::after{
-    bottom: -18px;
+    bottom: -17px;
 }
 /* 
-화면의 하단 오른쪽 화살표일 경우
+화면의 하단 오른쪽 화살표일 경우 (선생님꺼 참조한거임)
 .visual .scroll::before,
 .visual .scroll::after{
-right: -13px;
+right: -20px;
 top: 0;
-width: 9px;
+width: 13px;
 height: 100%;
 transform: rotate(-90edg);
 }
+
 .visual .scroll::after{
-    bottom: 0;
+    bottom: -25px;
 */
 
 /* 화살표가 움직이기 위해 주는 animation 속성 - Start */
@@ -211,6 +220,42 @@ transform: rotate(-90edg);
     100%{bottom: -28px; opacity: 0;}
 }
 /* 화살표가 움직이기 위해 주는 animation 속성 - End */
+
+/* ▽그냥 위아래로 왔다갔다 하는 애니메이션 효과▽ 
+.visual .scroll::after{
+    bottom: -17px;
+    animation: scroll2 2s linear infinite;
+}
+.visual .scroll::before{
+    animation: scroll1 2s linear infinite ;
+} */
+/* @keyframes scroll1 {
+    0%{bottom: -11px;}
+    50%{bottom: -18px;}  
+    100%{bottom: -11px;}  
+} */
+/* @keyframes scroll2 {
+    0%{bottom: -17px;}
+    50%{bottom: -26px;}
+    100%{bottom: -17px;}
+} ▽삼천리 사이트처럼 위아래로 왔다갔다하다가 사라지는 애니메이션 효과▽ */
+/* .visual .scroll::after{
+    opacity: 0;
+    animation: scroll2 1.5s linear infinite;
+}
+.visual .scroll::before{
+    animation: scroll1 1.5s linear infinite;
+}
+@keyframes scroll1{
+    0%{bottom: -11px; opacity: 1;}
+    50%{bottom: -16px; opacity: 1;}  
+    100%{bottom: -18px; opacity: 0;} 
+}
+ @keyframes scroll2{
+    0%{bottom: -17px; opacity: 1;}
+    50%{bottom: -24px; opacity: 1;}  
+    100%{bottom: -26px; opacity: 0;} 
+} */
 
 @media screen and (max-width:768px){
                 .visual .swiper-slide h2{

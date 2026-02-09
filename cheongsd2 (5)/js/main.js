@@ -7,8 +7,8 @@ $(document).ready(function(){
      * ==> 아래로 스크롤중이면 header에 hide 클래스 추가됨
      * ==> 위로 스크롤되면 hide 클래스가 삭제됨
      * ----> 이전 스크롤값 - 현재 스크롤값
-     *       0보다 작으면, 아래로 내려가는 중
-     *       0보다 크면, 위로 올라가는 중
+     *       0보다 작으면, 아래로 내려가는 중  --hide 클래스 추가
+     *       0보다 크면, 위로 올라가는 중  --fixed 클래스 추가
      ******************************/ 
 
     let scrolling //현재 스크롤된 값  /* let -> 변수를 의미함 */
@@ -16,7 +16,7 @@ $(document).ready(function(){
     let move_scroll //얼마나 스크롤 되었는지 변화값
     function header_fixed(){ //함수의 선언
         scrolling = $(window).scrollTop()
-        console.log(scrolling, prev_scroll, prev_scroll-scrolling)  /* console.log -> 브라우저의 console 창에 뜨는 상태값 */ 
+        console.log(scrolling, prev_scroll, prev_scroll-scrolling)
         if(scrolling > 0){ //만약에 스크롤 값이 0보다 크면 (1이상)
             $('.header').addClass('fixed')
             move_scroll = prev_scroll - scrolling
