@@ -2,14 +2,139 @@
 @import url(fonts.css);
 @import url(default.css);
 
-.visual .swiper-slide{
-    height: 100vh;  /* 브라우저의 높이에 맞춰서 비주얼의 높이를 계속해서 조절해주는 것 => 높이는 % 가 안됨*/
-    background: url(../images/sdream/visual_bg01.jpg) no-repeat center center;
+.header{
+    position: fixed;  /* 무조건 body랑 정렬함 */
+    min-width: 1320px;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 90px;
     color: #fff;
-    /* wrapper를 아래로 정렬-->wrapper의 역학을 하면 이렇게 줘도 됨 */
+}
+.header .wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.header .logo{
+    margin-top: 21px;
+}
+.header .logo a{
+    display: block;
+    width: 100px;
+    height: 39px;
+    background: url(../images/sdream/logo_W.svg) no-repeat center center / contain; /* logo는 짤리면 안돼서 contain 주는거임 */
+}
+.header .gnb .gnb_open,
+.header .gnb .gnb_close{
+    display: none;
+}
+.header .gnb .gnb_wrap ul{
+    display: flex;
+}
+.header .gnb .gnb_wrap ul li a{
+    display: block;
+    line-height: 90px;
+    padding: 0 33px;
+    font-size: 22px;
+    font-weight: 700;
+}
+.header .util{
+    display: flex;
+    margin-top: 25px;
+}
+.header .util .mypage{
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: url(../images/sdream/mypage_w.svg) no-repeat center center;
+}
+.header .util .lang_open{
+    display: block;  /* 눌러야 하는 애들은 block 줘야 깔끔함 */
+    width: 40px;
+    height: 40px;
+    background: url(../images/sdream/lgng_w.svg) no-repeat center center;
+}
+/******************* header에 fixed,over,hide 클래스 추가 *****************************/
+    .header.fixed.hide{
+        top: -95px;
+    }
+    .header.fixed,
+    .header.over{
+        background-color: #fff;
+        color: #1d1d1d;
+        border-bottom: 1px solid #ccc;
+    }
+    .header.fixed .logo a,
+    .header.over .logo a{
+        background-image: url(../images/sdream/logo.svg);
+    }
+    .header.fixed .util .mypage,
+    .header.over .util .mypage{
+        background-image: url(../images/sdream/mypage_b.svg);
+    }
+    .header.fixed .util .lang_open,
+    .header.over .util .lang_open{
+        background-image: url(../images/sdream/lang_b.svg);
+    }
+            /**************  마우스 오버하면 색 변경  ***************/
+            .header.fixed .gnb .gnb_wrap ul li a:hover,
+            .header.over .gnb .gnb_wrap ul li a:hover{
+                color: #0373DC;
+            }
+            .header.fixed .util .mypage:hover,
+            .header.over .util .mypage:hover{
+                background-image: url(../images/sdream/mypage_on.svg);
+            }
+            .header.fixed .util .lang_open:hover,
+            .header.over .util .lang_open:hover{
+                background-image: url(../images/sdream/language_on.svg);
+            }
+            /**************  마우스 오버하면 색 변경  ***************/
+/******************** header에 fixed,over,hide 클래스 추가 *****************************/
+@media screen and (max-width:768px){
+                .header{
+                height: 56px;
+                }
+                .header .wrapper{
+                    margin-right: 0;
+                }
+                .header .logo{
+                    margin-top: 17px;
+                }
+                .header .logo a{
+                    width: 56px;
+                    height: 22px;
+                }
+                .header .gnb .gnb_open{
+                    display: block;
+                    width: 56px;
+                    height: 56px;
+                    background: url(../images/sdream/gnb_open_w.svg) no-repeat center center;
+                }
+                .header .gnb .gnb_wrap{
+                    display: none;
+                }
+                .header .util{
+                    display: none;
+                }
+                /************ fixed / over 클래스가 추가됐을 때(스타일 동일함) ************/
+                .header.fixed .gnb .gnb_open,
+                .header.over .gnb .gnb_open{
+                    background-image: url(../images/gnb_open.svg);
+                } 
+                
+}/*@media*/
+
+.visual{
+    position: relative;  /* scroll 정렬의 기준 */
+}
+.visual .swiper-slide{
+    height: 100dvh;
+    color: #fff;
+    background: url(../images/sdream/visual_bg01.jpg) no-repeat center center / cover;
     display: flex;
     align-items: flex-end;
-    position: relative;  /* scroll 정렬의 기준 */
 }
 .visual .swiper-slide.pop2{
     background-image: url(../images/sdream/visual_bg02.jpg);
@@ -21,72 +146,69 @@
     font-size: 60px;
     font-weight: 800;
     line-height: 1.3;
-    margin: 0 0 8vh 0;  /* 브라우저의 높이가 줄어들면 여백도 따라서 같이 줄어드는거임--> h2의 아래여백인 80px을 visual의 높이 1000px 에 나눠서, 1000/80=8vh 가 됨 */
+    margin: 0 0 8dvh 0;
+}
+.visual .swiper-slide.pop1 h2 br{
+    display: none;
 }
 .visual .scroll{
-    position: absolute;  /* visual을 기준으로 정렬 / before,after정렬의 기준 */
+    position: absolute; /* visual을 기준으로 정렬 */
     left: 50%;
-    transform: translateX(-50%);  /* 가운데 정렬인 경우 */
-    bottom: 34px;  /* Scroll Down 글자의 아래 여백 */
-    z-index: 10;
-    font-size: 12px;
+    transform: translateX(-50%);
+    bottom: 34px;  /* 디자인상 글자의 아래 여백 */
     color: #fff;
+    font-size: 12px;
+    z-index: 10;  /* 화면에 나타나지 않아서 주는 값임 */
 }
 .visual .scroll::before,
 .visual .scroll::after{
     content: "";
-    position: absolute;  /* scroll을 기준으로 정렬 */
+    position: absolute;  /* scroll 기준으로 정렬 */
     left: 0;
-    bottom: -11px;
+    bottom: -12px;
     width: 100%;
     height: 9px;
     background: url(../images/sdream/visual_scroll.svg) no-repeat center center;
 }
-/* ▽그냥 위아래로 왔다갔다 하는 애니메이션 효과▽ 
 .visual .scroll::after{
-    bottom: -17px;
-    animation: scroll2 2s linear infinite;
+    bottom: -19px;
 }
-.visual .scroll::before{
-    animation: scroll1 2s linear infinite ;
-} */
-/* @keyframes scroll1 {
-    0%{bottom: -11px;}
-    50%{bottom: -18px;}  
-    100%{bottom: -11px;}  
-} */
-/* @keyframes scroll2 {
-    0%{bottom: -17px;}
-    50%{bottom: -26px;}
-    100%{bottom: -17px;}
-} */ /* ▽삼천리 사이트처럼 위아래로 왔다갔다하다가 사라지는 애니메이션 효과▽ */
-.visual .scroll::after{
-    opacity: 0;
-    animation: scroll2 1.5s linear infinite;
-}
-.visual .scroll::before{
-    animation: scroll1 1.5s linear infinite;
-}
-@keyframes scroll1{
-    0%{bottom: -11px; opacity: 1;}
-    50%{bottom: -16px; opacity: 1;}  
-    100%{bottom: -18px; opacity: 0;} 
-}
- @keyframes scroll2{
-    0%{bottom: -17px; opacity: 1;}
-    50%{bottom: -24px; opacity: 1;}  
-    100%{bottom: -26px; opacity: 0;} 
-}
+/* 화살표가 움직이기 위해 주는 animation 속성 - Start */
+            /* .visual .scroll::before{
+                animation: scroll1 2s linear infinite ;
+            }
+            @keyframes scroll1 {
+                0%{bottom: -12px;}
+                50%{bottom: -19px;}
+                100%{bottom: -12px;}
+            }
+            .visual .scroll::after{
+                animation: scroll2 2s linear infinite;
+            }
+            @keyframes scroll2 {
+                0%{bottom: -19px;}
+                50%{bottom: -25px;}
+                100%{bottom: -19px;}
+            } */
+             .visual .scroll::before{
+                animation: scroll1 1.3s linear infinite;
+             }
+            @keyframes scroll1 {
+                0%{bottom: -12px; opacity: 1;}
+                80%{bottom: -16px; opacity: 1;}
+                100%{bottom: -19px; opacity: 0;}
+            }
+            .visual .scroll::after{
+                animation: scroll2 1.3s linear infinite;
+            }
+            @keyframes scroll2 {
+                0%{bottom: -19px; opacity: 1;}
+                80%{bottom: -22px; opacity: 1;}
+                100%{bottom: -25px; opacity: 0;}
+            }
+/* 화살표가 움직이기 위해 주는 animation 속성 - End */
 
-@media screen and (max-width:768px){
-                .visual .swiper-slide h2{
-                    font-size: 40px;
-                    margin: 0 0 5vh 0;  /* 브라우저의 높이가 줄어들면 여백도 따라서 같이 줄어드는거임--> h2의 아래여백인 80px을 visual의 높이 1000px 에 나눠서, 1000/80=8vh 가 됨 */
-                }
-                .visual .scroll{
-                    display: none;
-                }
-}/*@media*/
+
 
 .footer{
     margin: 1000px 0 0 0;
