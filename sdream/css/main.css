@@ -986,12 +986,7 @@ transform: rotate(-90edg);
                         */
 
                 .service .list ul li{
-                    width: calc(33.33% - 16px);
-                    /* 
-                    (100% / 한 줄에 들어가는 li 갯수) -(한 줄의 여백의 합 / 한 줄에 들어가는 li 갯수)
-                    (100%/3 -(48/3))
-                    =33.33% 16px
-                    */
+                    width: auto;
                 }
                 .service .list ul li a{
                     display: block;
