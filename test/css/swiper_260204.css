@@ -146,10 +146,11 @@
     margin: 24px 0;
     /* 2줄 제한 - 공통으로 들어가는 속성 */
     line-height: 1.5;  /* common.css에서 불러 온 p의 행간을 알면 안써도 됨 */
-    overflow: hidden;
-    /* 2줄 제한 방법① */
+    /* 2줄 제한① */
     height: 3em; /* 행간 x (원하는)줄수 = 단위는 em */
-    /* 2줄 제한 방법② */
+    overflow: hidden;
+    
+    /* 2줄 제한② */
     /* 웹표준은 아니지만 마지막에 ...을 추가해주는 코드 */
     display: -webkit-box;  /* display 속성을 -webkit-box로 변경해줌 */
     -webkit-box-orient: vertical;  /* 수직방향 */

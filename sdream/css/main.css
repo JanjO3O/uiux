@@ -283,7 +283,7 @@ transform: rotate(-90edg);
     align-items: flex-start를 주면 tit과 list가 각자의 콘텐츠가 존재하는만큼만 높이가 잡힘*/
 }
 .biz .tit{
-    position: sticky;  /* 0209-3시 반 강의 다시보기 */
+    position: sticky;  /* 0209-3시 반 강의 */
     /* 왼쪽에 고정할 요소는 오른쪽의 요소보다 반드시 짧아야 구현이 가능함
        좌우 배치를 flex로 했다면,,, 반드시 align-items: flex-start; 를 추가해줘야 함!!! --> 그래야 position: sticky; 값이 작용함
        감싸는 요소 중에서 단 한개의 요소라도 overflow: hidden;값을 가지고 있으면 작동하지 않음... */
@@ -559,23 +559,21 @@ transform: rotate(-90edg);
 .news .list ul li a:hover h3{
     color: #fff;
 }
-/* .news .list ul li a h3 span{
+.news .list ul li a h3 span{
     position: relative;
 }
 .news .list ul li a h3 span::after{
     content: "";
     position: absolute;
     left: 0;
-    bottom: -1px;
+    bottom: -3px;
     width: 0;
     height: 1px;
     transition: 0.3s;
+    background-color: #fff;
 }
-.news .list ul li a h3:hover span::after{
+.news .list ul li a:hover h3 span::after{
     width: 100%;
-} */
-.news .list ul li a h3:hover span{
-    text-decoration: underline;
 }
 .news .more{
     position: absolute;
@@ -615,7 +613,7 @@ transform: rotate(-90edg);
                 }
                 .news .tit h2{
                     font-size: 32px;
-                    margin-top: 0; /* strong 태그와의 여백 */
+                    margin: 0; /* strong 태그와의 여백 */
                 }
                 .news .list{
                     margin: 42px 0 0 0;
@@ -691,7 +689,10 @@ transform: rotate(-90edg);
 .webzin{
     background-color: #014C93;
     color: #fff;
-    padding: 174px 0 116px 0;
+    padding: 186px 0 104px 0;
+}
+.webzin .wrapper{
+    position: relative; /* ctrl_wrap의 정렬의 기준 */
 }
 .webzin .tit strong{
     font-weight: 700;
@@ -709,7 +710,7 @@ transform: rotate(-90edg);
     display: block;
     background-color: #fff;
     color: #3d3d3d;
-    /* box-shadow: 3px 3px 5 0 rgba(0, 0, 0, 0.1); */
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1);
     border-radius: 30px;
 }
 .webzin .list .swiper-slide a .photo{
@@ -721,6 +722,10 @@ transform: rotate(-90edg);
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: 0.3s;
+}
+.webzin .list .swiper-slide a:hover .photo img{
+    transform: scale3d(1.125, 1.125, 1);
 }
 .webzin .list .swiper-slide a .txt{
     padding: 26px 30px 30px 30px;
@@ -740,8 +745,8 @@ transform: rotate(-90edg);
     font-weight: 800;
     color: #1d1d1d;
     margin: 12px 0 6px 0;
-    /* 2줄 제한 */
     line-height: 1.3;
+    /* 2줄 제한 */
     height: 2.6em;  /* 행간 * 줄수 = 단위em */
     overflow: hidden;
     /* 2줄 제한에서 잘리는 글자에 ...추가 */
@@ -750,8 +755,8 @@ transform: rotate(-90edg);
     -webkit-line-clamp: 2; /* 제한줄수 */
 }
 .webzin .list .swiper-slide a .txt p{
-    /* 3줄 제한 */
     line-height: 1.5;
+    /* 3줄 제한 */
     height: 4.5em;  /* 행간 * 줄수 = 단위em */
     overflow: hidden;
 
@@ -760,6 +765,271 @@ transform: rotate(-90edg);
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3; /* 제한줄수 */
 }
+.webzin .ctrl_wrap{
+    position: absolute;  /* wrapper를 기준으로 정렬 */
+    right: 0;
+    top: 48px;
+    display: flex;  /* prev - next - more 좌우정렬 */
+    gap: 0 6px;  /* 버튼 사이의 가장 적은 여백  */
+}
+.webzin .ctrl_wrap button{
+    width: 40px;  
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: url(../images/arrow_w.svg) no-repeat center center;  /* 넓이랑 높이가 아이콘의 넓이가 아니라 동그라미의 넓이,높이이기 때문에 아이콘의 사이즈=contain을 안줌 */
+    transition: 0.3s;
+}
+.webzin .ctrl_wrap button.next{
+    transform: rotate(180deg);  /* 저장한 아이콘을 반대로 회전시켜줘야 하기 때문에 */
+}
+.webzin .ctrl_wrap .more{
+    margin: 0 0 0 5px;   /* 디자인에서 더보기의 여백만 10px이라서 gap에서 준 5px을 제외한 나머지 5px을 more의 margin으로 더 준다 */
+}
+.webzin .ctrl_wrap .more a{
+    display: block;
+    height: 40px;  /* 원의 높이 */
+    border: 1px solid #fff;
+    border-radius: 30px;
+    padding: 7px 52px 0 31px;  /* 아래 여백은 높이가 있어서 안줌 */
+    position: relative; /* after 정렬의 기준 */
+}
+.webzin .ctrl_wrap .more a::after{
+    position: absolute;  /* a를 기준으로 정렬 */
+    content: "";
+    right: 29px;
+    top: 12px;
+    width: 14px;  /* 아이콘 넓이 */
+    height: 14px; /* 아이콘 높이 */
+    background: url(../images/more_w.svg) no-repeat center center / contain;
+    transition: transform 1s;  /* 마우스 over시 더보기 아이콘의 회전하는 효과에만 1s의 시간을 줌 */
+}
+/******************* 마우스 오버 시 ************************/
+.webzin .ctrl_wrap button.swiper-button-disabled{  /* 브라우저 가서 버튼을 눌러서 나오는 disabled 클래스명 복사해서 수정한 뒤, opacity를 낮춰줘야 함 */
+    opacity: 0.4;
+    cursor: default;  /* 마우스 모양 기본으로 해줌 */
+}
+.webzin .ctrl_wrap button:hover:not(.swiper-button-disabled){  /* disabled이 되면 over 속성 적용 X */
+    background-color: #CCE7FF;
+    border-color: #CCE7FF;
+    background-image: url(../images/arrow_black.svg);
+}
+.webzin .ctrl_wrap button.next:hover{
+    transform: rotate(180deg);
+}
+.webzin .ctrl_wrap .more a:hover{
+    background-color: #CCE7FF;
+    color: #3d3d3d;
+    border-color: #CCE7FF;
+}
+.webzin .ctrl_wrap .more a:hover::after{
+    background-image: url(../images/more_black.svg);
+    transform: rotate(360deg);
+}
+/******************* 마우스 오버 시 ************************/
+@media screen and (max-width:768px){
+                .webzin{
+                    padding: 125px 0 36px 0;
+                }
+                .webzin .tit h2{
+                    font-size: 32px;
+                    margin: 0; /* strong 태그와의 여백 */
+                }
+                .webzin .list{
+                    margin: 42px 0 0 0;
+                }
+                .webzin .list .swiper-slide{
+                    width: 250px;
+                }
+                .webzin .list .swiper-slide a{
+                    border-radius: 15px;
+                }
+                .webzin .list .swiper-slide a .photo{
+                    border-radius: 15px 15px 0 0;
+                    height: 188px;
+                }
+                .webzin .list .swiper-slide a .txt{
+                    padding: 24px 16px 16px 16px;
+                }
+                .webzin .list .swiper-slide a .txt h3{
+                    font-size: 20px;
+                    margin: 10px 0 6px 0;
+                }
+                .webzin .ctrl_wrap{
+                    position: relative;  /* absolute 해제 -- 모바일에선 하단에 들어가니까 */
+                    right: auto;
+                    top: auto;
+                    justify-content: center;
+                    margin: 35px 0 0 0;
+                }
+                .webzin .ctrl_wrap button{
+                    display: none;
+                }
+                .webzin .ctrl_wrap .more{
+                    margin: 0 0 0 5px;   /* 디자인에서 더보기의 여백만 10px이라서 gap에서 준 5px을 제외한 나머지 5px을 more의 margin으로 더 준다 */
+                }
+                .webzin .ctrl_wrap .more a{
+                    height: 36px;  /* 원의 높이 */
+                    border: none;
+                    padding: 6px 41px 0 20px;  /* 아래 여백은 높이가 있어서 안줌 */
+                    background-color: #fff;
+                    color: #1d1d1d;
+                }
+                .webzin .ctrl_wrap .more a::after{
+                    right: 22px;
+                    top: 12px;
+                    width: 12px;  /* 아이콘 넓이 */
+                    height: 12px; /* 아이콘 높이 */
+                    background-image: url(../images/more_black.svg);
+                }
+}/*@media*/
+
+
+
+.service{
+    background-color: #EEF7FF;
+    padding: 174px 0 116px 0;
+}
+.service .tit strong{
+    font-weight: 700;
+    color: #0060BB;
+}
+.service .tit h2{
+    font-size: 45px;
+    font-weight: 800;
+    line-height: 1.3;
+    color: #1d1d1d;
+    margin: 12px 0 58px 0; /* strong과 ul의 여백 */
+}
+.service .list ul{
+    display: flex;  /* li 좌우배치 */
+    justify-content: space-between;
+}
+.service .list ul li{
+    width: calc(33.33% - 16px);
+    /* 
+       (100% / 한 줄에 들어가는 li 갯수) -(한 줄의 여백의 합 / 한 줄에 들어가는 li 갯수)
+       (100%/3 -(48/3))
+       =33.33% 16px
+    */
+}
+.service .list ul li a{
+    display: block;
+    /* height: 96px; --들어가도 큰 차이 없음*/
+    background-color: #CCE7FF;
+    padding: 22px 0 22px 30px;  /* 글자의 내부 여백을 li한테 주면, a를 더 안으로 밀어넣게 됨-- 그래서 li말고 a한테 줘야 제대로 적용됨 / 오른쪽 여백은 줘도 되고 안줘도 됨*/
+    position: relative; /* after 정렬의 기준 */
+}
+.service .list ul li a::after{
+    content: "";
+    position: absolute;  /* a를 기준으로 정렬 */
+    right: 30px;
+    top: 33px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #0060BB url(../images/more_w.svg) no-repeat center center / 12px; 
+    /* 색은 원의 색이고, 12px--> more가 여기저기서 쓰여서 사이즈가 달라서 주는 아이콘의 사이즈 */
+    transition: transform 1s;
+}
+.service .list ul li a strong{
+    font-size: 16px;
+    font-weight: 700;
+    color: #0060BB;
+}
+.service .list ul li a h3{
+    font-weight: 800;
+    margin: 2px 0 0 0;
+}
+.service .list ul li a:hover{
+    background-color: #fff;
+}
+.service .list ul li a:hover::after{
+    background-color: #0060BB;
+    transform: rotate(360deg);
+}
+@media screen and (max-width:768px){
+                .service{
+                    padding: 125px 0 84px 0;
+                }
+                .service .tit h2{
+                    font-size: 32px;
+                    margin: 0 0 42px 0; /* strong과 ul의 여백 */
+                }
+                .service .list ul{
+                    flex-direction: column;
+                    gap: 8px 0;  /* li의 위아래 여백 */
+                }
+
+                        /* ▼ 모바일에서 li가 좌우로 들어가게 될 경우 ▼
+                        .service .list ul li{
+                            width: calc(33.33% - 10.66px);
+                            /* 
+                            (100% / 한 줄에 들어가는 li 갯수) -(한 줄의 여백의 합 / 한 줄에 들어가는 li 갯수)
+                            (100%/3 -((16+16)/3))
+                            =33.33% 10.66px
+                        }
+                        .service .list ul li a{
+                            padding: 22px 0 51px 0
+                            height: 100%;  -->높이를 줘야 글자가 2줄이든 1줄이든 상자의 높이가 동일해짐
+                            text-align:center; 
+                        }
+                        .service .list ul li a h3 br{
+                            display: block;
+                        }
+                        .service .list ul li a::after{
+                            right: calc(50% - 10.5px);  ---> 50% - 넓이의 절반 : 가운데 정렬
+                            top: auto;  ---> top 취소 bottom 정렬
+                            width: 21px;
+                            height: 21px;
+                            background-size: 8px;
+                        */
+
+                .service .list ul li{
+                    width: calc(33.33% - 16px);
+                    /* 
+                    (100% / 한 줄에 들어가는 li 갯수) -(한 줄의 여백의 합 / 한 줄에 들어가는 li 갯수)
+                    (100%/3 -(48/3))
+                    =33.33% 16px
+                    */
+                }
+                .service .list ul li a{
+                    display: block;
+                    /* height: 96px; --들어가도 큰 차이 없음*/
+                    background-color: #CCE7FF;
+                    padding: 22px 0 22px 30px;  /* 글자의 내부 여백을 li한테 주면, a를 더 안으로 밀어넣게 됨-- 그래서 li말고 a한테 줘야 제대로 적용됨 / 오른쪽 여백은 줘도 되고 안줘도 됨*/
+                    position: relative; /* after 정렬의 기준 */
+                }
+                .service .list ul li a::after{
+                    content: "";
+                    position: absolute;  /* a를 기준으로 정렬 */
+                    right: 30px;
+                    top: 33px;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    background: #0060BB url(../images/more_w.svg) no-repeat center center / 12px; 
+                    /* 색은 원의 색이고, 12px--> more가 여기저기서 쓰여서 사이즈가 달라서 주는 아이콘의 사이즈 */
+                    transition: transform 1s;
+                }
+                .service .list ul li a strong{
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: #0060BB;
+                }
+                .service .list ul li a h3{
+                    font-weight: 800;
+                    margin: 2px 0 0 0;
+                }
+                .service .list ul li a:hover{
+                    background-color: #fff;
+                }
+                .service .list ul li a:hover::after{
+                    background-color: #0060BB;
+                    transform: rotate(360deg);
+                }
+}/*@media*/
+
 
 .footer{
     margin: 1000px 0 0 0;
