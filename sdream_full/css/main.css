@@ -343,7 +343,8 @@ transform: rotate(-90edg);
     margin: 12px 0 0 0; /* strong 태그와의 여백 */
 }
 .biz .list{
-    width: 832px;  /* 넓이를 제한해야 wrapper 안에서 자기 영역만큼만 들어가게 됨 */
+    max-width: 832px;   /* 최대넓이 - 넓이가 832이상 늘어나지 않음 - 그리고 그보다 작을땐 382의 여백을 빼고 나머지 전부 */
+    width: calc(100% - 382px);
 }
 .biz .list ul{
     display: flex;  /* li 좌우배치 */
@@ -401,7 +402,7 @@ transform: rotate(-90edg);
     /* 마우스 오버 애니메이션을 줄 때 글자가 밑에서 위로 자연스럽게 올라오면서 p 태그가 나타날거임 --> 그래서 a를 기준으로 absolute 줌 */
     position: absolute;  /* a를 기준으로 정렬 */
     left: 40px;
-    bottom: -46px;
+    bottom: -96px;
     width: calc(100% - 80px);  /* - 는 좌우 여백의 합 */
     transition: bottom 0.3s;
 }
@@ -429,7 +430,7 @@ transform: rotate(-90edg);
 .biz .list ul li a span::after{
     content: "";
     position: absolute; /* txt를 기준으로 정렬 */
-    right: 233px;
+    right: 134px;
     bottom: 15px;
     width: 12px;  /* 아이콘의 넓이 */
     height: 12px;  /* 아이콘의 높이 */
@@ -440,7 +441,7 @@ transform: rotate(-90edg);
     opacity: 0.9;  /* 배경색의 opacity 값임 */
 }
 .biz .list ul li a:hover .txt{
-    bottom: 92px;
+    bottom: 40px;  /* 디자인의 하단 여백 */
 }
 .biz .list ul li a:hover .txt p{
     opacity: 1;
@@ -448,6 +449,39 @@ transform: rotate(-90edg);
 .biz .list ul li a:hover span{
     opacity: 1;
 }
+@media screen and (max-width:1024px){
+            .biz .tit h2{
+                font-size: 32px;
+            }
+            .biz .list{
+                max-width: 480px;
+            }
+            .biz .list ul li{
+                width: 100%;
+            }
+            .biz .list ul li:nth-child(even) {
+                transform: translateY(0);
+            }
+            .biz .list ul li a .txt{
+                bottom: 20px;
+            }
+            .biz .list ul li a .txt h3{
+                font-size: 28px;
+            }
+            .biz .list ul li a .txt p{
+                opacity: 1;
+            }
+            .biz .list ul li a span{
+                opacity: 1;
+                background-color: #fff;
+            }
+            .biz .list ul li a span::after{
+                right: 310px;
+                bottom: 16px;
+                width: 10px;
+                height: 10px;
+            }
+}/*@media*/
 @media screen and (max-width:768px){
             .biz{
             margin: 128px 0 0 0;
@@ -468,6 +502,7 @@ transform: rotate(-90edg);
                 /* auto라는건 원래 속성대로 넓이를 가지라는 뜻--> block 요소면 100% 들어감---> 그냥 100%면 margin을 줬을 때 좌우로 늘어남
                    auto는 margin을 주면 그 여백을 제외한 나머지를 꽉 채워서 들어감 */
                    margin: 45px 0 0 0;  /* h2와의 여백 */
+                   max-width: 100%;
             }
             .biz .list ul{
                 flex-wrap: nowrap; /* 여러줄 허용 X */
@@ -642,6 +677,29 @@ transform: rotate(-90edg);
     background-image: url(../images/more_w.svg);
     transform: rotate(360deg);
 }
+@media screen and (max-width:1024px){
+                .news .tit h2{
+                    font-size: 38px;
+                }
+                .news .list ul li a{
+                    padding: 25px 40px;
+                }
+                .news .list ul li a h3 {
+                    font-size: 18px;
+                }
+                .news .more{
+                    top: 48px;
+                }
+                .news .more a{
+                    padding: 5px 47px 5px 25px;
+                }
+                .news .more a::after{
+                    right: 24px;
+                    top: 11px;
+                    width: 12px;
+                    height: 12px;
+                }
+}/*@media*/
 @media screen and (max-width:768px){
                 .news{
                     padding: 125px 0 36px 0;  /* bg 색 때문에 padding으로 내부 여백 줘야 함 */
@@ -863,6 +921,35 @@ transform: rotate(-90edg);
     transform: rotate(360deg);
 }
 /******************* 마우스 오버 시 ************************/
+@media screen and (max-width:1024px){
+                .webzin .tit h2{
+                    font-size: 38px;
+                }
+                .webzin .ctrl_wrap{
+                    top: 45px;
+                }
+                .webzin .ctrl_wrap button{
+                    width: 36px;
+                    height: 36px
+                }
+                .webzin .ctrl_wrap .more a{
+                    height: 36px;
+                    padding: 5px 40px 0 25px;
+                }
+                .webzin .ctrl_wrap .more a::after{
+                    right: 22px;
+                    top: 11px;
+                    width: 12px;
+                    height: 12px
+                }
+                .webzin .list .swiper-slide a .txt h3{
+                    font-size: 19px;
+                }
+                .webzin .list .swiper-slide a .txt{
+                    padding: 20px 25px 25px 25px;
+                }
+                
+}/*@media*/
 @media screen and (max-width:768px){
                 .webzin{
                     padding: 125px 0 36px 0;
@@ -984,6 +1071,22 @@ transform: rotate(-90edg);
     background-color: #0060BB;
     transform: rotate(360deg);
 }
+@media screen and (max-width:1024px){
+    .service .tit h2 {
+        font-size: 38px;
+        margin: 12px 0 38px 0;
+    }
+    .service .list ul li a {
+        padding: 16px 14px 44px 14px;
+        text-align: center;
+        height: 100%
+    }
+    .service .list ul li a::after {
+        right: calc(50% - 15px);  /* 넓이의 절반 */
+        top: auto;
+        bottom: 10px;
+    }
+}/*@media*/
 @media screen and (max-width:768px){
                 .service{
                     padding: 125px 0 84px 0;
@@ -1026,10 +1129,12 @@ transform: rotate(-90edg);
                 }
                 .service .list ul li a{
                     padding: 22px 0 23px 30px;  /* 글자의 내부 여백을 li한테 주면, a를 더 안으로 밀어넣게 됨-- 그래서 li말고 a한테 줘야 제대로 적용됨 / 오른쪽 여백은 줘도 되고 안줘도 됨*/
+                    text-align: left;  /* 1024사이즈에서 text-align: center 줘서 다시 왼쪽으로 복귀시키는거임 */
                 }
                 .service .list ul li a::after{
                     right: 11px;  /* 디자인 상 원의 오른쪽 여백 */
                     top: 35px;  /* 디자인 상 원의 위의 여백 */
+                    bottom: auto;
                     width: 26px;  /* 원의 넓이 */
                     height: 26px;  /* 원의 높이 */
                     background-size: 10px; /* 아이콘의 사이즈만 변경해주면 되니까 */

@@ -371,7 +371,7 @@ transform: rotate(-90edg);
     /* 마우스 오버 애니메이션을 줄 때 글자가 밑에서 위로 자연스럽게 올라오면서 p 태그가 나타날거임 --> 그래서 a를 기준으로 absolute 줌 */
     position: absolute;  /* a를 기준으로 정렬 */
     left: 40px;
-    bottom: -46px;
+    bottom: -96px;
     width: calc(100% - 80px);  /* - 는 좌우 여백의 합 */
     transition: bottom 0.3s;
 }
@@ -410,7 +410,7 @@ transform: rotate(-90edg);
     opacity: 0.9;  /* 배경색의 opacity 값임 */
 }
 .biz .list ul li a:hover .txt{
-    bottom: 92px;
+    bottom: 40px; /* 디자인의 하단 여백 */
 }
 .biz .list ul li a:hover .txt p{
     opacity: 1;
