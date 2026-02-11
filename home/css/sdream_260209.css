@@ -208,6 +208,216 @@
                 100%{bottom: -25px; opacity: 0;}
             }
 /* 화살표가 움직이기 위해 주는 animation 속성 - End */
+@media screen and (max-width:768px){
+            .visual .swiper-slide{
+                height: 80dvh;
+            }
+            .visual .swiper-slide h2{
+                font-size: 40px;
+                margin: 0 0 5dvh 0;
+            }
+            .visual .swiper-slide.pop1 h2 br{
+                display: block;
+            }
+            .visual .scroll{
+                display: none;
+            }
+}/*@media*/
+
+
+
+.biz{
+    margin-top: 174px;
+}
+.biz .wrapper{
+    display: flex; /* tit-list 좌우 배치 */
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.biz .tit{
+    position: sticky;
+    top: 100px;
+}
+.biz .tit strong{
+    font-weight: 700;
+    color: #0060BB;
+}
+.biz .tit h2{
+    font-size: 45px;
+    font-weight: 800;
+    line-height: 1.3;
+    color: #1d1d1d;
+    margin-top: 12px;
+}
+.biz .list{
+    width: 832px;
+}
+.biz .list ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 24px;
+}
+.biz .list ul li{
+    width: calc(50% - 12px);
+}
+.biz .list ul li:nth-child(even){
+    transform: translateY(182px);
+}
+.biz .list ul li a{
+    display: block;
+    height: 552px;
+    color: #fff;
+    border-radius: 20px;
+    background: url(../images/sdream/biz01.jpg) no-repeat center center / cover;
+    position: relative; /* txt, before 정렬 기준 */
+    overflow: hidden;  /* p태그가 빠져나가는거 방지하기 위함 */
+}
+.biz .list ul li a::before{
+    content: "";
+    position: absolute;  /* a를 기준으로 정렬 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0060BB;
+    opacity: 0;
+    transition: 0.3s;
+}
+.biz .list ul li.biz2 a{
+    background-image: url(../images/sdream/biz02.jpg);
+}
+.biz .list ul li.biz3 a{
+    background-image: url(../images/sdream/biz03.jpg);
+}
+.biz .list ul li.biz4 a{
+    background-image: url(../images/sdream/biz04.jpg);
+}
+.biz .list ul li.biz5 a{
+    background-image: url(../images/sdream/biz05.jpg);
+}
+.biz .list ul li a .txt{
+    position: absolute; /* a를 기준으로 정렬, 더보기 정렬 기준 */
+    left: 40px;
+    bottom: -40px;
+    width: calc(100% - 80px);
+    transition: 0.3s;
+}
+.biz .list ul li a .txt h3{
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 6px;
+}
+.biz .list ul li a .txt p{
+    opacity: 0;
+    margin-bottom: 12px;
+    transition: 0.3s;
+}
+.biz .list ul li a span{
+    display: inline-block;
+    opacity: 0;
+    width: 111px;
+    height: 40px;
+    background-color: #CCE7FF;
+    color: #1d1d1d;
+    border-radius: 30px;
+    padding: 7px 40px 7px 22px;
+    position: relative;  /* after 정렬 기준 */
+}
+.biz .list ul li a span::after{
+    content: "";
+    position: absolute;  /* span을 기준으로 정렬 */
+    right: 19px;
+    top: 13px;
+    width: 12px;
+    height: 12px;
+    background: url(../images/sdream/more_black.svg) no-repeat center center;
+    transition: transform 0.8s;
+}
+/*************** 마우스 오버 시  *******************/
+.biz .list ul li a:hover::before{
+    opacity: 0.9;
+}
+.biz .list ul li a:hover .txt{
+    bottom: 40px;
+}
+.biz .list ul li a:hover .txt p{
+    opacity: 1;
+}
+.biz .list ul li a:hover span{
+    opacity: 1;
+}
+.biz .list ul li a:hover span::after{
+    transform: rotate(360deg);
+}
+/*************** 마우스 오버 시  *******************/
+@media screen and (max-width:768px){
+            .biz{
+            margin-top: 128px;
+            }
+            .biz .wrapper{
+                display: block;
+            }
+            .biz .tit{
+                position: relative;
+                top: auto;
+            }
+            .biz .tit h2{
+                font-size: 32px;
+                margin: 14px 0 45px 0;
+            }
+            .biz .list{
+                width: auto;
+            }
+            .biz .list ul{
+                flex-wrap: nowrap;
+                flex-direction: column;
+                gap: 12px 0;
+            }
+            .biz .list ul li{
+                width: auto;
+            }
+            .biz .list ul li:nth-child(even){
+                transform: translateY(0);
+            }
+            .biz .list ul li a{
+                height: 150px;
+            }
+            .biz .list ul li a::before{
+                display: none;
+            }
+            .biz .list ul li a .txt{
+                left: 16px;
+                bottom: 16px;
+                width: calc(100% - 56px);
+            }
+            .biz .list ul li a:hover .txt{
+                bottom: 16px;
+            }
+            .biz .list ul li a .txt::after{
+                content: "";
+                position: absolute;
+                right: 0;
+                bottom: 5px;
+                width: 21px;
+                height: 21px;
+                border-radius: 50%;
+                background: #fff url(../images/sdream/biz_mob_arrow.svg) no-repeat center center;
+            }
+            .biz .list ul li a .txt h3{
+                font-size: 24px;
+                margin-bottom: 0;
+            }
+            .biz .list ul li a .txt h3 br{
+                display: none;
+            }
+            .biz .list ul li a .txt p{
+                display: none;
+            }
+            .biz .list ul li a span{
+                display: none
+            }
+}/*@media*/
 
 
 
