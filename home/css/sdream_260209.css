@@ -4,20 +4,21 @@
 
 .header{
     position: fixed;  /* 무조건 body랑 정렬함 */
-    min-width: 1320px;
+    /* min-width: 1320px; */
     left: 0;
     top: 0;
     z-index: 100;
     width: 100%;
     height: 90px;
     color: #fff;
+    transition: backgriund-color 0.3s color 0.3s;
 }
 .header .wrapper{
     display: flex;
     justify-content: space-between;
 }
 .header .logo{
-    margin-top: 21px;
+    margin: 21px 0 0 0;
 }
 .header .logo a{
     display: block;
@@ -41,7 +42,7 @@
 }
 .header .util{
     display: flex;
-    margin-top: 25px;
+    margin: 25px 0 0 0;
 }
 .header .util .mypage{
     display: block;
@@ -49,7 +50,7 @@
     height: 40px;
     background: url(../images/sdream/mypage_w.svg) no-repeat center center;
 }
-.header .util .lang_open{
+.header .util .lang .lang_open{
     display: block;  /* 눌러야 하는 애들은 block 줘야 깔끔함 */
     width: 40px;
     height: 40px;
@@ -73,8 +74,8 @@
     .header.over .util .mypage{
         background-image: url(../images/sdream/mypage_b.svg);
     }
-    .header.fixed .util .lang_open,
-    .header.over .util .lang_open{
+    .header.fixed .util .lang .lang_open,
+    .header.over .util .lang .lang_open{
         background-image: url(../images/sdream/lang_b.svg);
     }
             /**************  마우스 오버하면 색 변경  ***************/
@@ -86,8 +87,8 @@
             .header.over .util .mypage:hover{
                 background-image: url(../images/sdream/mypage_on.svg);
             }
-            .header.fixed .util .lang_open:hover,
-            .header.over .util .lang_open:hover{
+            .header.fixed .util .lang .lang_open:hover,
+            .header.over .util .lang .lang_open:hover{
                 background-image: url(../images/sdream/language_on.svg);
             }
             /**************  마우스 오버하면 색 변경  ***************/
@@ -100,7 +101,7 @@
                     margin-right: 0;
                 }
                 .header .logo{
-                    margin-top: 17px;
+                    margin: 17px 0 0 0;
                 }
                 .header .logo a{
                     width: 56px;
@@ -118,12 +119,12 @@
                 .header .util{
                     display: none;
                 }
+
                 /************ fixed / over 클래스가 추가됐을 때(스타일 동일함) ************/
                 .header.fixed .gnb .gnb_open,
                 .header.over .gnb .gnb_open{
-                    background-image: url(../images/gnb_open.svg);
-                } 
-                
+                    background-image: url(../images/sdream/gnb_open.svg);
+                }
 }/*@media*/
 
 .visual{

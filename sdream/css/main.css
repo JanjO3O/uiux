@@ -4,7 +4,7 @@
 
 .header{
     position: fixed; /* body를 기준으로 정렬 */
-    /* min-width: ; ?????? */
+    /* min-width: 1320px; 얘를 줘도 변화없어서 줘도 그만 안줘도 그만인데 주게 되면, 모바일에서 메뉴 아이콘이 사라짐...*/
     left: 0;
     top: 0;
     z-index: 100;  /* 내가 맨 위 */
@@ -53,7 +53,7 @@
     /* contain을 주면 아이콘이 저장한거보다 더 크게 안짤리고 내가 준 영역=넓이,높이를 준 만큼 에 꽉 차게 들어감 */
 }
 .header .util .lang .lang_open{
-    display: block;  /* 눌러야 하는 애들은 display-block 주면 됨 */
+    display: block;  /* 눌러야 하는 애들은 display-block 주면 됨!! */
     width: 40px;  /* 아이콘이 눌리는 상자의 넓이 */
     height: 40px; /* 아이콘이 눌리는 상자의 높이 */
     background: url(../images/lgng_w.svg) no-repeat center center; 
@@ -139,7 +139,8 @@
     position: relative; /* scroll 정렬의 기준 */
 }
 .visual .swiper-slide{
-    height: 100dvh; /* vh => 브라우저의 높이에 따라 영역을 계속해서 맞춰주는거 - 브라우저의 높이를 맞춰 들어감 */
+    height: 100dvh; /* dvh => 브라우저의 높이에 따라 영역을 계속해서 맞춰주는거 - 브라우저의 높이를 맞춰 들어감 */
+    min-height: 500px;
     background: url(../images/visual_bg01.jpg) no-repeat center center / cover;
     color: #fff;
     /* ★★★wrapper(=글자)를 아래로 정렬하기 위함★★★ */
@@ -402,7 +403,7 @@ transform: rotate(-90edg);
     bottom: 15px;
     width: 12px;  /* 아이콘의 넓이 */
     height: 12px;  /* 아이콘의 높이 */
-    background: url(../images/more_b.svg) no-repeat center center;
+    background: url(../images/more_black.svg) no-repeat center center;
 }
 /************* over 했을 때  ***************/
 .biz .list ul li a:hover::before{
@@ -922,7 +923,7 @@ transform: rotate(-90edg);
     display: block;
     /* height: 96px; --들어가도 큰 차이 없음*/
     background-color: #CCE7FF;
-    padding: 22px 0 22px 30px;  /* 글자의 내부 여백을 li한테 주면, a를 더 안으로 밀어넣게 됨-- 그래서 li말고 a한테 줘야 제대로 적용됨 / 오른쪽 여백은 줘도 되고 안줘도 됨*/
+    padding: 22px 0 21px 30px;  /* 글자의 내부 여백을 li한테 주면, a를 더 안으로 밀어넣게 됨-- 그래서 li말고 a한테 줘야 제대로 적용됨 / 오른쪽 여백은 줘도 되고 안줘도 됨*/
     position: relative; /* after 정렬의 기준 */
 }
 .service .list ul li a::after{
@@ -934,7 +935,7 @@ transform: rotate(-90edg);
     height: 30px;
     border-radius: 50%;
     background: #0060BB url(../images/more_w.svg) no-repeat center center / 12px; 
-    /* 색은 원의 색이고, 12px--> more가 여기저기서 쓰여서 사이즈가 달라서 주는 아이콘의 사이즈 */
+    /* 색은 원의 색이고, 12px--> 아이콘이 여기저기서 쓰여서 사이즈가 달라서 주는 아이콘의 넓이 */
     transition: transform 1s;
 }
 .service .list ul li a strong{
@@ -962,7 +963,7 @@ transform: rotate(-90edg);
                     margin: 0 0 42px 0; /* strong과 ul의 여백 */
                 }
                 .service .list ul{
-                    flex-direction: column;
+                    flex-direction: column;  /* li 아래로 정렬 */
                     gap: 8px 0;  /* li의 위아래 여백 */
                 }
 
@@ -991,46 +992,96 @@ transform: rotate(-90edg);
                         */
 
                 .service .list ul li{
-                    width: auto;
+                    width: auto;  /* 하나씩 쫙쫙 들어가야 하니까 auto로 알아서 들어가라고 준거임 */
                 }
                 .service .list ul li a{
-                    display: block;
-                    /* height: 96px; --들어가도 큰 차이 없음*/
-                    background-color: #CCE7FF;
-                    padding: 22px 0 22px 30px;  /* 글자의 내부 여백을 li한테 주면, a를 더 안으로 밀어넣게 됨-- 그래서 li말고 a한테 줘야 제대로 적용됨 / 오른쪽 여백은 줘도 되고 안줘도 됨*/
-                    position: relative; /* after 정렬의 기준 */
+                    padding: 22px 0 23px 30px;  /* 글자의 내부 여백을 li한테 주면, a를 더 안으로 밀어넣게 됨-- 그래서 li말고 a한테 줘야 제대로 적용됨 / 오른쪽 여백은 줘도 되고 안줘도 됨*/
                 }
                 .service .list ul li a::after{
-                    content: "";
-                    position: absolute;  /* a를 기준으로 정렬 */
-                    right: 30px;
-                    top: 33px;
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 50%;
-                    background: #0060BB url(../images/more_w.svg) no-repeat center center / 12px; 
-                    /* 색은 원의 색이고, 12px--> more가 여기저기서 쓰여서 사이즈가 달라서 주는 아이콘의 사이즈 */
-                    transition: transform 1s;
+                    right: 11px;  /* 디자인 상 원의 오른쪽 여백 */
+                    top: 35px;  /* 디자인 상 원의 위의 여백 */
+                    width: 26px;  /* 원의 넓이 */
+                    height: 26px;  /* 원의 높이 */
+                    background-size: 10px; /* 아이콘의 사이즈만 변경해주면 되니까 */
                 }
                 .service .list ul li a strong{
-                    font-size: 16px;
-                    font-weight: 700;
-                    color: #0060BB;
-                }
-                .service .list ul li a h3{
-                    font-weight: 800;
-                    margin: 2px 0 0 0;
-                }
-                .service .list ul li a:hover{
-                    background-color: #fff;
-                }
-                .service .list ul li a:hover::after{
-                    background-color: #0060BB;
-                    transform: rotate(360deg);
+                    font-size: 15px;
                 }
 }/*@media*/
 
 
+
 .footer{
-    margin: 1000px 0 0 0;
+    background-color: #f4f4f4;
+    padding: 78px 0;
 }
+.footer .wrapper{
+    position: relative;  /* top 정렬의 기준 */
+}
+.footer .top{
+    position: absolute; /* wrapper를 기준으로 정렬 */
+    right: -1px; 
+    top: -12px;
+    width: 38px; /* 원의 넓이 */
+    height: 38px; /* 원의 넓이 */
+    border-radius: 50%;
+    background: #0060BB url(../images/arrow_w.svg) no-repeat center center / 10px; /* 색은 원의 색이고 12px은 아이콘 넓이 */
+    transform: rotate(90deg);  /* 화살표 아이콘 회전 */
+}
+.footer .top:hover{
+    background-color: #3d3d3d;
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.footer .f_nav ul{
+    display: flex;  /* li 좌우배치 */
+    gap: 0 41px;  /* 만약 모바일에서 위아래 여백이 있으면 지금 미리 위아래 여백 줘도 됨 -pc에선 아무런 문제 없음(1줄이라서) */
+    flex-wrap: wrap;  /* 모바일을 위해 미리 주는 속성 - 여러줄 허용 -pc에선 아무런 문제 없음(1줄이라서) */
+}
+.footer .f_nav ul li{
+    position: relative;  /* after 정렬의 기준 */
+}
+.footer .f_nav ul li.imp{
+    font-weight: 800;
+}
+.footer .f_nav ul li::before{
+    content: "";
+    position: absolute;  /* li를 기준으로 정렬 */
+    left: 0;
+    bottom: 2px;
+    width: 0;
+    height: 1px;
+    background-color: rgba(61, 61, 61, 0.8);
+    transition: 0.3s;
+}
+.footer .f_nav ul li:hover::before{
+    width: 100%;
+}
+.footer .f_nav ul li::after{  /* before로 주면 두줄이 됐을 때 글자 뒤가 아니라 글자 앞으로 글자랑 선이 같이 다음줄로 떨어짐  */
+    content: "";
+    position: absolute;  /* li를 기준으로 정렬 */
+    right: -21px;  /* 좌우여백의 반만큼 준거임 */
+    top: 6px;  /* 선이 글자의 위로부터 얼만큼 떨어지는지 보고 준거임 */
+    width: 1px;
+    height: 14px;
+    background-color: rgba(61, 61, 61, 0.3);
+}
+.footer .f_nav ul li:last-child::after{
+    display: none;  /* 마지막 선 삭제 */
+}
+.footer .f_info{
+    margin: 24px 0;
+    display: flex;
+    gap: 0 22px;
+    flex-wrap: wrap; /* 모바일을 위해 미리 주는 속성 - 여러줄 허용 -pc에선 아무런 문제 없음(1줄이라서) */
+}
+@media screen and (max-width:768px){
+                .footer{
+                    padding: 48px 0;
+                }
+                .footer .top{
+                    top: -66px;
+                }
+                .footer .f_info{
+                    margin: 32px 0;
+                }
+}/*@media*/

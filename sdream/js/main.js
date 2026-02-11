@@ -52,7 +52,7 @@ $(document).ready(function(){
     header_fixed()
     $(window).scroll(function(){ //브라우저가 스크롤 될 때마다 실행
         header_fixed() 
-    })
+    })//.header
 
 
     /******************************************************
@@ -79,5 +79,16 @@ $(document).ready(function(){
             prevEl: '.webzin .ctrl_wrap .prev',
         },
     });//webzin_swiper
+
+    /***********************************************************
+     * top버튼을 클릭하면 상단으로(맨위로) 스크롤
+     ***********************************************************/ 
+    $('.footer .top').on('click', function(){
+        console.log('클릭')
+       //$(window).scrollTop(0)  //0211오전 11:30분 강의
+       $('html,body').animate({
+        scrollTop : 0
+       }, 500)
+    })//.footer .top
 
 })//$(document)
