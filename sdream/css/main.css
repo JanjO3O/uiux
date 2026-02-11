@@ -395,11 +395,12 @@ transform: rotate(-90edg);
     color: #000;
     border-radius: 50px;  /* 상자의 라운드 */
     padding: 7px 40px 7px 20px;  /* 더보기 글자의 내부 여백 */
+    position: relative;
 }
 .biz .list ul li a span::after{
     content: "";
-    position: absolute; /* txt를 기준으로 정렬 */
-    right: 233px;
+    position: absolute; /* span을 기준으로 정렬 */
+    right: 22px;
     bottom: 15px;
     width: 12px;  /* 아이콘의 넓이 */
     height: 12px;  /* 아이콘의 높이 */
