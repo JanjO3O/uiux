@@ -451,7 +451,18 @@ section h2 + .list{
 .font_icon .list .mypage:hover{
     color: var(--color-sub);
 }
-
+.font_icon .list .gnb_open{
+    width: clamp(5.6rem, 8.5vw, 8rem);
+    height: clamp(5.6rem, 8.5vw, 8rem);
+    color: var(--color-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(5rem, 7.5vw 7rem);
+}
+.font_icon .list .gnb_open span{
+    display: none;
+}
     
 body{
     margin: 0 0 500px 0;
