@@ -421,6 +421,192 @@
 
 
 
+.news{
+    background-color: #EEF7FF;
+    padding: 174px 0 116px 0;
+    margin-top: 116px;
+}
+.news .wrapper{
+    position: relative; /* more 정렬 기준 */
+}
+.news .tit strong{
+    font-weight: 700;
+    color: #0060BB;
+}
+.news .tit h2{
+    font-size: 45px;
+    font-weight: 800;
+    line-height: 1.3;
+    color: #1d1d1d;
+    margin-top: 12px;
+}
+.news .list{
+    margin-top: 23px;
+}
+.news .list ul li + li{
+    margin: 24px 0 0 0;
+}
+.news .list ul li a{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 30px 40px;
+}
+.news .list ul li a strong{
+    color: #fff;
+    border-radius: 13px;
+    background-color: #0A8845;
+    padding: 2px 16px;
+}
+.news .list ul li.sch a strong{
+    background-color: #0373DC;
+}
+.news .list ul li a h3{
+    font-size: 20px;
+    font-weight: 700;
+    color: #1d1d1d;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(100% - 339px);
+}
+.news .list ul li a h3 span{
+    position: relative;/* after 정렬 기준 */
+}
+.news .list ul li a h3 span::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: 0.5s;
+}
+.news .more{
+    position: absolute; /* wrapper를 기준으로 정렬 */
+    right: 0;
+    top: 51px;
+}
+.news .more a{
+    display: block;
+    border: 1px solid #3d3d3d;
+    border-radius: 50px;
+    padding: 8px 56px 8px 30px;
+    position: relative; /* after 정렬의 기준 */
+}
+.news .more a::after{
+    content: "";
+    position: absolute;  /* a를 기준으로 정렬 */
+    right: 30px;
+    top: 13px;
+    width: 14px;
+    height: 14px;
+    background: url(../images/sdream/more_black.svg) no-repeat center center / contain;
+    transition: transform 1s;
+}
+/****************  마우스 over시 ********************/
+.news .list ul li a:hover{
+    background-color: #0060BB;
+    color: rgba(255, 255, 255, 0.8);
+}
+.news .list ul li a:hover strong{
+    background-color: #fff;
+    color: #1d1d1d;
+    font-weight: 700;
+}
+.news .list ul li a:hover h3{
+    color: #fff;
+}
+.news .list ul li a:hover h3 span::after{
+    width: 100%;
+}
+.news .more a:hover{
+    background-color: #0060BB;
+    border-color: #0060BB;
+    color: #fff;
+}
+.news .more a:hover::after{
+    background-image: url(../images/sdream/more_w.svg);
+    transform: rotate(360deg);
+}
+@media screen and (max-width:768px){
+            .news{
+                padding: 125px 0 36px 0;
+                margin-top: 85px;
+            }
+            .news .tit h2{
+                font-size: 32px;
+                margin-top: 0;
+            }
+            .news .list{
+                margin-top: 42px;
+            }
+            .news .list ul li{
+                border-bottom: 1px solid #ccc;
+            }
+            .news .list ul li:first-child{
+                border-top: 1px solid #ccc;
+            }
+            .news .list ul li + li{
+                margin: 0;
+            }
+            .news .list ul li a{
+                background-color: transparent;
+                padding: 12px 0;
+            }
+            .news .list ul li a strong{
+                display: none;
+            }
+            .news .list ul li a h3{
+                font-size: 16px;
+                width: calc(100% - 110px);
+            }
+            .news .list ul li a h3 span::after{
+                display: none;
+            }
+            .news .more{
+                position: relative; /* absolute 해제 */
+                right: auto;
+                bottom: auto;
+                margin: 36px 0 0 0;
+                display: flex;
+                justify-content: center;
+            }
+            .news .more a{
+                padding: 6px 41px 6px 20px;
+                position: relative; /* after 정렬의 기준 */
+                background-color: #0060BB;
+                border-color: #0060BB;
+                color: #fff;
+            }
+            .news .more a::after{
+                right: 30px;
+                top: 13px;
+                width: 12px;
+                height: 12px;
+                background-image: url(../images/sdream/more_w.svg);
+            }
+            /****************  마우스 over시 ********************/
+            .news .list ul li a:hover{
+                background-color: transparent;
+                color: inherit;
+            }
+            .news .list ul li a:hover h3{
+                color: #1d1d1d;
+            }
+            .news .more:hover{
+                background-color: inherit;
+                color: inherit;
+            }
+            .news .more a:hover::after{
+                background-image: url(../images/sdream/more_black.svg);
+            }
+}/*@media*/
+
+
+
 .footer{
     margin: 1000px 0 0 0;
 }
