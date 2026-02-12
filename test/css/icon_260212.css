@@ -1,0 +1,210 @@
+@import url(default.css);
+@import url(pretendard.css);
+@import url(common_res.css);
+
+
+section h2{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-tit);
+    color: var(--color-tit);
+    line-height: var(--line-height-tit);
+    margin: 3em 0 0.3em 0;
+    /* em은 지금 요소의 글자크기를 1em으로 보고 계산 -- 현재의 글자크기 = 1em */
+}
+/* <h2></h2>
+   <p></p>  이렇게 코딩된 경우 (p태그 있는 경우)*/
+section h2 + p{
+    margin: 0 0 var(--font-size-tit) 0;
+}
+/* <h2></h2>
+   <list></list>  이렇게 코딩된 경우 (p태그 없는 경우) */
+section h2 + .list{
+    margin: var(--font-size-tit) 0 0 0;
+}
+.svg_bg .list{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 3.4rem;
+}
+.svg_bg .list .more{
+    display: block;
+    border: 1px solid var(--color-main);
+    color: var(--color-main);
+    font-size: clamp(1.6rem, 2.5vw, 3rem);  /* 글자크기만 rem 단위 사용 */
+    font-weight: var(--font-weight-tit);
+    /* 글자크기는 rem으로 주고, 여백등의 다른 단위는 em으로 줌
+       em = 현재 감싸는 요소의 글자크기를 1em으로 보는 단위 */
+    border-radius: 1.6667em;
+    padding: 0.7667em 3.3667em 0.7333em 2.1em; /* 위아래 -4px , 좌우 -2px */
+    position: relative;  /* after 정렬 기준 */
+}
+.svg_bg .list .more:hover{
+    color: var(--color-sub);
+    border-color: var(--color-sub);
+}
+.svg_bg .list .more::after{
+    content: "";
+    position: absolute;
+    right: 2em;
+    top: 1.1em;
+    width: 0.8em;  /* 아이콘 사이즈 */
+    height: 0.8em;
+    background: url(../images/icon_more.svg) no-repeat center center / contain;
+}
+.svg_bg .list .more:hover::after{
+    background-image: url(../images/icon_more_over.svg);
+}
+.svg_bg .list .lang{
+    color: var(--color-main);
+    font-size: clamp(1.6rem, 2.5vw, 3rem);  /* 글자크기만 rem 단위 사용 */
+    font-weight: var(--font-weight-tit);
+    padding: 0 0 0 1.0333em;  /* 아이콘이 들어갈 자리를 만들어주기 위해 준 내부 여백 */
+    position: relative; /* before 정렬 기준 */
+}
+.svg_bg .list .lang:hover{
+    color: var(--color-sub);
+}
+.svg_bg .list .lang::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;  /* 글자의 위아래 가운데 위치 */
+    transform: translateY(-50%); /* 글자의 위아래 가운데 위치 */
+    width: 0.7em;
+    height: 0.7em;
+    background: url(../images/icon_lang.svg) no-repeat center center / contain;
+}
+.svg_bg .list .lang:hover::before{
+    background-image: url(../images/icon_lang_over.svg);
+}
+.svg_bg .list .mypage{
+    color: var(--color-main);
+    font-size: clamp(1.6rem, 2vw, 2rem);
+    font-weight: var(--font-weight-tit);
+    padding: 2.4em 0 0 0;  /* 아이콘이 들어갈 여백 */
+    position: relative; /* before 정렬 기준 */
+}
+.svg_bg .list .mypage:hover{
+    color: var(--color-sub);
+}
+.svg_bg .list .mypage::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    top: 0;
+    width: 2.2em;  /* 아이콘 사이즈 */
+    height: 2.15em;
+    background: url(../images/icon_my.svg) no-repeat center center / contain;
+}
+.svg_bg .list .mypage:hover::before{
+    background-image: url(../images/icon_my_over.svg);
+}
+.svg_bg .list .gnb_open{
+    width: clamp(56px, 6.8vw, 78px);  /* 상자의 넓이 */
+    height: clamp(56px, 6.8vw, 78px); /* 상자의 높이 */
+    background: url(../images/icon_menu.svg) no-repeat center center / 64.1%;  /* 아이콘의 넓이와 높이가 다르면 넓이를 입력해줘야 함 */
+    /* 넓이 높이의 몇 % - 아이콘 사이즈가 */
+}
+.svg_bg .list .gnb_open:hover{
+    background-image: url(../images/icon_menu_over.svg);
+}
+.svg_bg .list .gnb_open span{
+    display: none;
+}
+
+
+
+.png_bg .list{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 3.4rem;
+}
+.png_bg .list .more{
+    display: block;
+    border: 1px solid var(--color-main);
+    color: var(--color-main);
+    font-size: clamp(1.6rem, 2.5vw, 3rem);  /* 글자크기만 rem 단위 사용 */
+    font-weight: var(--font-weight-tit);
+    /* 글자크기는 rem으로 주고, 여백등의 다른 단위는 em으로 줌
+       em = 현재 감싸는 요소의 글자크기를 1em으로 보는 단위 */
+    border-radius: 1.6667em;
+    padding: 0.7667em 3.3667em 0.7333em 2.1em; /* 위아래 -4px , 좌우 -2px */
+    position: relative;  /* after 정렬 기준 */
+}
+.png_bg .list .more:hover{
+    color: var(--color-sub);
+    border-color: var(--color-sub);
+}
+.png_bg .list .more::after{
+    content: "";
+    position: absolute;
+    right: 2em;
+    top: 1.1em;
+    width: 0.8em;  /* 아이콘 사이즈 */
+    height: 0.8em;
+    background: url(../images/icon_more.png) no-repeat center center / contain;
+}
+.png_bg .list .more:hover::after{
+    background-image: url(../images/icon_more_over.png);
+}
+.png_bg .list .lang{
+    color: var(--color-main);
+    font-size: clamp(1.6rem, 2.5vw, 3rem);  /* 글자크기만 rem 단위 사용 */
+    font-weight: var(--font-weight-tit);
+    padding: 0 0 0 1.0333em;  /* 아이콘이 들어갈 자리를 만들어주기 위해 준 내부 여백 */
+    position: relative; /* before 정렬 기준 */
+}
+.png_bg .list .lang:hover{
+    color: var(--color-sub);
+}
+.png_bg .list .lang::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;  /* 글자의 위아래 가운데 위치 */
+    transform: translateY(-50%); /* 글자의 위아래 가운데 위치 */
+    width: 0.7em;
+    height: 0.7em;
+    background: url(../images/icon_lang.png) no-repeat center center / contain;
+}
+.png_bg .list .lang:hover::before{
+    background-image: url(../images/icon_lang_over.png);
+}
+.png_bg .list .mypage{
+    color: var(--color-main);
+    font-size: clamp(1.6rem, 2vw, 2rem);
+    font-weight: var(--font-weight-tit);
+    padding: 2.4em 0 0 0;  /* 아이콘이 들어갈 여백 */
+    position: relative; /* before 정렬 기준 */
+}
+.png_bg .list .mypage:hover{
+    color: var(--color-sub);
+}
+.png_bg .list .mypage::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    top: 0;
+    width: 2.2em;  /* 아이콘 사이즈 */
+    height: 2.15em;
+    background: url(../images/icon_my.png) no-repeat center center / contain;
+}
+.png_bg .list .mypage:hover::before{
+    background-image: url(../images/icon_my_over.png);
+}
+.png_bg .list .gnb_open{
+    width: clamp(56px, 6.8vw, 78px);  /* 상자의 넓이 */
+    height: clamp(56px, 6.8vw, 78px); /* 상자의 높이 */
+    background: url(../images/icon_menu.png) no-repeat center center / 64.1%;  /* 아이콘의 넓이와 높이가 다르면 넓이를 입력해줘야 함 */
+    /* 넓이 높이의 몇 % - 아이콘 사이즈가 */
+}
+.png_bg .list .gnb_open:hover{
+    background-image: url(../images/icon_menu_over.png);
+}
+.png_bg .list .gnb_open span{
+    display: none;
+}

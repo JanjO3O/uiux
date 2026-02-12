@@ -1,0 +1,39 @@
+#wrap{
+    position: relative;
+}
+.wrapper{
+    width: 1260px;
+    margin: 0 auto;
+}
+html{
+    font-size: 10px;
+}
+body{
+    font-family: 'pretendard', sans-serif;
+    font-weight: var(--font-weight-default);
+    font-size: var(--font-size-default);
+    line-height: var(--line-height-default);
+    color: var(--color-default);
+}
+                   /*1260 + 50.4 + 50.4*/
+@media screen and (max-width:1361px){
+    .wrapper{
+        width: auto;
+        margin: 0 var(--wrapper-margin);  /* 4vw= 무조건 브라우저 사이즈를 기준으로 4% / %는 나를 감싸는 애를 기준으로 */
+    }
+}/*@media*/
+
+:root{  /* 가상클래스로 변수를 지정하여 css에서 var로 불러서 적용함-->유지보수에 용이 */
+    --wrapper-margin: 4vw;
+    --font-size-default: clamp(1.6rem, 2.2vw, 1.7rem);
+    --font-size-tit: clamp(2.8rem, 3.3vw, 4rem);  /* 가장 작은 글자 크기, 중간글자, 가장 큰 글자 */
+    --font-weight-default:400;
+    --font-weight-tit:700;
+    --color-default:#3d3d3d;
+    --color-tit:#1d1d1d;
+    --color-main:#1d1d1d;
+    --color-sub: #FE1111;
+    --line-height-tit: 1.3;
+    --line-height-default: 1.5;
+}
+
