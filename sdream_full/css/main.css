@@ -736,24 +736,9 @@ transform: rotate(-90edg);
                 .news .list ul li a h3{
                     font-size: 16px;
                     width: calc(100% - 110px);
-                    /* a에서 padding으로 좌우 여백이 있는 상태이기 때문에,, strong 상자 시작에서부터 h3가 떨어지는 여백 + span 상자 시작에서부터 h3가 떨어지는 여백 ---> 브라우저에서 px 조절해주기 꼭*/
-                    position: relative; /* after 정렬의 기준 */
                 }
                 .news .list ul li a:hover h3{
                     color: #1d1d1d;
-                }
-                .news .list ul li a h3::after{
-                    content: "";
-                    position: absolute;  /* h3를 기준으로 정렬 */
-                    left: 0;
-                    bottom: -1px;
-                    width: 0;
-                    height: 1px;
-                    border-bottom: rgba(255, 255, 255, 0.8);
-                    transition: 0.3s;
-                }
-                .news .list ul li a:hover h3::after{
-                    width: 100%;
                 }
                 .news .more{
                     position: relative;  /* absolute 해제 */

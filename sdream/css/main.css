@@ -655,35 +655,20 @@ transform: rotate(-90edg);
                 .news .list ul li a h3{
                     font-size: 16px;
                     width: calc(100% - 110px);
-                    position: relative; /* after 정렬의 기준 */
                 }
                 .news .list ul li a:hover h3{
                     color: #1d1d1d;
-                }
-                .news .list ul li a h3::after{
-                    content: "";
-                    position: absolute;  /* h3를 기준으로 정렬 */
-                    left: 0;
-                    bottom: -1px;
-                    width: 0;
-                    height: 1px;
-                    border-bottom: rgba(255, 255, 255, 0.8);
-                    transition: 0.3s;
-                }
-                .news .list ul li a:hover h3::after{
-                    width: 100%;
                 }
                 .news .more{
                     position: relative;  /* absolute 해제 */
                     right: auto;  /* 안준거처럼 해제 */
                     top: auto;  /* 안준거처럼 해제 */
                     margin: 36px 0 0  0;
-                    display: flex;
+                    display: flex;  /* a가 block이여도 flex, justify-content: center를 주면 more가 좌우 가운데 배치됨*/
                     justify-content: center;
                 }
                 .news .more a{  /* 눌러서 가야 하니까 a 를 불러오기 */
                     padding: 6px 41px 6px 20px; /* 글자의 내부 여백 */
-                    position: relative;  /* after 정렬의 기준 */
                     background-color: #0060BB;
                     border-color: #0060BB;
                     color: #fff;
