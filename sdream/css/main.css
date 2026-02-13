@@ -663,11 +663,14 @@ transform: rotate(-90edg);
                     position: relative;  /* absolute 해제 */
                     right: auto;  /* 안준거처럼 해제 */
                     top: auto;  /* 안준거처럼 해제 */
+                    /* html의 원래 코딩 순서처럼 아래로 배치한거임 */
                     margin: 36px 0 0  0;
-                    display: flex;  /* a가 block이여도 flex, justify-content: center를 주면 more가 좌우 가운데 배치됨*/
+                    display: flex;
+                    /* a가 block을 유지해도 more한테 flex, justify-content: center를 주면 more가 좌우 가운데 배치됨
+                       또는 a한테 inline-block 주고, more한테 text-align:center줘도 됨 */
                     justify-content: center;
                 }
-                .news .more a{  /* 눌러서 가야 하니까 a 를 불러오기 */
+                .news .more a{ 
                     padding: 6px 41px 6px 20px; /* 글자의 내부 여백 */
                     background-color: #0060BB;
                     border-color: #0060BB;
@@ -679,6 +682,9 @@ transform: rotate(-90edg);
                     width: 12px;
                     height: 12px;
                     background-image: url(../images/more_w.svg);
+                }
+                .news .more a:hover::after{
+                    transform: rotate(0);
                 }
 }/*@media*/
 
