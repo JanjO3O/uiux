@@ -710,7 +710,7 @@ transform: rotate(-90edg);
 .webzin .list{
     margin: 58px 0 0 0;
 }
-.webzin .list .swiper-slide a{
+.webzin .list .swiper-slide a{  /* list한테 주면 눌려야 하는 a한테 작게 들어갈 수도 있기 때문에 a한테 background-color 등의 요소를 직접 주는거임 */
     display: block;
     background-color: #fff;
     color: #3d3d3d;
@@ -727,6 +727,7 @@ transform: rotate(-90edg);
     height: 100%;
     object-fit: cover;
     transition: 0.3s;
+    /* vertical-align:center를 안주는 이유는 photo한테 높이가 들어갔고, 글자가 잘리면 안되는 경우가 아니기 때문 */
 }
 .webzin .list .swiper-slide a:hover .photo img{
     transform: scale3d(1.125, 1.125, 1);

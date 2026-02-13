@@ -172,4 +172,5 @@
     height: 100%;
     object-fit: cover;
     vertical-align: top;   /* => 얘를 줘야 사진이 비율에 맞게 나옴 */
+    /* vertical-align: top 은 photo에 높이를 주지 않고, 글자가 단 하나도 안짤릴 경우 주는 거임(책이 그런 경우임) */
 }
