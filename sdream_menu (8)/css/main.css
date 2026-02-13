@@ -11,7 +11,6 @@
     height: var(--header-height);
     color: #fff;
     fill: #fff;  /* => svg(아이콘) 색 */
-    border: 1px solid red;
 }
 .header .wrapper{
     display: flex;  /* logo-gnb-util 좌우배치 */
@@ -27,7 +26,22 @@
     background: url(../images/logo_W.svg) no-repeat center center / contain;  /* logo는 짤리면 안되니까 contain 주는거임 */
     margin-bottom: calc(var(--header-height) * 0.1);  /* logo의 위치가 디자인과 달라서 주는 여백 --> px 에서 배수로 전환해주기*/
 }
-@media screen and (min-width:1025px){ /* 브라우저 사이즈 1025 이상일 때만 적용 */
+/************* header에 fixed 클래스 추가 ****************/
+.header.fixed,
+.header.menu_over{
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    color: #3d3d3d;
+    fill: #1d1d1d;
+}
+.header.fixed .logo a,
+.header.menu_over .logo a{
+    background-image: url(../images/logo.svg);
+}
+/************* header에 fixed 클래스 추가 ****************/
+
+
+@media screen and (min-width:1025px){ /* (pc)1025 이상일 때만 적용 */
             .header .gnb .gnb_open,
             .header .gnb .gnb_wrap .gnb_logo,
             .header .gnb .gnb_wrap .gnb_close{
@@ -63,15 +77,66 @@
                 font-weight: 700;
                 line-height: 90px;  /* header의 높이 = 그만큼 위아래로 눌려야 하니까 */
             }
+            .header .gnb .gnb_wrap ul.depth1 > li > a span{
+                position: relative;  /* after 정렬의 기준 */
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > a:hover span{
+                color: #0373DC;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > a span::after{
+                content: "";
+                position: absolute;
+
+                /* 선이 가운데서부터 생기는 효과를 주기 위해 주는 값 */
+                left: 50%;
+                transform: translateX(-50%);
+                /* 선이 가운데서부터 생기는 효과를 주기 위해 주는 값 */
+
+                bottom: -34px;
+                z-index: 1;  /* 메뉴의 아래선에 깔려서 주는 거임 */
+                width: 0;
+                height: 3px;  /* 선의 두께 */
+                background-color: #0373DC;
+                transition: 0.3s;
+            }
+            .header.menu_over .gnb .gnb_wrap ul.depth1 > li.over > a span::after{
+                width: 100%;
+            }
             .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
                 position: absolute;  /* depth1 li를 기준으로 정렬 */
                 left: 0;
                 top: var(--header-height);
                 /* 1차메뉴 a 높이는 header의 높이와 같고 
                 2차메뉴 ul은 정확하게 header 높이만큼만 떨어져서 둘이 붙어있어야함
-                한치의 여백도 존재하면 안됨 -> 여백이 존재하면 메뉴가 아래로 내려가다 아웃됨 */
-                width: 100%;  /* 정렬의 기준=li넓이의 100% */
+                -----> 1차 메뉴를 기준으로 absolute한거기 때문에, header의 높이만큼 top값을 줘서 떨어트려놓는거임
+                한치의 여백도 존재하면 안됨 -> 여백이 존재하면 메뉴에서 아래로 내려가다 아웃됨 */
+                width: 100%;  /* 정렬의 기준 = 첫번째 메뉴의 li넓이만큼 들어가야 하니까--> 100% */
+                padding: 28px 0 0 0; /* 하위메뉴가 header의 아래 선으로부터 떨어지는 여백 */
                 display: none;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a{
+                display: block;
+                padding: 4px 0;  /* 2차 메뉴는 행간을 주면 안됨 --> padding으로 메뉴 사이 여백 해결하기 */
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a span{
+                position: relative;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a:hover span{
+                color: #0373DC;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a span::after{
+                content: "";
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -4px;
+                width: 0;
+                height: 1px;
+                background-color: #0373DC;
+                transition: 0.3s;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a:hover span::after{
+                width: 100%;
             }
             .header .util{
                 display: flex;  /* mypage-lang 좌우 배치 */
@@ -90,8 +155,158 @@
             .header .util .lang .lang_open{   html에 넓이높이를 지웠을 경우 
             width: 18px; /* svg는 이미지와 같아서 넓이만 주면, 높이는 비율에 맞게 들어감 
             }*/
+
+            .header .gnb_bg{
+                position: fixed;  /* header에 fixed가 있어서 똑같이 준거임 */
+                left: 0;
+                top: 0;
+                z-index: -2;
+                width: 100vw;  /* 브라우저 넓이를 기준 */
+                height: 100vh;  /* 브라우저 높이를 기준 */
+                background-color: rgba(0, 0, 0, 0.4);
+                backdrop-filter: blur(10px);
+                display: none;
+            }
+            /*********** 메뉴가 열렸을 때 ************/
+            .header::before{  /* 메뉴 오버했을 때 나오는 2차메뉴 배경색 */
+                content: "";
+                position: fixed;  /* header를 기준으로 정렬,, header에 fixed가 있어서 똑같이 준거임 */
+                left: 0;
+                top: 0;
+                z-index: -1;  /* header 안에 있는 것 중에 무조건 맨아래 -- 그래도 header에 준 색보다는 위에 존재함 */
+                width: 100vw; /* 브라우저 넓이를 기준 */
+                height: 336px;
+                background-color: #fff;
+                display: none;  /* 메뉴에 오버했을 때 보여야 하니까 숨김처리해놓고 */
+            }
+            .header::after{  /* header 아래 선 */
+                content: "";
+                position: absolute;
+                left: 0;
+                top: var(--header-height);
+                width: 100%;
+                height: 1px;
+                background-color: #ccc;
+                display: none;
+            }
+            /* 오버했을 때 보이게 함 */
+            .header.menu_over::before{
+                display: block;  
+            }
+            .header.menu_over::after{
+                display: block;
+            }
+            .header.menu_over .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
+                display: block;
+            }
+            .header.menu_over .gnb_bg{
+                display: block;
+            }
+            .header.menu_over .gnb .gnb_wrap ul.depth1 > li:hover > a{
+                color: #0373DC;
+            }
+
 }/*@media*/
 
+
+@media screen and (min-width:1025px) and (max-width:1200px){ /* (반응형-중간)1200 ~ 1025 사이 */
+            .header .gnb .gnb_wrap ul.depth1 > li{
+                width: 160px;  /* 넓이는 li한테 주는거임 */
+            }
+}/*@media*/
+
+
+@media screen and (max-width:1024px){ /* (모바일)1024이하일 때 */
+                .header .wrapper{
+                    margin-right: 0;  /* 메뉴를 오른쪽 끝에 붙이기 위해 */
+                }
+                .header .gnb .gnb_open,
+                .header .gnb .gnb_wrap .gnb_close{  /* 모바일에서만 보이는 메뉴 아이콘 */
+                    width: var(--header-height);
+                    height: var(--header-height);
+                    /* 아이콘이 가상의 상자에서 중앙에 위치해야 되기 때문에 */
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .header .gnb .gnb_open svg,
+                .header .gnb .gnb_wrap .gnb_close svg{
+                    width: calc(var(--header-height) * 0.357);  /* header의 높이에서 아이콘 넓이의 배수 */
+                    height: calc(var(--header-height) * 0.268); /* header의 높이에서 아이콘 높이의 배수 */
+                }
+                .header .gnb .gnb_wrap{
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    background-color: #fff;
+                    fill: #3d3d3d;  /* 2차메뉴 글자 색 */
+                    color: #1d1d1d;
+                    display: none;
+                }
+                .header.menu_open .gnb .gnb_wrap{
+                    display: block;
+                }
+                .header .gnb .gnb_wrap .gnb_logo{
+                    display: none; /* 시간없어서 숨김처리함 */
+                }
+                .header .gnb .gnb_wrap ul.depth1{
+                    margin: var(--header-height) 0 0 0;
+                    height: calc(100vh - var(--header-height));
+                    overflow-y: auto;
+                    /* 상단에 header만큼 남기고
+                       나머지 영역은 브라우저 높이에 딱 맞춰서
+                       메뉴가 더 길면, 스크롤바 생성 */
+                       padding: 14px 0 0 0;
+                }
+                .header .gnb .gnb_wrap ul.depth1 > li > a{
+                    display: block;
+                    padding: 15px 16px;
+                    font-size: 22px;
+                    font-weight: 700;
+                    color: #1d1d1d;
+                    position: relative; /* after 정렬의 기준 */
+                }
+                .header .gnb .gnb_wrap ul.depth1 > li.open > a{
+                    color: #0373DC;
+                }
+                .header .gnb .gnb_wrap ul.depth1 > li > a::after{  /* 모바일 1차메뉴 옆에 있는 화살표 아이콘 */
+                    content: "";
+                    position: absolute;
+                    right: 17px;
+                    top: 28px;
+                    width: 17px;
+                    height: 9px;
+                    background-image: url("data:image/svg+xml,%3Csvg width='17' height='9' viewBox='0 0 17 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.38444 7.10379L15.2179 0.270335C15.3981 0.0901115 15.6103 0.00226786 15.8545 0.00680368C16.0988 0.0114907 16.3111 0.103946 16.4913 0.28417C16.6716 0.464545 16.7617 0.676821 16.7617 0.921C16.7617 1.16518 16.6716 1.37746 16.4913 1.55783L9.54629 8.51671C9.38225 8.68075 9.19847 8.80231 8.99496 8.88139C8.79145 8.96046 8.58795 9 8.38444 9C8.18093 9 7.97742 8.96046 7.77391 8.88139C7.57041 8.80231 7.38663 8.68075 7.22258 8.51671L0.263483 1.55783C0.0832592 1.37746 -0.00450882 1.16284 0.000178207 0.913971C0.00486523 0.665105 0.0973202 0.45056 0.277544 0.270336C0.457768 0.0901122 0.670045 8.765e-07 0.914375 8.6582e-07C1.15855 8.55146e-07 1.37076 0.0901121 1.55098 0.270336L8.38444 7.10379Z' fill='%231C1B1F'/%3E%3C/svg%3E%0A");
+                }
+                .header .gnb .gnb_wrap ul.depth1 > li.open > a::after{
+                    transform: rotate(180deg);
+                    background-image: url("data:image/svg+xml,%3Csvg width='17' height='9' viewBox='0 0 17 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.38444 7.10379L15.2179 0.270335C15.3981 0.0901115 15.6103 0.00226786 15.8545 0.00680368C16.0988 0.0114907 16.3111 0.103946 16.4913 0.28417C16.6716 0.464545 16.7617 0.676821 16.7617 0.921C16.7617 1.16518 16.6716 1.37746 16.4913 1.55783L9.54629 8.51671C9.38225 8.68075 9.19847 8.80231 8.99496 8.88139C8.79145 8.96046 8.58795 9 8.38444 9C8.18093 9 7.97742 8.96046 7.77391 8.88139C7.57041 8.80231 7.38663 8.68075 7.22258 8.51671L0.263483 1.55783C0.0832592 1.37746 -0.00450882 1.16284 0.000178207 0.913971C0.00486523 0.665105 0.0973202 0.45056 0.277544 0.270336C0.457768 0.0901122 0.670045 8.765e-07 0.914375 8.6582e-07C1.15855 8.55146e-07 1.37076 0.0901121 1.55098 0.270336L8.38444 7.10379Z' fill='%230373DC'/%3E%3C/svg%3E%0A");
+                }
+                .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
+                    margin: 0 16px;  /* 2차 메뉴의 배경의 좌우 여백 */
+                    padding: 23px 26px;  /* 2차 메뉴 글자의 내부 여백 */
+                    background-color: #f4f4f4;
+                    display: none;
+                }
+                .header .gnb .gnb_wrap ul.depth1 > li.open > ul.depth2{
+                    display: block;
+                }
+                .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a{
+                    display: block;
+                    padding: 2px 0;  /* 2차 메뉴 글자의 행간을 padding으로 줌 */
+                }
+                .header .gnb .gnb_wrap .gnb_close{
+                    position: absolute;  /* gnb_wrap을 기준으로 정렬 */
+                    right: 0;
+                    top: 0;
+                }
+                .header .util,
+                .header .gnb_bg{
+                    display: none; /* 모바일 숨김 */
+                }
+}/*@media*/
 
 
 .visual{
