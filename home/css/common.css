@@ -16,7 +16,7 @@ body{
     margin: 0 auto; /* 화면에 가운데 정렬 */
 }
 #wrap{
-    /* 1260+30+30 = 1320 */
+    /* 1260+30+30 = 1320 -- 네이버의 좌우여백을 준거임 */ 
     min-width: 1320px;
     position: relative;/* header 정렬의 기준 */
 }
@@ -26,7 +26,7 @@ body{
                 }
                 .wrapper{
                     width: auto;
-                    margin: 0 16px;
+                    margin: 0 16px;  /* 사이트 비교해서 제일 많이 나온 좌우여백 값을 준거임 */
                 }
                 #wrap{
                     min-width: 0;
