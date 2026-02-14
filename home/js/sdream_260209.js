@@ -50,21 +50,21 @@ $(document).ready(function(){
 
 
     // 웹진 START
-    // const webzine_swiper = new Swiper('.webzine .swiper', { /* 팝업을 감싼는 요소의 class명 */
-    //     slidesPerView: 'auto', /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
-    //     spaceBetween: 16, /* 팝업과 팝업 사이 여백 */
-    //     breakpoints: {
-    //         768: {    /* 768px 이상일때 적용 */
-    //             slidesPerView: 3,    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
-    //             spaceBetween: 24,
-    //         },
-    //     },
-    //     loop: false,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 해제 */
-    //     navigation: {
-    //         nextEl: '.webzine .ctrl_wrap .next',
-    //         prevEl: '.webzine .ctrl_wrap .prev',
-    //     },
-    // });
+    const webzin_swiper = new Swiper('.webzin .swiper', { /* 팝업을 감싼는 요소의 class명 */
+        slidesPerView: '2', /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+        spaceBetween: 12, /* 팝업과 팝업 사이 여백 */
+        breakpoints: {
+            768: {    /* 768px 이상일때 적용 */
+                slidesPerView: 3,    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 24,
+            },
+        },
+        loop: false,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 해제 */
+        navigation: {
+            nextEl: '.webzin .ctrl_wrap .next',
+            prevEl: '.webzin .ctrl_wrap .prev',
+        },
+    });
 
 
 

@@ -710,12 +710,15 @@ transform: rotate(-90edg);
 .webzin .list{
     margin: 58px 0 0 0;
 }
-.webzin .list .swiper-slide a{  /* list한테 주면 눌려야 하는 a한테 작게 들어갈 수도 있기 때문에 a한테 background-color 등의 요소를 직접 주는거임 */
+.webzin .list .swiper-slide a{  /* li한테 주면 눌려야 하는 a한테 작게 들어갈 수도 있기 때문에 a한테 background-color 등의 요소를 직접 주는거임 */
     display: block;
     background-color: #fff;
     color: #3d3d3d;
     box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1);
     border-radius: 30px;
+}
+.webzin .list .swiper-slide a:hover{
+    background-color: #CCE7FF;
 }
 .webzin .list .swiper-slide a .photo{
     overflow: hidden;
@@ -778,26 +781,40 @@ transform: rotate(-90edg);
     gap: 0 6px;  /* 버튼 사이의 가장 적은 여백  */
 }
 .webzin .ctrl_wrap button{
-    width: 40px;  
+    width: 40px;
     height: 40px;
     border: 1px solid #fff;
     border-radius: 50%;
     background: url(../images/arrow_w.svg) no-repeat center center;  /* 넓이랑 높이가 아이콘의 넓이가 아니라 동그라미의 넓이,높이이기 때문에 아이콘의 사이즈=contain을 안줌 */
-    transition: 0.3s;
+    transition: 0.3s;  /* 색이 바뀌는 속도 */
+}
+.webzin .ctrl_wrap button:hover:not(.swiper-button-disabled){  /* disabled이 되면 over 속성 적용 X */
+    background-color: #CCE7FF;
+    border-color: #CCE7FF;
+    background-image: url(../images/arrow_black.svg);
 }
 .webzin .ctrl_wrap button.next{
     transform: rotate(180deg);  /* 저장한 아이콘을 반대로 회전시켜줘야 하기 때문에 */
 }
-.webzin .ctrl_wrap .more{
+.webzin .ctrl_wrap button.swiper-button-disabled{  /* 브라우저 가서 버튼을 눌러서 나오는 disabled 클래스명 복사해서 수정한 뒤, opacity를 낮춰줘야 함 */
+    opacity: 0.4;
+    cursor: default;  /* 마우스 모양 기본으로 해줌 */
+}
+.webzin .ctrl_wrap .more{  /* more와 button끼리의 여백이라서 more한테 주는거임 */
     margin: 0 0 0 5px;   /* 디자인에서 더보기의 여백만 10px이라서 gap에서 준 5px을 제외한 나머지 5px을 more의 margin으로 더 준다 */
 }
 .webzin .ctrl_wrap .more a{
     display: block;
-    height: 40px;  /* 원의 높이 */
+    height: 40px;  /* ->높이를 따로 지정해서 주는 이유는 옆에 있는 btn태그랑 높이를 똑같이 줘야 함- 디자인을 그렇게 했으니까. 원의 높이 */
     border: 1px solid #fff;
     border-radius: 30px;
     padding: 7px 52px 0 31px;  /* 아래 여백은 높이가 있어서 안줌 */
     position: relative; /* after 정렬의 기준 */
+}
+.webzin .ctrl_wrap .more a:hover{
+    background-color: #CCE7FF;
+    border-color: #CCE7FF;
+    color: #3d3d3d;
 }
 .webzin .ctrl_wrap .more a::after{
     position: absolute;  /* a를 기준으로 정렬 */
@@ -809,29 +826,10 @@ transform: rotate(-90edg);
     background: url(../images/more_w.svg) no-repeat center center / contain;
     transition: transform 1s;  /* 마우스 over시 더보기 아이콘의 회전하는 효과에만 1s의 시간을 줌 */
 }
-/******************* 마우스 오버 시 ************************/
-.webzin .ctrl_wrap button.swiper-button-disabled{  /* 브라우저 가서 버튼을 눌러서 나오는 disabled 클래스명 복사해서 수정한 뒤, opacity를 낮춰줘야 함 */
-    opacity: 0.4;
-    cursor: default;  /* 마우스 모양 기본으로 해줌 */
-}
-.webzin .ctrl_wrap button:hover:not(.swiper-button-disabled){  /* disabled이 되면 over 속성 적용 X */
-    background-color: #CCE7FF;
-    border-color: #CCE7FF;
-    background-image: url(../images/arrow_black.svg);
-}
-.webzin .ctrl_wrap button.next:hover{
-    transform: rotate(180deg);
-}
-.webzin .ctrl_wrap .more a:hover{
-    background-color: #CCE7FF;
-    color: #3d3d3d;
-    border-color: #CCE7FF;
-}
 .webzin .ctrl_wrap .more a:hover::after{
     background-image: url(../images/more_black.svg);
     transform: rotate(360deg);
 }
-/******************* 마우스 오버 시 ************************/
 @media screen and (max-width:768px){
                 .webzin{
                     padding: 125px 0 36px 0;
@@ -849,6 +847,9 @@ transform: rotate(-90edg);
                 .webzin .list .swiper-slide a{
                     border-radius: 15px;
                 }
+                .webzin .list .swiper-slide a:hover{
+                background-color: #fff;
+                }
                 .webzin .list .swiper-slide a .photo{
                     border-radius: 15px 15px 0 0;
                     height: 188px;
@@ -862,16 +863,16 @@ transform: rotate(-90edg);
                 }
                 .webzin .ctrl_wrap{
                     position: relative;  /* absolute 해제 -- 모바일에선 하단에 들어가니까 */
-                    right: auto;
+                    right: auto;  /* 위치값이 안들어간거처럼 해제하는게 = auto */
                     top: auto;
-                    justify-content: center;
+                    justify-content: center;  /* pc에 있는 display:flex 속성을 유지한채, 더보기 버튼을 화면의 가운데로 위치시키기 위해 줌 */
                     margin: 35px 0 0 0;
                 }
                 .webzin .ctrl_wrap button{
                     display: none;
                 }
                 .webzin .ctrl_wrap .more{
-                    margin: 0 0 0 5px;   /* 디자인에서 더보기의 여백만 10px이라서 gap에서 준 5px을 제외한 나머지 5px을 more의 margin으로 더 준다 */
+                    margin: 0;
                 }
                 .webzin .ctrl_wrap .more a{
                     height: 36px;  /* 원의 높이 */
@@ -880,12 +881,21 @@ transform: rotate(-90edg);
                     background-color: #fff;
                     color: #1d1d1d;
                 }
+                .webzin .ctrl_wrap .more a:hover{
+                border-color: #fff;
+                background-color: #fff;
+                color: #1d1d1d;
+                }
                 .webzin .ctrl_wrap .more a::after{
-                    right: 22px;
-                    top: 12px;
-                    width: 12px;  /* 아이콘 넓이 */
-                    height: 12px; /* 아이콘 높이 */
-                    background-image: url(../images/more_black.svg);
+                right: 22px;
+                top: 12px;
+                width: 12px;  /* 아이콘 넓이 */
+                height: 12px; /* 아이콘 높이 */
+                background-image: url(../images/more_black.svg);
+                transition: none;
+                }
+                .webzin .ctrl_wrap .more a:hover::after{
+                transform: rotate(0);
                 }
 }/*@media*/
 
