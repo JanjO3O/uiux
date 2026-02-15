@@ -1,0 +1,225 @@
+@import url(daejeon.fonts.css);
+@import url(daejeon.commom.css);
+@import url(daejeon.default.css);
+
+.news .wrapper{
+    position: relative; /* more 정렬의 기준 */
+}
+.news .tit{
+    margin-top: 171px;
+}
+.news .tit strong{
+    color: #004EA2;
+}
+.news .tit h2{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #1d1d1d;
+    margin: 13px 0 46px 0;
+}
+.news .list ul{
+    display: flex;
+    justify-content: space-between;
+}
+.news .list ul li{
+    width: 404px;
+}
+.news .list ul li a .photo{
+    display: block;
+    height: 250px;
+    overflow: hidden;
+}
+.news .list ul li a .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.news .list ul li a .txt h3{
+    font-size: 22px;
+    font-weight: 700;
+    color: #1d1d1d;
+    margin: 14px 0 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.news .more{
+    position: absolute; /* wrapper를 기준으로 정렬 */
+    right: 0;
+    top: 77px;
+    color: #004EA2;
+}
+.news .more a{
+    position: relative; /* after 정렬의 기준 */
+    padding: 0 19px 0 0;
+}
+.news .more a::after{
+    content: "";
+    position: absolute; /* a를 기준으로 정렬 */
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    background: url(../images/more_blue.svg) no-repeat center center / contain;
+}
+@media screen and (max-width:768px){
+            .news .tit{
+                margin-top: 97px;
+            }
+            .news .tit h2{
+                font-size: 24px;
+                margin: 8px 0 46px 0;
+            }
+            .news .list ul{
+                flex-direction: column;
+            }
+            .news .list ul li{
+                border-top: 1px solid #EDEDED;
+                width: 100%;
+                padding: 17px 0;
+            }
+            .news .list ul li:last-child{
+                border-bottom: 1px solid #EDEDED;
+            }
+            .news .list ul li a .photo{
+                display: none;
+            }
+            .news .list ul li a .txt h3{
+                font-size: 18px;
+                font-weight: 400;
+                margin: 0;
+            }
+            .news .list ul li a .txt p{
+                display: none;
+            }
+            .news .more{
+                display: flex;
+                justify-content: center;
+                position: relative;
+                right: auto;
+                top: auto;
+                margin-top: 30px;
+            }
+            .news .more a{
+                display: block;
+                border: 1px solid #004EA2;
+                border-radius: 30px;
+                padding: 4px 38px 5px 22px;
+            }
+            .news .more a::after{
+                right: 18px;
+                top: 15px;
+            }
+}/*@media*/
+
+
+.service{
+    background: url(../images/service_bg.jpg) no-repeat center center / cover;
+    color: #fff;
+    margin-top: 96px;
+    padding: 154px 0 133px 0;
+}
+.service .wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.service .tit h2{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 13px;
+}
+.service .list{
+    width: 700px;
+}
+.service .list ul{
+    display: flex;
+    gap: 20px 20px;
+    flex-wrap: wrap;
+}
+.service .list ul li{
+    width: calc(25% - 15px);
+    /* 
+       (100% / 4개) - {(20*3) / 4} = 25% - 15px
+       list에 넓이를 먼저 제한해준 뒤, 각각의 li의 넓이를 주기 위해 계산식으로 넓이 지정
+    */
+}
+.service .list ul li a{
+    display: block;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+    padding: 87px 0 0 0; /* 아래는 높이가 있어서 안줘도 됨 */
+    position: relative; /* before 정렬의 기준 */
+}
+.service .list ul li a::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 40px;
+    width: 100%;
+    height: 45px;
+    background: url(../images/service_01.svg) no-repeat center center;
+}
+.service .list ul li.service_02 a::before{
+    background-image: url(../images/service_02.svg);
+}
+.service .list ul li.service_03 a::before{
+    background-image: url(../images/service_03.svg);
+}
+.service .list ul li.service_04 a::before{
+    background-image: url(../images/service_04.svg);
+}
+.service .list ul li.service_05 a::before{
+    background-image: url(../images/service_05.svg);
+}
+.service .list ul li.service_06 a::before{
+    background-image: url(../images/service_06.svg);
+}
+.service .list ul li.service_07 a::before{
+    background-image: url(../images/service_07.svg);
+}
+.service .list ul li.service_08 a::before{
+    background-image: url(../images/service_08.svg);
+}
+@media screen and (max-width:768px){
+            .service{
+            margin-top: 77px;
+            padding: 102px 0;
+            }
+            .service .wrapper{
+            flex-direction: column;
+            }
+            .service .tit{
+                margin-bottom: 44px;
+            }
+            .service .tit h2{
+                font-size: 24px;
+                margin-top: 8px;
+            }
+            .service .list{
+                width: 100%; /* wrapper의 영역 안에서 여백 없이 꽉 차게 들어가기 때문 */
+            }
+            .service .list ul{
+                gap: 16px 16px;
+                flex-wrap: wrap;
+            }
+            .service .list ul li{
+                width: calc(50% - 8px);
+                /* 
+                (100% / 2개) - {(16*1) / 2} = 50% - 8px
+                list에 넓이를 먼저 제한해준 뒤, list의 넓이 100%에서 각각의 li의 넓이를 주기 위해 계산식으로 주는거임
+                */
+            }
+            .service .list ul li a{
+                height: 145px;
+            }
+}/*@media*/
+
+
+body{
+    margin: 0 0 150px 0;
+}

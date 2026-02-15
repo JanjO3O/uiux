@@ -1,0 +1,38 @@
+body{
+    font-family: "Pretendard", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    color: #2d2d2d;
+    line-height: 1.5;
+    word-break: keep-all;
+}
+.wrapper{
+    width: 1260px;
+    margin: 0 auto;
+}
+#wrap{
+    min-width: 1320px;
+}
+.sr-only, .skip, .blind {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+@media screen and (max-width:768px){/* 브라우저 넓이가 768이하일때 (768부터~) */
+                body{
+                    font-size: 16px;
+                }
+                .wrapper{
+                    width: auto;
+                    margin: 0 16px;  /* 사이트 비교해서 제일 많이 나온 좌우여백 값을 준거임 */
+                }
+                #wrap{
+                    min-width: 0;
+                }
+} /*@media*/
