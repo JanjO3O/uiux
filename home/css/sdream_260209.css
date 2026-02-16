@@ -739,9 +739,17 @@
             .webzin .list{
                 margin: 42px 0 0 0;
             }
-            .webzin .list .swiper-slide{
+            /*  1 방법은 넓이를 지정하지 않고 js로만 조절함 */
+
+            /*  2 방법 */
+            /* .webzin .list .swiper-slide{
                 width: 250px; 
-            }
+            } */
+
+            /* - 3 방법 - */
+            /* .webzin .list .swiper-slide{
+                width: 88%; 
+            } */
             .webzin .list .swiper-slide a{
                 border-radius: 15px;
             }
@@ -798,6 +806,210 @@
 }/*@media*/
 
 
-.footer{
-    margin: 1000px 0 0 0;
+
+.service{
+    background-color: #EEF7FF;
+    padding: 174px 0 116px 0;
 }
+.service .tit strong{
+    font-weight: 700;
+    color: #0060BB;
+}
+.service .tit h2{
+    font-size: 45px;
+    font-weight: 800;
+    line-height: 1.3;
+    color: #1d1d1d;
+    margin-top: 12px;
+}
+.service .tit h2 br{
+    display: none;
+}
+.service .list{
+    margin-top: 58px;
+}
+.service .list ul{
+    display: flex;
+    justify-content: space-between;
+}
+.service .list ul li{
+    width: calc(33.33% - 16px);
+}
+.service .list ul li a{
+    display: block;
+    height: 96px;
+    background-color: #CCE7FF;
+    padding: 22px 30px 0 30px; /* 높이를 줘서 아래여백은 주든 안주든 똑같아서 안주는게 나음 */
+    position: relative; /* after 정렬의 기준 */
+}
+.service .list ul li a:hover{
+    background-color: #014C93;
+}
+.service .list ul li a::after{
+    content: "";
+    position: absolute;
+    right: 30px;
+    top: 33px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #0060BB url(../images/sdream/more_w.svg) no-repeat center center / 12px;
+    transition: transform 1s;
+}
+.service .list ul li a:hover::after{
+    background-color: #fff;
+    background-image: url(../images/sdream/more_black.svg);
+    transform: rotate(360deg);
+}
+.service .list ul li a strong{
+    font-weight: 700;
+    color: #0060BB;
+}
+.service .list ul li a:hover strong{
+    color: #fff;
+}
+.service .list ul li a h3{
+    font-weight: 800;
+    color: #3d3d3d;
+    margin: 2px 0 0 0;
+}
+.service .list ul li a:hover h3{
+    color: #fff;
+}
+@media screen and (max-width:768px){
+            .service{
+                padding: 125px 0 84px 0;
+            }
+            .service .tit h2{
+                font-size: 32px;
+                margin-top: 0;
+            }
+            .service .tit h2 br{
+                display: block;
+            }
+            .service .list{
+                margin-top: 42px;
+            }
+            .service .list ul{
+                flex-direction: column;
+                gap: 8px 0;
+            }
+            .service .list ul li{
+                width: auto;
+            }
+            .service .list ul li a{
+                padding: 23px 11px 0 30px;
+            }
+            .service .list ul li a:hover{
+            background-color: #CCE7FF;
+            }
+            .service .list ul li a::after{
+                right: 11px;
+                top: 35px;
+                width: 26px;
+                height: 26px;
+                background-size: 10px;
+            }
+            .service .list ul li a:hover::after{
+            background-color: #0060BB;
+            background-image: url(../images/sdream/more_w.svg);
+            transform: rotate(0);
+            }
+            .service .list ul li a strong{
+                font-size: 15px;
+            }
+            .service .list ul li a:hover strong{
+            color: #0060BB;
+            }
+            .service .list ul li a h3{
+                font-size: 16px;
+                margin-top: 0;
+            }
+            .service .list ul li a:hover h3{
+            color: #3d3d3d;
+            }
+}/*@media*/
+
+
+.footer{
+    background-color: #f4f4f4;
+    padding: 78px 0;
+}
+.footer .wrapper{
+    position: relative; /* top 정렬의 기준 */
+}
+.footer .top{
+    position: absolute;
+    right: -1px;
+    top: -13px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #0060BB url(../images/sdream/arrow_w.svg) no-repeat center center / 10px;
+    transform: rotate(90deg);
+}
+.footer .top:hover{
+    background-color: #3d3d3d;
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.footer .f_nav ul{
+    display: flex;
+    gap: 0 43px;
+    flex-wrap: wrap;
+}
+.footer .f_nav ul li{
+    position: relative; /* before 정렬의 기준 */
+}
+.footer .f_nav ul li::before{
+    content: ""; /* li를 기준으로 정렬 */
+    position: absolute;
+    left: -21px;
+    top: 5px;
+    width: 1px;
+    height: 14px;
+    background-color: rgba(61, 61, 61, 0.3);
+}
+.footer .f_nav ul li:first-child::before{
+    display: none;
+}
+.footer .f_nav ul li.imp{
+    font-weight: 800;
+}
+.footer .f_nav ul li a{
+    position: relative; /* after 정렬의 기준 */
+}
+.footer .f_nav ul li a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 1px;
+    background-color: rgba(61, 61, 61, 0.8);
+    transition: 0.3s;
+}
+.footer .f_nav ul li a:hover::after{
+    width: 100%;
+}
+.footer .f_info{
+    display: flex;
+    gap: 0 22px;
+    flex-wrap: wrap;
+    margin: 24px 0;
+}
+@media screen and (max-width:768px){
+            .footer{
+                padding: 48px 0;
+            }
+            .footer .top{
+                right: 0;
+                top: -66px;
+            }
+            .footer .f_nav ul{
+                gap: 0 41px;
+            }
+            .footer .f_info{
+                gap: 0 21px;
+                margin: 32px 0;
+            }
+}/*@media*/

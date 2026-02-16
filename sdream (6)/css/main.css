@@ -938,13 +938,16 @@ transform: rotate(-90edg);
 .service .list ul li a::after{
     content: "";
     position: absolute;  /* a를 기준으로 정렬 */
-    right: 30px;
+    right: 30px; /* 디자인 상 원의 오른쪽 여백 */
     top: 33px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
     background: #0060BB url(../images/more_w.svg) no-repeat center center / 12px; 
-    /* 색은 원의 색이고, 12px--> 아이콘이 여기저기서 쓰여서 사이즈가 달라서 주는 아이콘의 넓이 */
+    /* bg색을 여기서 줘야 적용되고 bg-color로 따로 주면 적용이 안됨
+       contain,cover를 주면 위에서 준 넓이,높이에 아이콘이 꽉 차게 들어감->아이콘 사이즈를 지정안했으니까
+       12px -> 해당 아이콘 사이즈를 따로 저장하지 않고 여기저기서 쓰인 more의 아이콘이기 때문에 사이즈가 달라서 주는 아이콘의 넓이
+       근데 만약 해당 사이즈의 아이콘을 저장했다면, 아이콘의 넓이를 주지 않아도 되고, 그냥 url만 불러오면 됨 */
     transition: transform 1s;
 }
 .service .list ul li a strong{
@@ -985,7 +988,7 @@ transform: rotate(-90edg);
                             =33.33% 10.66px
                         }
                         .service .list ul li a{
-                            padding: 22px 0 51px 0
+                            padding: 22px 0 51px 0 
                             height: 100%;  -->높이를 줘야 글자가 2줄이든 1줄이든 상자의 높이가 동일해짐
                             text-align:center; 
                         }
@@ -993,8 +996,9 @@ transform: rotate(-90edg);
                             display: block;
                         }
                         .service .list ul li a::after{
-                            right: calc(50% - 10.5px);  ---> 50% - 넓이의 절반 : 가운데 정렬
+                            right: calc(50% - 10.5px);  ---> 50% - width의 절반 => 가운데 정렬
                             top: auto;  ---> top 취소 bottom 정렬
+                            buttom: 13px;
                             width: 21px;
                             height: 21px;
                             background-size: 8px;
@@ -1030,11 +1034,11 @@ transform: rotate(-90edg);
 .footer .top{
     position: absolute; /* wrapper를 기준으로 정렬 */
     right: -1px; 
-    top: -12px;
+    top: -13px;
     width: 38px; /* 원의 넓이 */
     height: 38px; /* 원의 넓이 */
     border-radius: 50%;
-    background: #0060BB url(../images/arrow_w.svg) no-repeat center center / 10px; /* 색은 원의 색이고 12px은 아이콘 넓이 */
+    background: #0060BB url(../images/arrow_w.svg) no-repeat center center / 10px; /* 색은 원의 색이고 10px은 아이콘 넓이 */
     transform: rotate(90deg);  /* 화살표 아이콘 회전 */
 }
 .footer .top:hover{
@@ -1047,35 +1051,38 @@ transform: rotate(-90edg);
     flex-wrap: wrap;  /* 모바일을 위해 미리 주는 속성 - 여러줄 허용 -pc에선 아무런 문제 없음(1줄이라서) */
 }
 .footer .f_nav ul li{
-    position: relative;  /* after 정렬의 기준 */
+    position: relative;  /* before 정렬의 기준 */
+}
+.footer .f_nav ul li::before{  /* 글자 뒤에 오는 중간 선 */
+    content: ""; /* li를 기준으로 정렬 */
+    position: absolute;
+    left: -21px;
+    top: 5px;
+    width: 1px;
+    height: 14px;
+    background-color: rgba(61, 61, 61, 0.3);
+}
+.footer .f_nav ul li:first-child::before{
+    display: none;  /* 첫 번째 앞에 오는 중간선 삭제 */
 }
 .footer .f_nav ul li.imp{
     font-weight: 800;
 }
-.footer .f_nav ul li::before{
-    content: "";
-    position: absolute;  /* li를 기준으로 정렬 */
+.footer .f_nav ul li a{
+    position: relative; /* after 정렬의 기준 */
+}
+.footer .f_nav ul li a::after{
+    content: ""; /* a를 기준으로 정렬 */
+    position: absolute;
     left: 0;
-    bottom: 2px;
+    bottom: -3px;
     width: 0;
     height: 1px;
     background-color: rgba(61, 61, 61, 0.8);
     transition: 0.3s;
 }
-.footer .f_nav ul li:hover::before{
+.footer .f_nav ul li a:hover::after{
     width: 100%;
-}
-.footer .f_nav ul li::after{  /* before로 주면 두줄이 됐을 때 글자 뒤가 아니라 글자 앞으로 글자랑 선이 같이 다음줄로 떨어짐  */
-    content: "";
-    position: absolute;  /* li를 기준으로 정렬 */
-    right: -21px;  /* 좌우여백의 반만큼 준거임 */
-    top: 6px;  /* 선이 글자의 위로부터 얼만큼 떨어지는지 보고 준거임 */
-    width: 1px;
-    height: 14px;
-    background-color: rgba(61, 61, 61, 0.3);
-}
-.footer .f_nav ul li:last-child::after{
-    display: none;  /* 마지막 선 삭제 */
 }
 .footer .f_info{
     margin: 24px 0;
@@ -1088,9 +1095,14 @@ transform: rotate(-90edg);
                     padding: 48px 0;
                 }
                 .footer .top{
+                    right: 0;
                     top: -66px;
                 }
+                .footer .f_nav ul{
+                    gap: 0 41px;
+                }
                 .footer .f_info{
+                    gap: 0 21px;
                     margin: 32px 0;
                 }
 }/*@media*/
