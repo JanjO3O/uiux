@@ -108,19 +108,22 @@
     gap: 0 12px;
 }
 .recruit .list ul li{
-    width: 233px;
+    flex: 1 1 0%;
     background-color: #fff;
+    color: #3d3d3d;
+    transition: 0.3s;
+    overflow: hidden;
 }
 .recruit .list ul li.active{
-    width: 511px;
+    flex: 2 1 0%;
+    margin-right: 14px;
     background: url(../images/recruit_img.jpg) no-repeat center center / cover;
     color: #fff;
 }
 .recruit .list ul li a{
     display: block;
     height: 316px;
-}
-.recruit .list ul li.active a{
+    padding: 51px 0 0 40px;
     position: relative; /* before,txt 정렬의 기준 */
 }
 .recruit .list ul li.active a::before{
@@ -142,10 +145,16 @@
     left: 40px;
     top: 51px;
 }
+.recruit .list ul li a .txt h3{
+    font-size: 25px;
+    font-weight: 700;
+    color: #3d3d3d;
+    line-height: 1.3;
+    margin-bottom: 29px;
+}
 .recruit .list ul li.active a h3{
     font-size: 32px;
-    font-weight: 700;
-    line-height: 1.3;
+    color: #fff;
     margin-bottom: 19px;
 }
 .recruit .list ul li a span{
