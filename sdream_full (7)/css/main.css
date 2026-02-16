@@ -108,17 +108,17 @@
                     margin-right: 0;  /* 메뉴가 오른쪽 여백 없이 눌릴 것이기 때문에 */
                 }
                 .header .logo{
-                    margin: 15px 0 0 0;  /* 브라우저에서 조정 */
+                    margin: 17px 0 0 0;  /* 브라우저에서 조정 */
                 }
                 .header .logo a{
-                    width: 68px; /* 브라우저에서 조정 */
-                    height: 35px; /* 브라우저에서 조정 */
+                    width: 85px; /* 브라우저에서 조정 */
+                    height: 30px; /* 브라우저에서 조정 */
                 }
                 .header .gnb .gnb_open{
                     display: block; /* 모바일에선 보임 */
                     width: 72px;  /* 바뀐 heder의 높이만큼 => 메뉴가 그만큼 눌려야 하기 때문에 */
                     height: 72px; /* 바뀐 heder의 높이만큼 => 메뉴가 그만큼 눌려야 하기 때문에 */
-                    background: url(../images/gnb_open_w.svg) no-repeat center center / 23px;  /* 768사이즈보다 조금 더 크게 준 값 */
+                    background: url(../images/gnb_open_w.svg) no-repeat center center / 24px;  /* 768사이즈보다 조금 더 크게 준 값 */
                 }
                 .header .gnb .gnb_wrap{
                     display: none; /* 모바일에선 숨김 */
@@ -138,7 +138,7 @@
                 height: 56px;
                 }
                 .header .logo{
-                    margin: 17px 0 0 0;  /* 로고의 위에서부터의 여백 */
+                    margin: 14px 0 0 0;  /* 로고의 위에서부터의 여백 */
                 }
                 .header .logo a{
                     width: 56px; /* 로고의 넓이 */
@@ -148,7 +148,7 @@
                     display: block; /* 모바일에선 보임 */
                     width: 56px;  /* heder의 높이만큼 => 메뉴가 그만큼 눌려야 하기 때문에 */
                     height: 56px; /* heder의 높이만큼 => 메뉴가 그만큼 눌려야 하기 때문에 */
-                    background-size: 20px;  /* 1024에서 사이즈를 키워서 다시 한 번 768사이즈로 줄여줘야 함 */
+                    background-size: 19px;  /* 1024에서 사이즈를 키워서 다시 한 번 768사이즈로 줄여줘야 함 */
                 }
 }/*@media*/
 
@@ -343,8 +343,8 @@ transform: rotate(-90edg);
     margin: 12px 0 0 0; /* strong 태그와의 여백 */
 }
 .biz .list{
-    max-width: 832px;   /* 최대넓이 - 넓이가 832이상 늘어나지 않음 - 그리고 그보다 작을땐 382의 여백을 빼고 나머지 전부 */
-    width: calc(100% - 382px);
+    max-width: 832px;   /* 최대넓이 - 넓이가 832이상 늘어나지 않음 - 그리고 그보다 작을땐 380의 여백을 빼고 나머지 전부 */
+    width: calc(100% - 380px);
 }
 .biz .list ul{
     display: flex;  /* li 좌우배치 */

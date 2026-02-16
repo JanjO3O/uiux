@@ -11,7 +11,7 @@
     width: 100%;
     height: 90px;
     color: #fff;
-    transition: backgriund-color 0.3s color 0.3s;
+    transition: background-color 0.3s;
 }
 .header .wrapper{
     display: flex;
@@ -93,9 +93,9 @@
             }
             /**************  마우스 오버하면 색 변경  ***************/
 /******************** header에 fixed,over,hide 클래스 추가 *****************************/
-@media screen and (max-width:768px){
+@media screen and (max-width:1024px){
                 .header{
-                height: 56px;
+                height: 72px;
                 }
                 .header .wrapper{
                     margin-right: 0;
@@ -104,14 +104,14 @@
                     margin: 17px 0 0 0;
                 }
                 .header .logo a{
-                    width: 56px;
-                    height: 22px;
+                    width: 85px;
+                    height: 30px;
                 }
                 .header .gnb .gnb_open{
                     display: block;
-                    width: 56px;
-                    height: 56px;
-                    background: url(../images/sdream/gnb_open_w.svg) no-repeat center center;
+                    width: 72px;
+                    height: 72px;
+                    background: url(../images/sdream/gnb_open_w.svg) no-repeat center center / 24px;
                 }
                 .header .gnb .gnb_wrap{
                     display: none;
@@ -124,6 +124,23 @@
                 .header.fixed .gnb .gnb_open,
                 .header.over .gnb .gnb_open{
                     background-image: url(../images/sdream/gnb_open.svg);
+                }
+}/*@media*/
+@media screen and (max-width:768px){
+                .header{
+                height: 56px;
+                }
+                .header .logo{
+                    margin: 14px 0 0 0;
+                }
+                .header .logo a{
+                    width: 56px;
+                    height: 22px;
+                }
+                .header .gnb .gnb_open{
+                    width: 56px;
+                    height: 56px;
+                    background-size: 19px;
                 }
 }/*@media*/
 
@@ -208,6 +225,11 @@
                 100%{bottom: -25px; opacity: 0;}
             }
 /* 화살표가 움직이기 위해 주는 animation 속성 - End */
+@media screen and (max-width:1024px){
+            .visual .swiper-slide h2{
+                font-size: 45px;
+            }
+}/*@media*/
 @media screen and (max-width:768px){
             .visual .swiper-slide{
                 height: 80dvh;
@@ -250,7 +272,8 @@
     margin-top: 12px;
 }
 .biz .list{
-    width: 832px;
+    max-width: 832px;
+    width: calc(100% - 375px);
 }
 .biz .list ul{
     display: flex;
@@ -298,7 +321,7 @@
 .biz .list ul li a .txt{
     position: absolute; /* a를 기준으로 정렬, 더보기 정렬 기준 */
     left: 40px;
-    bottom: -40px;
+    bottom: -96px;
     width: calc(100% - 80px);
     transition: 0.3s;
 }
@@ -351,72 +374,114 @@
     transform: rotate(360deg);
 }
 /*************** 마우스 오버 시  *******************/
-@media screen and (max-width:768px){
-            .biz{
-            margin-top: 128px;
-            }
-            .biz .wrapper{
-                display: block;
-            }
-            .biz .tit{
-                position: relative;
-                top: auto;
-            }
+@media screen and (max-width:1024px){
             .biz .tit h2{
-                font-size: 32px;
-                margin: 14px 0 45px 0;
+                font-size: 38px;
             }
             .biz .list{
-                width: auto;
+                max-width: 500px;
             }
-            .biz .list ul{
-                flex-wrap: nowrap;
-                flex-direction: column;
-                gap: 12px 0;
+            .biz .list ul li {
+                 width: 100%;
             }
-            .biz .list ul li{
-                width: auto;
-            }
-            .biz .list ul li:nth-child(even){
+            .biz .list ul li:nth-child(even) {
                 transform: translateY(0);
             }
-            .biz .list ul li a{
-                height: 150px;
-            }
-            .biz .list ul li a::before{
-                display: none;
+            .biz .list ul li a .txt h3{
+                font-size: 28px;
             }
             .biz .list ul li a .txt{
-                left: 16px;
-                bottom: 16px;
-                width: calc(100% - 56px);
-            }
-            .biz .list ul li a:hover .txt{
-                bottom: 16px;
-            }
-            .biz .list ul li a .txt::after{
-                content: "";
-                position: absolute;
-                right: 0;
-                bottom: 5px;
-                width: 21px;
-                height: 21px;
-                border-radius: 50%;
-                background: #fff url(../images/sdream/biz_mob_arrow.svg) no-repeat center center;
-            }
-            .biz .list ul li a .txt h3{
-                font-size: 24px;
-                margin-bottom: 0;
+                bottom: 24px;
             }
             .biz .list ul li a .txt h3 br{
                 display: none;
             }
             .biz .list ul li a .txt p{
-                display: none;
+                opacity: 1;
+                height: 3em;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
             }
             .biz .list ul li a span{
-                display: none
+                opacity: 1;
+                background-color: #fff;
             }
+}/*@media*/
+            
+@media screen and (max-width:768px){
+            .biz{
+            margin: 128px 0 0 0;
+            }
+            .biz .wrapper{
+                display: block; /* flex 해제 */
+            }
+            .biz .tit{
+                position: relative;  /* sticky해제 - relative 제일 멀쩡한 값이라 */
+                top: auto;  /* auto=> 0 이랑 다름 - auto는 아예 안준것처럼 됨 */
+            }
+            .biz .tit h2{
+                font-size: 32px;
+                margin: 14px 0 0 0; /* strong 태그와의 여백 */
+            }
+            .biz .list{
+                max-width: 100%;
+                width: auto;
+                /* auto라는건 원래 속성대로 넓이를 가지라는 뜻--> block 요소면 100% 들어감---//
+                   100%를 주면 margin과 충돌하여 늘어나고, 가로 스크롤바 생성됨 
+                   auto는 margin을 주면 그 여백을 제외한 나머지를 꽉 채워서 들어감 */
+                   margin: 45px 0 0 0;  /* h2와의 여백 */
+            }
+            .biz .list ul{
+                flex-wrap: nowrap; /* 여러줄 허용 X */
+                flex-direction: column;  /* li를 아래로 정렬 */
+                gap: 12px 0;  /* li 사이의 위아래 여백 */
+            }
+            .biz .list ul li{  
+                width: auto;
+            }
+            .biz .list ul li:nth-child(even){ 
+                transform: translateY(0);  /* 0을 줘야 pc에서 준 값이 해제됨 */
+            }
+            .biz .list ul li a{ /* li-a가 높이가 똑같으면 a한테 높이를 줘야 함=> 그래야 통째로 눌림 */
+                height: 150px;  /* 모바일 디자인한 높이 */
+            }
+            .biz .list ul li a::before{  /* 마우스 오버했을 때 배경색이 바뀌는걸 주기 위해서 준 요소 */
+                display: none;
+            }
+            .biz .list ul li a .txt{
+                left: 16px;  /* 왼쪽 여백 */
+                bottom: 16px;  /* 하단 여백 */
+                width: calc(100% - 56px);  /* - 60px --> 좌는 디자인상의 여백>>16px + 우는 화면이 줄어들 때 h3로부터 화살표가 닿지 않는 가상의 여백>>40px = 좌우 여백의 합 */
+            }
+            .biz .list ul li a:hover .txt{ /* over 했을 때  */
+                bottom: 16px;  /* txt - bottom하고 값이 같아야 안움직임 */
+            }
+            .biz .list ul li a .txt::after{
+                content: "";
+                position: absolute;  /* pc 버전에서 준 txt를 기준으로 정렬*/
+                right: 0;
+                top: 5px;  /* 글자의 위에서부터 떨어지는 여백 */
+                width: 21px;  /* 원의 넓이 */
+                height: 21px; /* 원의 높이 */
+                border-radius: 50%;
+                background: #fff url(../images/sdream/biz_mob_arrow.svg) no-repeat center center;
+            }
+            .biz .list ul li a .txt h3{
+                font-size: 24px;
+                margin: 0;
+            }
+            .biz .list ul li a .txt h3 br{
+                display: none;  /* 줄바꿈 삭제 */
+            }
+            .biz .list ul li a .txt p{
+                display: none;  /* 계속 안나올 거이기 때문에 아예 없애줘야 함 */
+            }
+            .biz .list ul li a span{
+                display: none;
+            }
+            
 }/*@media*/
 
 
@@ -530,6 +595,30 @@
     background-image: url(../images/sdream/more_w.svg);
     transform: rotate(360deg);
 }
+@media screen and (max-width:1024px){
+                .news .tit h2{
+                    font-size: 38px;
+                }
+                .news .list{
+                    margin-top: 28px
+                }
+                .news .more{
+                    top: 42px;
+                }
+                .news .more a{
+                    padding: 6px 50px 6px 29px;
+                }
+                .news .more a::after{
+                    right: 27px;
+                    top: 11px;
+                }
+                .news .list ul li a h3 span{
+                    font-size: 18px;
+                }
+                .news .list ul li a{
+                    padding: 26px 38px;
+                }
+}/*@media*/
 @media screen and (max-width:768px){
                 .news{
                     padding: 125px 0 36px 0;
@@ -728,9 +817,40 @@
     background-image: url(../images/sdream/more_black.svg);
     transform: rotate(360deg);
 }
+@media screen and (max-width:1024px){
+                .webzin .tit h2{
+                    font-size: 38px;
+                }
+                .webzin .list {
+                    margin: 38px 0 0 0;
+                }
+                .webzin .list .swiper-slide a .txt {
+                    padding: 20px 24px 26px 24px;
+                }
+                .webzin .list .swiper-slide a .txt h3{
+                    font-size: 21px;
+                }
+                .webzin .ctrl_wrap{
+                    top: 48px;
+                }
+                .webzin .ctrl_wrap button{
+                    width: 35px;
+                    height: 35px;
+                }
+                .webzin .ctrl_wrap .more a{
+                    height: 35px;
+                    padding: 4px 44px 0 30px;
+                }
+                .webzin .ctrl_wrap .more a::after{
+                    right: 25px;
+                    top: 10px;
+                    width: 12px;
+                    height: 12px;
+                }
+}/*@media*/
 @media screen and (max-width:768px){
             .webzin{
-            padding: 125px 0 36px 0;
+                padding: 125px 0 36px 0;
             }
             .webzin .tit h2{
                 font-size: 32px;
@@ -876,6 +996,31 @@
 .service .list ul li a:hover h3{
     color: #fff;
 }
+@media screen and (max-width:1024px){
+            .service .tit h2{
+                font-size: 38px;
+            }
+            .service .list {
+                margin-top: 38px
+            }
+            .service .list ul li{
+                width: calc(33.33% - 10px);
+            }
+            .service .list ul li a{
+                height: 126px;
+                padding: 18px 5px 0 5px;
+                text-align: center;
+            }
+            .service .list ul li a::after{
+                right: 50%;
+                transform: translateX(50%);
+                top: auto;
+                bottom: 22px;
+                width: 25px;
+                height: 25px;
+                background-size: 11px;
+            }
+}/*@media*/
 @media screen and (max-width:768px){
             .service{
                 padding: 125px 0 84px 0;
@@ -898,14 +1043,21 @@
                 width: auto;
             }
             .service .list ul li a{
+                height: 96px;
+                text-align: left;
                 padding: 23px 11px 0 30px;
+            }
+            .service .list ul li a .txt{
+                width: calc(100% - 60px);
             }
             .service .list ul li a:hover{
             background-color: #CCE7FF;
             }
             .service .list ul li a::after{
                 right: 11px;
+                transform: translateX(0);
                 top: 35px;
+                bottom: auto;
                 width: 26px;
                 height: 26px;
                 background-size: 10px;
@@ -924,6 +1076,9 @@
             .service .list ul li a h3{
                 font-size: 16px;
                 margin-top: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             .service .list ul li a:hover h3{
             color: #3d3d3d;
