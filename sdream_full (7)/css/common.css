@@ -19,18 +19,15 @@ body{
     position: relative;/* header 정렬의 기준 */
 }
 @media screen and (max-width:1360.8px){ /* 1260+50+50 = 1360 -- 네이버의 좌우여백을 준거임 */
-    .wrapper{
-        width: auto;
-        margin: 0 4%; /* 1260+50+50 = 1360 ==> 여기서 선언한 좌우 여백이 여기로 들어감*/
-    }
+                .wrapper{
+                    width: auto;
+                    margin: 0 4%; /* 1260+50+50 = 1360 ==> 여기서 선언한 좌우 여백이 여기로 들어감*/
+                }
 }/*@media*/
 
 @media screen and (max-width:768px){/* 브라우저 넓이가 768이하일때 (768부터~) */
                 body{
                     font-size: 16px;
-                }
-                .wrapper{
-                    margin: 0 4%;  /* 사이트 비교해서 제일 많이 나온 좌우여백 값을 준거임 */
                 }
 }/*@media*/
 
