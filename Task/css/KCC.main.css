@@ -48,6 +48,7 @@
     width: 78px;
     padding: 58px 0 0 0; /* 아이콘 들어갈 자리 */
     position: relative; /* before 정렬의 기준 */
+    cursor: pointer;
 }
 .csr .list ul li:hover{
     color: #63D526;
