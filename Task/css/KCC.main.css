@@ -36,7 +36,7 @@
     margin: 7px 0 13px 0;
 }
 .csr .list{
-    max-width: 770px;
+    max-width: 770px;  /* GPT 참고해서 수정한거임---> 이렇게 하면 width가 100%여도 770px을 넘지 않음 */
     width: 100%;
     margin-top: 62px;
     overflow: hidden;
@@ -111,7 +111,8 @@
                 padding-top: 127px;
             }
             .csr .list{
-                width: 610px;
+                max-width: 610px;
+                width: 100%;
                 margin-top: 52px;
             }
             .csr .list ul li{
@@ -142,6 +143,7 @@
             }
             .csr .list{
                 margin-top: 36px;
+                max-width: 100%;
                 width: 100%;
                 padding: 0 11px;
             }
