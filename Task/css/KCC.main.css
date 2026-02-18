@@ -36,7 +36,7 @@
     margin: 7px 0 13px 0;
 }
 .csr .list{
-    max-width: 770px;  
+    max-width: 770px;  /* GPT 참고해서 수정한거임---> 이렇게 하면 width가 100%여도 770px을 넘지 않음 */
     width: 100%;
     margin-top: 62px;
 }
