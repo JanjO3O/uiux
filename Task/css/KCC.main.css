@@ -376,7 +376,7 @@
             .recruit .list ul li a{
                 display: block;
                 height: 60px;
-                padding: 20px 27px 0 27px;
+                padding: 20px 0 0 0;
             }
             .recruit .list ul li.active a{
                 height: 160px;
