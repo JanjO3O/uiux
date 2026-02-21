@@ -10,7 +10,7 @@
     width: 100%;
     height: var(--header-height);
     color: #fff;
-    fill: #fff;  /* => svg(아이콘) 색 */
+    fill: #fff;  /* => html에서 svg코드로 줘서 fill로 아이콘의 색상 변경 가능 */
 }
 .header .wrapper{
     display: flex;  /* logo-gnb-util 좌우배치 */
@@ -21,7 +21,7 @@
     display: block;
     /* logo는 header의 높이에 비례해서 사이즈가 결정됨
        그래서 header의 높이의 몇 배인지 계산식을 써서 코딩함 */
-    width: calc(var(--header-height) * 1.11);  /* 넓이와 높이가 아이콘의 사이즈일 때 contain을 줄 수 있음!!! */
+    width: calc(var(--header-height) * 1.11);  /* 여기서 준 넓이와 높이가 아이콘의 사이즈일 때 contain을 줄 수 있음!!! */
     height: calc(var(--header-height) * 0.43);
     background: url(../images/logo_W.svg) no-repeat center center / contain;  /* logo는 짤리면 안되니까 contain 주는거임 */
     margin-bottom: calc(var(--header-height) * 0.1);  /* logo의 위치가 디자인과 달라서 주는 여백 --> px 에서 배수로 전환해주기*/
@@ -72,10 +72,10 @@
                 position: relative;  /* depth2 정렬의 기준 */
             }
             .header .gnb .gnb_wrap ul.depth1 > li > a{
-                display: block;
+                display: block;  /* block을 줌으로써 li의 사이즈와 동일하게 들어가는것임 */
                 font-size: 22px;
                 font-weight: 700;
-                line-height: 90px;  /* header의 높이 = 그만큼 위아래로 눌려야 하니까 */
+                line-height: var(--header-height);  /* header의 높이 =>  메뉴가 그만큼 위아래로 눌려야 하니까 */
             }
             .header .gnb .gnb_wrap ul.depth1 > li > a span{
                 position: relative;  /* after 정렬의 기준 */
@@ -106,11 +106,11 @@
                 position: absolute;  /* depth1 li를 기준으로 정렬 */
                 left: 0;
                 top: var(--header-height);
-                /* 1차메뉴 a 높이는 header의 높이와 같고 
+                /* 1차메뉴 a 높이는 header의 높이와 같고(그만큼 눌려야하니까)
                 2차메뉴 ul은 정확하게 header 높이만큼만 떨어져서 둘이 붙어있어야함
                 -----> 1차 메뉴를 기준으로 absolute한거기 때문에, header의 높이만큼 top값을 줘서 떨어트려놓는거임
                 한치의 여백도 존재하면 안됨 -> 여백이 존재하면 메뉴에서 아래로 내려가다 아웃됨 */
-                width: 100%;  /* 정렬의 기준 = 첫번째 메뉴의 li넓이만큼 들어가야 하니까--> 100% */
+                width: 100%;  /* 정렬의 기준인 첫번째 메뉴의 li넓이와 똑같게 들어가야 하니까--> 100%를 줘서 정렬의 기준인 1차메뉴의 넓이만큼 들어가는 것임 */
                 padding: 28px 0 0 0; /* 하위메뉴가 header의 아래 선으로부터 떨어지는 여백 */
                 display: none;
             }
@@ -144,9 +144,9 @@
             .header .util .mypage,
             .header .util .lang .lang_open{
                 /* 눌리는 상자 안에서 정가운데 위치시키기 위해 주는 거임 */
-                display: flex;  
-                align-items: center;
-                justify-content: center;
+                display: flex;  /* 내부의 요소가 하나밖에 없을 때에도 걔를 가운데 갔다놓을거면, flex가 유용함 */
+                align-items: center;  /* 위아래 가운데 */
+                justify-content: center;  /* 좌우의 가운데 */
 
                 width: 40px;  /* 아이콘만 눌리는게 아니라서 가상의 상자를 주고 그 상자의 넓이 */
                 height: 40px; /* 아이콘만 눌리는게 아니라서 가상의 상자를 주고 그 상자의 높이 */

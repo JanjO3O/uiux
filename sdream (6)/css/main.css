@@ -405,11 +405,11 @@ transform: rotate(-90edg);
     content: "";
     position: absolute; /* span을 기준으로 정렬 */
     right: 22px;
-    bottom: 15px;
+    top: 13px;
     width: 12px;  /* 아이콘의 넓이 */
     height: 12px;  /* 아이콘의 높이 */
     background: url(../images/more_black.svg) no-repeat center center;
-    transition: transform 1s;
+    transition: transform 0.8s;
 }
 /************* over 했을 때  ***************/
 .biz .list ul li a:hover::before{
@@ -840,9 +840,6 @@ transform: rotate(-90edg);
                 }
                 .webzin .list{
                     margin: 42px 0 0 0;
-                }
-                .webzin .list .swiper-slide{
-                    width: 250px;
                 }
                 .webzin .list .swiper-slide a{
                     border-radius: 15px;

@@ -1,146 +1,93 @@
-@import url(common.css);
+@import url(common_sdream_menu.css);
 @import url(fonts.css);
 @import url(default.css);
 
 .header{
-    position: fixed;  /* 무조건 body랑 정렬함 */
+    position: fixed; /* body를 기준으로 정렬 */
     left: 0;
     top: 0;
     z-index: 100;
     width: 100%;
-    height: 90px;
+    height: var(--header-h);
     color: #fff;
-    transition: background-color 0.3s;
+    fill: #fff;  /* html에서 svg코드로 줘서 fill로 아이콘의 색상 변경 가능 */
+    border: 1px solid red;
 }
 .header .wrapper{
     display: flex;
     justify-content: space-between;
-}
-.header .logo{
-    margin: 21px 0 0 0;
+    align-items: center;
 }
 .header .logo a{
     display: block;
-    width: 100px;
-    height: 39px;
-    background: url(../images/sdream/logo_W.svg) no-repeat center center / contain; /* logo는 짤리면 안돼서 contain 주는거임 */
+    width: calc(var(--header-h) * 1.11);  /* 넓이와 높이가 bg사이즈일 때, contain을 줄 수 있음 */
+    height: calc(var(--header-h) * 0.43);
+    background: url(../images/sdream/logo_W.svg) no-repeat center center /contain;
+    margin-bottom: calc(var(--header-h) * 0.11);
 }
-.header .gnb .gnb_open,
-.header .gnb .gnb_close{
-    display: none;
-}
-.header .gnb .gnb_wrap ul{
-    display: flex;
-}
-.header .gnb .gnb_wrap ul li a{
-    display: block;
-    line-height: 90px;
-    padding: 0 33px;
-    font-size: 22px;
-    font-weight: 700;
-}
-.header .util{
-    display: flex;
-    margin: 25px 0 0 0;
-}
-.header .util .mypage{
-    display: block;
-    width: 40px;
-    height: 40px;
-    background: url(../images/sdream/mypage_w.svg) no-repeat center center;
-}
-.header .util .lang .lang_open{
-    display: block;  /* 눌러야 하는 애들은 block 줘야 깔끔함 */
-    width: 40px;
-    height: 40px;
-    background: url(../images/sdream/lgng_w.svg) no-repeat center center;
-}
-/******************* header에 fixed,over,hide 클래스 추가 *****************************/
-    .header.fixed.hide{
-        top: -95px;
-    }
-    .header.fixed,
-    .header.over{
-        background-color: #fff;
-        color: #1d1d1d;
-        border-bottom: 1px solid #ccc;
-    }
-    .header.fixed .logo a,
-    .header.over .logo a{
-        background-image: url(../images/sdream/logo.svg);
-    }
-    .header.fixed .util .mypage,
-    .header.over .util .mypage{
-        background-image: url(../images/sdream/mypage_b.svg);
-    }
-    .header.fixed .util .lang .lang_open,
-    .header.over .util .lang .lang_open{
-        background-image: url(../images/sdream/lang_b.svg);
-    }
-            /**************  마우스 오버하면 색 변경  ***************/
-            .header.fixed .gnb .gnb_wrap ul li a:hover,
-            .header.over .gnb .gnb_wrap ul li a:hover{
-                color: #0373DC;
+/* 1025이상일 때만 적용됨 -> 1024이하부터는 적용 X */
+@media screen and (min-width:1025px){
+            .header .gnb .gnb_open,
+            .header .gnb .gnb_wrap .gnb_logo,
+            .header .gnb .gnb_wrap .gnb_close{
+                display: none; /* 모바일에서만 나옴 */
             }
-            .header.fixed .util .mypage:hover,
-            .header.over .util .mypage:hover{
-                background-image: url(../images/sdream/mypage_on.svg);
+            .header .gnb .gnb_wrap ul.depth1{
+                display: flex; /* 1차메뉴 좌우 배치 */
             }
-            .header.fixed .util .lang .lang_open:hover,
-            .header.over .util .lang .lang_open:hover{
-                background-image: url(../images/sdream/language_on.svg);
+            .header .gnb .gnb_wrap ul.depth1 > li{
+                width: 190px;
+                text-align: center;
+                position: relative;  /* 2차메뉴 정렬의 기준 */
             }
-            /**************  마우스 오버하면 색 변경  ***************/
-/******************** header에 fixed,over,hide 클래스 추가 *****************************/
-@media screen and (max-width:1024px){
-                .header{
-                height: 72px;
-                }
-                .header .wrapper{
-                    margin-right: 0;
-                }
-                .header .logo{
-                    margin: 17px 0 0 0;
-                }
-                .header .logo a{
-                    width: 85px;
-                    height: 30px;
-                }
-                .header .gnb .gnb_open{
-                    display: block;
-                    width: 72px;
-                    height: 72px;
-                    background: url(../images/sdream/gnb_open_w.svg) no-repeat center center / 24px;
-                }
-                .header .gnb .gnb_wrap{
-                    display: none;
-                }
-                .header .util{
-                    display: none;
-                }
-
-                /************ fixed / over 클래스가 추가됐을 때(스타일 동일함) ************/
-                .header.fixed .gnb .gnb_open,
-                .header.over .gnb .gnb_open{
-                    background-image: url(../images/sdream/gnb_open.svg);
-                }
-}/*@media*/
-@media screen and (max-width:768px){
-                .header{
-                height: 56px;
-                }
-                .header .logo{
-                    margin: 14px 0 0 0;
-                }
-                .header .logo a{
-                    width: 56px;
-                    height: 22px;
-                }
-                .header .gnb .gnb_open{
-                    width: 56px;
-                    height: 56px;
-                    background-size: 19px;
-                }
+            .header .gnb .gnb_wrap ul.depth1 > li > a{
+                display: block;  /* 을 줘서--> li의 사이즈와 동일하게 들어가는거임 */
+                font-size: 22px;
+                font-weight: 700;
+                line-height: var(--header-h);  /* 메뉴의 높이를 header의 높이만큼 주는 이유는,, 메뉴가 위아래로 그만큼 눌려야 하기 때문에 */
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
+                position: absolute;  /* 1차메뉴의 li를 기준으로 정렬 */
+                left: 0;
+                top: var(--header-h);
+                /* 1차메뉴 a의 높이 = header의 높이와 같음
+                2차메뉴 ul은 header 높이만큼만 떨어져서 둘이 붙어있어야함
+                한치의 여백도 존재하면 안됨(여백이 존재하면 아래로 내려가다 메뉴에서 아웃됨) */
+                width: 100%;  /* 정렬의 기준인 li의 넓이의 100%가 되는거임 */
+                display: none;
+            }
+            .header .util{
+                display: flex;
+            }
+            .header .util .mypage,
+            .header .util .lang .lang_open{
+                display: flex;  /* 내부의 요소가 하나밖에 없을 때에도 걔를 가운데 갔다놓을거면, flex가 유용함 */
+                align-items: center;  /* 위아래 가운데 */
+                justify-content: center;  /* 좌우의 가운데 */
+                width: 40px;
+                height: 40px;
+            }
+            .header .util .lang{
+                position: relative;  /* .lang .ul 정렬의 기준 */
+            }
+            .header .util .lang ul{
+                position: absolute;
+                left: 0;
+                top: 40px;
+                width: 100%;
+                opacity: 0;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                box-shadow: 1px 1px 3px 0 rgba(204, 204, 204, 0.5);
+                text-align: center;
+                padding: 3px 0;
+            }
+            .header .util .lang:hover ul{
+                opacity: 1;
+            }
+            .header .util .lang ul li{
+                margin: 3px 0;
+            }
 }/*@media*/
 
 .visual{

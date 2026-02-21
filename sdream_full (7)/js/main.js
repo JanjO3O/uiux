@@ -49,7 +49,7 @@ $(document).ready(function(){
         prev_scroll = scrolling
     } 
     // 맨 처음 html이 로딩된 이후 단 한 번 실행!!
-    header_fixed()
+    header_fixed()  //함수의 실행
     $(window).scroll(function(){ //브라우저가 스크롤 될 때마다 실행
         header_fixed() 
     })//.header
