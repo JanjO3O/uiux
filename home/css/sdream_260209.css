@@ -1011,13 +1011,16 @@
                 text-align: center;
             }
             .service .list ul li a::after{
-                right: 50%;
-                transform: translateX(50%);
+                right: calc(50% - 12.5px);
                 top: auto;
-                bottom: 22px;
+                bottom: 16px;
                 width: 25px;
                 height: 25px;
                 background-size: 11px;
+                transition: none;
+            }
+            .service .list ul li a:hover::after{
+                transform: rotate(0);
             }
 }/*@media*/
 @media screen and (max-width:768px){

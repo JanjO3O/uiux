@@ -20,7 +20,7 @@ $(document).ready(function(){
     
     let win_w //브라우저의 넓이
     let device_status //지금 pc인지 mobile 저장
-    let mobile_size = 1024 //1024부터 모바일
+    let mobile_size = 1024 //1024부터 메뉴는 모바일
 
     function device_chk(){ //함수의 선언
         win_w = $(window).width()
@@ -32,9 +32,9 @@ $(document).ready(function(){
         }
         console.log(device_status)
     }
-    device_chk() //(--함수의 선언)문서가 로딩되었을 때 단 1 번 실행
+    device_chk() //(--함수의 실행)문서가 로딩되었을 때 단 1 번 실행
     $(window).resize(function(){ //브라우저가 리사이즈될 떄마다 1번씩 실행
-        device_chk()
+        device_chk() //함수의 실행
     })
 
     $('.header .gnb .gnb_wrap ul.depth1 > li').on('mouseenter', function(){
@@ -56,7 +56,7 @@ $(document).ready(function(){
         $('.header').removeClass('menu_over')
     })
 
-    $('.header .gnb .gnb_wrap ul.depth1 > li').on('clock', function(){
+    $('.header .gnb .gnb_wrap ul.depth1 > li').on('click', function(){
         if(device_status == 'mobile'){
             $('.header .gnb .gnb_wrap ul.depth1 > li').removeClass('open')
             $(this).addClass('open')
