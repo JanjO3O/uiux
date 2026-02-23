@@ -2,6 +2,169 @@
 @import url(fonts.css);
 @import url(common.css);
 
+.header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: var(--header-height);
+    color: var(--color-white); /* 글자색 */
+    fill: var(--color-white);  /* 아이콘색 */
+    padding: 0 var(--wrapper-margin); /* 디자인의 좌우여백 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex; /* h1-nav-util 좌우배치 */
+    justify-content: space-between;
+    align-items: center;
+}
+.header .logo a{
+    display: block;
+
+    width: calc(var(--header-height) * 1.78);  /* 계산식으로 해야 브라우저 사이즈가 줄어들 때 같이 줄어듬 */
+    min-width: 121px;
+    /* width: max(121px, calc(var(--header-height) * 1.78)); --> 위에 두 값을 한 번에 주는 값 */
+
+    height: calc(var(--header-height) * 0.28); /* 로고의 넓이와 높이를 헤더의 높이의 몇 배인지 계산해서 넣기 */
+    min-height: 19px;
+    /* height: max(19px, calc(var(--header-height) * 0.28)); --> 위에 두 값을 한 번에 주는 값 */
+
+    background: url(../images/logo_w.svg) no-repeat center center / contain; /* logo처럼 짤리면 안되는 애들은 contain으로 주면 브라우저 사이즈 줄어들어도 안짤림 */
+}
+
+@media screen and (min-width:1025px){ /* 1025px 이상 */
+/* header는 pc와 모바일이 로고 빼고 브라우저 사이즈마다 스타일이 달라서 pc 버전/ 모바일 스타일을
+   media로 구분함 min-width:1025px -> 1025px 이상에만 적용 - pc용 
+                 max-width:1024px -> 1024px 이하에만 적용  - 모바일용 */
+
+            .header .gnb .gnb_open,
+            .header .gnb .gnb_wrap .gnb_logo,
+            .header .gnb .gnb_wrap .gnb_close{
+                display: none; /* 모바일에서만 보임 */
+            }
+            .header .gnb .gnb_wrap ul.depth1{
+                display: flex; /* 1차메뉴 좌우 배치 */
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li{
+                position: relative; /* ul.depth2 정렬의 기준 */
+                min-width: 0; /* 최소넓이로 0 -> 180px로 부드럽게 넓어지게 하기 위함 */
+                transition: 0.3s;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > a{
+                display: block;
+                font-family: var(--font-family-Eulyoo);
+                font-size: 22px;
+                /* 행간을 header 높이만큼 주면 a의 높이가 header 높이가 되고, 글자도 위아래 가운데 들어감 */
+                line-height: var(--header-height); /* 위아래로 헤더의 높이만큼 눌려야 하기 때문에 */
+                padding: 0 25px; /* 좌우로도 여백의 반만큼 눌려야 함 / 마우스 오버 전에는 메뉴 사이의 여백이 동일 */
+                text-align: center;
+                position: relative; /* after 정렬의 기준 */
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > a::after{
+                content: "";
+                position: absolute; /* a를 기준으로 정렬 */
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -2px;
+                z-index: 2; /* header 아래선에 깔려서 주는 값 */
+                width: 0;
+                height: 3px;
+                background-color: var(--color-main);
+                /* transition: 0.3s; */ /* 얘를 안주면 선이 그냥 바로 뽝 생김 */
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
+                display: none; /* 2차메뉴 - 무조건 absolute */
+                position: absolute; /* ul.depth1 li를 기준으로 정렬 */
+                left: 0;
+                top: var(--header-height);  /* 1차메뉴 바로 아래이여야 하기 때문에 */
+                width: 100%;
+                height: 260px;
+                text-align: center;
+                padding: 24px 0 0 0;
+                border-right: 1px solid #ccc;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li:first-child > ul.depth2{
+                /* 첫 번쨰 1차메뉴의 2차 ul */
+                border-left: 1px solid #ccc;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a{
+                display: block;
+                padding: 8px 0;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a:hover{
+                color: var(--color-main);
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a > span{
+                position: relative; /* after 정렬의 기준 */
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a > span::after{
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -1px;
+                width: 0;
+                height: 1px;
+                background-color: var(--color-main);
+                transition: 0.3s;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a:hover > span::after{ /* 2차메뉴는 header나 li에 클래스를 주지 않고 a에 오버했을 때 나오는거임 */
+                width: 100%;
+            }
+            .header .util{
+                display: flex;
+            }
+            .header .util .search .search_open,
+            .header .util .mypage{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 50px;
+                height: 50px;
+            }
+
+            /************** 메뉴에 마우스를 올렸을 때 **************/
+            .header.menu_over{
+                color: var(--font-color-txt); /* 글자색 */
+                fill: var(--font-color-txt);  /* 아이콘색 */
+            }
+            .header.menu_over::before{
+                content: "";
+                position: absolute;  /* header(fixed)를 기준으로 정렬 */
+                left: 0;
+                top: 0;
+                z-index: -1; /* 얘를 줘야 흰색배경이 메뉴아래로 깔림 */
+                /* 지하 1층 - 기본적으로 position 없으면 1층, 있으면 2층부터 시작  */
+                width: 100%;
+                height: 360px;
+                background-color: var(--color-white);
+            }
+            .header.menu_over::after{  /* header 아래 선 */
+                content: "";
+                position: absolute;
+                left: 0;
+                top: var(--header-height); /* header의 높이만큼 내려와서 아래 선을 그어야 하기 때문에 */
+                width: 100%;
+                height: 1px;
+                background-color: #ccc;
+            }
+            .header.menu_over .logo a{
+                background-image: url(../images/logo_black.svg);
+            }
+            .header.menu_over .gnb .gnb_wrap ul.depth1 > li{
+                min-width: 180px;
+            }
+            .header.menu_over .gnb .gnb_wrap ul.depth1 > li.over > a{
+                color: var(--color-main);
+                height: var(--font-weight-bold);
+            }
+            .header.menu_over .gnb .gnb_wrap ul.depth1 > li.over > a::after{
+                width: 100%;  /* header랑 li에 클래스가 붙기 전에 스타일을 다 줘서 효과가 부드럽게 나타나게 해줌 */
+            }
+            .header.menu_over .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
+                display: block;
+            }
+}/*@media*/
+
+
 .visual{
     position: relative; /* ctrl_left / ctrl_right 정렬의 기준 */
 }
@@ -46,10 +209,9 @@
     width: 200px;
     height: 3px;
     background-color: rgba(255, 255, 255, 0.2);
-    position: relative; /* bar::before 정렬의 기준 */
+    position: relative; /* bar span 정렬의 기준 */
 }
-.visual .ctrl_left .bar::before{
-    content: "";
+.visual .ctrl_left .bar span{ 
     position: absolute; /* bar를 기준으로 정렬 */
     left: 0;
     top: 0;

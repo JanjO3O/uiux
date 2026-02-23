@@ -1,9 +1,10 @@
 $(document).ready(function(){
+    let visual_bar_w
     const visual_swiper = new Swiper('.visual .swiper', { /* 팝업을 감싼는 요소의 class명 */
 
         autoplay: {  /* 팝업 자동 실행 */
             delay: 5000,
-            disableOnInteraction: true,
+            disableOnInteraction: false, //얘를 false로 줘야 이전다음버튼을 눌렀을 때에도 팝업의 바의 게이지가 다시 0에서 100까지 찬다
         },
 
         //effect: "fade", /* fade 효과 */
@@ -18,16 +19,17 @@ $(document).ready(function(){
                 return '<span class="' + className + '">' + (index + 1) + "</span>";
             },
         },
-        
-
         navigation: {  /* 이전, 다음 버튼 */
             nextEl: '.visual .ctrl_right .next',  /* 다음 버튼의 클래스명 */
             prevEl: '.visual .ctrl_right .prev',  
         },
+
         on: {
             autoplayTimeLeft(s, time, progress) {
-                console.log(progress)
-                // 0% -> 100%로 되어야 함
+                // progress: 1 -> 0 
+                // 0% -> 100%로 되어야 함 (가상선택자인 before,after는 제어가 안됨)
+                visual_bar_w = 100 - (100 * progress)
+                $('.visual .ctrl_left .bar span').width(visual_bar_w + '%')
             }
         }
 
@@ -45,6 +47,15 @@ $(document).ready(function(){
         visual_swiper.autoplay.start();  /* 재생 기능 */
         $(this).hide()  //재생을 누르면 재생을 숨기고
         $('.visual .ctrl_left .stop').show()  //일시정지 보임
+    })
+
+
+    // 메뉴 오버
+    $('.header .gnb .gnb_wrap ul.depth1 > li').on('mouseenter', function(){
+        $(this).addClass('over')
+    })
+    $('.header .gnb .gnb_wrap ul.depth1 > li').on('mouseleave', function(){
+        $(this).removeClass('over')
     })
 
 
