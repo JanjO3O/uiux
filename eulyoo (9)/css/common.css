@@ -1,0 +1,76 @@
+/*
+    common.css (layout.css 라고도 함)
+    홈페이지 전체에 적용되는 공통스타일
+    프로젝트마다 변경됨 - 이 css에 있는 속성을 수정하면 프로젝트 전체가 바뀜
+*/
+body{
+    font-family: "Pretendard", sans-serif;
+    font-weight: var(--font-weight-default);
+    font-size: var(--font-size-default);
+    color: var(--font-color-txt);
+    line-height: var(--line-height-default);/* 배수(글자크기의 몇배) */
+    word-break: keep-all;/* 단어 단위로 줄바꿈 */
+    word-wrap: break-word; /* 단어가 제한된 넓이보다 길면 강제 줄바꿈 */
+}
+.wrapper{
+    width: 1284px;
+    margin: 0 auto; /* 화면에 가운데 정렬 */
+    border: 1px solid red;
+}
+#wrap{
+    position: relative;  /* 그냥 있는 애 = 안전빵 */
+}
+@media screen and (max-width:1384px){  /* (wrapper+디자인할 때 준 좌우여백) 1284 + 50px + 50px */
+                .wrapper{
+                width: auto;
+                margin: 0 var(--wrapper-margin); /* 화면에 가운데 정렬 */
+}
+}/*@media  - wrapper가 풀리는 경우 하나만 있으면 됨*/
+
+/* html 표준때문에 입력해야하는 태그이지만 홈페이지에 나오지 않는
+   태그에 주는 클래스 */
+.sr-only, .skip, .blind {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+:root{
+    --font-size-default: 17px;
+    --font-size-tit: 50px;
+    --font-size-subTit1: 32px;
+    --font-size-subTit2: 24px;
+    --wrapper-margin: 50px;
+    --font-color-txt: #231815;
+    --font-color-gray: #555555;
+    --color-main: #6C4B43;
+    --color-bg: rgba(246, 243, 236, 0.5);
+    --color-white: #fff;
+    --font-weight-default: 400;
+    --font-weight-bold: 700;
+    --line-height-default: 1.5;
+    --line-height-tit: 1.3;
+    --font-family-Eulyoo: "Eulyoo";
+}
+
+@media screen and (max-width:1024px){
+        :root{
+            --wrapper-margin: 30px;
+        }
+}/*@media*/
+
+@media screen and (max-width:768px){
+        :root{
+            --font-size-default: 16px;
+            --font-size-tit: 32px;
+            --font-size-subTit1: 32px;
+            --font-size-subTit2: 20px;
+            --wrapper-margin: 16px;
+        }
+}/*@media*/

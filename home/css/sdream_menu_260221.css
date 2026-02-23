@@ -13,15 +13,15 @@
     fill: #fff;  /* html에서 svg코드로 줘서 fill로 아이콘의 색상 변경 가능 */
 }
 .header .wrapper{
-    display: flex;
+    display: flex;  /* h1-nav-util 좌우정렬 */
     justify-content: space-between;
     align-items: center;
 }
 .header .logo a{
     display: block;
-    width: calc(var(--header-h) * 1.11);  /* 넓이와 높이가 bg사이즈일 때, contain을 줄 수 있음 */
+    width: calc(var(--header-h) * 1.11);  /* 1.11->90의 100px은 몇 배인지 계산해서 넣은 배수값 */
     height: calc(var(--header-h) * 0.43);
-    background: url(../images/sdream/logo_W.svg) no-repeat center center /contain;
+    background: url(../images/sdream/logo_W.svg) no-repeat center center /contain;  /* 넓이와 높이가 bg사이즈일 때, contain을 줄 수 있음 */
     margin-bottom: calc(var(--header-h) * 0.11);
 }
 /* header에 fixed 클래스 추가됐을 때 */

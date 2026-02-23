@@ -1,0 +1,93 @@
+@import url(default.css);
+@import url(fonts.css);
+@import url(common.css);
+
+.visual{
+    position: relative; /* ctrl_left / ctrl_right 정렬의 기준 */
+}
+.visual .swiper-slide{
+    /* height: 100vh;
+    min-height: 500px;  최소높이를 줌으로써 브라우저의 높이를 제한하여, 글자의 아래 여백이 500px부터는 따라오지 않음  */
+    height: max(500px, 100vh); /* <- 위에 두줄 요약한거 */
+    background: url(../images/visual_bg01.jpg) no-repeat center center / cover;
+    color: var(--color-white);
+    padding: 0 var(--wrapper-margin) 175px var(--wrapper-margin);  /* 디자인의 좌우 여백을 주기 위해 준 padding */
+
+    display: flex;  /* h3-p 아래로 정렬하기 위해 준 조건 3개 */
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.visual .swiper-slide.bg2{
+    background-image: url(../images/visual_bg02.jpg);
+}
+.visual .swiper-slide.bg3{
+    background-image: url(../images/visual_bg03.jpg);
+}
+.visual .swiper-slide h3{
+    font-family: var(--font-family-Eulyoo);
+    font-size: clamp(40px, 7vw, 80px);  /* 모바일 제일 작은 사이즈, 평소값=vw, pc버전 제일 큰 사이즈 */
+    /* clamp(최소값,평소값,최대값)
+       clamp(모바일크기, 대충 pc크기 px기준 1/10 정도의 vw , pc크기) */
+    line-height: var(--line-height-tit);
+    margin: 0 0 4px 0;
+}
+.visual .ctrl_left{
+    position: absolute; /* visual을 기준으로 정렬 */
+    left: var(--wrapper-margin);
+    bottom: 99px;
+    z-index: 1;  /* 화면에 안보여서 준 값 */
+    color: var(--color-white);
+    fill: var(--color-white);  /* svg 아이콘 흰색 */
+    display: flex; /* bar-button 좌우 정렬 */
+    align-items: center;  /* bar를 위아래 가운데 하기 위해 준 값 */
+    gap: 0 19px;  /* bar-button 사이 여백 */
+}
+.visual .ctrl_left .bar{
+    width: 200px;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.2);
+    position: relative; /* bar::before 정렬의 기준 */
+}
+.visual .ctrl_left .bar::before{
+    content: "";
+    position: absolute; /* bar를 기준으로 정렬 */
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--color-white);
+}
+.visual .ctrl_left .play{
+    display: none; /* 재생을 눌렀을 때만 나옴 */
+}
+.visual .ctrl_right{
+    position: absolute; /* visual을 기준으로 정렬 */
+    right: var(--wrapper-margin);
+    bottom: 77px;
+    z-index: 1;  /* 화면에 안보여서 준 값 */
+    color: var(--color-white);
+    fill: var(--color-white);  /* svg 아이콘 흰색 */
+    display: flex; /* button 좌우 정렬 */
+    gap: 0 6px;  /* button 사이 여백 */
+}
+.visual .ctrl_right button{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    
+    /* 아이콘을 원의 가운데 정렬하기 위해서 주는 조건 */
+    display: flex;  /* 안의 요소가 하나만 들어가도 flex로 가운데 정렬해주면 됨 */
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (max-width:768px){
+            .visual .swiper-slide{
+                height: 500px;  /* pc에선 브라우저에 꽉 채우다가 모바일에선 높이 제한 */
+                padding-bottom: 45px;
+            }
+            .visual .ctrl_left,
+            .visual .ctrl_right{
+                display: none;
+            }
+}/*@media*/
