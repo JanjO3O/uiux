@@ -55,6 +55,17 @@ $(document).ready(function(){
      *     ==> 브라우저의 넓이값을 구해서 1024보다 큰지 작은지 구분
      *     ==> 첫번째 로딩됐을 때 계산, 그리고 브라우저가 리사이즈 될 때마다 브라우저 넓이 체크
      *         동일한 계산을 두 번해야 하는 경우, 함수로 정의한 다음에 호출해서 사용하는 방식을 씀
+     * 
+     * 
+     * 모바일 메뉴의 규칙
+     * 1. 메뉴를 클릭하면 하위메뉴가 열림
+     * 2. 오직 하나의 메뉴만 열림
+     * 3. 열린 메뉴를 다시 클릭하면 닫힘
+     * pc에서는 1차메뉴를 클릭하면 첫 번째 하위메뉴로 이동 (href에 링크 주소가 있음)
+     * 하지만 모바일에선 1차메뉴를 클릭하면 하위메뉴를 열어줘야 함 (링크 X)
+     * ==> 그럼 href에 입력된 값은???????
+     * 반드시 1차메뉴의 a를 선택자로 해서 href 이벤트를 정지시켜야 함(수업자료 js에 있으ㅡㅁ)
+     * ====> 이것때문에 귀찮아서 1차 메뉴에 링크를 pc부터 아예 안하기도 하고 pc/mobile 메뉴를 나눠서 코딩하거나, pc도 클릭하면 하위메뉴가 나오게 함
      *********************************************************************************/
     let win_w //브라우저 넓이
     let mobile_size = 1024 //모바일 사이즈 시작(경계)
@@ -95,6 +106,63 @@ $(document).ready(function(){
         if(device_status == 'pc'){ 
             $('.header').removeClass('menu_over')
         }
+    })
+
+    $('.header .gnb .gnb_wrap ul.depth1 > li > a').on('click', function(e){
+        if(device_status == 'mo'){
+            e.preventDefault() //href 링크 이동을 막는 명령
+            // 내가 클릭한 a를 감싸는 li에 open 클래스가 있는지 확인
+            let gnb_open = $(this).parents('li').hasClass('open')
+            // console.log(gnb_open)
+            if(gnb_open == true){ //열려있는 경우
+                $(this).parents('li').removeClass('open') //하나만 열기
+                $(this).next().slideUp(300, function(){
+                    //slideUp 끝나고 나서 그 다음에 실행  
+                    // -- 이 함수 안에선 효과를 주는 $(this).next() -> $(this)가 됨
+                    // slideup으로 메뉴를 접으면 html에 style=display:none;이 쓰여서
+                    // 다른 스타일이 적용되지 않음 그래서 아예 지워버림
+                    $(this).removeAttr('style') 
+                })
+            }else{ //li가 닫힌 경우
+                $('.header .gnb .gnb_wrap ul.depth1 > li').removeClass('open') //모든 li 닫고
+                $('.header .gnb .gnb_wrap ul.depth1 > li > ul.depth2').slideUp(300, function(){
+                    //slideUp 끝나고 나서 그 다음에 실행
+                    $(this).removeAttr('style')
+                })
+                $(this).parents('li').addClass('open')  //클릭한 하나만 열기
+                $(this).next().slideDown()
+            }
+        }
+    })
+
+    $('.header .gnb .gnb_open').on('click', function(){
+        $('.header').addClass('menu_open')
+    })
+    $('.header .gnb .gnb_wrap .gnb_close').on('click', function(){
+        $('.header').removeClass('menu_open')
+    })
+
+
+    /************************************************************
+     * 브라우저가 스크롤되면 header에 fixed 클래스를 추가
+     * 단, 다시 맨 위로 올라가면 fixed 클래스를 사가제
+     * 처음에 로딩되었을 때와 브라우저가 스크롤될 때마다 체크
+    ************************************************************/
+    let scrolling //현재 스크롤값
+
+    function scroll_chk(){ //함수의 정의
+        scrolling = $(window).scrollTop()
+        // console.log(scrolling)
+        if(scrolling > 0){
+            $('.header').addClass('fixed')
+        }else{
+            $('.header').removeClass('fixed')
+        }
+    }
+   
+    scroll_chk() //함수의 선언 - 문서가 로딩되고 단 1번만 실행
+    $(window).scroll(function(){ //함수의 선언 - 브라우저가 스크롤될 때마다 실행
+        scroll_chk() 
     })
 
 

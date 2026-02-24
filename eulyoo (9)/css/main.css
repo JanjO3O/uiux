@@ -16,6 +16,7 @@
     display: flex; /* h1-nav-util 좌우배치 */
     justify-content: space-between;
     align-items: center;
+    /* transition: background-color 0.3s; 얘를 안주면 그냥 확 바뀜 - 그게 깔끔해보임*/
 }
 .header .logo a{
     display: block;
@@ -29,6 +30,15 @@
     /* height: max(19px, calc(var(--header-height) * 0.28)); --> 위에 두 값을 한 번에 주는 값 */
 
     background: url(../images/logo_w.svg) no-repeat center center / contain; /* logo처럼 짤리면 안되는 애들은 contain으로 주면 브라우저 사이즈 줄어들어도 안짤림 */
+}
+.header.fixed{
+    background-color: var(--color-white);
+    color: var(--font-color-txt);
+    fill: var(--font-color-txt);
+    border-bottom: 1px solid #ccc;
+}
+.header.fixed .logo a{
+    background-image: url(../images/logo_black.svg);
 }
 
 @media screen and (min-width:1025px){ /* 1025px 이상 */
@@ -59,7 +69,7 @@
                 text-align: center;
                 position: relative; /* after 정렬의 기준 */
             }
-            .header .gnb .gnb_wrap ul.depth1 > li > a::after{
+            .header .gnb .gnb_wrap ul.depth1 > li > a::after{  /* 1차메뉴 제목의 선 */
                 content: "";
                 position: absolute; /* a를 기준으로 정렬 */
                 left: 50%;
@@ -73,9 +83,10 @@
             }
             .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
                 /* 2차메뉴 - 무조건 absolute */
+                display: block !important; /* 선택자의 우선순위와 상관없이 무조건 이 속성을 우선 적용하겠다는 뜻(- js때문) */
                 position: absolute; /* ul.depth1 li를 기준으로 정렬 */
                 left: 0;
-                top: var(--header-height);  /* 1차메뉴 바로 아래여야 하기 때문에 */
+                top: var(--header-height);  /* 1차메뉴 바로 아래여야 하기 때문에 header의 높이만큼 아래로 떨어트리는거임 */
                 width: 100%;
                 height: 0;
                 text-align: center;
@@ -90,12 +101,12 @@
                 */
             }
             .header.menu_over .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
-                padding: 24px 0 0 0;
+                padding: 24px 0 0 0; /* header의 아래 선으로부터 떨어지는 여백 */
                 height: 260px;
                 opacity: 1;
             }
             .header .gnb .gnb_wrap ul.depth1 > li:first-child > ul.depth2{
-                /* 첫 번쨰 1차메뉴의 2차 ul */
+                /* 첫 번쨰 1차메뉴의 depth2 */
                 border-left: 1px solid #ccc;
             }
             .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a{
@@ -121,15 +132,16 @@
             .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a:hover > span::after{ /* 2차메뉴는 header나 li에 클래스를 주지 않고 a에 오버했을 때 나오는거임 */
                 width: 100%;
             }
-            
             .header .util{
                 display: flex;
             }
             .header .util .search .search_open,
             .header .util .mypage{
+                /* 아이콘을 가운데 정렬하기 위함 */
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                
                 width: 50px;
                 height: 50px;
             }
@@ -147,17 +159,17 @@
                 z-index: -1; /* 얘를 줘야 흰색배경이 메뉴아래로 깔림 */
                 /* 지하 1층 - 기본적으로 position 없으면 1층, 있으면 2층부터 시작  */
                 width: 100%;
-                height: 360px;
+                height: 360px; /* 흰색 배경의 전체 높이 */
                 background-color: var(--color-white);
                 transform: translateY(-110%);  /* 02.24 12시 강의)자기 높이보다 조금 더 많은 값을 줘서 위로 이동 - 그럼 안보임 */
                 transition: 0.3s;
             }
             .header.menu_over::before{
-                transform: translateY(0);
+                transform: translateY(0); /* 흰색 배경이 자연스럽게 내려옴 */
             }
             .header.menu_over::after{  /* header 아래 선 */
                 content: "";
-                position: absolute;
+                position: absolute;  /* header(fixed)를 기준으로 정렬 */
                 left: 0;
                 top: var(--header-height); /* header의 높이만큼 내려와서 아래 선을 그어야 하기 때문에 */
                 width: 100%;
@@ -168,7 +180,7 @@
                 background-image: url(../images/logo_black.svg);
             }
             .header.menu_over .gnb .gnb_wrap ul.depth1 > li{
-                min-width: 180px;
+                min-width: 180px; /* 1차메뉴의 글자의 길이가 달라서 넓이를 지정해주는 거임 */
             }
             .header.menu_over .gnb .gnb_wrap ul.depth1 > li.over > a{
                 color: var(--color-main);
@@ -209,7 +221,6 @@
 @media screen and (max-width:1024px){ /* 1024이하일 때 */
             .header{
                 padding-right: 0;
-                background-color: purple;
             }
             .header .gnb .gnb_open{
                 width: var(--header-height);
@@ -220,19 +231,117 @@
                 justify-content: center;
                 align-items: center;
             }
-            .header .gnb .gnb_open svg{
-                width: calc(100% * 0.43);
-                height: calc(100% * 0.33);
-            }
+            /* .header .gnb .gnb_open svg{
+                width: calc(var(--header-height) * 0.43);
+                height: calc(var(--header-height) * 0.33);  768이 되기 전에는 아이콘의 사이즈가 너무 커서 부담스럽기 때문에 아예 안줄거임
+            } */
             .header .gnb .gnb_wrap{
+                position: fixed;
+                right: 0;
+                top: 0;
+                z-index: 10; /* 검정블러 배경 위로 원래 있던 로고가 올라와서 얘를 그냥 위로 올려버림 -> 그럼 검정블러 배경도 아래로 내려가고, 로고도 안보임 */
+                width: 100%;
+                max-width: 500px; /* 모바일에서의 메뉴의 최소 넓이 */
+                height: 100vh; /* = 다 똑같음 100%, 100dvh = 브라우저에 꽉 차게 */
+                background-color: var(--color-white);
+                color: var(--font-color-txt);
+                fill: var(--font-color-txt);
+                transform: translateX(110%); /* % -> 나의 넓이를 기준으로 들어감 */
+                transition: 0.3s;
+            }
+            .header.menu_open .gnb .gnb_wrap{
+                transform: translateX(0);  /* 메뉴가 오른쪽에서 들어옴 */
+            }
+            .header .gnb .gnb_wrap .gnb_logo{
+                position: absolute;  /* 02.24 2시 25분)  gnb_wrap을 기준으로 정렬 */
+                /* ul.depth1을 제외한 나머지는 absolute */
+                left: var(--wrapper-margin);
+                top: 0;
+                height: var(--header-height);
+                width: max(121px, calc(var(--header-height) * 1.78));
+                background: url(../images/logo_black.svg) no-repeat left center / contain;
+            }
+            .header .gnb .gnb_wrap ul.depth1{
+                margin: var(--header-height) 0 0 0;  /* header로부터 떨어지는 여백 + 스크롤 될때 메뉴만 스크롤하기 위해(로고까지 같이 스크롤되는것을 방지하기 위함) */
+                height: calc(100% - var(--header-height)); 
+                /* 브라우저 높이가 줄어들었을 때, 스크롤 생성을 위해 높이를 주는거고, 100%에서 헤더높이를 뺀 이유는 헤더영역을 제외하고 메뉴를 아래로 스크롤하기 위함 */
+                padding: 15px 0 0 0;  /* 1차메뉴의 글자가 위로부터 떨어지는 여백 */
+                overflow-y: auto; /* 얘가 들어갈땐, 높이값이 필수로 들어가야 함. 안의 내용이 길어지면 스크롤 생성 */
+                /* height: 100%; 이렇게 주면 마지막 메뉴가 안보이기 때문에 calc 계산법으로 주는거임 */
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > a{
+                display: block;
+                font-family: var(--font-family-Eulyoo);
+                font-size: 22px;
+                padding: 14px var(--header-height) 14px var(--wrapper-margin); /* 글자끼리 떨어지는 여백 */
+                            /* 오른쪽 여백은 아이콘이 들어갈 공간 마련 */
+                position: relative; /* after 정렬의 기준 */
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li.open > a{
+                color: var(--color-main);
+                font-weight: var(--font-weight-bold);
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > a::after{
+                content: "";
+                position: absolute;  /* a를 기준으로 정렬 */
+                right: 0;
+                top: 0;
+                width: var(--header-height);  /* 메뉴닫기 버튼이랑 넓이를 같게 줘서 닫기 아이콘이랑 일렬로 쭉 내려오고 좌우 가운데 정렬을 주기 위함 */
+                height: 100%;  /* a랑 사이즈를 동일하게 줘서 글자의 위아래 가운데 위치시키기 위함 */
+                background-image: url("data:image/svg+xml,%3Csvg width='17' height='10' viewBox='0 0 17 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 1.28172L8.5 10L0 1.28172L1.24963 5.94744e-07L8.5 7.43678L15.7504 -3.9103e-08L17 1.28172Z' fill='%23555555'/%3E%3C/svg%3E%0A");
+                background-position: center center;
+                background-repeat: no-repeat;
+                transition: 0.3s;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li.open > a::after{
+                transform: rotate(180deg);
+                background-image: url("data:image/svg+xml,%3Csvg width='17' height='10' viewBox='0 0 17 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 1.28172L8.5 10L0 1.28172L1.24963 5.94744e-07L8.5 7.43678L15.7504 -3.9103e-08L17 1.28172Z' fill='%236C4B43'/%3E%3C/svg%3E%0A");
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
+                background-color: var(--color-bg);
+                padding: 16px var(--wrapper-margin) 16px var(--wrapper-margin);
                 display: none;
+            }
+            /* .header .gnb .gnb_wrap ul.depth1 > li.open > ul.depth2{
+                display: block;
+            } */
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a{
+                display: block;
+                padding: 8px 0 8px var(--wrapper-margin);
+            }
+            .header .gnb .gnb_wrap .gnb_close{
+                position: absolute; /* gnb_wrap을 기준으로 정렬 */
+                right: 0;
+                top: 0;
+                width: var(--header-height);
+                height: var(--header-height);
+                
+                /* 아이콘을 가운데 정렬하기 위해 주는 값 */
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             .header .gnb .gnb_bg{
-                display: none;
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0);
+                backdrop-filter: blur(0);
+                transform: translateX(110%);
+                transition: background-color 0.3s, backdrop-filter 0.3s;
+            }
+            .header.menu_open .gnb .gnb_bg{
+                background-color: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(4px);
+                transform: translateX(0);
             }
             .header .util{
                 display: none;
             }
+
+            
 }/*@media*/
 
 
@@ -324,3 +433,8 @@
                 display: none;
             }
 }/*@media*/
+
+
+.footer{
+    margin-top: 1000px;
+}
