@@ -50,12 +50,51 @@ $(document).ready(function(){
     })
 
 
-    // 메뉴 오버
-    $('.header .gnb .gnb_wrap ul.depth1 > li').on('mouseenter', function(){
-        $(this).addClass('over')
+    /*********************************************************************************
+     * 1차 지금 현재 넓이가 pc버전인지 mobile 버전인지 구분(메뉴만 1025px 이상은 pc / 1024px 이하는 mobile)
+     *     ==> 브라우저의 넓이값을 구해서 1024보다 큰지 작은지 구분
+     *     ==> 첫번째 로딩됐을 때 계산, 그리고 브라우저가 리사이즈 될 때마다 브라우저 넓이 체크
+     *         동일한 계산을 두 번해야 하는 경우, 함수로 정의한 다음에 호출해서 사용하는 방식을 씀
+     *********************************************************************************/
+    let win_w //브라우저 넓이
+    let mobile_size = 1024 //모바일 사이즈 시작(경계)
+    let device_status //pc, mobile 두개의 값 저장
+
+    function device_chk(){  //함수의 정의(선언)
+        win_w = $(window).width() //window 넓이 측정
+        if(win_w > mobile_size){ //win 넓이가 모바일보다 크면
+            device_status = 'pc'  //브라우저 사이즈의 상태 = pc를 넣어(= 하나만 있으면)
+        }else{
+            device_status = 'mo'  //아니면 모바일
+        }
+        console.log(device_status)  //브라우저 상태
+    }
+    device_chk() //함수의 실행 -- 문서가 로딩되고 단 1번($(document).ready 안에서 선언되었기 때문)
+    $(window).resize(function(){
+        device_chk() //함수의 실행 -- 브라우저가 리사이즈될 때마다 1번씩
     })
-    $('.header .gnb .gnb_wrap ul.depth1 > li').on('mouseleave', function(){
-        $(this).removeClass('over')
+
+
+    $('.header .gnb .gnb_wrap ul.depth1 > li').on('mouseenter focusin', function(){ //키보드접근성 떄문에 focusin,focusout을 줌 -> 키보드 Tab 키로 조절 가능
+        if(device_status == 'pc'){ //if문은 선택자를 부른 다음에 써줘야 함(그럼 브라우저 사이즈가 모바일에서 새로고침됐다가 pc로 리사이즈 되어도 실행됨)
+            $(this).addClass('over')
+            $('.header').addClass('menu_over')
+        } //pc가 아니면 아예 안할거라 else는 없음
+    })
+    $('.header .gnb .gnb_wrap ul.depth1 > li').on('mouseleave focusout', function(){
+        if(device_status == 'pc'){ 
+            $(this).removeClass('over')
+        } 
+    })
+    $('.header .gnb .gnb_bg').on('mouseenter', function(){
+        if(device_status == 'pc'){
+            $('.header').removeClass('menu_over')
+        }
+    })
+    $('.header .util .search .search_open').on('focusin', function(){
+        if(device_status == 'pc'){ 
+            $('.header').removeClass('menu_over')
+        }
     })
 
 
