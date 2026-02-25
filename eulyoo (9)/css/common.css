@@ -64,6 +64,9 @@ body{
         :root{
             --wrapper-margin: 30px;
             --header-height: 70px;
+            --font-size-tit: 40px;
+            --font-size-subTit1: 28px;
+            --font-size-subTit2: 22px;
         }
 }/*@media*/
 
@@ -71,7 +74,7 @@ body{
         :root{
             --font-size-default: 16px;
             --font-size-tit: 32px;
-            --font-size-subTit1: 32px;
+            --font-size-subTit1: 24px;
             --font-size-subTit2: 20px;
             --wrapper-margin: 16px;
             --header-height: 56px;

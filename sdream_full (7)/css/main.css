@@ -344,7 +344,7 @@ transform: rotate(-90edg);
 }
 .biz .list{
     max-width: 832px;   /* 최대넓이 - 넓이가 832이상 늘어나지 않음 - 그리고 그보다 작을땐 380의 여백을 빼고 나머지 전부 */
-    width: calc(100% - 380px);
+    width: calc(100% - 380px); /* tit에서부터 list와의 여백 */
 }
 .biz .list ul{
     display: flex;  /* li 좌우배치 */
