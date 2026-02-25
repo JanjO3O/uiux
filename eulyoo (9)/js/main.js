@@ -97,12 +97,17 @@ $(document).ready(function(){
             $(this).removeClass('over')
         } 
     })
-    $('.header .gnb .gnb_bg').on('mouseenter', function(){
+    $('.header .gnb .gnb_bg').on('mouseenter', function(){  //검정블러배경에 마우스 올리면 메뉴 오버 클래스 삭제
         if(device_status == 'pc'){
             $('.header').removeClass('menu_over')
         }
     })
-    $('.header .util .search .search_open').on('focusin', function(){
+    $('.header').on('mouseleave', function(){ //헤더에서 마우스가 아웃되면 매뉴 오버 클래스 삭제
+        if(device_status == 'pc'){
+            $('.header').removeClass('menu_over')
+        }
+    })
+    $('.header .util .search .search_open').on('focusin', function(){  //키보드접근성 tab키를 이용해서 search에 가면 메뉴 오버 클래스 삭제
         if(device_status == 'pc'){ 
             $('.header').removeClass('menu_over')
         }
@@ -135,10 +140,10 @@ $(document).ready(function(){
         }
     })
 
-    $('.header .gnb .gnb_open').on('click', function(){
+    $('.header .gnb .gnb_open').on('click', function(){ //모바일메뉴 
         $('.header').addClass('menu_open')
     })
-    $('.header .gnb .gnb_wrap .gnb_close').on('click', function(){
+    $('.header .gnb .gnb_wrap .gnb_close').on('click', function(){ //모바일메뉴
         $('.header').removeClass('menu_open')
     })
 
@@ -164,6 +169,26 @@ $(document).ready(function(){
     $(window).scroll(function(){ //함수의 선언 - 브라우저가 스크롤될 때마다 실행
         scroll_chk() 
     })
+
+
+
+    // book swiper 팝업
+    const book_swiper = new Swiper('.book .swiper', { /* 팝업을 감싼는 요소의 class명 */
+        slidesPerView: 2, /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+        spaceBetween: 16, /* 팝업과 팝업 사이 여백 */
+        breakpoints: {
+            640: {    /* 640px 이상일때 적용 */
+                slidesPerView: 5,    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 24,
+            },
+        },
+        //centeredSlides: true, /* 팝업을 화면에 가운데 정렬(가운데 1번이 옴) */
+        // loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
+        navigation: {
+            nextEl: '.book .next',
+            prevEl: '.book .prev',
+        },
+    });
 
 
 }) //$(document).ready

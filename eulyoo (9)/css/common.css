@@ -13,18 +13,17 @@ body{
     word-wrap: break-word; /* 단어가 제한된 넓이보다 길면 강제 줄바꿈 */
 }
 .wrapper{
-    width: 1284px;
+    width: var(--wrapper-width);
     margin: 0 auto; /* 화면에 가운데 정렬 */
-    border: 1px solid red;
 }
 #wrap{
     position: relative;  /* 그냥 있는 애 = 안전빵 */
 }
 @media screen and (max-width:1384px){  /* (wrapper+디자인할 때 준 좌우여백) 1284 + 50px + 50px */
                 .wrapper{
-                width: auto;
-                margin: 0 var(--wrapper-margin); /* 화면에 가운데 정렬 */
-}
+                    width: auto;
+                    margin: 0 var(--wrapper-margin); /* 화면에 가운데 정렬 */
+                }
 }/*@media  - wrapper가 풀리는 경우 하나만 있으면 됨*/
 
 /* html 표준때문에 입력해야하는 태그이지만 홈페이지에 나오지 않는
@@ -47,6 +46,7 @@ body{
     --font-size-subTit1: 32px;
     --font-size-subTit2: 24px;
     --wrapper-margin: 50px;
+    --wrapper-width: 1284px;
     --font-color-txt: #231815;
     --font-color-gray: #555555;
     --color-main: #6C4B43;

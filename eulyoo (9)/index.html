@@ -20,7 +20,7 @@
              pc 버전에서 메뉴에 마우슬르 올리면 menu_over
              mobile 버전에서 메뉴를 클릭해서 열면 menu_open 클래스 추가
              header가 상단에 고정되면 fixed 클래스 추가 -->
-        <header class="header  ">
+        <header class="header">
             <h1 class="logo"><a href="index.html"><span class="sr-only">을유문화사</span></a></h1>
             <nav class="gnb">
                 <button class="gnb_open">
@@ -144,7 +144,121 @@
                     </button><!--//next-->
                 </div><!--//ctrl_right-->
             </section><!--//visual-->
-            <section class="book"></section><!--//book-->
+            <section class="book">
+                <div class="inner"> <!-- 콘텐츠를 감싸는 요소를 inner라고 함 -->
+                    <div class="tit">
+                        <h2>을유,<br>오늘의 책</h2>
+                        <p>시대를 건너 사랑받는 가치 있는 <br>도서를 소개합니다.</p>
+                    </div><!--//tit-->
+                    <div class="list">
+                        <div class="swiper"> <!-- 팝업의 높이와 넓이를 css에서 줄 수 있는 요소 -->
+                            <ul class="swiper-wrapper"> <!-- 각 팝업 콘텐츠를 감싸는 요소 -->
+                                <li class="swiper-slide">
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/book01.png" alt="책표지"></div>
+                                        <div class="txt">
+                                            <h3>책을 쓰는 과학자들</h3>
+                                            <span>브라이언 클레그 , 제효영</span> <!-- 저자와 날짜는 문장이 아니라서 p 태그가 아닌 span태그를 줌 -->
+                                        </div>
+                                    </a>
+                                </li> <!-- 팝업 요소들 (div로 해도 상관없음) -->
+                                <li class="swiper-slide">
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/book02.jpg" alt="책표지"></div>
+                                        <div class="txt">
+                                            <h3>무심한 듯 씩씩하게</h3>
+                                            <span>김필영, 김영화</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/book03.jpg" alt="책표지"></div>
+                                        <div class="txt">
+                                            <h3>초현실주의자들의 은밀한 매력</h3>
+                                            <span>데즈먼드 모리스 , 이한음</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/book04.jpg" alt="책표지"></div>
+                                        <div class="txt">
+                                            <h3>휠체어 탄 소녀를 위한 동화는 없다</h3>
+                                            <span>어맨다 레덕 , 김소정</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/book05.jpg" alt="책표지"></div>
+                                        <div class="txt">
+                                            <h3>푸른 석양이 지는 별에서</h3>
+                                            <span>세라 스튜어트 존슨 , 안현주</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/book06.jpg" alt="책표지"></div>
+                                        <div class="txt">
+                                            <h3>차라투스트라는 이렇게 말했다</h3>
+                                            <span>프리드리히 니체 , 홍사현</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/book07.jpg" alt="책표지"></div>
+                                        <div class="txt">
+                                            <h3>제국의 어린이들</h3>
+                                            <span>이영은</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/book08.png" alt="책표지"></div>
+                                        <div class="txt">
+                                            <h3>밤은 부드러워, 마셔</h3>
+                                            <span>한은형</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/book09.jpg" alt="책표지"></div>
+                                        <div class="txt">
+                                            <h3>소크라테스 헬스클럽</h3>
+                                            <span>현상필</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div><!--//swiper-->
+                    </div><!--//list-->
+                    <div class="btn_wrap">
+                        <button class="prev">
+                            <span class="sr-only">이전팝업보기</span>
+                            <svg width="16" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 12L0 6L6 0L7.4 1.45L3.85 5H16V7H3.85L7.4 10.55L6 12Z"/>
+                            </svg>
+                        </button><!--//prev-->
+                        <button class="next">
+                            <span class="sr-only">다음팝업보기</span>
+                            <svg width="16" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 -5.24537e-07L16 6L10 12L8.6 10.55L12.15 7L4.37114e-07 7L6.11959e-07 5L12.15 5L8.6 1.45L10 -5.24537e-07Z"/>
+                            </svg>
+                        </button><!--//next-->
+                        <a href="#n" class="more">
+                            <span class="sr-only">더보기</span>
+                            <svg width="15" height="15" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.42857 8.57143H0V6.42857H6.42857V0H8.57143V6.42857H15V8.57143H8.57143V15H6.42857V8.57143Z"/>
+                            </svg>
+                        </a><!--//more-->
+                    </div><!--//btn_wrap-->
+                </div><!--//inner-->
+            </section><!--//book-->
             <section class="interview"></section><!--//interview-->
             <section class="story"></section><!--//story-->
         </main><!--//container-->

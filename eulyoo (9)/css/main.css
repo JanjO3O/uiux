@@ -435,6 +435,103 @@
 }/*@media*/
 
 
+
+.book{
+    background-color: var(--color-bg);
+    color: var(--font-color-txt);
+    padding: 206px 0 129px 0;
+    /* inner를 오른쪽으로 배치하기 위함 */
+    /* display: flex;
+    justify-content: flex-end; */
+}
+.book .inner{
+    /* width: calc(50% + calc(var(--wrapper-width)  / 2));  book 넓이의 50% (넓이는 항상 나를 감싸는 애를 기준으로 들어감/높이는 누구한테 감싸여있든 자기 맘대로) */
+    margin-left: calc(calc(100% - var(--wrapper-width)) / 2); /* 02.25 9:30 강의 */
+    /* 전체넓이 100% - wrapper의 넓이 --> 그럼 양사이드 여백이 남음
+       그럼 그 여백을 반띵하면 왼쪽 여백이 됨 */
+
+       display: flex; /* tit - list 좌우 정렬 */
+       justify-content: space-between;
+       position: relative; /* btn_wrap 정렬의 기준 */
+       align-items: flex-start;
+}
+.book .tit h2{
+    font-family: var(--font-family-Eulyoo);
+    font-size: var(--font-size-tit);
+    line-height: var(--line-height-tit);
+    margin: 0 0 21px 0; /* p 태그와의 여백 */
+}
+.book .list{
+    width: calc(100% - 327px);
+    /* inner의 넓이 100%에서 왼쪽 tit의 넓이 327px 빼고 전부 다 */
+}
+.book .list .swiper-wrapper{
+    align-items: flex-end;
+}
+.book .list .swiper-slide{
+    width: 250px;
+}
+.book .list .swiper-slide a{
+    display: block;
+}
+.book .list .swiper-slide a .photo{
+    overflow: hidden;
+    border: 1px solid #ededed;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.book .list .swiper-slide a .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* 책이 안짤리고 다 나옴 */
+    vertical-align: top;  /* img에 행간같이 아래 여백이 사라지는 값 */
+}
+.book .list .swiper-slide a .txt h3{
+    font-family: var(--font-family-Eulyoo);
+    font-size: var(--font-size-subTit2);
+    line-height: var(--line-height-tit);
+    margin: 24px 0 13px 0; /* span 태그와의 여백 */
+    /* 2줄 제한 */
+    max-height: calc(var(--line-height-tit) * 2em); /* max로 줘야 제목이 1줄인 애들의 저자가 바로 아래로 따라옴 */
+    overflow: hidden;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    word-break: normal;  /* common.css에서 준 단어 단위로 줄바꿈 해제 - 글자를 책의 넓이와 동일하게 하기 위함 */
+    
+    /* 
+     1줄 제한
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+    */
+}
+.book .list .swiper-slide a .txt span{
+    display: block;
+    color: var(--font-color-gray);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.book .btn_wrap{
+    position: absolute;  /* inner를 기준으로 정렬 */
+    left: 0;
+    top: 268px;
+}
+
+
+@media screen and (max-width:1384px){  /* wrapper의 width를 auto로 푸는 미디어쿼리 */
+        .book .inner{
+            margin-left: var(--wrapper-margin);
+            /* width: calc(100% - var(--wrapper-margin)); */
+        }
+}/*@media*/
+
+
+
+
 .footer{
     margin-top: 1000px;
 }
