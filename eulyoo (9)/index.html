@@ -266,6 +266,7 @@
                     </div><!--//tit-->
                     <div class="list">
                         <ul>
+                            <!-- 마우스를 올리면 li에 over 클래스를 추가 (pc 버전일때만) -->
                             <li>
                                 <a href="#n">
                                     <div class="photo"><img src="images/inter_01.jpg" alt="인터뷰 사진"></div>
@@ -290,7 +291,7 @@
                                 <a href="#n">
                                     <div class="photo"><img src="images/inter_02.jpg" alt="인터뷰 사진"></div>
                                     <div class="txt">
-                                        <h3>영화 감독 박찬욱</h3>
+                                        <h3>영화 감독<br> 박찬욱</h3>
                                         <svg width="37" height="37" viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19 17H37V18H19V37H18V18H0V17H18V0H19V17Z"/>
                                         </svg>
@@ -310,7 +311,7 @@
                                 <a href="#n">
                                     <div class="photo"><img src="images/inter_03.jpg" alt="인터뷰 사진"></div>
                                     <div class="txt">
-                                        <h3>사진 작가 신혜림</h3>
+                                        <h3>사진 작가<br> 신혜림</h3>
                                         <svg width="37" height="37" viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19 17H37V18H19V37H18V18H0V17H18V0H19V17Z"/>
                                         </svg>
@@ -336,9 +337,110 @@
                     </a><!--//more-->
                 </div><!--//wrapper-->
             </section><!--//interview-->
-            <section class="story"></section><!--//story-->
+            <section class="story">
+                <div class="wrapper">
+                    <div class="tit">
+                        <h2>끝나지 않는 이야기, 연재</h2>
+                    </div><!--//tit-->
+                    <div class="list">
+                        <div class="swiper"> <!-- 팝업의 높이와 넓이를 css에서 줄 수 있는 요소 -->
+                            <ul class="swiper-wrapper"> <!-- 각 팝업 콘텐츠를 감싸는 요소 -->
+                                <li class="swiper-slide"> <!-- 이미지가 길면 long 클래스 -->
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/story01.jpg" alt=""></div><!--//photo-->
+                                        <h3><span>#서평단후기 #스크리놀로지 #서평후기</span></h3>
+                                        <p>『스크리놀로지』를 먼저 읽고 서평을 남겨주신 독자 분들의 후기 일부를 공유합니다 함께해 주신 모든 서평단 독자 분들께 진심어린 감사의 인사를 전합니다 이현진 『스크리놀로지』</p>
+                                    </a>
+                                </li> <!-- 팝업 요소들 (div로 해도 상관없음) -->
+                                <li class="swiper-slide long">
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/story02.jpg" alt=""></div><!--//photo-->
+                                        <h3><span>#을유헤드라인 #차라투스트라는이렇게말했다 #을유사상고전</span></h3>
+                                        <p>씨네21 추천도서 <차라투스트라는 이렇게 말했다> “‘옮긴이의 말’을 빌리면 마음을 드러내는 것이 사유이고, 사유는 마음이 원하는 것을 자유롭게 해준다. 그렇기 때문에 사유는 시적으로 표현된다. 마치 노래처럼. 원전의 문체와 운율감을 살린 번역이라는 강조점은 그래서 중요해진다.” _이다혜 기자 (<씨네21> 2026.02.24.)</p>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/story03.jpg" alt=""></div><!--//photo-->
+                                        <h3><span>#박찬욱 #신간안내 #박찬욱신간</span></h3>
+                                        <p>스토리보드는 각본을 실제 영상으로 옮기는 과정의 기초 작업이기 때문에, 글자로 이루어진 각본을 시각화하는 계획을 모두 담고 있다  따라서 이 책을 읽는 독자들은 카메라가 어떤 순간을 강조하고 어떤 순간에 물러나려 했는지, 장면 전환을 어떤 식으로 다르게 가져가려 했는지 등을 찬찬히 살펴보면서 영화의 시각적 디테일이 최초로 고안된 순간을 확인할 수 있다. 특히 박찬욱 감독의 영화들은 꼼꼼한 스토리보드북 작성으로 유명한데, 본문만 500페이지가 넘는 『어쩔수가없다 스토리보드북』은 그중에서도 유독 촘촘하고 섬세한 작업이다. 전작 『헤어질 결심 스토리보드북』과 비교해 보면 약 1.5배 많은 분량이다.</p>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide long">
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/story05.jpg" alt=""></div><!--//photo-->
+                                        <h3><span>#서평단 #서평단모집 #어쩔수가없다스토리보드북</span></h3>
+                                        <p>#어쩔수가없다라는 잔혹하고 우스운 이야기를 빛과 소리의 세계로 끌어올린 아름다운 작업 박찬욱 감독 영화 『#어쩔수가없다스토리보드북』 서평단을 모집합니다. - 모집 기간: ~2월 26일(목) - 모집 인원: 30명 - 신청 방법: https://naver.me/5fdRO0Su - 당첨 발표: 2월 27일(금) 문자 개별 안내 박찬욱 감독·이윤호 작화 『어쩔수가없다 스토리보드북』</p>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/story04.jpg" alt=""></div><!--//photo-->
+                                        <h3><span>#을유세계문학전집 #세계문학전집</span></h3>
+                                        <p>가장 많은 출간 문의를 받은 책은? 2021년부터 2026년까지, 독자를 애타게 한 이 책의 정체는, 바로 을유세계문학전집 147번 플랜 오브라이언,『#세번째경찰관』 “진정한 희극 정신을 지닌 작가다.” _ 제임스 조이스 좋은 책을, 그리고 을유를 믿고 기다려주신 독자 분들께, 감사 인사와 즐거운 소식을 동시에 전합니다 P.S. 현재 출간 완료되었고 서평단 모집 진행 중입니다. 서평단 신청은 프로필 링크에서, 도서 구매는 인터넷 서점에서 가능합니다!</p>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide long">
+                                    <a href="#n">
+                                        <div class="photo"><img src="images/story06.jpg" alt=""></div><!--//photo-->
+                                        <h3><span>#을유세문한문장 #아주편안한죽음 #시몬드보부아르</span></h3>
+                                        <p>(…) 엄마가 죽는 걸 보게 되리라는 생각을 단 한 번도 진지하게 해 본 적이 없었다. 내게 있어서 엄마의 죽음은 탄생과 마찬가지로 신화적인 시간의 차원에 속한 것이었다. 그래서 엄마가 돌아가실 만큼 연세를 잡순 거라고 말했을 때, 그건 내가 했던 다른 수많은 말처럼 빈말에 불과했다. 그런 내가 이번에 처음으로 엄마에게서 산송장의 모습을 발견한 것이었다. 시몬 드 보부아르, 『아주 편안한 죽음』</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div><!--//swiper-->
+                    </div><!--//list-->
+                    <div class="btn_wrap">
+                        <button class="prev">
+                            <span class="sr-only">이전팝업보기</span>
+                            <svg width="16" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 12L0 6L6 0L7.4 1.45L3.85 5H16V7H3.85L7.4 10.55L6 12Z"/>
+                            </svg>
+                        </button><!--//prev-->
+                        <button class="next">
+                            <span class="sr-only">다음팝업보기</span>
+                            <svg width="16" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 -5.24537e-07L16 6L10 12L8.6 10.55L12.15 7L4.37114e-07 7L6.11959e-07 5L12.15 5L8.6 1.45L10 -5.24537e-07Z"/>
+                            </svg>
+                        </button><!--//next-->
+                        <a href="#n" class="more">
+                            <span class="sr-only">더보기</span>
+                            <svg width="15" height="15" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.42857 8.57143H0V6.42857H6.42857V0H8.57143V6.42857H15V8.57143H8.57143V15H6.42857V8.57143Z"/>
+                            </svg>
+                        </a><!--//more-->
+                    </div><!--//btn_wrap-->
+                </div><!--//wrapper-->
+            </section><!--//story-->
         </main><!--//container-->
-        <footer class="footer"></footer><!--//footer-->
+        <footer class="footer">
+            <h2 class="sr-only">사이트정보</h2> <!-- h태그를 써야하는데 footer에 그냥 임시로 h2 써줌 -->
+            <div class="wrapper">
+                <div class="slogan">지성의 문장,<br>문화의 힘. <br>을유문화사</div><!--//slogan-->
+                <div class="f_info">
+                    <h3>위치</h3>
+                    <p>03997 서울 마포구 서교동 469-48 (월드컵로16길 52-7)</p>
+                    <h3>연락처</h3>
+                    <ul class="tel">
+                        <li>전화번호 : 02-733-8153</li>
+                        <li>팩스 : 02-732-9154</li>
+                        <li>메일 : eulyoo1945@eulyoo.co.kr</li>
+                    </ul><!--//tel-->
+                    <h3>소셜네트워크</h3>
+                    <ul class="sns">
+                        <li><a href="https://www.instagram.com/eulyoo/" target="_blank" title="새창열림">인스타그램</a></li>
+                        <li><a href="https://www.facebook.com/eulyoo/" target="_blank" title="새창열림">페이스북</a></li>
+                        <li><a href="https://www.youtube.com/@eulyoo1945" target="_blank" title="새창열림">유튜브</a></li>
+                        <!-- 다른 홈페이지로 연결할 때는 새창링크로 함(target="_blank")
+                             새창 링크를 할 때 반드시 title="새창열림" 이라고 표시를 해야 함 -->
+                    </ul><!--//sns-->
+                </div><!--//f_info-->
+                <div class="copyright">
+                    <div class="f_logo"><img src="images/logo_w.svg" alt="을유문화사 로고"></div>
+                    <p>© EULYOO PUBLISHING CO., LTD. ALL RIGHTS RESERVED. SINCE 1945.</p>
+                </div><!--//copyright-->
+            </div><!--//wrapper-->
+        </footer><!--//footer-->
     </div>
 </body>
 </html>

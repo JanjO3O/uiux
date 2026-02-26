@@ -80,3 +80,12 @@ body{
             --header-height: 56px;
         }
 }/*@media*/
+
+::selection{  /* 마우스 드래그했을 떄 나올 스타일 */
+    background-color: var(--color-main);
+    color: var(--color-white);
+}
+.footer *::selection{
+    background-color: var(--color-white);
+    color: var(--color-main);
+}
