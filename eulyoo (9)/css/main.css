@@ -771,11 +771,12 @@
 }
 .interview .more{
     position: absolute; /* wrapper를 기준으로 정렬, after 정렬의 기준도 됨 */
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     top: 131px;
+    width: 100%;
     display: flex; /* 글자랑 아이콘 좌우 배치 */
     align-items: center;
+    justify-content: center;
     gap: 0 8px;
     color: var(--font-color-gray);
     fill: var(--font-color-gray);
