@@ -771,9 +771,9 @@
 }
 .interview .more{
     position: absolute; /* wrapper를 기준으로 정렬, after 정렬의 기준도 됨 */
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     top: 131px;
-    width: 100%;
     display: flex; /* 글자랑 아이콘 좌우 배치 */
     align-items: center;
     justify-content: center;
@@ -781,7 +781,7 @@
     color: var(--font-color-gray);
     fill: var(--font-color-gray);
 }
-.interview .more::after{
+.interview .more span::after{
     content: "";
     position: absolute; /* more를 기준으로 정렬 */
     left: 0;
@@ -795,7 +795,7 @@
     color: var(--color-main);
     fill: var(--color-main);
 }
-.interview .more:hover::after{
+.interview .more:hover span::after{
     width: 100%;
 }
 @media screen and (max-width:768px){ /* 768 이하부터 적용 */
