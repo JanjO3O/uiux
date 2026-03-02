@@ -1,0 +1,157 @@
+@import url(eulyoo.font.css);
+@import url(eulyoo.common.css);
+@import url(default.css);
+
+
+.header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-white);
+    fill: var(--color-white);
+    padding: 0 var(--wrapper-margin);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.header .logo a{
+    display: block;
+    width: calc(var(--header-height) * 1.78);
+    min-width: 121px;
+    /* width: max(121px, calc(var(--header-height) * 1.78)); */
+    height: calc(var(--header-height) * 0.28);
+    min-height: 19px;
+    /* height: max(19px, calc(var(--header-height) * 0.28)); */
+    background: url(../images/eulyoo/logo_w.svg) no-repeat center center / contain;
+}
+.header.fixed{
+    background-color: var(--color-white);
+    color: var(--font-color-txt);
+    fill: var(--font-color-txt);
+}
+.header.fixed .logo a{
+    background-image: url(../images/eulyoo/logo_black.svg);
+}
+@media screen and (min-width:1025px){  /* pc버전인 1025px 이상부터 */
+            .header .gnb .gnb_open,
+            .header .gnb .gnb_wrap .gnb_logo,
+            .header .gnb .gnb_wrap .gnb_close{
+                display: none;
+            }
+            .header .gnb .gnb_wrap ul.depth1{
+                display: flex;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li{
+                position: relative; /* 2차메뉴 정렬의 기준 */
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > a{
+                display: block;  /* 까먹지 말고 주기 ---> 얘를 줘야 행간이 적용됨 */
+                font-family: var(--font-family-Eulyoo);
+                font-size: 22px;
+                line-height: var(--header-height);
+                padding: 0 25.5px;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
+                display: none;
+            }
+            .header .util{
+                display: flex;
+            }
+            .header .util .search .search_open,
+            .header .util .mypage{
+                width: 50px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+}/*@media*/
+
+
+
+.visual{
+    position: relative;  /* ctrl_left,right 정렬의 기준 */
+}
+.visual .swiper-slide{
+    /* height: 100vh;
+    min-height: 500px; */
+    height: max(500px, 100vh);
+    background: url(../images/eulyoo/visual_bg01.jpg) no-repeat center center / cover;
+    color: var(--color-white);
+    padding: 0 var(--wrapper-margin) 175px var(--wrapper-margin);
+    /* 글자를 아래로 내리기 위함 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.visual .swiper-slide.bg2{
+    background-image: url(../images/eulyoo/visual_bg02.jpg);
+}
+.visual .swiper-slide.bg3{
+    background-image: url(../images/eulyoo/visual_bg03.jpg);
+}
+.visual .swiper-slide h3{
+    font-family: var(--font-family-Eulyoo);
+    font-size: clamp(40px, 7vw, 80px);
+    line-height: var(--line-height-tit);
+    margin: 0 0 4px 0;
+}
+.visual .ctrl_left{
+    position: absolute; /* visual을 기준으로 정렬 */
+    left: var(--wrapper-margin);
+    bottom: 99px;
+    z-index: 1;
+    fill: var(--color-white);
+    display: flex;
+    gap: 0 19px;
+    align-items: center;
+}
+.visual .ctrl_left .bar{
+    width: 200px;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.2);
+    position: relative; /* span 정렬의 기준 */
+}
+.visual .ctrl_left .bar span{
+    position: absolute; /* bar를 기준으로 정렬 */
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--color-white);
+}
+.visual .ctrl_left .play{
+    display: none;  /* 재생버튼을 누르면 나옴 */
+}
+.visual .ctrl_right{
+    position: absolute;
+    right: var(--wrapper-margin);
+    bottom: 77px;
+    z-index: 1;
+    fill: var(--color-white);
+    display: flex;
+    gap: 0 6px;
+}
+.visual .ctrl_right button{
+    width: 50px;
+    height: 50px;
+    border: 1px solid var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (max-width:768px){
+            .visual .swiper-slide{
+                height: 500px;
+                padding-bottom: 45px;
+            }
+            .visual .ctrl_left,
+            .visual .ctrl_right{
+                display: none;
+            }
+}/*@media*/

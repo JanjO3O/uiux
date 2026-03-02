@@ -2,6 +2,7 @@
     font-family: "NanumSquareNeo";
     font-weight: 400;
     src: 
+    /* eot는 주소 부르고 맨 뒤에 ?#iefix를 불러줘야 폰트가 적용됨 */
     url(../fonts/NanumSquareNeoTTF-bRg.eot?#iefix) format("embedded-opentype"),
     url(../fonts/NanumSquareNeoTTF-bRg.woff2) format("woff2"),
     url(../fonts/NanumSquareNeoTTF-bRg.woff) format("font-woff")

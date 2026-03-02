@@ -1,0 +1,32 @@
+@font-face {
+    font-family: "Eulyoo";
+	font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Eulyoo1945-Regular.eot');
+    src:url('../fonts/Eulyoo1945-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Eulyoo1945-Regular.woff2') format('woff2'),
+    url('../fonts/Eulyoo1945-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: "Eulyoo";
+	font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/Eulyoo1945-SemiBold.eot');
+    src:url('../fonts/Eulyoo1945-SemiBold.eot') format('embedded-opentype'),
+    url('../fonts/Eulyoo1945-SemiBold.woff2') format('woff2'),
+    url('../fonts/Eulyoo1945-SemiBold.woff') format('woff');
+}
+@font-face {
+    font-family: 'pretendard';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Pretendard-Regular.woff2') format('woff2'),
+    url('../fonts/Pretendard-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: 'pretendard';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/Pretendard-Bold.woff2') format('woff2'),
+    url('../fonts/Pretendard-Bold.woff') format('woff');
+}

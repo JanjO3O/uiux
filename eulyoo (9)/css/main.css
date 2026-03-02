@@ -6,7 +6,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 100;
+    z-index: 100;  /* header가 무조건 맨위 */
     width: 100%;
     height: var(--header-height);
     color: var(--color-white); /* 글자색 */
@@ -21,7 +21,8 @@
 .header .logo a{
     display: block;
 
-    width: calc(var(--header-height) * 1.78);  /* 계산식으로 해야 브라우저 사이즈가 줄어들 때 같이 줄어듬 */
+    width: calc(var(--header-height) * 1.78);  /* clamp로 계산하면, 브라우저 사이즈가 줄어들때마다 계속 줄어들어서 안됨. 고정되어야 함
+    calc 계산식으로 줘야 브라우저 사이즈가 줄어들 때 header의 높이에 비례해서 총 3번 줄어듬 */
     min-width: 121px;
     /* width: max(121px, calc(var(--header-height) * 1.78)); --> 위에 두 값을 한 번에 주는 값 */
 
@@ -60,7 +61,7 @@
                 transition: 0.3s;
             }
             .header .gnb .gnb_wrap ul.depth1 > li > a{
-                display: block;
+                display: block;  /* 얘를 안주면 a가 inline 요소가 됨 꼭 주기!! */
                 font-family: var(--font-family-Eulyoo);
                 font-size: 22px;
                 /* 행간을 header 높이만큼 주면 a의 높이가 header 높이가 되고, 글자도 위아래 가운데 들어감 */
@@ -355,7 +356,7 @@
     background: url(../images/visual_bg01.jpg) no-repeat center center / cover;
     color: var(--color-white);
     padding: 0 var(--wrapper-margin) 175px var(--wrapper-margin);  /* 디자인의 좌우 여백을 주기 위해 준 padding */
-
+    /* 브라우저 사이즈가 줄어들 때, 하단여백이 같이 줄어들면 아래 요소들이랑 부딪혀서 그냥 고정값인 175px을 준거임 */
     display: flex;  /* h3-p 아래로 정렬하기 위해 준 조건 3개 */
     flex-direction: column;
     justify-content: flex-end;
@@ -383,7 +384,7 @@
     fill: var(--color-white);  /* svg 아이콘 흰색 */
     display: flex; /* bar-button 좌우 정렬 */
     align-items: center;  /* bar를 위아래 가운데 하기 위해 준 값 */
-    gap: 0 19px;  /* bar-button 사이 여백 */
+    gap: 0 19px;  /* bar-button 사이 여백 (옆의 버튼 사이 여백은 필요없음 어차피 하나만 보일 요소) */
 }
 .visual .ctrl_left .bar{
     width: 200px;
@@ -396,7 +397,7 @@
     left: 0;
     top: 0;
     width: 50%;
-    height: 100%;
+    height: 100%;  /* bar 높이의 100%로 들어가야 하니까 */
     background-color: var(--color-white);
 }
 .visual .ctrl_left .play{
@@ -413,8 +414,8 @@
     gap: 0 6px;  /* button 사이 여백 */
 }
 .visual .ctrl_right button{
-    width: 50px;
-    height: 50px;
+    width: 50px;  /* 원의 넓이 */
+    height: 50px; /* 원의 높이 */
     border: 1px solid #fff;
     border-radius: 50%;
     

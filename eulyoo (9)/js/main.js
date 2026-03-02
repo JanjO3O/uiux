@@ -24,6 +24,7 @@ $(document).ready(function(){
             prevEl: '.visual .ctrl_right .prev',  
         },
 
+        // bar의 게이지 차는 js code
         on: {
             autoplayTimeLeft(s, time, progress) {
                 // progress: 1 -> 0 
@@ -32,18 +33,17 @@ $(document).ready(function(){
                 $('.visual .ctrl_left .bar span').width(visual_bar_w + '%')
             }
         }
-
     });
 
+    // stop 버튼을 누르면 play 버튼이 나와야 함 <-> play 버튼을 누르면 stop 버튼이 나와야 함
+    // stop을 누르면 나 자신을 숨기고 -> show 버튼을 보여줌
     $('.visual .ctrl_left .stop').on('click', function(){
-        // console.log('정지!!')
         visual_swiper.autoplay.stop();  /* 일시정지 기능 */
         $(this).hide()  //일시정지를 누르면 일시정지를 숨기고 
         $('.visual .ctrl_left .play').show()  //재생이 보임
 
     })
      $('.visual .ctrl_left .play').on('click', function(){
-        // console.log('재생!!')
         visual_swiper.autoplay.start();  /* 재생 기능 */
         $(this).hide()  //재생을 누르면 재생을 숨기고
         $('.visual .ctrl_left .stop').show()  //일시정지 보임

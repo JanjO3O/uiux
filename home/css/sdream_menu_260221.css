@@ -105,18 +105,21 @@
                 width: 40px;
                 height: 40px;
             }
+            .header .util .mypage:hover,
+            .header .util .lang .lang_open:hover{
+                fill: #0373DC;
+            }
             .header .util .lang{
                 position: relative;  /* .lang .ul 정렬의 기준 */
             }
             .header .util .lang ul{
-                position: absolute;
+                position: absolute;  /* lang를 기준으로 정렬 */
                 left: 0;
                 top: 40px;
                 width: 100%;
                 opacity: 0;
-                border: 1px solid #ccc;
+                border: 1px solid #fff;
                 border-radius: 10px;
-                box-shadow: 1px 1px 3px 0 rgba(204, 204, 204, 0.5);
                 text-align: center;
                 padding: 3px 0;
             }
@@ -125,6 +128,10 @@
             }
             .header .util .lang ul li{
                 margin: 3px 0;
+            }
+            .header .util .lang ul li:hover{
+                font-weight: 700;
+                color: #CCE7FF;
             }
             .header .gnb_bg{  /* 검정색 블러배경 */
                 position: fixed;
