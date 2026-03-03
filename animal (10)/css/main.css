@@ -1,0 +1,18 @@
+/* 
+    메인페이지에서만 호출
+    메인에 필요한 다른 css를 부름
+*/
+@import url(default.css);
+@import url(fonts.css);
+@import url(layout.css);
+@import url(common.css);
+
+h2{
+    font-size: var(--font-size-tit);
+    font-family: var(--font-family-School);
+    line-height: var(--line-height-tit);
+    color: var(--font-color-txt);
+}
+.wrapper{
+    border: 1px solid red;
+}
