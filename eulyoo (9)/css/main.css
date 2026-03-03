@@ -58,7 +58,7 @@
             .header .gnb .gnb_wrap ul.depth1 > li{
                 position: relative; /* ul.depth2 정렬의 기준 */
                 min-width: 0; /* 최소넓이 0 -> 180px로 부드럽게 넓어지게 하기 위함 */
-                transition: 0.3s;
+                transition: 0.3s;  /* 넓이가 자연스럽게 바뀌는 시간 */
             }
             .header .gnb .gnb_wrap ul.depth1 > li > a{
                 display: block;  /* 얘를 안주면 a가 inline 요소가 됨 꼭 주기!! */
@@ -66,9 +66,9 @@
                 font-size: 22px;
                 /* 행간을 header 높이만큼 주면 a의 높이가 header 높이가 되고, 글자도 위아래 가운데 들어감 */
                 line-height: var(--header-height); /* 위아래로 헤더의 높이만큼 눌려야 하기 때문에 */
-                padding: 0 25px; /* 좌우로도 여백의 반만큼 눌려야 함 / 마우스 오버 전에는 메뉴 사이의 여백이 동일 */
+                padding: 0 25px; /* 하나의 메뉴마다 좌우로도 여백의 반만큼 눌려야 함 / 마우스 오버 전에는 메뉴 사이의 여백이 동일 */
                 text-align: center;
-                position: relative; /* after 정렬의 기준 */
+                position: relative; /* after 정렬의 기준 (-> 1차메뉴 하단의 밑줄) */
             }
             .header .gnb .gnb_wrap ul.depth1 > li > a::after{  /* 1차메뉴 제목의 선 */
                 content: "";
@@ -89,11 +89,11 @@
                 left: 0;
                 top: var(--header-height);  /* 1차메뉴 바로 아래여야 하기 때문에 header의 높이만큼 아래로 떨어트리는거임 */
                 width: 100%;
-                height: 0;
+                height: 0;  /* 메뉴가 위에서 내려오는듯한 효과를 주기 위함 */
                 text-align: center;
-                padding: 0;
+                padding: 0;  /* 메뉴가 위에서 내려오는 효과를 주기 위해 */
                 border-right: 1px solid #ccc;
-                opacity: 0;
+                opacity: 0;  /* transition이 자연스럽게 들어가기 위해서 */
                 transition: 0.3s;
                 overflow: hidden;
                 /* 
@@ -101,18 +101,18 @@
                     transition이 안들어감
                 */
             }
+            .header .gnb .gnb_wrap ul.depth1 > li:first-child > ul.depth2{
+                /* 첫 번쨰 1차메뉴의 depth2 */
+                border-left: 1px solid #ccc;
+            }
             .header.menu_over .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
                 padding: 24px 0 0 0; /* header의 아래 선으로부터 떨어지는 여백 */
                 height: 260px;
                 opacity: 1;
             }
-            .header .gnb .gnb_wrap ul.depth1 > li:first-child > ul.depth2{
-                /* 첫 번쨰 1차메뉴의 depth2 */
-                border-left: 1px solid #ccc;
-            }
             .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a{
                 display: block;
-                padding: 8px 0;
+                padding: 8px 0;  /* 글자 사이의 행간을 padding으로 주기 */
             }
             .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a:hover{
                 color: var(--color-main);
@@ -130,7 +130,7 @@
                 background-color: var(--color-main);
                 transition: 0.3s;
             }
-            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a:hover > span::after{ /* 2차메뉴는 header나 li에 클래스를 주지 않고 a에 오버했을 때 나오는거임 */
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a:hover > span::after{ /* 2차메뉴는 header나 li에 클래스를 주지 않고 a에 오버했을 때 바로 나오는거임 */
                 width: 100%;
             }
             .header .util{
@@ -143,7 +143,7 @@
                 justify-content: center;
                 align-items: center;
                 
-                width: 50px;
+                width: 50px;  /* 아이콘이 눌리는 가상의 상자 */
                 height: 50px;
             }
 
@@ -152,29 +152,31 @@
                 color: var(--font-color-txt); /* 글자색 */
                 fill: var(--font-color-txt);  /* 아이콘색 */
             }
-            .header::before{ /* header 2차메뉴 의 흰색 배경 */
+            .header::before{ /* header 2차메뉴의 흰색 배경 */
                 content: "";
                 position: absolute;  /* header(fixed)를 기준으로 정렬 */
                 left: 0;
                 top: 0;
                 z-index: -1; /* 얘를 줘야 흰색배경이 메뉴아래로 깔림 */
-                /* 지하 1층 - 기본적으로 position 없으면 1층, 있으면 2층부터 시작  */
-                width: 100%;
+                /* 1차메뉴(li)와 2차메뉴(ul)에겐 position이 있어서 메뉴는 보이는데, logo랑 util은 position이 없어서 얘를 아래로 깔아야 함 */
+                /* 기본적으로 position 없으면 1층, 있으면 2층부터 시작  */
+                width: 100%; /* 정렬의 기준인 header의 넓이의 100% */
                 height: 360px; /* 흰색 배경의 전체 높이 */
                 background-color: var(--color-white);
-                transform: translateY(-110%);  /* 02.24 12시 강의)자기 높이보다 조금 더 많은 값을 줘서 위로 이동 - 그럼 안보임 */
-                transition: 0.3s;
+                transform: translateY(-110%);  /* 02.24 12시 강의)header 높이보다 조금 더 많은 값을 줘서 위로 이동 - 그럼 안보임 */
+                /* translateY 줌으로써, 마우스 오버 시 메뉴가 위에서 아래로 내려오는거처럼 보이는 효과가 적용됨 */
+                transition: 0.3s;  /* 흰색배경이 위에서 아래로 내려오는데 걸리는 시간 */
             }
             .header.menu_over::before{
-                transform: translateY(0); /* 흰색 배경이 자연스럽게 내려옴 */
+                transform: translateY(0); /* 마우스 오버 시 흰색 배경이 위에서 아래로 자연스럽게 내려옴 */
             }
-            .header.menu_over::after{  /* header 아래 선 */
+            .header.menu_over::after{  /* menu_over됐을 때 보이는 header 아래 선 */
                 content: "";
                 position: absolute;  /* header(fixed)를 기준으로 정렬 */
                 left: 0;
                 top: var(--header-height); /* header의 높이만큼 내려와서 아래 선을 그어야 하기 때문에 */
-                width: 100%;
-                height: 1px;
+                width: 100%;  /* 정렬의 기준인 header의 넓이의 100% */
+                height: 1px;  /* 선의 두께 */
                 background-color: #ccc;
             }
             .header.menu_over .logo a{
@@ -185,14 +187,13 @@
             }
             .header.menu_over .gnb .gnb_wrap ul.depth1 > li:hover > a{
                 color: var(--color-main);
-                height: var(--font-weight-bold);
+                font-weight: var(--font-weight-bold);
             }
             .header.menu_over .gnb .gnb_wrap ul.depth1 > li:hover > a::after{
                 width: 100%;  /* header랑 li에 클래스가 붙기 전에 스타일을 다 줘서 효과가 부드럽게 나타나게 해줌 */
             }
-            
             .header .gnb .gnb_bg{ /* 검은블러 배경 */
-                position: fixed;
+                position: fixed;  /* absolute는 적용이 안됨 */
                 left: 0;
                 bottom: 0;
                 width: 100%;

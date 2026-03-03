@@ -32,6 +32,7 @@
     background-color: var(--color-white);
     color: var(--font-color-txt);
     fill: var(--font-color-txt);
+    border-bottom: 1px solid #ccc;
 }
 .header.fixed .logo a{
     background-image: url(../images/eulyoo/logo_black.svg);
@@ -40,13 +41,15 @@
             .header .gnb .gnb_open,
             .header .gnb .gnb_wrap .gnb_logo,
             .header .gnb .gnb_wrap .gnb_close{
-                display: none;
+                display: none;  /* 모바일에서만 나옴 */
             }
             .header .gnb .gnb_wrap ul.depth1{
                 display: flex;
             }
             .header .gnb .gnb_wrap ul.depth1 > li{
                 position: relative; /* 2차메뉴 정렬의 기준 */
+                min-width: 0;
+                transition: width 0.3s;  /* 넓이 자연스럽게 바뀌라고 */
             }
             .header .gnb .gnb_wrap ul.depth1 > li > a{
                 display: block;  /* 까먹지 말고 주기 ---> 얘를 줘야 행간이 적용됨 */
@@ -54,9 +57,64 @@
                 font-size: 22px;
                 line-height: var(--header-height);
                 padding: 0 25.5px;
+                text-align: center;
+                position: relative;  /* after 정렬의 기준 - 1차메뉴 하단의 밑줄 */
             }
-            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
-                display: none;
+            .header .gnb .gnb_wrap ul.depth1 > li > a::after{
+                content: "";
+                position: absolute;  /* a를 기준으로 정렬 */
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -2px;
+                z-index: 1;
+                width: 0;
+                height: 3px;
+                background-color: var(--color-main);
+                /* transition: 0.3s;  얘를 안주면 선이 뽝 생김 */
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2{  /* li에 over하면 열림 */
+                position: absolute;  /* 1차메뉴 li를 기준으로 정렬 */
+                left: 0;
+                top: var(--header-height);  /* 1차메뉴 = header height라서 그만큼 위에서 떨어져서 위치해야 함 */
+                padding-top: 0;  /* header의 아래선으로부터 떨어지는 여백인데 padding(=나의 내부 여백)으로 줘야 마우스오버할 때 아웃되는것 방지됨 */
+                width: 100%;
+                height: 0;
+                text-align: center;
+                border-right: 1px solid #ccc;
+                opacity: 0;
+                transition: 0.3s;
+                overflow: hidden;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li:first-child > ul.depth2{
+                border-left: 1px solid #ccc;
+            }
+            .header.menu_over .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
+                padding-top: 24px;
+                height: 260px;
+                opacity: 1;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a{
+                display: block;
+                padding: 8px 0;  /* 나의 여백이잖아 그러니까 위에 줘도 안밀리지 */
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a:hover{
+                color: var(--color-main);
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a > span{
+                position: relative; /* after 정렬의 기준 */
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a > span::after{
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -1px;
+                width: 0;
+                height: 1px;
+                background-color: var(--color-main);
+                transition: 0.3s;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a:hover > span::after{
+                width: 100%;
             }
             .header .util{
                 display: flex;
@@ -69,6 +127,66 @@
                 justify-content: center;
                 align-items: center;
             }
+
+            /* 메뉴에 마우스를 올렸을 때 */
+            .header.menu_over{
+                color: var(--font-color-txt);
+                fill: var(--font-color-txt);
+            }
+            .header::before{
+                content: "";
+                position: absolute; /* header-fixed를 기준으로 정렬 */
+                left: 0;
+                top: 0;
+                z-index: -1;
+                width: 100%;
+                height: 360px;
+                background-color: var(--color-white);
+                transform: translateY(-110%);  /* header의 높이보다 많이 줘서 위로 보내놓고 마우스 오버 시 위에서 아래로 자연스럽게 내려오는 효과를 주기 위함 */
+                transition: 0.3s;
+            }
+            .header.menu_over::before{
+                transform: translateY(0);
+            }
+            .header.menu_over::after{  /* menu_over됐을 때 보이는 header 아래 선 */
+                content: "";
+                position: absolute;  /* header-fixed를 기준으로 정렬 */
+                left: 0;
+                top: var(--header-height);
+                width: 100%;
+                height: 1px;
+                background-color: #ccc;
+            }
+            .header.menu_over .logo a{
+                background-image: url(../images/eulyoo/logo_black.svg);
+            }
+            .header.menu_over .gnb .gnb_wrap ul.depth1 > li{
+                width: 180px;
+            }
+            .header.menu_over .gnb .gnb_wrap ul.depth1 > li:hover > a{
+                color: var(--color-main);
+                font-weight: var(--font-weight-bold);
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li:hover > a::after{
+                width: 100%;
+            }
+            .header .gnb .gnb_bg{
+                position: fixed;
+                left: 0;
+                top: 0;
+                z-index: -2;  /* -1은 이미 흰색배경이 가져서 그보다 더 아래 값을 줘야 함 */
+                width: 100%;
+                height: 100vh;
+                background-color: #000;
+                backdrop-filter: blur(0);
+                transform: translateY(-110%);
+                transition: background-color 0.3s backdrop-filter 0.3s;
+            }
+            .header.menu_over .gnb .gnb_bg{
+                backdrop-filter: blur(4px);
+                background-color: rgba(0, 0, 0, 0.5);
+                transform: translateY(0);
+            }
 }/*@media*/
 
 
@@ -79,7 +197,7 @@
 .visual .swiper-slide{
     /* height: 100vh;
     min-height: 500px; */
-    height: max(500px, 100vh);
+    height: max(500px, 100vh); /* 최소높이 500px부터는 h3의 하단 여백이 따라오지 않음 */
     background: url(../images/eulyoo/visual_bg01.jpg) no-repeat center center / cover;
     color: var(--color-white);
     padding: 0 var(--wrapper-margin) 175px var(--wrapper-margin);
@@ -128,7 +246,7 @@
     display: none;  /* 재생버튼을 누르면 나옴 */
 }
 .visual .ctrl_right{
-    position: absolute;
+    position: absolute; /* visual을 기준으로 정렬 */
     right: var(--wrapper-margin);
     bottom: 77px;
     z-index: 1;
@@ -147,7 +265,7 @@
 }
 @media screen and (max-width:768px){
             .visual .swiper-slide{
-                height: 500px;
+                height: 500px;  /* 모바일에선 높이가 아예 고정임 */
                 padding-bottom: 45px;
             }
             .visual .ctrl_left,

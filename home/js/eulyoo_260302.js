@@ -44,4 +44,36 @@ $(document).ready(function(){
         $('.visual .ctrl_left .stop').show()
     })
 
+
+    // 메뉴 오버
+
+    let win_w //브라우저 넓이
+    let mobile_size = 1024 //모바일 사이즈 시작
+    let device_status
+
+    function device_chk(){
+        win_w = $(window).width()
+        if(win_w > mobile_size){
+            device_status = 'pc'
+        }else{
+            device_status = 'mo'
+        }
+        console.log(device_status)
+    }
+    device_chk()
+    $(window).resize(function(){
+        device_chk()
+    })
+
+
+    $('.header').on('mouseenter', function(){
+        $('.header').addClass('menu_over')
+    })
+    $('.header').on('mouseleave', function(){
+        $('.header').removeClass('menu_over')
+    })
+    $('.header .gnb .gnb_bg').on('mouseenter', function(){
+        $('.header').removeClass('menu_over')
+    })
+
 })/*$(document).ready*/
