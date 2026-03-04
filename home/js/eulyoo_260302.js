@@ -66,14 +66,33 @@ $(document).ready(function(){
     })
 
 
-    $('.header').on('mouseenter', function(){
-        $('.header').addClass('menu_over')
+    
+    $('.header .gnb .gnb_wrap ul.depth1 > li').on('mouseenter focusin', function(){
+        if(device_status == 'pc'){
+            $(this).addClass('over')
+            $('.header').addClass('menu_over')
+        }
     })
-    $('.header').on('mouseleave', function(){
-        $('.header').removeClass('menu_over')
+    $('.header .gnb .gnb_wrap ul.depth1 > li').on('mouseleave  focusout', function(){
+        if(device_status == 'pc'){
+            $(this).removeClass('over')
+        }
     })
-    $('.header .gnb .gnb_bg').on('mouseenter', function(){
-        $('.header').removeClass('menu_over')
+
+    $('.header').on('mouseleave',function(){
+        if(device_status == 'pc'){
+            $('.header').removeClass('menu_over')
+        }
+    })
+    $('.header .gnb .gnb_bg').on('mouseenter',function(){
+        if(device_status == 'pc'){
+            $('.header').removeClass('menu_over')
+        }
+    })
+    $('.header .util .search .search_open').on('focusin', function(){
+        if(device_status == 'pc'){
+            $('.header').removeClass('menu_over')
+        }
     })
 
 })/*$(document).ready*/

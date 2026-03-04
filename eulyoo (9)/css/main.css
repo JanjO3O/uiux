@@ -88,17 +88,18 @@
                 position: absolute; /* ul.depth1 li를 기준으로 정렬 */
                 left: 0;
                 top: var(--header-height);  /* 1차메뉴 바로 아래여야 하기 때문에 header의 높이만큼 아래로 떨어트리는거임 */
-                width: 100%;
+                width: 100%;  /* 1차메뉴를 기준으로 정렬해서 1차메뉴만큼 넓이가 들어가라고 100%를 주는 것임 */
                 height: 0;  /* 메뉴가 위에서 내려오는듯한 효과를 주기 위함 */
                 text-align: center;
-                padding: 0;  /* 메뉴가 위에서 내려오는 효과를 주기 위해 */
+                padding: 0;
+            /* 메뉴가 위에서 내려오는 효과를 주기 위해 -> height랑 padding값이 같이 있으면 두개 다 0을 줘야 남김없이 사라졌다 나타남, height가 0이라도 padding값이 있으면 그만큼 늘어나서 선이 보임 */
                 border-right: 1px solid #ccc;
                 opacity: 0;  /* transition이 자연스럽게 들어가기 위해서 */
                 transition: 0.3s;
-                overflow: hidden;
+                overflow: hidden;  /* 2차메뉴가 위에서 자연스럽게 나오는 효과를 위해 넘치는 애들을 잘라줌으로써 2차메뉴를 화면에 안보이게 함 */
                 /* 
                     display: none;으로 숨겼다가 display: block;으로 보이게 하는 요소는
-                    transition이 안들어감
+                    transition이 안들어감  / transition 값은 시간이 동일해야 함
                 */
             }
             .header .gnb .gnb_wrap ul.depth1 > li:first-child > ul.depth2{
@@ -193,12 +194,15 @@
                 width: 100%;  /* header랑 li에 클래스가 붙기 전에 스타일을 다 줘서 효과가 부드럽게 나타나게 해줌 */
             }
             .header .gnb .gnb_bg{ /* 검은블러 배경 */
-                position: fixed;  /* absolute는 적용이 안됨 */
+                position: fixed;
+            /* fixed는 body를 기준으로 정렬하는 것--> header를 기준으로 absolute하면 header의 영역만큼만 들어가짐
+               absolute를 주고 bottom값이 아닌 top값을 header의 높이만큼 주고, 높이를 100vh 주면 적용이 되지만, 굳이 번거로우니
+               fixed로 body를 기준으로 정렬한 다음, bottom값을 주고 높이는 100vh를 주는 것임--> 그러면 화면 전체에 배경이 깔림, 그리고 z-index로 지하로 보냄 */
                 left: 0;
                 bottom: 0;
                 width: 100%;
                 height: 100vh; 
-                z-index: -2; /* header::before -->2차메뉴 흰색배경이 z-index -1이라서 여기서는 -2를 줘야 2차메뉴 아래로 깔림) */
+                z-index: -2; /* header::before -->2차메뉴 흰색배경이 z-index -1이라서 여기서는 -2를 줘야 2차메뉴 아래로 깔림 */
                 background-color: rgba(0, 0, 0, 0);
                 backdrop-filter: blur(0);
                 transform: translateY(-110%); /* 02.24 12시 강의 */

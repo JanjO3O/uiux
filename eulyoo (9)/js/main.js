@@ -74,7 +74,7 @@ $(document).ready(function(){
     function device_chk(){  //함수의 정의(선언)
         win_w = $(window).width() //window 넓이 측정
         if(win_w > mobile_size){ //win 넓이가 모바일보다 크면
-            device_status = 'pc'  //브라우저 사이즈의 상태 = pc를 넣어(= 하나만 있으면)
+            device_status = 'pc'  //브라우저 사이즈의 상태 = pc를 넣어(= 하나만 있으면 '이 값을 넣어'라는 뜻이고, == 두개 있으면 '~와 같다'는 의미)
         }else{
             device_status = 'mo'  //아니면 모바일
         }
