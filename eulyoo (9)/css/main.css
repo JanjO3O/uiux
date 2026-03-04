@@ -32,6 +32,7 @@
 
     background: url(../images/logo_w.svg) no-repeat center center / contain; /* logo처럼 짤리면 안되는 애들은 contain으로 주면 브라우저 사이즈 줄어들어도 안짤림 */
 }
+/* header fixed는 pc든 mo이든 동일하게 나올 아이라서 미디어쿼리에서 안쓰고 여기에 쓰는거임 */
 .header.fixed{
     background-color: var(--color-white);
     color: var(--font-color-txt);
@@ -197,7 +198,7 @@
                 position: fixed;
             /* fixed는 body를 기준으로 정렬하는 것--> header를 기준으로 absolute하면 header의 영역만큼만 들어가짐
                absolute를 주고 bottom값이 아닌 top값을 header의 높이만큼 주고, 높이를 100vh 주면 적용이 되지만, 굳이 번거로우니
-               fixed로 body를 기준으로 정렬한 다음, bottom값을 주고 높이는 100vh를 주는 것임--> 그러면 화면 전체에 배경이 깔림, 그리고 z-index로 지하로 보냄 */
+               fixed로 body를 기준으로 정렬한 다음, bottom값을 0 주고 높이는 100vh를 주는 것임--> 그러면 화면 전체에 배경이 깔림, 그리고 z-index로 지하로 보냄 */
                 left: 0;
                 bottom: 0;
                 width: 100%;
@@ -226,7 +227,7 @@
 }/*@media*/
 @media screen and (max-width:1024px){ /* 1024이하일 때 */
             .header{
-                padding-right: 0;
+                padding-right: 0;  /* 메뉴 오픈 아이콘의 오른쪽 여백이 없음 */
             }
             .header .gnb .gnb_open{
                 width: var(--header-height);
@@ -264,22 +265,25 @@
                 left: var(--wrapper-margin);
                 top: 0;
                 height: var(--header-height);
-                width: max(121px, calc(var(--header-height) * 1.78));
+                width: max(121px, calc(var(--header-height) * 1.78));  /* 위의 logo a에서 가져온 값 */
                 background: url(../images/logo_black.svg) no-repeat left center / contain;
+                /* 높이는 header 높이를 주고, top값은 0으로 놓고, bg-position에서 center를 줘서 해당 높이에서 위아래 가운데에 들어가는 거임
+                   아니면, top값을 디자인에서 준 여백값을 주고, height를 위의 logo a에서 가져와서 주는 방법도 있음 
+                   근데 어차피 bg 줄 때 position 값이 center로 들어가니까 그냥 첫 번째 방법으로 주면 편함 */
             }
             .header .gnb .gnb_wrap ul.depth1{
-                margin: var(--header-height) 0 0 0;  /* header로부터 떨어지는 여백 + 스크롤 될때 메뉴만 스크롤하기 위해(로고까지 같이 스크롤되는것을 방지하기 위함) */
+                margin: var(--header-height) 0 0 0;  /* header의 높이만큼 아래로 떨어져서 위치함 + 스크롤 될때 메뉴만 스크롤하기 위해(로고까지 같이 스크롤되는것을 방지하기 위함) */
                 height: calc(100% - var(--header-height)); 
                 /* 브라우저 높이가 줄어들었을 때, 스크롤 생성을 위해 높이를 주는거고, 100%에서 헤더높이를 뺀 이유는 헤더영역을 제외하고 메뉴를 아래로 스크롤하기 위함 */
-                padding: 15px 0 0 0;  /* 1차메뉴의 글자가 위로부터 떨어지는 여백 */
-                overflow-y: auto; /* 얘가 들어갈땐, 높이값이 필수로 들어가야 함. 안의 내용이 길어지면 스크롤 생성 */
-                /* height: 100%; 이렇게 주면 마지막 메뉴가 안보이기 때문에 calc 계산법으로 주는거임 */
+                padding: 14px 0 0 0;  /* 1차메뉴의 글자가 위로부터 떨어지는 여백 */
+                overflow-y: auto; /* 얘가 들어갈땐, 높이값이 필수로 들어가야 함. 안의 내용이 길어지면 위아래 스크롤 생성 */
+                /* height: 100%; 이렇게 주면 브라우저 높이가 줄어들었을 때 생기는 스크롤에서 마지막 메뉴가 안보이기 때문에 calc 계산법으로 주는거임 */
             }
             .header .gnb .gnb_wrap ul.depth1 > li > a{
                 display: block;
                 font-family: var(--font-family-Eulyoo);
                 font-size: 22px;
-                padding: 14px var(--header-height) 14px var(--wrapper-margin); /* 글자끼리 떨어지는 여백 */
+                padding: 13px var(--header-height) 13px var(--wrapper-margin); /* 글자끼리 떨어지는 여백 */
                             /* 오른쪽 여백은 아이콘이 들어갈 공간 마련 */
                 position: relative; /* after 정렬의 기준 */
             }
@@ -305,7 +309,7 @@
             }
             .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
                 background-color: var(--color-bg);
-                padding: 16px var(--wrapper-margin) 16px var(--wrapper-margin);
+                padding: 16px var(--wrapper-margin) 16px var(--wrapper-margin);  /* 디자인 상 왼쪽 여백을 a에서 padding으로 한 번 더 줄거임 */
                 display: none;
             }
             /* .header .gnb .gnb_wrap ul.depth1 > li.open > ul.depth2{
@@ -313,7 +317,7 @@
             } */
             .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a{
                 display: block;
-                padding: 8px 0 8px var(--wrapper-margin);
+                padding: 8px 0 8px var(--wrapper-margin);  /* 왼쪽의 여백을 a한테 padding으로 한 번 더 줌으로써 글자 앞쪽도 메뉴로 조금 눌리게 함 */
             }
             .header .gnb .gnb_wrap .gnb_close{
                 position: absolute; /* gnb_wrap을 기준으로 정렬 */
@@ -444,7 +448,6 @@
 
 .book{
     background-color: var(--color-bg);
-    color: var(--font-color-txt);
     padding: clamp(127px, 18vw, 206px) 0 clamp(102px, 12vw, 129px) 0;
 
     /* inner를 오른쪽으로 배치하기 위함 */
@@ -458,10 +461,10 @@
     /* 전체넓이 100% - wrapper의 넓이 --> 그럼 양사이드 여백이 남음
        그럼 그 여백을 반띵하면 왼쪽 여백이 됨 */
 
-       display: flex; /* tit - list 좌우 정렬 */
-       justify-content: space-between;
-       position: relative; /* btn_wrap 정렬의 기준 */
-       align-items: flex-start;
+    display: flex; /* tit - list 좌우 정렬 */
+    justify-content: space-between;
+    align-items: flex-start;  /* tit의 길이가 tit의 영역만큼만 들어가짐 */
+    position: relative; /* btn_wrap 정렬의 기준 */
 }
 .book .tit h2{
     font-family: var(--font-family-Eulyoo);
@@ -473,11 +476,13 @@
     width: calc(100% - 327px);
     /* inner의 넓이 100%에서 왼쪽 tit의 넓이 327px 빼고 전부 다 */
 }
-.book .list .swiper-wrapper{
-    align-items: flex-end;
-}
 .book .list .swiper{
     padding-right: var(--wrapper-margin);  /* list의 마지막 li가 화면에 너무 딱 붙어서 마지막 li의 오른쪽 공간 마련을 위해 주는 여백  */
+}
+.book .list .swiper-wrapper{
+    align-items: flex-end; 
+    /* 여기서 display:flex를 안줘도 되는 이유는, swiper.css에서 ul에 flex가 적용되어 있어서
+       여기에서는 flex-end만 줘서 책을 아래로 정렬 */
 }
 .book .list .swiper-slide{
     width: 250px;  /* js에서 auto면 250px이 적용되고, js에서 팝업개수를 지정하면 250px이 무시되고, 브라우저 사이즈에 맞춰서 개수를 유지하며 넓이가 계속 바뀜 */
@@ -494,7 +499,7 @@
 .book .list .swiper-slide a .photo img{
     width: 100%;
     height: 100%;
-    object-fit: contain;  /* 책이 안짤리고 다 나옴 */
+    object-fit: contain;  /* 책은 안짤리고 다 나옴 */
     vertical-align: top;  /* img에 행간같이 아래 여백이 사라지는 값 */
 }
 .book .list .swiper-slide a .txt{
@@ -502,7 +507,9 @@
     line-height: var(--line-height-tit); /* 1.3 */
     height: calc(var(--line-height-tit) * 3em + 1em + 0.5417em);
     /* 높이를 지정해줘야 h3가 1줄이든, 2줄이든 시작 부분이 동일하게 일렬로 들어감
-       -- 계산법 => 3em은 h3와 span의 줄수를 더한 값,, 1em + 0.5417em은 h3의 margin값임  */
+       -- 계산법 => 3em은 h3와 span의 줄수를 더한 값,, 1em + 0.5417em은 h3의 margin값임 
+       em으로 준 이유는 글자크기가 계속 바뀔거라서 글자크기의 3배를 주라는 의미이고
+       em으로 계산할 때, 글자 크기가 다르면 제일 큰 글자를 기준으로 계산해주면 됨 */
 
 }
 .book .list .swiper-slide a .txt h3{
@@ -537,8 +544,8 @@
 }
 .book .list .swiper-slide a .txt span{
     display: block;
-    font-size: var(--font-size-default);
-    line-height: var(--line-height-default);
+    font-size: var(--font-size-default);  /* txt에서 글자사이즈를 tit값을 줘서 여기서 다시 불러주는것임 */
+    line-height: var(--line-height-default); /* txt에서 행간을 tit값을 줘서 여기서 다시 불러주는것임 */
     color: var(--font-color-gray);
     white-space: nowrap;
     overflow: hidden;
@@ -594,12 +601,12 @@
             display: none;
         }
         .book .list{
-            width: 100%;
+            width: 100%;  /* auto가 들어가면 브라우저 사이즈가 줄어들었을 때 list가 화면 밖으로 벗어남 */
         }
         .book .btn_wrap{
             left: auto;
             right: var(--wrapper-margin);  /* wrapper가 없어서 여백이 없기에 주는 값 */
-            top: auto;
+            top: auto;  /* inner의 시작부분에 맞게 들어가짐 */
         }
 }/*@media*/
 @media screen and (max-width:768px){

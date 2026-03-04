@@ -64,7 +64,7 @@ $(document).ready(function(){
      * pc에서는 1차메뉴를 클릭하면 첫 번째 하위메뉴로 이동 (href에 링크 주소가 있음)
      * 하지만 모바일에선 1차메뉴를 클릭하면 하위메뉴를 열어줘야 함 (링크 X)
      * ==> 그럼 href에 입력된 값은???????
-     * 반드시 1차메뉴의 a를 선택자로 해서 href 이벤트를 정지시켜야 함(수업자료 js에 있으ㅡㅁ)
+     * 반드시 1차메뉴의 a를 선택자로 해서 href 이벤트를 정지시켜야 함(수업자료 js에 있음)
      * ====> 이것때문에 귀찮아서 1차 메뉴에 링크를 pc부터 아예 안하기도 하고 pc/mobile 메뉴를 나눠서 코딩하거나, pc도 클릭하면 하위메뉴가 나오게 함
      *********************************************************************************/
     let win_w //브라우저 넓이
@@ -139,6 +139,27 @@ $(document).ready(function(){
             }
         }
     })
+       /************************************************************
+     * 위처럼 변수를 선언하는거 말고 다른 방법
+     *  $('.header .gnb .gnb_wrap ul.depth1 > li > a').on('click', function(e){
+        if(device_status == 'mo'){
+            e.preventDefault();
+            if($(this).parent().hasClass('open')){
+                $(this).parent().removeClass('open')
+                $(this).next().slideUp(300, function(){
+                    $(this).removeAttr('style') 
+                })
+            }else{
+                $('.header .gnb .gnb_wrap ul.depth1 > li').removeClass('open')
+                $('.header .gnb .gnb_wrap ul.depth1 > li > ul.depth2').slideUp(300, function(){
+                    $(this).removeAttr('style') 
+                })
+                $(this).parent().addClass('open')
+                $(this).next().slideDown()
+            }
+        }
+    })
+    ************************************************************/
 
     $('.header .gnb .gnb_open').on('click', function(){ //모바일메뉴 
         $('.header').addClass('menu_open')
@@ -150,7 +171,7 @@ $(document).ready(function(){
 
     /************************************************************
      * 브라우저가 스크롤되면 header에 fixed 클래스를 추가
-     * 단, 다시 맨 위로 올라가면 fixed 클래스를 사가제
+     * 단, 다시 맨 위로 올라가면 fixed 클래스를 삭제
      * 처음에 로딩되었을 때와 브라우저가 스크롤될 때마다 체크
     ************************************************************/
     let scrolling //현재 스크롤값

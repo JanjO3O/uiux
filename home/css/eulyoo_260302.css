@@ -197,6 +197,26 @@
             .header{
                 padding-right: 0;
             }
+            /* .header .gnb .gnb_open svg{
+                width: calc(var(--header-height) * 0.43);
+                height: calc(var(--header-height) * 0.33);
+            } */
+            .header .gnb .gnb_wrap{
+                display: none;
+                position: fixed;
+                right: 0;
+                top: 0;
+                z-index: 10;
+                width: 100%;
+                max-width: 500px;
+                height: 100%;
+                background-color: var(--color-white);
+                color: var(--font-color-txt);  /* 메뉴에 포함되는 글자색 */
+                fill: var(--font-color-txt); /* 현재 html에 메뉴열기가 svg로 코딩되어 있어서 그것만 바꾸면 됨, 나머지는 css로 코딩 */
+            }
+            .header.menu_open .gnb .gnb_wrap{
+                display: block;
+            }
             .header .gnb .gnb_open{
                 width: var(--header-height);
                 height: var(--header-height);
@@ -204,18 +224,83 @@
                 align-items: center;
                 justify-content: center;
             }
-            /* .header .gnb .gnb_open svg{
-                width: calc(var(--header-height) * 0.43);
-                height: calc(var(--header-height) * 0.33);
-            } */
-            .header .gnb .gnb_wrap{
+            .header .gnb .gnb_wrap .gnb_logo{
+                position: absolute;  /* gnb_wrap을 기준으로 정렬 */
+                left: var(--wrapper-margin);
+                top: 0;
+                width: max(121px, calc(var(--header-height) * 1.78));
+                height: var(--header-height);
+                background: url(../images/eulyoo/logo_black.svg) no-repeat left center / contain;
+            }
+            .header .gnb .gnb_wrap ul.depth1{
+                margin: var(--header-height) 0 0 0;
+                height: calc(100% - var(--header-height));
+                overflow-y: auto;
+                padding: 14px 0 0 0;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > a{
+                display: block;
+                font-family: var(--font-family-Eulyoo);
+                font-size: 22px;
+                padding: 13px var(--header-height) 13px var(--wrapper-margin);
+                position: relative;  /* after 정렬의 기준 */
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li.open > a{
+                font-weight: var(--font-weight-bold);
+                color: var(--color-main);
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > a::after{
+                content: "";
+                position: absolute; /* a를 기준으로 정렬 */
+                right: 0;
+                top: 0;
+                width: var(--header-height); /* 닫기 버튼이랑 넓이를 동일하게 가짐 */
+                height: 100%; /* a랑 높이를 동일하게 줘서 디자인처럼 아이콘을 메뉴의 위아래 가운데 위치시킴 */
+                background-image: url("data:image/svg+xml,%3Csvg width='17' height='10' viewBox='0 0 17 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 1.28172L8.5 10L0 1.28172L1.24963 8.99051e-07L8.5 7.43678L15.7504 2.65204e-07L17 1.28172Z' fill='%23555555'/%3E%3C/svg%3E%0A");
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li.open > a::after{
+                transform: rotate(180deg);
+                background-image: url("data:image/svg+xml,%3Csvg width='17' height='10' viewBox='0 0 17 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 1.28172L8.5 10L0 1.28172L1.24963 8.99051e-07L8.5 7.43678L15.7504 2.65204e-07L17 1.28172Z' fill='%236C4B43'/%3E%3C/svg%3E%0A");
+            }
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2{
+                background-color: var(--color-bg);
+                padding: 16px var(--wrapper-margin) 16px var(--wrapper-margin);
                 display: none;
             }
-            .header.menu_open .gnb .gnb_wrap{
-                
+            /* .header .gnb .gnb_wrap ul.depth1 > li.open > ul.depth2{
+                display: block;
+            } */
+            .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a{
+                display: block;
+                padding: 8px 0 8px var(--wrapper-margin);
+            }
+            .header .gnb .gnb_wrap .gnb_close{
+                position: absolute; /* gnb_wrap을 기준으로 정렬 */
+                right: 0;
+                top: 0;
+                width: var(--header-height);
+                height: var(--header-height);
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             .header .gnb .gnb_bg{
-                display: none;
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0);
+                backdrop-filter: blur(0);
+                transform: translateX(110%);
+                transition: background-color 0.3s, backdrop-filter 0.3s;
+            }
+            .header.menu_open .gnb .gnb_bg{
+                background-color: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(4px);
+                transform: translateX(0);
             }
             .header .util{
                 display: none;
@@ -306,3 +391,178 @@
                 display: none;
             }
 }/*@media*/
+
+
+.book{
+    background-color: var(--color-bg);
+    padding: clamp(127px, 18vw, 206px) 0 clamp(102px, 12vw, 129px) 0;
+    /* display: flex;
+    justify-content: flex-end; */
+}
+.book .inner{
+    margin-left: calc(calc(100% - var(--wrapper-width)) / 2);
+    /* width: calc(50% + calc(var(--wrapper-width) / 2)); */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative; /* btn_wrap 정렬의 기준 */
+}
+.book .inner .tit h2{
+    font-family: var(--font-family-Eulyoo);
+    font-size: var(--font-size-tit);
+    line-height: var(--line-height-tit);
+    margin-bottom: 21px;
+}
+.book .list{
+    width: calc(100% - 327px);
+}
+.book .list .swiper{
+    padding-right: var(--wrapper-margin);
+}
+.book .list .swiper-wrapper{
+    align-items: flex-end;
+}
+.book .list .swiper-slide{
+    width: 250px;
+}
+.book .list .swiper-slide a{
+    display: block;
+}
+.book .list .swiper-slide a .photo{
+    overflow: hidden;
+    border: 1px solid #EDEDED;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.book .list .swiper-slide a .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    vertical-align: top;
+}
+.book .list .swiper-slide a .txt{
+    font-size: var(--font-size-subTit2); /* 24px */
+    line-height: var(--line-height-tit); /* 1.3 */
+    height: calc(var(--line-height-tit) * 3em + 1em + 0.5417em);
+}
+.book .list .swiper-slide a .txt h3{
+    font-family: var(--font-family-Eulyoo);
+    margin: 1em 0 0.5417em 0;
+    /* 최대 2줄 */
+    max-height: 2.6em;  /* 제목이 1줄인 애도 있어서 최대높이를 줘야 함 */
+    overflow: hidden;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    word-break: normal;
+}
+.book .list .swiper-slide a .txt h3 strong{
+  background-image: linear-gradient(transparent calc(100% - 1px), var(--font-color-txt) 10px); /* 30px <- 이 값을 수정하여 밑줄 두께 조절 */
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-position: left bottom;
+  transition: background-size 0.6s ease;
+}
+.book .list .swiper-slide a:hover .txt h3 strong{
+    background-size: 100% 100%;
+}
+.book .list .swiper-slide a .txt span{
+    display: block;
+    color: var(--font-color-gray);
+    font-size: var(--font-size-default);
+    line-height: var(--line-height-default);
+    /* 1줄 제한 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.book .btn_wrap{
+    position: absolute; /* inner를 기준으로 정렬 */
+    left: 0;
+    top: 268px;
+    display: flex;
+    gap: 0 6px;
+}
+.book .btn_wrap button,
+.book .btn_wrap .more{
+    width: 50px;
+    height: 50px;
+    border: 1px solid var(--font-color-gray);
+    border-radius: 50%;
+    fill: var(--font-color-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.book .btn_wrap button.swiper-button-disabled{
+    opacity: 0.5;
+    cursor: default;
+}
+.book .btn_wrap button:not(.swiper-button-disabled):hover,
+.book .btn_wrap .more:hover{
+    background-color: var(--color-main);
+    border-color: var(--color-main);
+    fill: var(--color-white);
+}
+
+@media screen and (max-width:1384px){
+            .book .inner{
+                margin-left: var(--wrapper-margin);
+                /* width: calc(100% - var(--wrapper-margin)); */
+            }
+}/*@media*/
+@media screen and (max-width:1024px){
+            .book .inner{
+                flex-direction: column;
+            }
+            .book .inner .tit h2{
+                margin-bottom: 60px;
+            }
+            .book .inner .tit h2 br,
+            .book .inner .tit p{
+                display: none;
+            }
+            .book .list{
+                width: 100%;
+            }
+            .book .list .swiper-wrapper{
+                align-items: flex-start;
+            }
+            .book .list .swiper-slide {
+                width: 235px;
+            }
+            .book .btn_wrap{
+                left: auto;
+                right: var(--wrapper-margin);
+                top: auto;
+            }
+}/*@media*/
+
+@media screen and (max-width:768px){
+            .book .list .swiper-wrapper{
+                align-items: flex-end;
+            }
+            .book .list .swiper-slide {
+                width: 220px;
+            }
+            .book .btn_wrap{
+                top: 2px;
+            }
+            .book .btn_wrap button{
+                display: none;
+            }
+            .book .btn_wrap .more{
+                width: 36px;
+                height: 36px;
+            }
+            .book .btn_wrap .more svg{
+                width: 11px;
+                height: 11px;
+            }
+}/*@media*/
+
+.footer{
+    margin: 1000px 0 0 0;
+}

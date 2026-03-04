@@ -3,13 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slick-theme.css">
+    <!-- 외부 라이브러리 파일 먼저 연결 -->
+
+    <!-- 내가 만든 파일은 나중에 연결 -->
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/common.js"></script>
+    <script src="js/main.js"></script>
     <title>종합유기견보호센터</title>
 </head>
 <body>
-    <div class="wrapper">
-        <h2>길 위에서 떨고 있는 작은 생명에게 손을 내밀어 주세요.</h2>
-        <p>길 위에서 떨고 있는 작은 생명에게 손을 내밀어 주세요.<br>간절한 기다림이 기적 같은 만남이 되는 곳. 사지 말고 입양하세요.<br>본문글자스타일<br>Tmoney RoundWind Regular 16px 150% #1d1d1d</p>
+    <div id="wrap">
+        <header class="header"></header><!--//header-->
+        <main class="container">
+            <div class="visual">
+                <h2 class="sr-only">
+                    <div class="popup_wrap">
+                        <div class="popup"> <!-- slick에서 호출하는 이름 -->
+                            <div class="item bg1">
+                                <div class="wrapper">
+                                    <p>다시 가족의 품으로 돌아가는 길, 혹은 새로운 가족을 만나는 설레는 시작.<br> 이곳에서 매일 사랑으로 완성되는 기적을 만나보세요.</p>
+                                </div>
+                            </div>
+                            <div class="item bg2">
+                                <div class="wrapper">
+                                    <p>간절한 기다림이 기적 같은 만남이 되는 곳.<br> 잃어버린 가족을 찾고, 새로운 사랑을 입양하며, 따뜻한 이야기를 나눕니다.</p>
+                                </div>
+                            </div>
+                            <div class="item bg3">
+                                <div class="wrapper">
+                                    <p>길 위에서 떨고 있는 작은 생명에게 손을 내밀어 주세요.<br> 간절한 기다림이 기적 같은 만남이 되는 곳. 사지 말고 입양하세요.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--//popup_wrap-->
+                    <div class="ctrl_wrap">
+                        <button class="stop"><span>일시정지</span></button><!--//stop-->
+                        <button class="play"><span>재생</span></button><!--//play-->
+                    </div><!--//ctrl_wrap-->
+                </h2>
+            </div><!--//visual-->
+            <div class="find"></div><!--//find-->
+            <div class="message"></div><!--//message-->
+            <div class="adopt"></div><!--//adopt-->
+            <div class="review"></div><!--//review-->
+        </main><!--//container-->
+        <footer class="footer"></footer><!--//footer-->
     </div>
 </body>
 </html>

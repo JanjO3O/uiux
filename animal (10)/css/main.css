@@ -7,12 +7,20 @@
 @import url(layout.css);
 @import url(common.css);
 
-h2{
-    font-size: var(--font-size-tit);
-    font-family: var(--font-family-School);
-    line-height: var(--line-height-tit);
-    color: var(--font-color-txt);
+.visual{
+    overflow-x: hidden; /* 가로 스크롤바 허용 안함 */
 }
-.wrapper{
-    border: 1px solid red;
+.visual .popup_wrap .popup .item{
+    height: 700px;
+    background: url(../images/main/visual1.jpg) no-repeat center center / cover;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.visual .popup_wrap .popup .item.bg2{
+    background-image: url(../images/main/visual2.jpg);
+}
+.visual .popup_wrap .popup .item.bg3{
+    background-image: url(../images/main/visual3.jpg);
 }
