@@ -26,7 +26,7 @@ $(document).ready(function () {
         if (device_status == "pc") {
             $(".header").addClass("menu_over");
             $(this).addClass("over");
-            $(this).find("ul.depth2").slideDown();
+            $(this).find("ul.depth2").slideDown(); //find -> 모든 하위 레벨의 element 중 ul.depth2가 있는 element를 선택해서 slideDown
         }
     });
     $(".header .gnb ul.depth1 > li").on("mouseleave", function () {
@@ -59,9 +59,9 @@ $(document).ready(function () {
             $('.header').removeClass('fixed')
         }
     }
-    scroll_chk()
-    $(window).scroll(function(){
-        scroll_chk()
+    scroll_chk() //문서가 로딩되었을때 단 1번 실행
+    $(window).scroll(function(){ 
+        scroll_chk() //브라우저가 스크롤될때마다 실행
     })
 
     $('.header .util .sitemap_btn').on('click', function(){

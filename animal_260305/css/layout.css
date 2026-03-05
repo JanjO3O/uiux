@@ -12,18 +12,18 @@
     color: #fff;
 }
 .header .wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex;  /* logo-nav-util 좌우배치 */
+    justify-content: space-between;  /* 여백에 맞게 반씩 들어감 */
+    align-items: center;  /* 위아래 가운데 정렬 */
 }
 .header .logo a {
     display: block;
     height: calc(var(--header-h) * 0.44);
     width: calc(var(--header-h) * 2.12);
-    background: url(../images/common/logo_w.svg) no-repeat center center / contain;
+    background: url(../images/common/logo_w.svg) no-repeat center center / contain;  /* logo처럼 짤리면 안되는 애들은 contain으로 주면 됨 */
 }
 .header.menu_over,
-.header.fixed {
+.header.fixed{
     background-color: #fff;
     color: var(--font-color-tit);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -32,10 +32,9 @@
 .header.fixed .logo a {
     background-image: url(../images/common/logo.svg);
 }
-@media screen and (min-width: 1025px) {
-    /* 1025px이상일때만 적용 */
+@media screen and (min-width: 1025px) {  /* pc에서만, 1025px이상일때만 적용 */
     .header .gnb ul.depth1 {
-        display: flex;
+        display: flex;  /* li 좌우배치 */
         text-align: center;
     }
     .header .gnb ul.depth1 > li {
@@ -43,15 +42,15 @@
     }
     .header .gnb ul.depth1 > li > a {
         display: block;
-        line-height: var(--header-h);
+        line-height: var(--header-h);  /* 행간을 header의 높이만큼 줘야 위아래로 눌리고, a의 높이도 그만큼이 됨 */
         font-size: 20px;
         font-weight: var(--font-weight-bold);
-        padding: 0 22px;
+        padding: 0 22px;  /* 여백의 반 = 좌우로도 메뉴가 눌려야 하니까 */
     }
-    /* 2차메뉴가 있는 1차메뉴만 */
+            /* has라는건 2차메뉴가 있는 1차메뉴만을 의미함 */
     .header .gnb ul.depth1 > li:has(ul.depth2) > a > span {
         display: block;
-        padding-right: 14px;
+        padding-right: 14px;  /* 아이콘이 들어갈 자리 마련 */
         position: relative; /* after 정렬의 기준 */
     }
     .header .gnb ul.depth1 > li:has(ul.depth2) > a > span::after {
@@ -70,12 +69,12 @@
     }
     .header .gnb ul.depth1 > li > ul.depth2 {
         display: none;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%); /* 가운데 */
-        top: 82px;
+        position: absolute;  /* 2차메뉴는 무조건 absolute */
+        left: 50%;  /* 나를 감싸는  애의 절반 */
+        transform: translateX(-50%); /* (내 자신의 절반)2차 메뉴를 기준이 되는 1차메뉴의 가운데로 위치시키기 위함 */
+        top: 82px;  /* header로부터 떨어지는 상단여백 */
         background-color: var(--color-main);
-        padding: 18px 24px;
+        padding: 18px 24px;  /* 글자의 내부 여백 */
         border-radius: 10px;
     }
     .header .gnb ul.depth1 > li > ul.depth2 > li > a {
@@ -231,7 +230,7 @@
     }
 } /* media */
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {  /* 모바일 사이즈 */
     .header .wrapper{
         margin-right: 0;
     }
@@ -257,6 +256,13 @@
         border-radius: 3px;
         background-color: #fff;
         transition: 0.3s;
+    }
+    .header.fixed .util .sitemap_btn span{
+        background-color: var(--font-color-default);
+    }
+    .header.menu_open .util .sitemap_btn span,
+    .header.fixed.menu_open .util .sitemap_btn span{
+        background-color: var(--color-white);
     }
     .header .util .sitemap_btn span.line1{
         top: calc(50% - 7px);

@@ -1,0 +1,295 @@
+/*
+    메인페이지에서만 호출
+    메인에 필요한 다른 css를 부름
+*/
+@import url(default.css);
+@import url(common.css);
+@import url(fonts.css);
+@import url(layout.css);
+
+.visual{
+    overflow-x: hidden; /* 가로 스크롤바 허용 안함 */
+    position: relative; /* ctrl_wrap 정렬의 기준 */
+}
+.visual .popup_wrap .popup{ /* slick.css에서 준 거 가져와서 주는 값 */
+    margin: 0;
+}
+.visual .popup_wrap .popup .item{
+    height: clamp(500px, 65vw,650px);
+    background: url(../images/main/visual01.jpg) no-repeat center center / cover;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.visual .popup_wrap .popup .item.bg2{
+    background-image: url(../images/main/visual02.jpg);
+}
+.visual .popup_wrap .popup .item.bg3{
+    background-image: url(../images/main/visual03.jpg);
+}
+.visual .popup_wrap .popup .item p{
+    margin: 0 0 clamp(95px, 14vw, 141px) 0;
+    font-size: clamp(30px, 6vw, 60px);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+}
+.visual .popup_wrap .popup .slick-dots{  /* slick.css에서 준 거 가져와서 변경해주는 값 */
+    position: absolute; /* popup을 기준으로 정렬 */
+    bottom: 48px;  /* 모바일이랑 하단여백이 다르면 clamp로 줘야 함(지금은 동일해서 안해도 됨) */
+    left: calc(50%  -  (var(--wrapper-w)  /  2)); /* absolute는 반드시 left 또는 right 있어야함 */
+    /* 전체넓이의 50%에 위치한 상태에서 wrapper의 넓이의 반의 위치하라는 의미 */
+    width: auto;
+    display: flex;  /* li 좌우배치 */
+    gap: 0 6px;
+}
+.visual .popup_wrap .popup .slick-dots li{ /* slick.css에서 준 거 가져와서 변경해주는 값 */
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+.visual .popup_wrap .popup .slick-dots li button{ /* slick.css에서 준 거 가져와서 변경해주는 값 */
+    width: 15px;  /* 선택되지 않은 작은 버튼 */
+    height: 7px;
+    padding: 0;
+    border-radius: 5px;
+    background: rgba(255,255,255,0.6);
+}
+.visual .popup_wrap .popup .slick-dots li.slick-active button{  /* 선택된 li의 버튼 */
+    width: 78px;
+    background: #fff;
+}
+.visual .popup_wrap .popup .slick-dots li button::before{ /* slick.css에서 준 거 가져와서 변경해주는 값 */
+    display: none;
+}
+.visual .ctrl_wrap{
+    position: absolute; /* visual을 기준으로 정렬 */
+    left: calc(50%  -  (var(--wrapper-w)  /  2)  +  132px);
+    /* slick-dots의 left의 값을 복사해서 붙여넣은 다음에 slick-dots에서부터 ctrl_wrap까지의 여백을 더해주면 됨 */
+    bottom: 37px;
+}
+.visual .ctrl_wrap button{
+    width: 20px;  /* 원의 넓이 */
+    height: 20px;  /* 원의 높이 */
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.2);  /* 원의 색상 */
+    
+    /* 아이콘이 들어가서 주는 값 */
+    background-position: center center;  
+    background-repeat: no-repeat;
+}
+.visual .ctrl_wrap button.stop{
+    background-image: var(--icon-stop);
+}
+.visual .ctrl_wrap button.play{
+    display: none;  /* 처음엔 stop 보일 거이기 때문에 - js로 제어함 */
+    background-image: var(--icon-play);
+}
+@media screen and (max-width:1500px){  /* wrapper의 넓이가 auto가 되는 지점 */
+        .visual .popup_wrap .popup .slick-dots{
+            left: var(--wrapper-margin);  /* auto가 되는 지점에서는 왼쪽이 wrapper 여백만큼만 떨어지면 됨 */
+        }
+        .visual .ctrl_wrap{
+            left: calc(var(--wrapper-margin)  +  132px);  /* auto가 되는 지점에서는 slick-dots로부터 떨어지는 여백값만 더해주면 됨 */
+        }
+}/*@media*/
+@media screen and (max-width:768px){
+        .visual .popup_wrap .popup .item p br{
+            display: none; /* 줄바꿈 삭제 */
+        }
+}/*@media*/
+
+
+
+.find{
+    background-color: var(--color-main);
+    color: var(--color-white);
+    padding: clamp(106px, 15vw, 156px) 0 clamp(72px, 12vw, 120px) 0;
+    overflow-x: hidden;  /* 브라우저 사이즈가 줄어들었을 때 생기는 가로스크롤바 삭제 */
+}
+.find h2{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+}
+.find .tab_list{
+    margin: clamp(38px, 5.4vw, 54px) 0 clamp(18px, 3.6vw, 36px) 0;
+}
+.find .tab_list ul{
+    display: flex;  /* li 좌우배치 */
+    gap: 0 12px;
+    justify-content: center;
+}
+.find .tab_list ul li button{
+    padding: 0.417em 1.75em;  /* 글자의 크기에 맞게 em으로 여백을 조정해줘야 함 */
+    font-size: var(--font-size-subtit);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-w80);
+    border-radius: 50px;
+}
+.find .tab_list ul li.active button{
+    background-color: var(--color-sub2);
+    color: var(--color-white);
+}
+.find .tab_list ul li.people.active button{
+    background-color: var(--color-sub1);
+    color: var(--color-white);
+}
+.find .tab_conts .tab_item{
+    display: none;
+}
+.find .tab_conts .tab_item.active{
+    display: block;
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap{
+    width: calc(100% + var(--gap));  /* 넓이 100%에서 list 사이의 여백값을 더해줘야 함 */
+    /* slick은 각각의 항목 사이의 여백을 js에서 못줌
+       css에서 추가하는데, 항목이 4개면 여백도 4개 생김
+       디자인상 여백이 3개가 생겨야 좌우가 slide로 딱 끝나는데 
+       그래서 감싸는 요소의 넓이를 100% + 여백 하나의 값만큼 더 줌 */
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item{
+    margin: 0 var(--gap) 0 0;  /* 여백을 안주면 list끼리 서로 붙음 */
+    width: 240px;  /* 모바일 사이즈 / js에서 variableWidth: true -> 이렇게 슬라이드 개수를 지정하지 않은애부터 넓이가 적용됨 */
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item .photo{
+    overflow: hidden;
+    height: 446px;
+    border-radius: 20px;
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
+    transition: 0.3s;
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item:hover .photo img{
+    transform: scale3d(1.125, 1.125, 1);
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul{  /* 글자만 해당됨 */
+    margin: 16px 0 0 10px;
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li{
+    display: flex;
+    line-height: 1.8;
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li strong{
+    color: var(--color-w80);
+    width: 4.5em;  /* strong 태그가 4줄인데 글자 크기가 1em이니까 대충 많이 줘서 4.5em 준거임 -> em으로 준 이유는 반응형을 대비하기 위함 */
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li span{
+    /* 1줄 제한은 반드시 넓이가 제한되어야 함 */
+    width: calc(100% - 4.5em);  /* 옆에 들어가는 strong 태그의 넓이값을 빼고 넓이가 들어가야 됨 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.find .tab_conts .tab_item .slick-prev{
+    left: -18.5px;
+    transform: rotate(180deg) !important; /* 아래에서 준 transform 때문에 !important를 줘서 적용시킴 */
+}
+.find .tab_conts .tab_item .slick-next{
+    right: calc(var(--gap) - 18.5px);  /* 버튼을 사진 안으로 딱 맞게 들여보내고 시작함 */
+}
+.find .tab_conts .tab_item .slick-prev,
+.find .tab_conts .tab_item .slick-next{
+    top: 38%; /* 브라우저에서 조절 */
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    background-color: var(--color-sub2);  /* animal 버튼 색 */
+    background-image: var(--icon-arrow-w);
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: 10;  /* 사진 아래 깔려서 주는 값 */
+    transform: translate(0);
+}
+.find .tab_conts .tab_item.people .slick-prev,
+.find .tab_conts .tab_item.people .slick-next{
+    background-color: var(--color-sub1);  /* people 버튼 색 */
+}
+.find .tab_conts .tab_item .slick-prev::before,
+.find .tab_conts .tab_item .slick-next::before{
+    display: none;
+}
+
+@media screen and (max-width:768px){  /* 768 이하 */
+            .find .tab_list ul{
+                gap: 0 6px;
+                /* overflow-x: auto;
+                max-width: 280px; */
+            }
+            .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item .photo{
+                height: 313px;
+                border-radius: 10px;
+            }
+            .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul{  /* 글자만 해당 */
+                margin: 9px 0 0 0;
+            }
+            .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li strong{
+                display: none; /* 모바일에선 안보임 */
+            }
+            .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li span{
+                width: 100%;  /* 넓이를 제한한거 해제하고 100% 들어가야 됨 */
+            }
+            .find .tab_conts .tab_item .slick-prev,
+            .find .tab_conts .tab_item .slick-next{
+                display: none !important;
+            }
+            .find .tab_conts .tab_item .slick-prev::before,
+            .find .tab_conts .tab_item .slick-next::before{
+                display: none;
+            }
+}/*@media*/
+
+
+
+.message{
+    height: 400vh;
+    border: 1px solid blue;
+    position: relative;
+}
+.message::before{
+    content: "123456789123456789123456789123456789";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 200px;
+    color: #ccc;
+    writing-mode: vertical-rl;
+}
+.message .inner{
+    height: calc(100vh - var(--header-h));  /* 높이를 고정해줘서 스크롤될 때 header를 제외한 영역에서만 스크롤 되라는 의미 */
+    border: 1px solid red;
+    /* inner 안에 p를 정가운데 배치시키기 위함 */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: sticky;  /* message를 기준으로 정렬 */
+    top: var(--header-h);  /* 상단에 header의 높이를 빼고 고정됨*/
+}
+.message p{
+    text-align: center;
+    font-size: 60px;
+    font-weight: var(--font-weight-bold);
+    color: #ccc;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* 얘를 줘야 글자가 똑같이 겹쳐짐 */
+}
+.message p strong{
+    position: relative;  /* span 태그 정렬의 기준 */
+}
+.message p strong span{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    color: var(--color-main);
+}
