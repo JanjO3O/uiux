@@ -563,6 +563,249 @@
             }
 }/*@media*/
 
+
+
+.interview{
+    margin: clamp(127px, 20vw, 200px) 0 clamp(85px, 13.4vw, 134px) 0;
+}
+.interview .wrapper{
+    position: relative; /* more 정렬의 기준 */
+}
+.interview .tit{
+    text-align: center;
+}
+.interview .tit h2{
+    font-family: var(--font-family-Eulyoo);
+    font-size: var(--font-size-tit);
+    line-height: var(--line-height-tit);
+    margin: 0 0 21px 0;
+}
+.interview .list{
+    margin-top: clamp(42px, 4.8vw, 48px);
+}
+.interview .list ul{
+    display: flex;
+    justify-content: space-between;
+}
+.interview .list ul li{
+    width: calc(33.33% - 16px);
+}
+.interview .list ul li:nth-child(2){
+    margin-top: 61px;
+    /* transform: translateY(61px); -> 얘를 주면 list에서 영역을 벗어나버림*/
+}
+.interview .list ul li a{
+    display: block;
+    position: relative; /* txt,over 정렬의 기준 */
+}
+.interview .list ul li a .photo{
+    overflow: hidden;
+    height: 410px;
+    border-radius: 50px 0 50px 0;
+    position: relative; /* before 정렬의 기준 */
+}
+.interview .list ul li a .photo::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 1;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+.interview .list ul li:hover a .photo::before{
+    opacity: 0;
+}
+.interview .list ul li:nth-child(2) a .photo{
+    border-radius: 0 50px 0 50px ;
+}
+.interview .list ul li a .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
+    filter: grayscale(100%);  /* 사진 흑백 처리 */
+    transition: 0.3s;
+}
+.interview .list ul li:hover a .photo img{
+    filter: grayscale(0);
+}
+.interview .list ul li a .txt{
+    position: absolute; /* a를 기준으로 정렬 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    left: 40px;
+    bottom: 40px;
+    z-index: 2;
+    width: 80.58%;
+    color: var(--color-white);
+    fill: var(--color-white);
+    opacity: 1;
+    transition: 0.3s;
+}
+.interview .list ul li:hover a .txt {
+    opacity: 0;
+}
+.interview .list ul li a .txt h3{
+    font-family: var(--font-family-Eulyoo);
+    font-size: 32px;
+    line-height: 1.3;
+}
+.interview .list ul li a .over{
+    position: absolute; /* a를 기준으로 정렬 */
+    left: 0;
+    bottom: -49px;
+    width: 91.99%;
+    padding: 45px 10.55% ;
+    background-color: var(--color-main);
+    color: var(--color-white);
+    fill: var(--color-white);
+    z-index: 3;
+    border-radius: 50px 0 50px 0 ;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+.interview .list ul li:hover a .over{
+    transform: translateY(0);
+    opacity: 1;
+}
+.interview .list ul li:nth-child(2) a .over{
+    border-radius: 0 50px 0 50px ;
+}
+.interview .list ul li a .over h3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.interview .list ul li a .over span{
+    font-family: var(--font-family-Eulyoo);
+    font-size: var(--font-size-subTit2);
+    line-height: var(--line-height-tit);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.interview .list ul li a .over p{
+    word-break: normal;
+    height: calc(var(--line-height-default) * 2em);
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.interview .more{
+    position: absolute;  /* wrapper를 기준으로 정렬 */
+    left: 50%;
+    transform: translateX(-50%);
+    top: 130px;
+    color: var(--font-color-gray);
+    fill: var(--font-color-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 8px;
+}
+.interview .more:hover{
+    color: var(--color-main);
+    fill: var(--color-main);
+}
+.interview .more span::after{
+    content: "";
+    position: absolute;  /* more를 기준으로 정렬 */
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-main);
+    transition: 0.3s;
+}
+.interview .more:hover span::after{
+    width: 100%;
+}
+@media screen and (max-width:768px){
+            .interview .tit {
+                text-align: left;
+            }
+            .interview .tit h2{
+                margin: 0;
+            }
+            .interview .tit p{
+                display: none;
+            }
+            .interview .list ul li{
+                width: calc(50% - 8px);
+            }
+            .interview .list ul li:nth-child(2) {
+                margin-top: 0;
+            }   
+            .interview .list ul li:last-child{
+                display: none;
+            }
+            .interview .list ul li a .photo{
+                border-radius: 30px 0 30px 0;
+            }
+            .interview .list ul li:nth-child(2) a .photo {
+                border-radius: 30px 0 30px 0;
+            }
+            .interview .list ul li a .photo::before{
+                display: none;
+            }
+            .interview .list ul li a .photo img{
+                filter: grayscale(0);
+            }
+            .interview .list ul li a .txt{
+                display: none;
+            }
+            .interview .list ul li a .over{
+                bottom: -23px;
+                opacity: 1;
+                padding: 30px 8.09%;
+                border-radius: 30px 0 30px 0 ;
+                transform: translateY(0);
+            }
+            .interview .list ul li:nth-child(2) a .over {
+                border-radius: 30px 0 30px 0;
+            }
+            .interview .list ul li a .over h3 svg{
+                width: 18px;
+                height: 18px;
+            }
+            .interview .more{
+                left: auto;
+                right: 0;
+                transform: translateX(0);
+                top: 2px;
+                width: 36px;
+                height: 36px;
+                border: 1px solid var(--font-color-gray);
+                border-radius: 50%;
+                justify-content: center;
+            }
+            .interview .more:hover{
+                border-color: var(--font-color-gray);
+                border-color: var(--font-color-gray);
+            }
+            .interview .more span{
+                display: none;
+            }
+            .interview .more svg{
+                width: 11px;
+                height: 11px;
+            }
+}/*@media*/
+@media screen and (max-width:520px){}/*@media*/
+            .interview .list ul li {
+                width: 100%;
+            }
+            .interview .list ul li:nth-child(2){
+                display: none;
+            }
 .footer{
     margin: 1000px 0 0 0;
 }

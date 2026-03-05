@@ -647,7 +647,7 @@
     margin: 0 0 21px 0;
 }
 .interview .list{
-    margin-top: clamp(42px, 4.8vw, 48px);  /* 더보기 무시하고 위에 있는 li와의 여백 */
+    margin-top: clamp(42px, 4.8vw, 48px);  /* 더보기는 absolute 처리될 애라서 무시하고 위에 있는 tit과의 여백 */
 }
 .interview .list ul{
     display: flex;
@@ -679,12 +679,12 @@
     content: "";
     position: absolute; /* photo를 기준으로 정렬 */
     left: 0;
-    bottom: 0;
+    bottom: 0;  /* 아래에서부터 그라데이션이 시작되니까 bottom값을 준거임 */
     z-index: 1;  /* 브라우저에서 안보여서 준 값 */
     width: 100%;
-    height: 50%;  /* 그라데이션이 들어가는 높이값?영역값? */
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));  /* 02.25 오후5:40 */
-    opacity: 1;
+    height: 50%;  /* 그라데이션이 들어가는 영역값 */
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+    opacity: 1;  /* 여기서 준 opacity는 색의 값이 아닌 transition을 위해 준 속성값 */
     transition: opacity 0.3s;
 }
 .interview .list ul li:hover a .photo::before{
@@ -716,11 +716,11 @@
     /* 2번 방법 */
     /* left: 0;
     bottom: 0;
-    width: 100%;
+    width: 100%;  -->padding을 줄 땐, width가 100%여야 함
     padding: 0 40px 40px 40px; --> 반응형으로 변경  padding: 0 9.71% 40px 9.71%; --> 위아래는 안줌 높이가 변하지 않으니까
     */
 
-    /* 3번 방법 */
+    /* 3번 방법은 잘못 쓰면 난리날 수 있음 */
     /* left: 40px;
     right: 40px;
     bottom: 40px;  (left,right -> 0을 주면 넓이 100%가 됨) */
@@ -728,9 +728,9 @@
     z-index: 2; /* photo::before에서 준 z-index: 1; -> 이거 때문에 글자가 before아래로 깔려서 준 값  */
     color: var(--color-white);
     fill: var(--color-white);
-    display: flex;
+    display: flex; /* h3-svg 좌우 정렬 */
     justify-content: space-between;
-    align-items: center; /* 디자인할 때, 아이콘이랑 글자랑 서로 가운데 배치 */
+    align-items: center; /* 디자인할 때, 아이콘이랑 글자랑 서로 나란히 가운데 배치 */
     opacity: 1;
     transition: opacity 0.3s;
 }
@@ -786,7 +786,7 @@
     position: absolute; /* wrapper를 기준으로 정렬, after 정렬의 기준도 됨 */
     left: 50%;
     transform: translateX(-50%);
-    top: 131px;
+    top: 130px;
     display: flex; /* 글자랑 아이콘 좌우 배치 */
     align-items: center;
     justify-content: center;
@@ -794,19 +794,19 @@
     color: var(--font-color-gray);
     fill: var(--font-color-gray);
 }
+.interview .more:hover{
+    color: var(--color-main);
+    fill: var(--color-main);
+}
 .interview .more span::after{
     content: "";
-    position: absolute; /* more를 기준으로 정렬 */
+    position: absolute; /* span이 아닌 more를 기준으로 정렬 - 그래야 svg까지 밑줄이 생김 */
     left: 0;
     bottom: 1px;
     width: 0;
     height: 1px;
     background-color: var(--color-main);
     transition: width 0.3s;
-}
-.interview .more:hover{
-    color: var(--color-main);
-    fill: var(--color-main);
 }
 .interview .more:hover span::after{
     width: 100%;
@@ -877,7 +877,8 @@
                 display: none;
             }
             .interview .more:hover{
-                border-color: var(--color-main);
+                border-color: var(--font-color-gray);
+                fill: var(--font-color-gray);
             }
             .interview .more span{
                 display: none;
@@ -889,7 +890,7 @@
 }/*@media*/
 @media screen and (max-width:520px){ /* 425이하부터 적용 */
             .interview .list ul li{
-                width: 100%; /* 1개만 나올거이기 때문에 */
+                width: 100%; /* auto로 주면 브라우저에 꽉 차게 안들어가짐. 1개만 나올거이기 때문에 */
             }
             .interview .list ul li:nth-child(2){
                 display: none;
