@@ -247,22 +247,10 @@
 
 
 .message{
-    height: 400vh;
-    border: 1px solid blue;
-    position: relative;
-}
-.message::before{
-    content: "123456789123456789123456789123456789";
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-size: 200px;
-    color: #ccc;
-    writing-mode: vertical-rl;
+    height: 300vh;
 }
 .message .inner{
     height: calc(100vh - var(--header-h));  /* 높이를 고정해줘서 스크롤될 때 header를 제외한 영역에서만 스크롤 되라는 의미 */
-    border: 1px solid red;
     /* inner 안에 p를 정가운데 배치시키기 위함 */
     display: flex;
     justify-content: center;
@@ -272,14 +260,15 @@
     top: var(--header-h);  /* 상단에 header의 높이를 빼고 고정됨*/
 }
 .message p{
-    text-align: center;
-    font-size: 60px;
+    /* text-align: center; --> align-items: center; 얘 때문에 text-align 안줘도 글자 가운데 정렬됨 */
+    font-size: min(60px,  6vw);  /* --> 브라우저 사이즈가 줄어들 때 반응형을 위해 준 값 */
     font-weight: var(--font-weight-bold);
     color: #ccc;
     white-space: nowrap;
     display: flex;
     flex-direction: column;
-    align-items: center;  /* 얘를 줘야 글자가 똑같이 겹쳐짐 */
+    align-items: center;
+    position: relative; /* img 정렬의 기준 */
 }
 .message p strong{
     position: relative;  /* span 태그 정렬의 기준 */
@@ -292,4 +281,299 @@
     height: 100%;
     overflow: hidden;
     color: var(--color-main);
+}
+.message img{
+    position: absolute; /* p를 기준으로 정렬 */
+}
+/* 위치값은 반응형을 위해 px 이 아닌 % 로 주기 */
+.message img.sun{
+    right: -30%;
+    top: -50%;
+    width: 28%;  /* p태그를 기준으로 정렬했기 때문에 p의 넓이에서 몇 % 가 됨 */
+    animation: up_dowv 3s linear infinite;
+}
+@keyframes up_dowv {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-10%);}
+    100% {transform: translateY(0);}
+}
+@keyframes rotate {
+    0% {transform: rotate(5deg);}
+    50% {transform: rotate(-5deg);}
+    100% {transform: rotate(5deg);}
+}
+@keyframes left-right {
+    0% {transform: translateX(0);}
+    50% {transform: translateX(-10%);}
+    100% {transform: translateX(0);}
+}
+.message img.cat{
+    right: -40%;
+    bottom: -26%;
+    width: 30%;
+    animation: rotate 3s linear infinite ;
+}
+.message img.fish{
+    right: -12%;
+    bottom: -33%;
+    width: 10%;
+    animation: up_dowv 3s linear infinite;
+}
+.message img.dog{
+    left: -26%;
+    bottom: -59%;
+    width: 25%;
+    animation: left-right 3s linear infinite;
+}
+.message img.flower{
+    left: -15%;
+    top: -35%;
+    width: 10%;
+    animation: rotate 3s linear infinite ;
+}
+
+@media screen and (max-width: 1200px){  /* 1200 이하 */
+            .message img.sun {
+                right: -22%;
+                top: -46%;
+                width: 24%;
+            }
+            .message img.cat {
+                right: -20%;
+                bottom: -28%;
+                width: 20%;
+            }
+            .message img.fish {
+                right: -1%;
+                bottom: -32%;
+                width: 6%;
+            }
+            .message img.dog {
+                left: -9%;
+                bottom: -45%;
+                width: 15%;
+            }
+            .message img.flower {
+                left: -1%;
+                top: -32%;
+                width: 9%;
+            }
+}/*@media*/
+
+
+
+.adopt{
+    background-color: var(--color-main);
+    color: var(--color-white);
+    padding: clamp(106px, 16vw, 162px) 0 clamp(159px, 30vw, 304px) 0;
+    text-align: center;
+    position: relative;  /* rolling_wrap 정렬의 기준 */
+}
+.adopt h2{
+    font-size: 40px;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    margin: 0 0 clamp(29px, 4.8vw, 48px) 0;
+}
+.adopt .list_item{
+    width: clamp(240px, 36vw, 342px);
+    /* margin: 0 calc(var(--gap) / 2); 이미지 확대 효과때문에 사이 여백이 너무 멀어져서 주석 처리함 */
+    margin: 0 -2px;  /* 사이 여백이 멀어져서 마이너스 줌 */
+    transform: scale3d(0.9, 0.9, 1);
+    opacity: 0.8;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.adopt .list_item.slick-center{
+    transform: scale3d(1, 1, 1);  /* 1.125 주니까 h2에서 준 margin 때문에 짤려서 1로 주고 가운데가 아닌 애들의 사이즈를 줄임 */
+    opacity: 1;
+}
+.adopt .list_item a{
+    /* strong에서 inline-block을 줘야 하는데 그럼 margin값이 안들어가서 아예 a 한테 flex를 주고 아래로 정렬시킨 다음
+       align-items: center;로 strong이랑 span을 원래 inline 속성값을 준다 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.adopt .list_item a .photo{
+    overflow: hidden;
+    border-radius: 50%;
+}
+.adopt .list_item a .photo img{
+    width: 100%;  /* 높이까지 같이 주면 정사각형 이미지가 찌그러짐 */
+}
+.adopt .list_item a strong{
+    display: block;  /* 사이즈가 대빵 커서 inline으로 줌 */
+    background-color: var(--color-sub2);
+    color: var(--color-white);
+    padding: 0 20px;
+    border-radius: 30px;
+    margin: -15px 0 11px 0; /* -->사진 위에 위치해서 준 값인데, margin은 마이너스 값이 가능함 */
+    position: relative;  /* z-index를 주기 위해 주는 필수값 */
+    z-index: 1;  /* 사진 아래로 깔려서 주는 값 */
+}
+.adopt .list_item a strong.tmp{
+    background-color: var(--color-sub1);
+}
+.adopt .list_item a span{
+    display: block;
+}
+.adopt .rolling_wrap{
+    position: absolute; /* adopt을 기준으로 정렬 */
+    left: 0;
+    bottom: clamp(18px, 2vw, 22px);
+    font-size: clamp(50px, 10vw, 100px);
+    font-weight: var(--font-weight-bold);
+    color: rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+    height: 1.5em;  /* 행간만큼만 높이를 줌 */
+    /* 가로 스크롤바 없애려고 준 2가지 값 */
+    width: 100%;
+    overflow-x: hidden;
+}
+.adopt .rolling_wrap .rolling{
+    /* 글자의 길이대로 넓이를 인식할 요소가 필요해서 absolute를 줌 -- 일반글자는 내용이 길면 줄바꿈이 됨
+       white-space: nowrap;으로 줄바꿈 금지를 줌 --> 근데 가로 스크롤바가 생김 --> 그래서 overflow-x: hidden;로 스크롤바 막으면
+       넓이가 브라우저의 넓이만큼만 인식함 ---> absolute를 주고 넓이를 안주면 글자가 존재하는만큼 넓이로 인식 */
+    position: absolute; /* rolling_wrap을 기준으로 정렬 */
+    left: 0;
+    bottom: 0;
+ /* transform: translateX(-50%); 
+    html에서 글자를 넣을때, 여백없이 써줘야 -50%가 적용됨. 나의 길이를 기준으로 %를 계산함 --> 글자가 움직여서 처음과 동일한 위치가 되는 값 */
+    animation: adopt_roll 20s linear infinite;
+}
+@keyframes adopt_roll {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(-50%);}
+}
+@media screen and (max-width: 768px){  /* 768이하 */
+            .adopt .list_item{
+                margin: 0 calc(var(--gap) / 2);
+                transform: scale3d(1, 1, 1);
+                opacity: 1;
+                transition: 0;
+            }
+            .adopt .list_item a .photo{
+                border-radius: 10px;
+            }
+            .adopt .list_item a strong{
+                margin: -12px 0 7px 0;
+            }
+}
+
+
+
+.review{
+    margin: clamp(110px, 16vw, 167px) 0 clamp(95px, 12vw, 120px) 0;
+}
+.review .wrapper{
+    position: relative; /* more 정렬의 기준 */
+}
+.review h2{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    margin: 0 0 clamp(20px, 5vw, 50px) 0;
+    color: var(--font-color-tit);
+    border-bottom: 1px solid #ededed;
+    padding-bottom: 8px;  /* 선이랑 글자랑 떨어진 여백을 padding으로 줌 */
+}
+.review .list_wrap{
+    width: calc(100% + var(--gap));  /* list_item한테 들어가는 margin값 때문에 걔를 감싸고 있는 애한테도 넓이에서 margin값을 더해줘서 넓이 맞춤 */
+}
+.review .list_item{
+    width: clamp(240px, 34vw, 342px);
+    margin: 0 var(--gap) 0 0;
+}
+.review .list_item a{
+    display: block;
+}
+.review .list_item a .photo{
+    overflow: hidden;
+    height: clamp(240px, 34vw, 342px);
+}
+.review .list_item a .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* 사진 사이즈가 다르고 사진이 절대 짤리면 안되니까 */
+}
+.review .list_item a h3{
+    font-size: var(--font-size-subtit);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    margin: clamp(20px, 2.8vw, 28px) 0 clamp(10px, 1.1vw, 11px) 0;
+    color: var(--font-color-tit);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.review .list_item a p{
+    color: var(--font-color-defaul);
+    height: 3em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.review .more{
+    position: absolute; /* wrapper를 기준으로 정렬 */
+    right: 0;
+    top: 0;
+}
+.review .more a{
+    display: flex;  /* strong-span 좌우 정렬 */
+    align-items: center;
+    gap: 0 12px;
+    padding-right: 22px;
+    position: relative; /* after 정렬의 기준 */
+}
+.review .more a::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    background-image: var(--icon-more);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.review .more a strong{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    color: var(--color-sub1);
+}
+.review .more a span{
+    color: var(--font-color-default);
+}
+@media screen and (max-width: 768px){  /* 768이하 */
+            .review h2{
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            .review .more{
+                right: 0;
+                top: 0;
+            }
+            .review .more a{
+                align-items: center;
+                gap: 0 ;
+                padding-right: 0;
+                width: 28px;
+                height: 28px;
+                border: 1px solid var(--font-color-default);
+                border-radius: 50%;
+                background: var(--icon-more);
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: 11px;
+            }
+            .review .more a::after{
+                display: none;
+            }
+            .review .more a strong,
+            .review .more a span{
+                display: none;
+            }
 }

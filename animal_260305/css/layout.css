@@ -369,6 +369,100 @@
     }
 
 }/*media*/
-.footer {
-    margin: 2000px 0 0 0;
+
+
+
+.footer{
+    background-color: var(--font-color-tit);
+    color: var(--color-w80);
+    padding: clamp(67px, 7.8vw, 78px) 0;
+    position: fixed; 
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.footer .wrapper{
+    position: relative; /* top 정렬의 기준 */
+}
+.footer .top{
+    position: absolute; /* wrapper를 기준으로 정렬 */
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-sub1);
+    background-image: var(--icon-arrow-w);
+    background-repeat: no-repeat;
+    background-position: center center;
+    transform: rotate(-90deg);
+    background-size: 10px;
+}
+.footer .top span{
+    display: none;
+}
+.footer .f_nav ul{
+    display: flex; /* li 좌우배치 */
+    flex-wrap: wrap;
+    gap: 3px 39px;
+}
+.footer .f_nav ul li{
+    position: relative; /* after 정렬의 기준 */
+}
+.footer .f_nav ul li::after{
+    content: "";
+    position: absolute;
+    right: -22px;
+    top: 6px;
+    width: 1px;
+    height: 14px;
+    background-color: var(--color-w20);
+}
+.footer .f_nav ul li:last-child::after{
+    display: none;
+}
+.footer .f_info{
+    margin: 34px 0;
+}
+.footer .f_info span{
+    display: inline-block;
+    margin-right: 28px;  /* br 태그로 줄바꿈되어 있어서 flex 못줌 */
+}
+@media screen and (max-width: 768px) {
+                .footer .top{
+    /* pc에서 준 transform 때문에 right translate-X 50%가 적용되지 못함 !impartant를 주더라도,, 그래서 right값에 50%에서 넓이의 반띵값을 빼서 가운데로 위치시킴 
+       반대로 위아래 가운데 정렬시키려면 50%에서 높이의 반띵값을 빼서 위아래 가운데 정렬시키면 됨*/
+                    right: calc(50% - 39px);  
+                    top: -52px;
+                    width: 78px;
+                    height: 40px;
+                    border-radius: 25px;
+                    background-image: none;
+                    transform: rotate(0);
+                    background-size: 0;
+                }
+                .footer .top span{
+                    display: block;
+                    position: relative; /* after 정렬의 기준 */
+                }
+                .footer .top span::after{
+                    content: "";
+                    position: absolute;
+                    left: 38px;
+                    top: -8px;
+                    width: 7px;
+                    height: 13px;
+                    background-image: var(--icon-arrow-w);
+                    transform: rotate(-90deg);
+                }
+}
+
+.container{
+    position: relative;
+    z-index: 10;
+    margin-bottom: 300px;
+    background-color: var(--color-white);
+    /* container 내부 요소가 준 위아래 margin을 적용하기 위해서 */
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
 }
