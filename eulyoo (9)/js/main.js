@@ -225,7 +225,7 @@ $(document).ready(function(){
             //     slidesPerView: 2,    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
             //     spaceBetween: 24,
             // },
-            769: {    /* 769px 이상일때 적용 */
+            769: {    /* 1024 ~ 769px 사이일때 적용 */
                 slidesPerView: 3,    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
                 spaceBetween: 24,
             },

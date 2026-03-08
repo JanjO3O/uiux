@@ -610,7 +610,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 50%;
+    height: 50%;  /* 사진의 절반에서부터 그라데이션이 생기니까 50%를 준거임 */
     z-index: 1;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
     opacity: 1;
@@ -799,13 +799,90 @@
                 height: 11px;
             }
 }/*@media*/
-@media screen and (max-width:520px){}/*@media*/
+@media screen and (max-width:520px){
             .interview .list ul li {
                 width: 100%;
             }
             .interview .list ul li:nth-child(2){
                 display: none;
             }
+}/*@media*/
+
+
+
+.story{
+    background-color: var(--color-bg);
+    padding: clamp(127px, 19vw, 192px) 0 clamp(92px, 14vw, 137px) 0;
+}
+.story .wrapper{
+    position: relative; /* btn_wrap 정렬의 기준 */
+}
+.story .tit h2{
+    font-family: var(--font-family-Eulyoo);
+    font-size: var(--font-size-tit);
+    line-height: var(--line-height-tit);
+}
+.story .list{
+    margin: clamp(43px, 6.5vw, 74px) 0 0 0; /* tit과의 여백 */
+}
+.story .list ul li{
+    width: calc(25% - 18px); /* 1줄에 4개가 들어갈 때 반응형 사이즈 */
+}
+.story .list ul li a{
+    display: block;
+}
+.story .list ul li a .photo{
+    overflow: hidden;
+    height: clamp(205px, 28.3vw, 283px);
+}
+.story .list ul li.long a .photo{
+    height: clamp(288px, 39.6vw, 396px);
+}
+.story .list ul li a .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.story .list ul li a h3{
+    font-family: var(--font-family-Eulyoo);
+    font-size: var(--font-size-subTit2);
+    line-height: var(--line-height-tit);
+    height: calc(var(--line-height-tit) * 2em);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    word-break: normal;
+}
+.story .list ul li a h3 span{
+  background-image: linear-gradient(to right, rgba(254, 201, 221, 1) 0%, rgba(255, 54, 130, 0.65)100%);
+  background-repeat: no-repeat;
+  background-size: 0% 12px;
+  background-position: left center;
+  transition: background-size 0.6s ease;
+  /* position: relative;
+  box-decoration-break: clone; */
+}
+/* .story .list ul li a h3 span::before{
+    content: "";
+    position: absolute;
+    left: -3px;
+    bottom: 4px;
+    width: 0%;
+    height: 12px;
+    background-image: linear-gradient(to right, rgba(254, 201, 221, 1) 0%, rgba(255, 54, 130, 1)100%);
+    filter: blur(0.3px);
+    transform: skewX(-12deg);  --> 형광펜처럼 기울어진 효과 point
+    z-index: -1;
+    transition: width 0.5s ease;
+} */
+/* .story .list ul li a:hover h3 span::before{
+    width: 105%;
+} */
+.story .list ul li a:hover h3 span{
+    background-size: 100% 12px;
+}
+
 .footer{
     margin: 1000px 0 0 0;
 }
