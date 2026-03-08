@@ -951,17 +951,19 @@
     word-break: normal;  /* 단어 단위 줄바꿈 해제 -> 뚝뚝 떨어지는게 이상해서 */
 }
 .story .list .swiper-slide a h3 span{
-    background-image: linear-gradient(transparent calc(100% - 1px), var(--color-main) 10px); /* 30px <- 이 값을 수정하여 밑줄 두께 조절 */
+    background-image: linear-gradient(transparent calc(100% - 1px), var(--color-main) 10px); 
+    /* 1px <- 이 값을 수정하여 밑줄 두께 조절 --> 글자의 100% 영역에서 1px에만 색이 들어가라는 의미인데, 만약 글자의 사이즈가 24px이라면, 24-1=23px은 색이 들어가지 않고
+       1px만 색이 들어가라는 뜻임. */
     background-repeat: no-repeat;
-    background-size: 0% 100%;
-    background-position: left bottom;
+    background-size: 0% 100%;  /* 배경의 넓이, 높이값(집에서 한 애니메이션 효과는 형광펜 효과임. 꼭 보기) */
+    background-position: left bottom;  /* bottom값 때문에 밑줄이 글자 아래로 들어가짐 */
     transition: background-size 0.6s ease;
 }
 .story .list .swiper-slide a:hover h3 span{
     background-size: 100% 100%;
 }
 .story .list .swiper-slide a p{
-    margin-top: 0.529em;
+    margin-top: 0.529em;  /* pc에서만 있는데, 반응형을 위해 p의 글자크기에 맞게 줄어들라고 em으로 바꿔주기 */
     color: var(--font-color-gray);
     /* 4줄 제한 */
     height: calc(var(--line-height-default) * 4em);
@@ -1005,7 +1007,7 @@
 }
 @media screen and (max-width:768px){
         .story .tit{
-            margin-right: 50px;
+            margin-right: 50px;  /* btn_wrap의 자리 마련을 위해 */
             /* width: calc(100% - 50px); */
         }
         .story .list .swiper-slide{
@@ -1057,9 +1059,9 @@
     font-family: var(--font-family-Eulyoo);
     font-size: var(--font-size-subTit2);
     line-height: var(--line-height-tit);
-    margin: 0 0 0.625em 0;
+    margin: 0 0 0.625em 0;  /* 아래 글자와의 여백 */
 }
-.footer .f_info * + h3{  /* f_info에 있는 어떤 태그이든 상관없이 태그 이후에 나타나는 모든 h3 */
+.footer .f_info * + h3{  /* f_info에 있는 어떤 태그든 상관없이 태그 이후에 나타나는 모든 h3(첫 번째 h3는 위에 태그가 없어서 해당 안됨) */
     margin-top: 2.417em;
 }
 .footer .f_info .sns{
@@ -1088,9 +1090,14 @@
     left: 0;
     bottom: 0;
     width: calc(100% - 350px);  /* 오른쪽의 f_info의 넓이에서 조금 더 널널한 값을 빼주면, 부딪히지 않고 copyright가 내려갈거임 */
+    /* margin-right: 350px; 넓이를 주거나 오른쪽의 margin을 주면 f_info랑 부딪히지 않음 */
+}
+.footer .copyright img{
+    vertical-align: top;  /* 이미지에 존재하는 하단 행간 삭제 */
+    width: clamp(154px, 17vw, 178px);
 }
 .footer .copyright p{
-    margin-top: 14px;  /* 이미지에 존재하는 하단행간때문에 디자인의 여백과 다름 */
+    margin-top: 1.2353em;
     color: rgba(255, 255, 255, 0.6);
 }
 @media screen and (max-width:768px){
@@ -1099,19 +1106,22 @@
                 gap: 74px 0;  /* flex 유지하고 위아래 여백을 gap으로 주면 됨 */
             }
             .footer .f_info{
-                width: auto; 
+                width: auto; /* 넓이를 원래 안줬던거처럼 위에서 줬던 값 없애는거 */
+            }
+            .footer .f_info h3{
+                margin: 0 0 0.65em 0;  /* 아래 글자와의 여백 */
+            }
+            .footer .f_info * + h3{  /* f_info에 있는 어떤 태그든 상관없이 태그 이후에 나타나는 모든 h3(첫 번째 h3는 위에 태그가 없어서 해당 안됨) */
+                margin-top: 2.25em;
             }
             .footer .copyright{
                 position: relative; /* absolute 해제 */
                 left: auto;
                 bottom: auto;
-                width: auto;  /* 오른쪽의 f_info의 넓이에서 조금 더 널널한 값을 빼주면, 부딪히지 않고 copyright가 내려갈거임 */
-                text-align: center;
+                width: auto; /* 넓이를 원래 안줬던거처럼 위에서 줬던 값 없애는거 */
+                text-align: center;  /* 애를 주면 로고도 자동으로 가운데 정렬됨 */
             }
             .footer .copyright p{
-                margin-top: 10px;  /* 이미지에 존재하는 하단행간때문에 디자인의 여백과 다름 */
-            }
-            .footer .copyright img{
-                width: 154px;
+                margin-top: 0.875em;
             }
 }/*@media*/

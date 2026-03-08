@@ -174,7 +174,7 @@ $(document).ready(function(){
                 spaceBetween: 16,
             },
             1025: {    /* 1025px 이상일때 적용 */
-                slidesPerView: 4,    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                slidesPerView: 'auto',    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
                 spaceBetween: 24,
             },
         },
@@ -183,6 +183,14 @@ $(document).ready(function(){
             nextEl: '.story .next',
             prevEl: '.story .prev',
         },
+    });
+
+
+    // aos.animate
+    AOS.init({
+        offset: 500, // 해당 콘텐츠가 하단에서 몇 px 위로 올라와에 나타나는 효과가 나타날지 셋팅하는 값
+        duration: 500, // 애니메이션 효과가 작동되는 시간
+        easing: 'ease', // 가속도
     });
 
 
