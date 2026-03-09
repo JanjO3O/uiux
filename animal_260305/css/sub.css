@@ -1,0 +1,180 @@
+/* sub 페이지에서 호출하는 css
+   sub페이지의 공통 스타일이 들어감 */
+@import url(default.css);
+@import url(fonts.css);
+@import url(common.css);
+@import url(layout.css);
+@import url(contents.css);
+
+
+/* active 클래스는 메뉴를 눌러서 해당메뉴가 선택됐을 때를 의미함 */
+@media screen and (min-width:1025px){ /* 1025이상 */
+            .header .gnb ul.depth1 > li.active > a{
+                color: var(--color-sub3);
+                font-weight: var(--font-weight-bold);
+            }
+            .header .gnb ul.depth1 > li.active:has(ul.depth2) > a > span::after{
+                background-image: var(--icon-arrow-sub3);
+            }
+            .header.fixed .gnb ul.depth1 > li.active > a{
+                color: var(--color-sub1);
+                font-weight: var(--font-weight-bold);
+            }
+            .header.fixed .gnb ul.depth1 > li.active:has(ul.depth2) > a > span::after{
+                background-image: var(--icon-arrow-sub1);
+            }
+            .header .gnb ul.depth1 > li.active > ul.depth2 > li.active > a{
+                text-decoration: underline;
+            }
+            .header .sitemap .sitemap_wrap ul.depth1 > li.active > button,
+            .header .sitemap .sitemap_wrap ul.depth1 > li.active > a{
+                color: var(--color-sub3);
+            }
+            .header .sitemap .sitemap_wrap ul.depth1 > li.active > ul.depth2 > li.active > a{
+                color: var(--color-sub3);
+            }
+}
+@media screen and (max-width:1024px){ /* 1024이하 */
+            .header .sitemap .sitemap_wrap ul.depth1 > li.active > button,
+            .header .sitemap .sitemap_wrap ul.depth1 > li.active > a{
+                color: var(--color-sub3);
+            }
+            .header .sitemap .sitemap_wrap ul.depth1 > li.active:has(ul.depth2) > button::after{
+                transform: rotate(270deg);
+                background-image: var(--icon-arrow-sub3);
+            }
+            .header .sitemap .sitemap_wrap ul.depth1 > li.active > ul.depth2 > li.active > a{
+                color: var(--color-sub3);
+            }
+}
+
+.sub_visual{
+    background: url(../images/sub/sub_visual01.jpg) no-repeat center center / cover;
+    color: var(--color-white);
+}
+.sub_visual.bg2{
+    background-image: url(../images/sub/sub_visual02.jpg);
+}
+.sub_visual.bg3{
+    background-image: url(../images/sub/sub_visual03.jpg);
+}
+.sub_visual.bg4{
+    background-image: url(../images/sub/sub_visual04.jpg);
+}
+.sub_visual.bg5{
+    background-image: url(../images/sub/sub_visual05.jpg);
+}
+.sub_visual .wrapper{
+    position: relative;  /* snb 정렬의 기준 */
+    height: clamp(303px, 40vw ,400px);  /* position: relative; 값 때문에 visual에 있던 높이를 wrapper한테 줘야 함 -> 그래야 snb가 아래로 정렬됨 */
+}
+.sub_visual .breadcrumb{
+    padding: clamp(148px, 19vw, 196px) 0 3px 0;  /* 브라우저 위에서부터의 여백, sub_tit과의 하단여백 */
+}
+.sub_visual .breadcrumb ol{
+    display: flex; /* li 좌우정렬 */
+    justify-content: center;
+    align-items: center;
+    gap: 0 0.7727em;  /* li끼리의 여백 - 모바일 사이즈의 글자크기와 별반 다르지 않아서 em으로 줘버림 */
+}
+.sub_visual .breadcrumb ol li{
+    position: relative; /* before 정렬의 기준 */
+}
+.sub_visual .breadcrumb ol li::before{
+    content: "";
+    position: absolute; /* li를 기준으로 정렬 */
+    left: -11px;
+    top: 0.3182em;  /* 글자크기의 비례해서 여백이 들어가는거라서 em으로 주는게 좋음 */
+    width: 0.2727em;
+    height: 0.5em;
+    background-image: var(--icon-arrow-w);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.sub_visual .breadcrumb ol li.home::before{
+    display: none;
+}
+.sub_visual .breadcrumb ol li.home a{  /* home 아이콘 */
+    display: block;
+    width: 0.6364em;
+    height: 0.6818em;
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='15' viewBox='0 0 14 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.75 13.2857H4.375V9C4.375 8.75714 4.45885 8.55357 4.62656 8.38929C4.79427 8.225 5.00208 8.14286 5.25 8.14286H8.75C8.99792 8.14286 9.20573 8.225 9.37344 8.38929C9.54115 8.55357 9.625 8.75714 9.625 9V13.2857H12.25V5.57143L7 1.71429L1.75 5.57143V13.2857ZM0 13.2857V5.57143C0 5.3 0.0619792 5.04286 0.185938 4.8C0.309896 4.55714 0.48125 4.35714 0.7 4.2L5.95 0.342857C6.25625 0.114286 6.60625 0 7 0C7.39375 0 7.74375 0.114286 8.05 0.342857L13.3 4.2C13.5187 4.35714 13.6901 4.55714 13.8141 4.8C13.938 5.04286 14 5.3 14 5.57143V13.2857C14 13.7571 13.8286 14.1607 13.4859 14.4964C13.1432 14.8321 12.7313 15 12.25 15H8.75C8.50208 15 8.29427 14.9179 8.12656 14.7536C7.95885 14.5893 7.875 14.3857 7.875 14.1429V9.85714H6.125V14.1429C6.125 14.3857 6.04115 14.5893 5.87344 14.7536C5.70573 14.9179 5.49792 15 5.25 15H1.75C1.26875 15 0.856771 14.8321 0.514063 14.4964C0.171354 14.1607 0 13.7571 0 13.2857Z' fill='white'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.sub_visual .sub_tit{
+    text-align: center;
+    font-size: clamp(32px, 4vw, 40px);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+}
+.sub_visual .snb{
+    position: absolute;  /* wrapper를 기준으로 정렬 */
+    left: 0;
+    bottom: 0;
+    transform: translateY(50%);  /* 높이의 반이 위치하는 경우 이렇게 주면 반의 위치로 정렬됨 */
+    width: 100%;
+    height: var(--snb-h);
+    background-color: var(--color-main);
+    border-radius: 50px;
+}
+.sub_visual .snb ul{
+    display: flex;
+    justify-content: center;
+    overflow-y: hidden;/* 위아래 스크롤 바는 숨김 */
+    overflow-x: auto; /* 좌우 스크롤바 생성 --> justify-content: center;에서는 스크롤바 생성X ---> 모바일에서 flex-start로 바꾸면 생성됨 */
+}
+.sub_visual .snb ul::-webkit-scrollbar { /* 스크롤바의 영역 */
+    display: none;
+}
+.sub_visual .snb ul li a{
+    display: block;
+    line-height: var(--snb-h);  /* 메뉴와 동일한 원리- snb의 높이를 행간으로 줘서 위아래 가운데 */
+    font-size: clamp(20px, 2vw, 22px);
+    padding: 0 1.7273em;  /* 좌우여백의 반 */
+    white-space: nowrap;
+}
+                /* 메뉴가 선택됐을 때 */
+                .sub_visual .snb ul li.active a{
+                    color: #FFA602;
+                }
+                .sub_visual .snb ul li a span{
+                    position: relative;  /* after 정렬의 기준 */
+                }
+                .sub_visual .snb ul li.active a span::after{  /* 선택된 메뉴 아래 생기는 밑줄 */
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: -1.5455em;
+                    width: 100%;
+                    height: 4px;
+                    background-color: #FFA602;
+                }
+.page_tit h1{
+    font-size: clamp(24px, 3.2vw, 32px);
+    font-weight: var(--font-weight-bold);
+    color: var(--font-color-tit);
+    text-align: center;
+    margin: clamp(71px, 14vw, 140px) 0 clamp(30px, 4.2vw, 42px) 0;  /* snb와의 여백이 아닌 visual과의 여백을 줘야 함 / snb는 absolute라서 상관X */
+}
+@media screen and (max-width:768px){
+            /* .sub_visual .snb{  --> 03.09 12:20 강의
+                left: calc(var(--wrapper-margin) * -1);
+                width: calc(100% + var(--wrapper-margin) * 2);
+                border-radius: 0;
+            } */
+             .sub_visual .snb ul{
+                justify-content: flex-start;  /* 메뉴에 스크롤바가 안생겨서 */
+                /* padding: 0 var(--wrapper-margin); --> border-radius가 빠졌을 경우*/
+                
+            }
+            .sub_visual .snb ul li.active a span::after{
+                bottom: -0.9em;
+                height: 3px;
+            }
+}
+.contents{
+    min-height: 300px;  /* 최소높이 */
+}

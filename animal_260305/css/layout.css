@@ -159,7 +159,8 @@
         display: flex;
         align-items: center;
     }
-    .header .sitemap .sitemap_wrap ul.depth1 > li > button{
+    .header .sitemap .sitemap_wrap ul.depth1 > li > button,
+    .header .sitemap .sitemap_wrap ul.depth1 > li > a{
         display: block;
         font-size: 32px;
         font-weight: var(--font-weight-bold);
@@ -317,7 +318,8 @@
     .header .sitemap .sitemap_wrap ul.depth1 > li{
         border-bottom: 1px solid #EDEDED;
     }
-    .header .sitemap .sitemap_wrap ul.depth1 > li > button{
+    .header .sitemap .sitemap_wrap ul.depth1 > li > button,
+    .header .sitemap .sitemap_wrap ul.depth1 > li > a{
         display: block;
         font-size: 22px;
         font-weight: var(--font-weight-bold);

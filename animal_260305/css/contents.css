@@ -1,0 +1,102 @@
+/* 각각의 콘텐츠 페이지 스타일 
+   - 여기 있는 css를 수정하면 해당 페이지 1개만 영향이 있음 
+   대신에 선택자를 페이지에 제한되게 cnt_페이지명으로 시작해야 함 */
+
+.cnt_info{
+    margin: 0 0 clamp(35px, 5.5vw, 55px);
+}
+.cnt_info .wrapper{
+    display: flex;  /* photo- txt_wrap 좌우배치 */
+    justify-content: space-between;
+}
+.cnt_info .photo{
+    overflow: hidden;
+    width: 32.22%;
+    height: clamp(435px, 70vw, 709px);
+    border-radius: 30px;
+    margin-top: 85px;  /* padding을 주면 radius가 적용 안됨 -> margin 주기 */
+}
+.cnt_info .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
+    object-position: top; /* 이미지가 짤릴 때 위를 기준으로 아래가 짤림 */
+}
+.cnt_info .txt_wrap{
+    width: 57.64%; /* 넓이를 제한해서 사진이 제대로 구현됨 */
+}
+.cnt_info .txt_wrap .tit{
+    position: relative;  /* before 정렬의 기준 */
+    color: var(--color-white);
+    padding-bottom: 111px;
+}
+.cnt_info .txt_wrap .tit::before{
+    content: "";
+    position: absolute;  /* tit을 기준으로 정렬 */
+    top: 0;
+    z-index: -1;
+    right: calc(((100vw - var(--wrapper-w)) / 2 - 50px ) * -1 );
+    width: calc(100vw - 100px);  /* 좌우 여백의 합 */
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(0, 30, 67, 1) 0%, rgba(1, 76, 169, 1) 100%);
+    border-radius: 40px;
+}
+.cnt_info .txt_wrap .tit h2{
+    font-size: 26px;
+    font-weight: var(--font-weight-bold);
+    padding: 115px 0 33px 0;
+}
+.cnt_info .txt_wrap .txt{
+    margin: 40px 0;
+}
+.cnt_info .txt_wrap .sign img{
+    width: 186px;
+}
+
+@media screen and (max-width:1600px){ /* 1440 + (30 + 30) + (50 + 50) ---> (wrapper margin의 *2) + (위의 before의 좌우 여백의 합) */
+            .cnt_info .txt_wrap .tit::before{
+                right: calc(var(--wrapper-margin) * -1);  /* 0309 16:30 강의 */
+                width: calc(100vw - var(--wrapper-margin) * 2);
+                border-radius: var(--wrapper-margin);  /* 여백보다 radius가 적어야 함  */
+            }
+            .cnt_info .wrapper{
+                width: auto;
+                margin: 0 calc(var(--wrapper-margin) * 2);
+            }
+}/*@media*/
+@media screen and (max-width:1024px){
+            .cnt_info .wrapper{
+                display: block;  /* flex 해제 */
+                margin: 0 var(--wrapper-margin);
+            }
+            .cnt_info .photo{
+                width: 100%;
+                max-width: 700px;  /* 사진이 너무 커서 부담스러워서 최대값 입력 */
+                border-radius: 15px;
+                margin: 0 auto;  /* 사진 화면 상 가운데 정렬 */
+            }
+            .cnt_info .txt_wrap{
+                width: auto;
+            }
+            .cnt_info .txt_wrap .tit{
+                padding-bottom: 42px;
+            }
+            .cnt_info .txt_wrap .tit::before{
+                top: -166px;
+                right: calc(var(--wrapper-margin) * -1);  /* wrapper 안에 있어서 나가야 하니까 -1을 준거임 */
+                width: 100vw;
+                height: calc(100% + 166px);
+                border-radius: 0;
+            }
+            .cnt_info .txt_wrap .tit h2{
+                font-size: 18px;
+                padding: 42px 0 7px 0;
+            }
+            .cnt_info .txt_wrap .txt{
+                margin: 32px 0;
+            }
+            .cnt_info .txt_wrap .sign img{
+                width: 110px;
+            }
+}/*@media*/
