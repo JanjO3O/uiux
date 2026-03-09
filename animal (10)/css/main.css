@@ -1,0 +1,104 @@
+/* 
+    메인페이지에서만 호출
+    메인에 필요한 다른 css를 부름
+*/
+@import url(default.css);
+@import url(fonts.css);
+@import url(layout.css);
+@import url(common.css);
+
+
+.visual{
+    overflow-x: hidden;  /* slick때문에 생기는 가로 스크롤바 허용 안함 */
+    position: relative;  /* ctrl_wrap 정렬의 기준 */
+}
+.visual .popup_wrap .popup{
+    margin: 0;
+}
+.visual .popup_wrap .popup .item{
+    height: clamp(500px, 65vw, 650px);
+    background: url(../images/main/visual1.jpg) no-repeat center center / cover ;
+    color: var(--color-white);
+    /* wrapper가 통째로 아래로 내려감 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.visual .popup_wrap .popup .item.bg2{
+    background-image: url(../images/main/visual2.jpg);
+}
+.visual .popup_wrap .popup .item.bg3{
+    background-image: url(../images/main/visual3.jpg);
+}
+.visual .popup_wrap .popup .item p{
+    margin: 0 0 clamp(95px, 14vw, 141px) 0;  /* 버튼 신경 쓰지 말고 여백 계산 */
+    font-size: clamp(30px, 6vw, 60px);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+}
+        /********************* 브라우저에 가서 가져온 css *************************/
+        .visual .popup_wrap .popup .slick-dots{
+            position: absolute;  /* popup을 기준으로 정렬 - absolute는 left,right가 있어야 함 */
+            left: calc(50% - (var(--wrapper-w) / 2 ));
+        /* 50%를 먼저 주고 브라우저 가서 위치 확인 후 wrapper의 넓이의 반을 빼줌
+           이 값은 ctrl_wrap의 left 위치를 잡아주는데도 쓰임 */
+            bottom: 48px;
+            width: auto;
+            display: flex;
+            gap: 0 6px;
+        }
+        .visual .popup_wrap .popup .slick-dots li{
+            width: auto;
+            height: auto;
+            margin: 0;
+        }
+        .visual .popup_wrap .popup .slick-dots li button{
+            width: 15px;
+            height: 7px;
+            padding: 0;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.6);
+        }
+        .visual .popup_wrap .popup .slick-dots li.slick-active button{
+            width: 78px;
+            background-color: var(--color-white);
+        }
+        .visual .popup_wrap .popup .slick-dots li button::before{
+            display: none;
+        }
+.visual .ctrl_wrap{
+    position: absolute;  /* visual을 기준으로 정렬 */
+    left: calc(50% - (var(--wrapper-w) / 2) + 132px);
+    /* slick-dots의 left 값에서 +132px을 해준거임
+       132px --> slick-dots에서부터 버튼까지의 거리값 */
+    bottom: 36px;
+}
+.visual .ctrl_wrap button{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.visual .ctrl_wrap button.stop{
+    background-image: var(--icon-stop);
+}
+.visual .ctrl_wrap button.play{
+    background-image: var(--icon-play);
+    display: none;
+}
+@media screen and (max-width:1500px){
+            .visual .popup_wrap .popup .slick-dots{
+                left: var(--wrapper-margin);
+            }
+            .visual .ctrl_wrap{
+                left: calc(var(--wrapper-margin) + 132px);
+                /* slick-dots의 left값에서 +132px --> slick-dots에서부터 버튼까지의 거리값 */
+            }
+}/*@media*/
+@media screen and (max-width:768px){
+            .visual .popup_wrap .popup .item p br{
+                display: none;
+            }
+}/*@media*/
