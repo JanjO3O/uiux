@@ -381,7 +381,8 @@
     margin: 0 -2px;  /* 사이 여백이 멀어져서 마이너스 줌 */
     transform: scale3d(0.9, 0.9, 1);
     opacity: 0.8;
-    transition: transform 0.3s, opacity 0.3s;
+    transition-property: transform, opacity;
+    transition-duration: 0.3s;
 }
 .adopt .list_item.slick-center{
     transform: scale3d(1, 1, 1);  /* 1.125 주니까 h2에서 준 margin 때문에 짤려서 1로 주고 가운데가 아닌 애들의 사이즈를 줄임 */

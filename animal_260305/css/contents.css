@@ -100,3 +100,267 @@
                 width: 110px;
             }
 }/*@media*/
+
+
+/* 입양후기 */
+.cnt_notice{
+    margin: 0 0 clamp(75px, 15vw, 150px) 0;
+}
+.cnt_notice .notice_wrap{
+    width: 952px;
+    margin: 0 auto;  /* 좌우 가운데 */
+}
+@media screen and (max-width:1012px){  /* wrapper margin값 + notice_wrap width값 ==> 952 + 30 + 30 */
+            .cnt_notice .notice_wrap{
+                width: auto;
+                margin: var(--wrapper-margin);
+            }
+}/*@media*/
+
+.cnt_notice .search_wrap .search{
+    border: 3px solid var(--color-sub1);
+    border-radius: 50px;
+    height: clamp(56px, 8vw, 95px);
+    display: flex; /* keyword-btn 좌우배치 */
+    justify-content: space-between;
+    padding: 0 0 0 clamp(70px, 11.8vw, 118px);  /* 왼쪽의 아이콘이 들어갈 여백 */
+    position: relative;  /* before 정렬의 기준 */
+}
+.cnt_notice .search_wrap .search::before{  /* 발바닥 아이콘 */
+    content: "";
+    position: absolute;  /* search를 기준으로 정렬 */
+    left: clamp(25px, 4vw, 40px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(27px, 4.5vw, 45px);
+    height: clamp(26px, 4.4vw, 44px);
+    background: url(../images/contents/notice_search_ico.svg) no-repeat center center / contain;
+}
+.cnt_notice .search_wrap .search label{
+    display: none;
+}
+.cnt_notice .search_wrap .search .keyword{
+    width: calc(100% - clamp(90px, 11vw, 110px));
+/* search에서 padding으로 뺀 값을 제외한 100%에서 (오른쪽 아이콘에서부터 여백까지의 거리//여백은 글자가 얼만큼 입력될지 지정한 값에서부터 아이콘까지의 거리)-119px */
+    font-size: clamp(20px, 2.8vw, 28px);
+    font-weight: var(--font-weight-bold);
+    color: var(--font-color-tit);
+    border: 0;  /* 화면에 막 바로 보이는 테두리 */
+    outline: 0;  /* 입력창이 선택되었을 때 나타나는 검은 테두리 */
+}
+.cnt_notice .search_wrap .search .keyword::placeholder{  /* placeholder는 글자를 입력하기 전에 화면에 보이는 글자 */
+    font-weight: var(--font-weight-default);
+    color: #D6CDBE;
+}
+.cnt_notice .search_wrap .search .btn{
+    width: clamp(59px, 8.9vw, 89px);
+    border: 0;  /* 원래 가지고 있던 테두리 삭제 */
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg width='43' height='43' viewBox='0 0 43 43' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.9033 31.8065C11.4585 31.8065 7.69678 30.2672 4.61807 27.1885C1.53936 24.1098 0 20.348 0 15.9033C0 11.4585 1.53936 7.69678 4.61807 4.61807C7.69678 1.53936 11.4585 0 15.9033 0C20.348 0 24.1098 1.53936 27.1885 4.61807C30.2672 7.69678 31.8065 11.4585 31.8065 15.9033C31.8065 17.6975 31.5211 19.3898 30.9502 20.9801C30.3793 22.5704 29.6046 23.9772 28.6259 25.2006L42.3272 38.9019C42.7757 39.3504 43 39.9213 43 40.6145C43 41.3077 42.7757 41.8786 42.3272 42.3272C41.8786 42.7757 41.3077 43 40.6145 43C39.9213 43 39.3504 42.7757 38.9019 42.3272L25.2006 28.6259C23.9772 29.6046 22.5704 30.3793 20.9801 30.9502C19.3898 31.5211 17.6975 31.8065 15.9033 31.8065ZM15.9033 26.9132C18.9616 26.9132 21.5612 25.8428 23.702 23.702C25.8428 21.5612 26.9132 18.9616 26.9132 15.9033C26.9132 12.8449 25.8428 10.2454 23.702 8.10455C21.5612 5.96373 18.9616 4.89331 15.9033 4.89331C12.8449 4.89331 10.2454 5.96373 8.10455 8.10455C5.96373 10.2454 4.89331 12.8449 4.89331 15.9033C4.89331 18.9616 5.96373 21.5612 8.10455 23.702C10.2454 25.8428 12.8449 26.9132 15.9033 26.9132Z' fill='%23014CA9'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: clamp(25px, 4.3vw, 43px);
+    cursor: pointer; /* 위에 올렸을 때 마우스 포인터를 손바닥 모양으로 변경해줘야 됨 */
+}
+
+
+
+.cnt_notice .join_wrap .agree_box{
+    margin: clamp(60px, 12vw, 120px) 0 0 0;
+}
+.cnt_notice .join_wrap h2{
+    font-size: 32px;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    color: var(--font-color-tit);
+    margin: 0 0 clamp(25px, 4vw, 40px) 0;
+}
+.cnt_notice .join_wrap .agree_box .agree_txt{
+    border: 1px solid #ccc;
+    height: clamp(200px, 40vw, 400px);
+    padding: clamp(20px, 4vw, 40px);
+    overflow-y: auto;  /* 콘텐츠가 길어지면 위아래 스크롤바 생성 */
+}
+.cnt_notice .join_wrap .agree_box .agree_txt p{
+    white-space: pre-line;  /* html에 들어간 enter값을 br태그가 없어도 줄바꿈처리해줌 */
+}
+.cnt_notice .join_wrap .agree_box .agree_chk{
+    margin: clamp(25px, 5vw, 50px) 0 0 0;
+    display: flex; /* item 좌우배치 */
+    justify-content: center;
+    gap: 0 clamp(25px, 4vw, 40px);
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: var(--font-weight-bold);
+    color: var(--font-color-tit);
+} 
+.cnt_notice .join_wrap .agree_box .agree_chk .item{
+    display: flex;
+}
+.cnt_notice .join_wrap .agree_box .agree_chk label{
+    display: block;
+    padding: 0 0 0 1.85em;  /* 글자에서 원까지의 여백 - 아이콘 들어갈 자리 */
+    position: relative; /* before 정렬의 기준 */
+    cursor: pointer;
+}
+.cnt_notice .join_wrap .agree_box .agree_chk label::before{
+    content: "";
+    position: absolute; /* label을 기준으로 정렬 */
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.35em;
+    height: 1.35em;
+    background-image: url("data:image/svg+xml,%3Csvg width='27' height='27' viewBox='0 0 27 27' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.49757 17.1626L19.9111 7.34744C20.1569 7.11581 20.4436 7 20.7713 7C21.0989 7 21.3856 7.11581 21.6314 7.34744C21.8771 7.57906 22 7.85412 22 8.17261C22 8.49109 21.8771 8.76615 21.6314 8.99777L10.3577 19.6526C10.1119 19.8842 9.82524 20 9.49757 20C9.16991 20 8.88321 19.8842 8.63746 19.6526L3.35388 14.6726C3.10813 14.441 2.99037 14.1659 3.00061 13.8474C3.01085 13.529 3.13885 13.2539 3.3846 13.0223C3.63034 12.7906 3.92217 12.6748 4.26007 12.6748C4.59798 12.6748 4.8898 12.7906 5.13555 13.0223L9.49757 17.1626Z' fill='%23787878'/%3E%3Ccircle cx='13.5' cy='13.5' r='13' stroke='%23787878'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+/* 체크된 input 태그 뒤에 오는 label만 */
+.cnt_notice .join_wrap .agree_box .agree_chk input:checked + label::before{
+    background-image: url("data:image/svg+xml,%3Csvg width='27' height='27' viewBox='0 0 27 27' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='13.5' cy='13.5' r='13.5' fill='%23014CA9'/%3E%3Cpath d='M10.1556 17.1626L20.0211 7.34744C20.2539 7.11581 20.5255 7 20.8359 7C21.1463 7 21.418 7.11581 21.6508 7.34744C21.8836 7.57906 22 7.85412 22 8.17261C22 8.49109 21.8836 8.76615 21.6508 8.99777L10.9704 19.6526C10.7376 19.8842 10.466 20 10.1556 20C9.84518 20 9.57356 19.8842 9.34075 19.6526L4.33525 14.6726C4.10244 14.441 3.99088 14.1659 4.00058 13.8474C4.01028 13.529 4.13154 13.2539 4.36435 13.0223C4.59717 12.7906 4.87363 12.6748 5.19375 12.6748C5.51387 12.6748 5.79034 12.7906 6.02315 13.0223L10.1556 17.1626Z' fill='white'/%3E%3C/svg%3E%0A");
+}
+.cnt_notice .join_wrap .agree_box .agree_chk input{
+    display: none;
+}
+
+
+.cnt_notice .join_wrap .join_box{
+    margin: clamp(40px, 8vw, 80px) 0 0 0;
+}
+.cnt_notice .join_wrap .join_box .join_info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+}
+.cnt_notice .join_wrap .join_box .join_info .item{
+    display: flex;
+    justify-content: space-between;
+}
+/* item안에 tit 뒤에 있는 모든 태그 다 */
+.cnt_notice .join_wrap .join_box .join_info .item .tit + *{
+    width: calc(100% - 122px);  /*  */
+}
+.cnt_notice .join_wrap .join_box .join_info .item .tit{
+    font-size: 24px;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    color: var(--font-color-tit);
+}
+.cnt_notice .join_wrap .join_box .join_info .item select,
+.cnt_notice .join_wrap .join_box .join_info .item input[type="text"],
+.cnt_notice .join_wrap .join_box .join_info .item input[type="password"],
+.cnt_notice .join_wrap .join_box .join_info .item textarea{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 0 38px;
+    height: 57px;
+}
+.cnt_notice .join_wrap .join_box .join_info .item textarea{
+    height: 288px;
+    padding: 25px;
+    resize: none;
+}
+.cnt_notice .join_wrap .join_box .join_info .item .gruop{
+    display: flex;
+    gap: 0 30px;
+}
+.cnt_notice .join_wrap .join_box .join_info .item .gruop label{
+    padding: 0 0 0 40px;
+    position: relative; /* before 정렬의 기준 */
+    cursor: pointer;
+}
+.cnt_notice .join_wrap .join_box .join_info .item .gruop label::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.78769 14.8174L17.4608 7.26726C17.6419 7.08909 17.8532 7 18.0946 7C18.3361 7 18.5473 7.08909 18.7284 7.26726C18.9095 7.44543 19 7.65702 19 7.902C19 8.14699 18.9095 8.35857 18.7284 8.53675L10.4215 16.7327C10.2404 16.9109 10.0291 17 9.78769 17C9.54625 17 9.33499 16.9109 9.15392 16.7327L5.26075 12.902C5.07967 12.7238 4.99291 12.5122 5.00045 12.2673C5.008 12.0223 5.10231 11.8107 5.28339 11.6325C5.46446 11.4543 5.67949 11.3653 5.92847 11.3653C6.17746 11.3653 6.39249 11.4543 6.57356 11.6325L9.78769 14.8174Z' fill='%23242223'/%3E%3Crect x='0.5' y='0.5' width='23' height='23' stroke='%23787878'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.cnt_notice .join_wrap .join_box .join_info .item .gruop input:checked +  label::before{
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='24' height='24' fill='%23014CA9'/%3E%3Cpath d='M9.78769 14.8174L17.4608 7.26726C17.6419 7.08909 17.8532 7 18.0946 7C18.3361 7 18.5473 7.08909 18.7284 7.26726C18.9095 7.44543 19 7.65702 19 7.902C19 8.14699 18.9095 8.35857 18.7284 8.53675L10.4215 16.7327C10.2404 16.9109 10.0291 17 9.78769 17C9.54625 17 9.33499 16.9109 9.15392 16.7327L5.26075 12.902C5.07967 12.7238 4.99291 12.5122 5.00045 12.2673C5.008 12.0223 5.10231 11.8107 5.28339 11.6325C5.46446 11.4543 5.67949 11.3653 5.92847 11.3653C6.17746 11.3653 6.39249 11.4543 6.57356 11.6325L9.78769 14.8174Z' fill='white'/%3E%3C/svg%3E%0A");
+}
+.cnt_notice .join_wrap .join_box .join_info .item .gruop input{
+    display: none;
+}
+@media screen and (max-width:768px){
+            .cnt_notice .join_wrap .join_box .join_info{
+                gap: 20px 0;
+            }
+            .cnt_notice .join_wrap .join_box .join_info .item{
+                flex-direction: column;
+                gap: 5px 0;
+            }
+            .cnt_notice .join_wrap .join_box .join_info .item .tit + *{
+                width: 100%;
+            }
+}/*@media*/
+.cnt_notice .join_wrap .join_box .join_btn{
+    margin: 55px 0 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 0 12px;
+}
+.cnt_notice .join_wrap .join_box .join_btn a,
+.cnt_notice .join_wrap .join_box .join_btn input,
+.cnt_notice .join_wrap .join_box .join_btn input button{
+    display: block;
+    height: 45px;  /* 태그가 다른 요소가 같은 높이로 있으면 padding으로 높이 못맞춤. 서로 사이즈가 달라서 안됨. 높이는 같으니까 높이 주면 됨 */
+    line-height: 45px; /* 글자를 높이의 위아래 가운데 위치시키기 위해선, 높이랑 행간을 똑같이 줌 */
+    padding: 0 28px;
+    background-color: #8e8e8e;
+    border-radius: 50px;
+    color: var(--color-white);
+    border: 0;
+    font-size: 17px;
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+}
+.cnt_notice .join_wrap .join_box .join_btn .ok{
+    background-color: var(--color-sub1);
+}
+
+
+
+/* 자원봉사 모집 */
+.cnt_support{
+    margin: 0 0 clamp(35px, 5.5vw, 55px);
+}
+.cnt_support .table_wrap{
+    overflow-x: auto;
+}
+.cnt_support .table_wrap table{
+    min-width: 600px;
+    border-top: 2px solid var(--color-main);
+}
+.cnt_support .table_wrap table th,
+.cnt_support .table_wrap table td{
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: clamp(5px, 2.5vw, 25px) ;
+}
+.cnt_support .table_wrap table th:first-child,
+.cnt_support .table_wrap table td:first-child{
+    border-left: 0;
+}
+.cnt_support .table_wrap table th:last-child,
+.cnt_support .table_wrap table td:last-child{
+    border-right: 0;
+}
+.cnt_support .table_wrap table thead th{
+    background-color: #f4f4f4;
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    color: var(--font-color-tit);
+}
+.cnt_support .table_wrap table tbody th{
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    color: var(--font-color-tit);
+}
