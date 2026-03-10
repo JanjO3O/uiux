@@ -7,25 +7,35 @@
     position: fixed;  /* body를 기준으로 정렬 */
     left: 0;
     top: 0;
+    z-index: 100;
     width: 100%;
     height: var(--header-h);
-    z-index: 100;
     color: var(--color-white);
 }
 .header .wrapper{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; /* logo-nav-util 좌우배치 */
+    justify-content: space-between; /* 여백에 맞게 반씩 들어감 */
+    align-items: center; /* 위아래 가운데 정렬 */
 }
 .header .logo a{
     display: block;
-    width: 212px;
-    height: 44px;
-    background: url(../images/common/logo_w.svg) no-repeat center center / contain;
+    width: calc(var(--header-h) * 2.12);
+    height: calc(var(--header-h) * 0.44);
+    background: url(../images/common/logo_w.svg) no-repeat center center / contain;  /* logo처럼 짤리면 안되는 애들은 contain으로 주면 됨 */
+}
+.header.fixed,
+.header.menu_over{
+    background-color: var(--color-white);
+    color: var(--font-color-tit);
+    border-bottom: 1px solid #ededed;
+}
+.header.fixed .logo a,
+.header.menu_over .logo a{
+    background-image: url(../images/common/logo.svg);
 }
 @media screen and (min-width: 1025px) { /* 1025이상 - pc 버전 */
             .header .gnb ul.depth1{
-                display: flex;
+                display: flex; /* li 좌우배치 */
                 text-align: center;
             }
             .header .gnb ul.depth1 > li{
@@ -35,19 +45,20 @@
                 display: block;
                 font-size: 20px;
                 font-weight: var(--font-weight-bold);
-                line-height: var(--header-h);
-                padding: 0 29px;
+                line-height: var(--header-h); /* 행간을 header의 높이만큼 줘야 위아래로 눌리고, a의 높이도 그만큼이 됨 */
+                padding: 0 29px; /* 여백의 반 = 좌우로도 메뉴가 눌려야 하니까 */
             }
-            .header .gnb ul.depth1 > li:has(ul.depth2) > a{
-                /* 2차메뉴가 있는 1차메뉴만 */
-                padding-right: 14px;
+                    /* has라는건 2차메뉴가 있는 1차메뉴만을 의미함 */
+            .header .gnb ul.depth1 > li:has(ul.depth2) > a > span{
+                display: block;
+                padding-right: 14px; /* 아이콘이 들어갈 자리 마련 */
                 position: relative;  /* after 정렬의 기준 */
             }
-            .header .gnb ul.depth1 > li:has(ul.depth2) > a::after{
+            .header .gnb ul.depth1 > li:has(ul.depth2) > a > span::after{
                 content: "";
                 position: absolute; /* a를 기준으로 정렬 */
                 right: 0;
-                top: 46px;
+                top: 45px;
                 width: 7px;
                 height: 12px;
                 background-image: var(--icon-arrow-w);
@@ -55,28 +66,30 @@
                 background-position: center center;
                 background-size: contain;
                 transform: rotate(90deg);
+                transition: transform 0.3s;  /* 아이콘이 천천히 회전함 */
             }
             .header .gnb ul.depth1 > li > ul.depth2{
                 display: none;
-                position: absolute;  /* 1차메뉴 li를 기준으로 정렬 */
+                position: absolute;  /* 1차메뉴 li를 기준으로 정렬 - 2차메뉴는 무조건 absolute */
                 left: 50%;  /* 정렬의 기준이 되는 애의 절반 */
                 transform: translateX(-50%); /* 나의 사이즈의 절반 - 좌우의 가운데로 위치시켜야 2차메뉴가 1차메뉴의 가운데로 위치함 */
-                top: 82px;
+                top: 82px; /* header로부터 떨어지는 상단여백 */
                 border-radius: 10px;
                 background-color: var(--color-main);
                 padding: 18px 24px;
             }
             .header .gnb ul.depth1 > li > ul.depth2 > li > a{
                 display: block;
-                padding: 5px 0;
+                padding: 5px 0;  /* 하위메뉴 사이 여백 */
                 white-space: nowrap;  /* 줄바꿈 금지 */
+                color: var(--color-white);
             }
-            .header .gnb ul.depth1 > li > ul.depth2 > li > a > span{
+            .header .gnb ul.depth1 > li > ul.depth2 > li > a > span{  /* 2차메뉴 마우스 오버 시 밑줄 효과 */
                 position: relative; /* after 정렬의 기준 */
             }
-            .header .gnb ul.depth1 > li > ul.depth2 > li > a > span::after{
+            .header .gnb ul.depth1 > li > ul.depth2 > li > a > span::after{  /* 하위메뉴에 오버 시 밑줄 생성 */
                 content: "";
-                position: absolute; /* a를 기준으로 정렬 */
+                position: absolute; /* span을 기준으로 정렬 */
                 left: 0;
                 bottom: 0;
                 width: 0;
@@ -86,7 +99,90 @@
             .header .gnb ul.depth1 > li > ul.depth2 > li > a:hover > span::after{
                 width: 100%;
             }
+            .header .util{
+                display: flex; /* mypage-sitemap_btn 좌우정렬 */
+            }
+            .header .util .mypage{
+                display: block;  /* mypage가 a라서 주는 값 */
+                width: 40px;  /* 아이콘이 눌릴 영역 */
+                height: 40px;
+                background-image: var(--icon-mypage-w);
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+            .header .util .sitemap_btn{
+                position: relative;  /* 3개의 span 정렬의 기준 */
+                width: 40px;  /* 아이콘이 눌릴 영역 */
+                height: 40px;
+            }
+            .header .util .sitemap_btn span{  /* 선으로 만든 메뉴 아이콘 */
+                position: absolute;  /* sitemap_btn을 기준으로 정렬 */
+                left: 9px;  /* 아래 transform 값이 들어갈거라 가운데 정렬은 px로 조절하기(가상의 상자로부터 떨어지는 왼쪽 여백 주면 됨) */
+                width: 23px;
+                height: 2px;
+                background-color: var(--color-white);
+                border-radius: 2px;
+            }
+            .header .util .sitemap_btn span.line1{
+                top: 12px; /* line의 top값은 일정한 간격으로 줘야 됨 - 그래야 간격이 유지됨 */
+                transition: top 0.3s, transform 0.3s;
+            }
+            .header .util .sitemap_btn span.line2{
+                top: 19px;
+                opacity: 1;
+                transition: opacity 0.3s;
+            }
+            .header .util .sitemap_btn span.line3{
+                top: 26px;
+                transition: top 0.3s, transform 0.3s;
+            }
+            .header.menu_open .util .sitemap_btn span.line1{
+                top: 50%;
+                transform: rotate(45deg);
+            }
+            .header.menu_open .util .sitemap_btn span.line2{
+                opacity: 0;
+            }
+            .header.menu_open .util .sitemap_btn span.line3{
+                top: 50%;
+                transform: rotate(-45deg);
+            }
+
             .header .sitemap{
                 display: none;
             }
+
+            /* 메뉴에 오버했을때 */
+            .header.menu_over .gnb ul.depth1 > li.over > a{
+                color: var(--color-sub1);
+            }
+            .header.menu_over .gnb ul.depth1 > li.over:has(ul.depth2) > a > span::after{
+                background-image: var(--icon-arrow-sub1);
+                transform: rotate(-90deg);
+            }
+            .header.fixed .gnb ul.depth1 > li:has(ul.depth2) > a > span::after,
+            .header.menu_over .gnb ul.depth1 > li:has(ul.depth2) > a > span::after{
+                background-image: var(--icon-arrow-tit);
+            }
+            .header.fixed .util .mypage,
+            .header.menu_over .util .mypage{
+                background-image: var(--icon-mypage);
+            }
+            .header.fixed .util .sitemap_btn span,
+            .header.menu_over .util .sitemap_btn span{
+                background-color: var(--font-color-default);
+            }
 }/*@media*/
+@media screen and (min-width: 1025px) and (max-width: 1280px){ /* 1280(이하) ~1025(이상) 사이 */
+            .header .gnb ul.depth1 > li > a{
+                padding: 0 15px;  /* 너무 넓어서 해당 브라우저 사이즈에선 여백을 줄임 */
+            }
+}/*@media*/
+@media screen and (max-width:1024px){ /* 1024 이하 */
+
+}/*@media*/
+
+
+.footer{
+    margin: 2000px 0 0 0;
+}

@@ -18,11 +18,17 @@
 </head>
 <body>
     <div id="wrap">
-        <header class="header">
+        <!--
+            메뉴는 상단 고정 fixed 클래스 추가
+            pc 메뉴에 마우스를 오버하면 menu_over 클래스 추가
+            mobile 에서 메뉴를 열면 menu_open 클래스 추가
+        -->
+        <header class="header ">
             <div class="wrapper">
                 <h1 class="logo"><a href="index.html"><span class="sr-only">전국종합유기견분양센터 종합유기견보호센터</span></a></h1>
-                <nav class="gnb">
+                <nav class="gnb"> <!-- 모바일 메뉴는 따로 구현할거라서 gnb_wrap이 없어도 됨 -->
                     <ul class="depth1">
+                        <!-- 메뉴에 마우스를 오버하면 li에 over 클래스 추가 -->
                         <li>
                             <a href="#n"><span>찾습니다</span></a>
                             <ul class="depth2">
@@ -57,16 +63,21 @@
                     </ul>
                 </nav>
                 <div class="util">
-                    <a href="#n" class="mypage"></a>
-                    <button class="sitemap_open"><span>전체메뉴 열기</span></button>
+                    <a href="#n" class="mypage"><span class="sr-only">마이페이지</span></a>
+                    <button class="sitemap_btn" title="메뉴열기"> <!-- title=> 마우스 오버 시 화면에 보이는 설명글 -->
+                        <span class="line1"></span>
+                        <span class="line2"></span>
+                        <span class="line3"></span>
+                    </button>
                 </div><!--//util-->
             </div><!--//wrapper-->
             <div class="sitemap">
-                <h2>사이트맵</h2>
-                <div class="sitemap_wrap">
+                <h2 class="sr-only">사이트맵</h2>
+                <div class="sitemap_wrap"> <!-- pc에서는 전체메뉴, 모바일에서는 메뉴 -->
                     <ul class="depth1">
                         <li>
-                            <a href="#n"><span>찾습니다</span></a>
+                            <!-- 모바일에서는 하위메뉴를 여는 기능을 가지고 있으므로 button태그로 코딩 -->
+                            <button href="#n"><span>찾습니다</span></button>
                             <ul class="depth2">
                                 <li><a href="#n"><span>반려동물 실종신고</span></a></li>
                                 <li><a href="#n"><span>유기동물 보호중</span></a></li>
@@ -74,14 +85,14 @@
                         </li>
                         <li><a href="#n"><span>구조분양</span></a></li>
                         <li>
-                            <a href="#n"><span>봉사·후원</span></a>
+                            <button href="#n"><span>봉사·후원</span></button>
                             <ul class="depth2">
                                 <li><a href="#n"><span>자원봉사 모집</span></a></li>
                                 <li><a href="#n"><span>기부금 및 후원</span></a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#n"><span>커뮤니티</span></a>
+                            <button href="#n"><span>커뮤니티</span></button>
                             <ul class="depth2">
                                 <li><a href="#n"><span>자유게시판</span></a></li>
                                 <li><a href="#n"><span>재회성공담</span></a></li>
@@ -89,7 +100,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#n"><span>반려지식</span></a>
+                            <button href="#n"><span>반려지식</span></button>
                             <ul class="depth2">
                                 <li><a href="#n"><span>애견 지식정보</span></a></li>
                                 <li><a href="#n"><span>냥이 지식정보</span></a></li>
@@ -98,7 +109,6 @@
                         </li>
                     </ul>
                 </div><!--//sitemap_wrap-->
-                <button class="sitemap_close"><span>전체메뉴 닫기</span></button>
                 <div class="sitemap_bg"></div><!-- 모바일 검은 배경색 -->
             </div>
         </header>
