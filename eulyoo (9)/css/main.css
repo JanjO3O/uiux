@@ -283,8 +283,8 @@
                 display: block;
                 font-family: var(--font-family-Eulyoo);
                 font-size: 22px;
-                padding: 13px var(--header-height) 13px var(--wrapper-margin); /* 글자끼리 떨어지는 여백 */
-                            /* 오른쪽 여백은 아이콘이 들어갈 공간 마련 */
+                padding: 13px var(--header-height) 13px var(--wrapper-margin); /* padding을 누구한테 주느냐에 따라 메뉴가 어떻게 눌릴건지가 결정됨 */
+        /* 위아래는 글자끼리의 행간을 padding으로 줘야 해서 준거고, 오른쪽은 아이콘이 들어갈 공간 마련, ((왼쪽은 wrapper margin값만큼을 줘서 왼쪽의 공백도 눌리게 함)) */
                 position: relative; /* after 정렬의 기준 */
             }
             .header .gnb .gnb_wrap ul.depth1 > li.open > a{
@@ -312,9 +312,6 @@
                 padding: 16px var(--wrapper-margin) 16px var(--wrapper-margin);  /* 디자인 상 왼쪽 여백을 a에서 padding으로 한 번 더 줄거임 */
                 display: none;
             }
-            /* .header .gnb .gnb_wrap ul.depth1 > li.open > ul.depth2{
-                display: block;
-            } */
             .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a{
                 display: block;
                 padding: 8px 0 8px var(--wrapper-margin);  /* 왼쪽의 여백을 a한테 padding으로 한 번 더 줌으로써 글자 앞쪽도 메뉴로 조금 눌리게 함 */

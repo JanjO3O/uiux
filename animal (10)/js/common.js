@@ -73,4 +73,28 @@ $(document).ready(function(){
         }
     })
 
+    $('.header .sitemap .sitemap_wrap ul.depth1 > li:has(ul.depth2)').on('click', function(){
+        if(device_status == 'mo'){
+            if($(this).hasClass('open') == true){
+                $(this).removeClass('open')
+                $(this).find('ul.depth2').slideUp(300, function(){
+                    $(this).removeAttr('style')
+                })
+            }else{
+                $('.header .sitemap .sitemap_wrap ul.depth1 > li:has(ul.depth2)').removeClass('open')
+                $('.header .sitemap .sitemap_wrap ul.depth1 > li:has(ul.depth2) > ul.depth2').slideUp(300, function(){
+                    $(this).removeAttr('style')
+                })
+                $(this).addClass('open')
+                $(this).find('ul.depth2').slideDown()
+            }
+        }
+    })
+
+    $('.header .sitemap .sitemap_bg').on('click', function(){
+        if(device_status == 'mo'){
+            $('.header').removeClass('menu_open')
+        }
+    })
+
 })//$(document)
