@@ -112,6 +112,7 @@
             }
             .header .util .sitemap_btn{
                 position: relative;  /* 3개의 span 정렬의 기준 */
+                z-index: 10; /* sitemap에선 안보여서 준 값 */
                 width: 40px;  /* 아이콘이 눌릴 영역 */
                 height: 40px;
             }
@@ -136,6 +137,7 @@
                 top: 26px;
                 transition: top 0.3s, transform 0.3s;
             }
+
             .header.menu_open .util .sitemap_btn span.line1{
                 top: 50%;
                 transform: rotate(45deg);
@@ -147,8 +149,64 @@
                 top: 50%;
                 transform: rotate(-45deg);
             }
-
+            .header.menu_open .sitemap{
+                transform: translateY(0);
+            }
             .header .sitemap{
+                position: fixed;
+                right: 0;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: var(--color-main);
+                color: var(--color-white);
+                transform: translateY(-110%); /* 위에서 내려올거임 */
+                transition: transform 0.3s;
+            }
+            .header .sitemap .sitemap_wrap{  /* sitemap에서 wrapper 역할 */
+                width: var(--wrapper-w);
+                margin: var(--header-h) auto 0 auto;  /* 위에선 header의 높이만큼 내려가고, 좌우는 가운데 정렬. padding으로 주게 되면 그마저도 나의 영역이 되어버려서 margin을 주는 거임 */
+                height: calc(100vh - var(--header-h));  /* 위아래로 스크롤될 때 header는 건들지 않고 나의 영역 안에서만 스크롤되기 위해 */
+                overflow-y: auto; /* 높이값이 필수 */
+            }
+            .header .sitemap .sitemap_wrap ul.depth1 > li{
+                padding: 40px 0 ;  /* 글자만 눌릴거라서 padding을 li한테 줌 */
+                display: flex;  /* sitemap에선 position이 필요없음 - 바로 보이는거라 좌우정렬시키면 됨 */
+                align-items: center;  /* 1차메뉴,2차메뉴 나란히 가운데 정렬하기 위해서 */
+                border-bottom: 1px solid var(--color-w20);
+            }
+            .header .sitemap .sitemap_wrap ul.depth1 > li > button,
+            .header .sitemap .sitemap_wrap ul.depth1 > li > a{
+                display: block;
+                font-size: 32px;
+                font-weight: var(--font-weight-bold);
+                width: 184px;
+                cursor: default;
+                text-align: left;
+            }
+            .header .sitemap .sitemap_wrap ul.depth1 > li > ul.depth2{
+                display: flex;
+                gap: 0 45px;
+            }
+            .header .sitemap .sitemap_wrap ul.depth1 > li > ul.depth2 > li > a{
+                display: block;
+                font-size: 20px;
+                position: relative; /* after 정렬의 기준 */
+            }
+            .header .sitemap .sitemap_wrap ul.depth1 > li > ul.depth2 > li > a::after{
+                content: "";
+                position: absolute; /* a를 기준으로 정렬 */
+                left: 0;
+                bottom: -1px;
+                width: 0;
+                height: 1px;
+                background-color: var(--color-white);
+                transition: 0.3s;
+            }
+            .header .sitemap .sitemap_wrap ul.depth1 > li > ul.depth2 > li > a:hover::after{
+                width: 100%;
+            }
+            .header .sitemap .sitemap_bg{
                 display: none;
             }
 
@@ -173,13 +231,105 @@
                 background-color: var(--font-color-default);
             }
 }/*@media*/
+@media screen and (max-width:1500px) and (min-width: 1025px){ /* 1500~1025 사이,, wrapper가 풀리는 지점 */
+            .header .sitemap .sitemap_wrap{  /* sitemap에서 wrapper 역할 */
+                width: auto;
+                margin: var(--header-h) var(--wrapper-margin) 0 var(--wrapper-margin);  /* 위에선 header의 높이만큼 내려가고, 좌우는 가운데 정렬. padding으로 주게 되면 그마저도 나의 영역이 되어버려서 margin을 주는 거임 */
+            }
+}/*@media*/
 @media screen and (min-width: 1025px) and (max-width: 1280px){ /* 1280(이하) ~1025(이상) 사이 */
             .header .gnb ul.depth1 > li > a{
                 padding: 0 15px;  /* 너무 넓어서 해당 브라우저 사이즈에선 여백을 줄임 */
             }
 }/*@media*/
-@media screen and (max-width:1024px){ /* 1024 이하 */
+@media screen and (max-width:1024px){ /* 1024 이하 - mobile 버전 */
+            .header .wrapper{
+                margin-right: 0;
+            }
+            .header .gnb{
+                display: none;
+            }
+            .header .util .mypage{
+                display: none;
+            }
+            .header .util .sitemap_btn{
+                position: relative;  /* 3개의 span 정렬의 기준 */
+                z-index: 10; /* sitemap에선 안보여서 준 값 */
+                width: var(--header-h);  /* 아이콘이 눌릴 영역 */
+                height: var(--header-h);
+            }
+            .header .util .sitemap_btn span{  /* 선으로 만든 메뉴 아이콘 */
+                position: absolute;  /* sitemap_btn을 기준으로 정렬 */
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);  /* 위아래,좌우 가운데 정렬 */
+                width: 23px;
+                height: 2px;
+                background-color: var(--color-white);
+                border-radius: 2px;
+                transition: 0.3s;  /* 선들이 모이는 효과 부드럽게 처리 */
+            }
+            .header.fixed .util .sitemap_btn span{
+                background-color: var(--font-color-default);
+            }            
+            .header.menu_open .util .sitemap_btn span,
+            .header.fixed.menu_open .util .sitemap_btn span{
+                background-color: var(--color-white);
+            }
+            .header .util .sitemap_btn span.line1{
+                top: calc(50% - 7px);  /* - 로 해야 위로 올라감 */
+            }
+            .header .util .sitemap_btn span.line2{
+                opacity: 1;  /* 얜 top값 유지 - 가운데 */
+            }
+            .header .util .sitemap_btn span.line3{
+                top: calc(50% + 7px);  /* + 로 해야 아래로 내려감 */
+            }
+            /* =========================================
+            메뉴가 열렸을 때 (X 모양으로 변환) 
+            ========================================= */
 
+            /* 1. 첫 번째 줄: 가운데로 내려오면서 오른쪽으로 45도 회전 */
+            .header.menu_open .util .sitemap_btn span.line1 {
+                top: 50%; 
+                transform: translate(-50%, -50%) rotate(45deg); 
+            }
+            /* 2. 두 번째 줄: 투명하게 처리하여 숨김 */
+            .header.menu_open .util .sitemap_btn span.line2 {
+                opacity: 0; 
+            }
+            /* 3. 세 번째 줄: 가운데로 올라오면서 왼쪽으로 45도 회전 */
+            .header.menu_open .util .sitemap_btn span.line3 {
+                top: 50%; 
+                transform: translate(-50%, -50%) rotate(-45deg); 
+            }
+            .header .sitemap{
+                position: fixed;
+                right: 0;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                transform: translateX(110%);
+                background-color: var(--color-main);
+            }
+            .header.menu_open .sitemap{
+                transform: translateX(0);
+            }
+            .header .sitemap .sitemap_wrap{
+                position: fixed;
+                right: 0;
+                top: 0;
+                width: 80%;  /* 화면에 꽉 차지 않게 제한 */
+                max-width: 500px;  /* 80%에서도 최대넓이가 500px을 넘기지 않도록 제한함 */
+                height: 100vh;
+                background-color: var(--color-white);
+                color: var(--font-color-default);
+                transform: translateX(110%);
+                transition: transform 0.3s;
+            }
+            .header.menu_open .sitemap .sitemap_wrap{
+                transform: translateX(0);
+            }
 }/*@media*/
 
 
