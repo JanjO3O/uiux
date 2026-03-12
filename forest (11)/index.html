@@ -6,39 +6,145 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.37/fullpage.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.37/fullpage.css">
     <script src="js/jquery-3.7.1.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <script src="js/count.js"></script>
+    <!-- //외부 파일 불러오기 -->
+    <!-- 내가 만든 파일 불러오기 -->
     <link rel="stylesheet" href="css/main.css">
     <script src="js/common.js"></script>
     <script src="js/main.js"></script>
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
     <title>생명의숲</title>
 </head>
 <body>
+    <header class="header" data-bg="">
+        <div class="wrapper">
+            <h1 class="logo"><a href="index.html"><span class="sr-only">생명의숲 로고</span></a></h1>
+            <nav class="gnb">
+                <button class="gnb_open">
+                    <span class="sr-only">메뉴열기</span>
+                </button>
+                <div class="gnb_wrap">
+                    <div class="gnb_logo"><span class="sr-only">생명의숲 로고</span></div>
+                    <ul class="depth1">
+                        <li><a href="#n"><span>소개</span></a></li>
+                        <li><a href="#n"><span>활동</span></a></li>
+                        <li><a href="#n"><span>참여와후원</span></a></li>
+                        <li><a href="#n"><span>자료실</span></a></li>
+                    </ul>
+                </div><!--//gnb_wrap-->
+            </nav><!--//gnb-->
+            <div class="util">
+                <a href="#n" class="mypage">
+                    <span class="sr-only">마이페이지</span>
+                    <svg width="21" height="21" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.79219 8.95781C5.76406 7.92969 5.25 6.69375 5.25 5.25C5.25 3.80625 5.76406 2.57031 6.79219 1.54219C7.82031 0.514063 9.05625 0 10.5 0C11.9438 0 13.1797 0.514063 14.2078 1.54219C15.2359 2.57031 15.75 3.80625 15.75 5.25C15.75 6.69375 15.2359 7.92969 14.2078 8.95781C13.1797 9.98594 11.9438 10.5 10.5 10.5C9.05625 10.5 7.82031 9.98594 6.79219 8.95781ZM0 21V17.325C0 16.5812 0.191406 15.8977 0.574219 15.2742C0.957031 14.6508 1.46563 14.175 2.1 13.8469C3.45625 13.1687 4.83437 12.6602 6.23438 12.3211C7.63438 11.982 9.05625 11.8125 10.5 11.8125C11.9438 11.8125 13.3656 11.982 14.7656 12.3211C16.1656 12.6602 17.5438 13.1687 18.9 13.8469C19.5344 14.175 20.043 14.6508 20.4258 15.2742C20.8086 15.8977 21 16.5812 21 17.325V21H0ZM2.625 18.375H18.375V17.325C18.375 17.0844 18.3148 16.8656 18.1945 16.6687C18.0742 16.4719 17.9156 16.3188 17.7188 16.2094C16.5375 15.6188 15.3453 15.1758 14.1422 14.8805C12.9391 14.5852 11.725 14.4375 10.5 14.4375C9.275 14.4375 8.06094 14.5852 6.85781 14.8805C5.65469 15.1758 4.4625 15.6188 3.28125 16.2094C3.08437 16.3188 2.92578 16.4719 2.80547 16.6687C2.68516 16.8656 2.625 17.0844 2.625 17.325V18.375ZM12.3539 7.10391C12.868 6.58984 13.125 5.97188 13.125 5.25C13.125 4.52812 12.868 3.91016 12.3539 3.39609C11.8398 2.88203 11.2219 2.625 10.5 2.625C9.77812 2.625 9.16016 2.88203 8.64609 3.39609C8.13203 3.91016 7.875 4.52812 7.875 5.25C7.875 5.97188 8.13203 6.58984 8.64609 7.10391C9.16016 7.61797 9.77812 7.875 10.5 7.875C11.2219 7.875 11.8398 7.61797 12.3539 7.10391Z"/>
+                    </svg>
+                </a>
+                <div class="search">
+                    <button class="search_open">
+                        <span class="sr-only">검색열기</span>
+                        <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.65718 13.3144C4.79659 13.3144 3.22191 12.67 1.93314 11.3812C0.644381 10.0925 0 8.51778 0 6.65718C0 4.79659 0.644381 3.22191 1.93314 1.93314C3.22191 0.644381 4.79659 0 6.65718 0C8.51778 0 10.0925 0.644381 11.3812 1.93314C12.67 3.22191 13.3144 4.79659 13.3144 6.65718C13.3144 7.40825 13.1949 8.11664 12.9559 8.78236C12.7169 9.44808 12.3926 10.037 11.9829 10.5491L17.7184 16.2845C17.9061 16.4723 18 16.7112 18 17.0014C18 17.2916 17.9061 17.5306 17.7184 17.7184C17.5306 17.9061 17.2916 18 17.0014 18C16.7112 18 16.4723 17.9061 16.2845 17.7184L10.5491 11.9829C10.037 12.3926 9.44808 12.7169 8.78236 12.9559C8.11664 13.1949 7.40825 13.3144 6.65718 13.3144ZM6.65718 11.266C7.93741 11.266 9.0256 10.8179 9.92176 9.92176C10.8179 9.0256 11.266 7.93741 11.266 6.65718C11.266 5.37696 10.8179 4.28876 9.92176 3.3926C9.0256 2.49644 7.93741 2.04836 6.65718 2.04836C5.37696 2.04836 4.28876 2.49644 3.3926 3.3926C2.49644 4.28876 2.04836 5.37696 2.04836 6.65718C2.04836 7.93741 2.49644 9.0256 3.3926 9.92176C4.28876 10.8179 5.37696 11.266 6.65718 11.266Z"/>
+                        </svg>
+                    </button>
+                </div><!--//search-->
+            </div><!--//util-->
+        </div><!--//wrapper-->
+    </header>
     <div id="fullpage">
     <!-- fp-auto-height-responsive ==> 모바일에서 fullpage 안한다는 의미 -->
         <section class="section visual fp-auto-height-responsive">
-            1. visual
+            <div class="swiper"> <!-- 팝업의 높이와 넓이를 css에서 줄 수 있는 요소-->
+                <ul class="swiper-wrapper"> <!-- 각 팝업 콘텐츠를 감싸는 요소-->
+                    <li class="swiper-slide">
+                        <!-- 이미지를 확대하는 애니메이션을 추가하려면 이미지 태그로 코딩해야함(css에서 bg로 주는건 자연스럽지 못함) -->
+                        <div class="photo"><img src="images/main/visual01.jpg" alt=""></div>
+                        <div class="visual_txt">
+                            <div class="line"><span>일상을 숨 쉬게 하는 곳,</span></div>
+                            <div class="line"><span>생명의 숲입니다</span></div>
+                        </div>
+                    </li> <!-- 팝업 요소들 (div로 해도 상관없음)-->
+                    <li class="swiper-slide">
+                        <!-- 이미지를 확대하는 애니메이션을 추가하려면 이미지 태그로 코딩해야함(css에서 bg로 주는건 자연스럽지 못함) -->
+                        <div class="photo"><img src="images/main/visual02.jpg" alt=""></div>
+                        <div class="visual_txt">
+                            <div class="line"><span>내일을 심는 오늘,</span></div>
+                            <div class="line"><span>푸른 발자국을 남기다</span></div>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="video">
+                            <video autoplay loop muted playsinline aria-label="비가 온 뒤, 잎에서 물방울이 떨어지는걸 확대한 영상">
+                                <source src="images/main/visual03.mp4">
+                            </video>
+                        </div>
+                        <div class="visual_txt">
+                            <div class="line"><span>다시,</span></div>
+                            <div class="line"><span>자연의 시간으로 흐른다</span></div>
+                        </div>
+                    </li>
+                </ul><!--//swiper-wrapper-->
+            </div><!--//swiper-->
         </section><!--//visual-->
         <section class="section tree fp-auto-height-responsive">
-            2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>
-            2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>2. tree<br>
+            <div class="wrapper">
+                <div class="txt">
+                    <h2>
+                        <strong class="counter" data-start="0" data-end="39488">39,488</strong>
+                        <!-- <strong class="counter" data-start="0" data-end="3">3</strong>
+                        <strong class="counter" data-start="0" data-end="9">9</strong>
+                        <strong>,</strong>
+                        <strong class="counter" data-start="0" data-end="4">4</strong>
+                        <strong class="counter" data-start="0" data-end="8">8</strong>
+                        <strong class="counter" data-start="0" data-end="8">8</strong> -->
+                        <span>그루</span>
+                    </h2>
+                    <p class="sub_tit">2025년 우리가 한해 동안 불어넣은 숨결</p>
+                    <p>2025년 한 해 동안 생명의 숲이 전국<br> 곳곳에 심고 가꾼 나무의 수입니다.</p>
+                </div>
+                <div class="photo">
+                    <img src="images/main/tree_sun.png" alt="태양" class="sun">
+                    <img src="images/main/tree_clouds.png" alt="구름" class="clouds">
+                    <img src="images/main/tree_tree.png" alt="나무" class="tree">
+                    <img src="images/main/tree_leaf.png" alt="나뭇잎" class="leaf">
+                </div>
+            </div>
         </section><!--//tree-->
         <section class="section biz fp-auto-height-responsive">
-            3. biz
+            <div class="wrapper">3. biz</div>
         </section><!--//biz-->
         <section class="section story fp-auto-height-responsive">
-            4. story
+            <div class="wrapper">4. story</div>
         </section><!--//story-->
         <footer class="footer section fp-auto-height">
-            5. footer
+            <div class="wrapper">5. footer</div>
         </footer>
     </div><!--//fullpage-->
-    <aside class="link">
+      <!-- data-속성  이런 속성은 내가 맘대로 만들어낸 속성
+           class에 쓰기에는 지웠다가 썼다가 하기 귀찮음
+           그래서 jquery에서 값을 마음대로 쓰려고 쓰는 속성
+           배경이 흰색인 경우 white / 파랑인 경우 blue -->
+    <aside class="sec_nav" data-bg="none">
         <ul>
-            <li><a href="#main">Main</a></li>
-            <li><a href="#tree">나무심기</a></li>
-            <li><a href="#biz">숲 활동</a></li>
-            <li><a href="#story">숲이야기</a></li>
+            <li><a href="#main"><span>Main</span></a></li>
+            <li><a href="#tree"><span>나무심기</span></a></li>
+            <li class="active"><a href="#biz"><span>숲 활동</span></a></li>
+            <li><a href="#story"><span>숲이야기</span></a></li>
         </ul>
+    </aside><!--//sec_nav-->
+    <aside class="quick" data-bg="">
+        <button class="open"><span>퀵메뉴 열기</span></button>
+        <div class="quick_wrap">
+            <ul>
+                <li class="kakao"><a href="#n"><span>같이가치</span></a></li>
+                <li class="naver"><a href="#n"><span>해피빈</span></a></li>
+                <li class="green"><a href="#n"><span>그린짐</span></a></li>
+                <li class="top"><button><span>TOP</span></button></li>
+            </ul>
+        </div>
+        <button class="close"><span>퀵메뉴 닫기</span></button>
     </aside>
 </body>
 </html>

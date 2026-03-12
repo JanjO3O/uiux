@@ -1,33 +1,357 @@
 @import url(reset.css);
 @import url(fonts.css);
 @import url(common.css);
+@import url(layout.css);
 
-
-.section{
-    font-size: 50px;
+.visual .swiper{
+    width: 100vw;
+}
+.visual .swiper-slide{
+    height: 100dvh;
+    /* visual_txt를 가운데 배치시키기 위해 (photo,video는 absolute 라서 구애받지 않음)*/
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+}
+.visual .swiper-slide .photo,
+.visual .swiper-slide .video{
+    position: absolute; /* swiper-slide를 기준으로 정렬(min.css에서 원래 가지고 있음) */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+.visual .swiper-slide .photo img,
+.visual .swiper-slide .video video,
+.visual .swiper-slide .video video source{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.visual .swiper-slide .photo img{
+    transform: scale3d(1.125, 1.125, 1);
+    transition: transform 2s;
+}
+.visual .swiper-slide.swiper-slide-active .photo img{
+    transform: scale3d(1, 1, 1);
+}
+.visual .swiper-slide .visual_txt{
+    font-size: clamp(30px, 5vw, 60px);
     font-weight: 700;
+    line-height: 1.3;
+    color: #fff;
     text-align: center;
 }
-.visual{
-    background-color: #084734;
+.visual .swiper-slide .visual_txt .line{
+    overflow: hidden;
+}
+.visual .swiper-slide .visual_txt .line span{
+    display: block;  /* block 을 안주면 transform이 적용 안됨 */
+    transform: translateY(100%);
+    transition-property: transform;
+    transition-duration: 0.6s;
+}
+.visual .swiper-slide .visual_txt .line:first-child span{
+    transition-delay: 0.8s;  /* transition 효과를 0.3s 뒤에 시작하라는 의미 */
+}
+.visual .swiper-slide .visual_txt .line:last-child span{
+    transition-delay: 1.2s;  /* transition 효과를 0.5s 뒤에 시작하라는 의미 */
+}
+.visual .swiper-slide.swiper-slide-active .visual_txt .line span{
+    transform: translateY(0);
+}
+
+
+.tree .wrapper{
+    display: flex;  /* txt-photo 좌우배치 */
+    justify-content: space-between;
+    align-items: center;  /* 글자 위아래 가운데 정렬 */
+    margin-top: 80px;  /* 아이콘이 header한테 가려져서 준 여백 */
+}
+.tree .txt h2{
+    display: flex; /* strong-span 좌우배치 */
+}
+.tree .txt h2 strong{
+    font-size: 60px;
+    font-weight: 700;
+    color: #084734;
+    line-height: 1.3;
+}
+.tree .txt h2 span{
+    margin: 16px 0 0 6px;
+    font-size: 17px;
+    color: #1e1e1e;
+}
+.tree .txt .sub_tit{
+    font-weight: 700;
+    color: #1e1e1e;
+    margin: 16px 0 6px 0;
+}
+.tree .photo{
+    width: 49.05%;
+/* wrapper width - (나무를 기준으로 삼아서) wrapper의 오른쪽에서부터 나무가 들어가기까지의 넓이를 %로 바꿔서 빼준 값 */
+    position: relative;  /* 나무 정렬의 기준 */
+}
+.tree .photo .tree{
+    width: 98.54%;
+/* photo의 width에서 나무의 넓이를 %로 바꿔서 빼준 값 = (6118px - 609px = %) */
+}
+.tree .photo .sun{
+    position: absolute;  /* photo를 기준으로 정렬 */
+    left: -34.6%;
+    top: -15.18%;
+    width: 27.29%;
+/* photo를 기준으로 정렬했으니까 그거의 넓이에서 아이콘 넓이를 %로 전환한 값 */
+    animation: rotate2 4s linear infinite;
+}
+.tree .photo .clouds{
+    position: absolute;  /* photo를 기준으로 정렬 */
+    left: -21.7%;
+    top: -3.85%;
+    z-index: -1;
+    width: 45.31%;
+    animation: clouds 4s linear infinite;
+}
+.tree .photo .leaf{
+    position: absolute;  /* photo를 기준으로 정렬 */
+    right: 6.47%;
+    bottom: 11.33%;
+    width: 20.87%;
+    animation: leaf 2s linear infinite;
+}
+@keyframes up-down {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(10px);}
+    100% {transform: translateY(0);}
+}
+@keyframes leaf {
+    0% {transform: translate(0, 0); opacity: 1;}
+    100% {transform: translate(30%, 20%); opacity: 0;}
+}
+@keyframes clouds {
+    0% {transform: translate(0, 0);}
+    50% {transform: translate(10px, 5px);}
+    100% {transform: translate(0, 0);}
+}
+@keyframes rotate2 {
+    0% {transform: rotate(0);}
+    100% {transform: rotate(360deg);}
+}
+
+
+.biz{
+    background-color: #14305F;
     color: #fff;
 }
-.tree{
-    
-}
-.biz{
-    background-color: #D6FEC2;
+.story{
     color: #1e1e1e;
 }
-.story{
 
+
+
+.sec_nav{
+    position: fixed;
+    left: 30px;  /* 원에서부터 떨어지는 왼쪽 여백 */
+    top: 50%; /* 브라우저 높이의 50% */
+    transform: translateY(-50%);  /* sec_nav 나의 길이의 절반을 위로 올라감 */
+    opacity: 1;
+    transition: opacity 0.3s;  /* footer에서 사라질 때 자연스럽게 사라지라고 준 값 */
 }
+.sec_nav ul{
+    display: flex;
+    flex-direction: column;  /* li 아래로 정렬 */
+    gap: 8px 0;  /* li끼리 떨어지는 여백 */
+}
+.sec_nav ul li a{
+    display: block;
+    color: #fff;
+    padding: 0 0 0 8px;  /* 왼쪽의 원이 들어갈 자리 마련 - 원도 눌릴거라서 margin이 아닌 padding으로 줌 */
+    position: relative; /* before,after 정렬의 기준 */
+}
+.sec_nav ul li a::before{  /* 메뉴 왼쪽의 동그라미 */
+    content: "";
+    position: absolute;  /* a를 기준으로 정렬 */
+    left: 0;
+    top: 50%; /* a의 위아래 가운데 정렬 */
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+.sec_nav ul li.active a{
+    font-weight: 700;
+}
+.sec_nav ul li.active a::before{
+    background-color: #fff;
+}
+.sec_nav ul li.active a::after{  /* 왼쪽의 직선 */
+    content: "";
+    position: absolute; /* a를 기준으로 정렬 */
+    right: 100%;  /* sec_nav의 left값의 반대로 와서 주는거임 */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;  /* sec_nav의 left값만큼 */
+    height: 1px;
+    background-color: #fff;
+}
+.sec_nav ul li a span{ /* 글자를 감싸는 상자 */
+    display: inline-block;
+    padding: 5px 5px; /* 상자 안 글자의 내부여백 */
+    margin: 0 0 0 2px; /* 원과 상자가 떨어지는 여백 */
+}
+.sec_nav ul li.active a span{
+    background-color: #084734;
+}
+
+/* 배경색이 흰색이 되었을 때 */
+.sec_nav[data-bg="white"] ul li a{
+    color: #084734;
+}
+.sec_nav[data-bg="white"] ul li a::before{
+    border-color: #084734;
+}
+.sec_nav[data-bg="white"] ul li.active a::before{
+    background-color: #084734;
+}
+.sec_nav[data-bg="white"] ul li.active a::after{
+    background-color: #084734;
+}
+.sec_nav[data-bg="white"] ul li.active a span{
+    background-color: #CEF17B;
+}
+
+/* 배경색이 파란색이 되었을 때 */
+.sec_nav[data-bg="blue"] ul li.active a{
+    color: #1e1e1e;
+}
+.sec_nav[data-bg="blue"] ul li.active a span{
+    background-color: #fff;
+}
+
+/* footer에선 안보일거임 */
+.sec_nav[data-bg="none"]{
+    opacity: 0;
+}
+
+
+
+.quick{
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 90px;
+    padding-bottom: 82px;  /* open,close 들어갈 자리 */
+}
+.quick .open,
+.quick .close{
+    position: absolute;  /* quick을 기준으로 정렬 */
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #084734;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.quick .open{
+    background-image: url("data:image/svg+xml,%3Csvg width='25' height='24' viewBox='0 0 25 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.8845 14.0514C11.6846 14 11.4899 13.9229 11.3005 13.8201L0.631313 8.14396C0.399832 8.02057 0.236742 7.86632 0.142045 7.68123C0.0473485 7.49614 0 7.29049 0 7.06427C0 6.83805 0.0473485 6.63239 0.142045 6.4473C0.236742 6.26221 0.399832 6.10797 0.631313 5.98458L11.3005 0.308483C11.4899 0.205656 11.6846 0.128535 11.8845 0.0771208C12.0844 0.0257069 12.2896 0 12.5 0C12.7104 0 12.9156 0.0257069 13.1155 0.0771208C13.3154 0.128535 13.5101 0.205656 13.6995 0.308483L24.3687 5.98458C24.6002 6.10797 24.7633 6.26221 24.858 6.4473C24.9527 6.63239 25 6.83805 25 7.06427C25 7.29049 24.9527 7.49614 24.858 7.68123C24.7633 7.86632 24.6002 8.02057 24.3687 8.14396L13.6995 13.8201C13.5101 13.9229 13.3154 14 13.1155 14.0514C12.9156 14.1028 12.7104 14.1285 12.5 14.1285C12.2896 14.1285 12.0844 14.1028 11.8845 14.0514ZM12.5 11.6607L21.1174 7.06427L12.5 2.46787L3.88258 7.06427L12.5 11.6607ZM12.5 16.5964L22.4116 11.3213C22.4537 11.3008 22.6536 11.2494 23.0114 11.1671C23.3691 11.1671 23.669 11.2853 23.911 11.5219C24.153 11.7584 24.274 12.0514 24.274 12.401C24.274 12.6272 24.2214 12.8329 24.1162 13.018C24.0109 13.2031 23.8426 13.3573 23.6111 13.4807L13.6995 18.7558C13.5101 18.8586 13.3154 18.9357 13.1155 18.9871C12.9156 19.0386 12.7104 19.0643 12.5 19.0643C12.2896 19.0643 12.0844 19.0386 11.8845 18.9871C11.6846 18.9357 11.4899 18.8586 11.3005 18.7558L1.38889 13.4807C1.15741 13.3573 0.989057 13.2031 0.883838 13.018C0.77862 12.8329 0.72601 12.6272 0.72601 12.401C0.72601 12.0514 0.847012 11.7584 1.08902 11.5219C1.33102 11.2853 1.63089 11.1671 1.98864 11.1671C2.09386 11.1671 2.19381 11.1825 2.28851 11.2134C2.38321 11.2442 2.48317 11.2802 2.58838 11.3213L12.5 16.5964ZM12.5 21.5321L22.4116 16.2571C22.4537 16.2365 22.6536 16.1851 23.0114 16.1028C23.3691 16.1028 23.669 16.2211 23.911 16.4576C24.153 16.6941 24.274 16.9871 24.274 17.3368C24.274 17.563 24.2214 17.7686 24.1162 17.9537C24.0109 18.1388 23.8426 18.2931 23.6111 18.4165L13.6995 23.6915C13.5101 23.7943 13.3154 23.8715 13.1155 23.9229C12.9156 23.9743 12.7104 24 12.5 24C12.2896 24 12.0844 23.9743 11.8845 23.9229C11.6846 23.8715 11.4899 23.7943 11.3005 23.6915L1.38889 18.4165C1.15741 18.2931 0.989057 18.1388 0.883838 17.9537C0.77862 17.7686 0.72601 17.563 0.72601 17.3368C0.72601 16.9871 0.847012 16.6941 1.08902 16.4576C1.33102 16.2211 1.63089 16.1028 1.98864 16.1028C2.09386 16.1028 2.19381 16.1183 2.28851 16.1491C2.38321 16.1799 2.48317 16.2159 2.58838 16.2571L12.5 21.5321Z' fill='white'/%3E%3C/svg%3E%0A");
+}
+.quick .close{
+    display: none;  /* 클릭하면 보일거라서 숨김처리 */
+    background-image: url("data:image/svg+xml,%3Csvg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.5 12.7357L2.67491 20.5608C2.38213 20.8536 2.00951 21 1.55703 21C1.10456 21 0.731939 20.8536 0.439164 20.5608C0.146388 20.2681 0 19.8954 0 19.443C0 18.9905 0.146388 18.6179 0.439164 18.3251L8.26426 10.5L0.439164 2.67491C0.146388 2.38213 0 2.00951 0 1.55703C0 1.10456 0.146388 0.731939 0.439164 0.439164C0.731939 0.146388 1.10456 0 1.55703 0C2.00951 0 2.38213 0.146388 2.67491 0.439164L10.5 8.26426L18.3251 0.439164C18.6179 0.146388 18.9905 0 19.443 0C19.8954 0 20.2681 0.146388 20.5608 0.439164C20.8536 0.731939 21 1.10456 21 1.55703C21 2.00951 20.8536 2.38213 20.5608 2.67491L12.7357 10.5L20.5608 18.3251C20.8536 18.6179 21 18.9905 21 19.443C21 19.8954 20.8536 20.2681 20.5608 20.5608C20.2681 20.8536 19.8954 21 19.443 21C18.9905 21 18.6179 20.8536 18.3251 20.5608L10.5 12.7357Z' fill='white'/%3E%3C/svg%3E%0A");
+}
+.quick .open span,
+.quick .close span{
+    display: none;
+}
+.quick .quick_wrap{
+    display: none;
+}
+.quick .quick_wrap ul{
+    border: 1px solid #fff;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #084734;
+    padding: 43px 0;
+    text-align: center;
+}
+.quick .quick_wrap ul li{
+    border-bottom: 1px solid #084734;
+}
+.quick .quick_wrap ul li:last-child{
+    border-bottom: none;
+}
+.quick .quick_wrap ul li a,
+.quick .quick_wrap ul li button{
+    display: block;
+    width: 90px;
+    height: 97px;
+    position: relative;
+    padding-top: 52px;
+}
+.quick .quick_wrap ul li:first-child a{
+    height: 80px;
+    padding-top: 30px;
+}
+.quick .quick_wrap ul li button{
+    height: 71px;
+    padding-top: 45px;
+}
+.quick .quick_wrap ul li a::before,
+.quick .quick_wrap ul li button::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 100%;
+    height: 28px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.quick .quick_wrap ul li.kakao a::before{
+    top: 4px;
+    height: 26px;
+    background-image: url("data:image/svg+xml,%3Csvg width='28' height='26' viewBox='0 0 28 26' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 26L11.97 24.158C9.61333 22.0091 7.665 20.1553 6.125 18.5967C4.585 17.0381 3.36 15.639 2.45 14.3992C1.54 13.1594 0.904167 12.02 0.5425 10.9809C0.180833 9.94187 0 8.8792 0 7.79292C0 5.57312 0.735 3.71935 2.205 2.23161C3.675 0.743869 5.50667 0 7.7 0C8.91333 0 10.0683 0.259764 11.165 0.779292C12.2617 1.29882 13.2067 2.03088 14 2.97548C14.7933 2.03088 15.7383 1.29882 16.835 0.779292C17.9317 0.259764 19.0867 0 20.3 0C22.4933 0 24.325 0.743869 25.795 2.23161C27.265 3.71935 28 5.57312 28 7.79292C28 8.8792 27.8192 9.94187 27.4575 10.9809C27.0958 12.02 26.46 13.1594 25.55 14.3992C24.64 15.639 23.415 17.0381 21.875 18.5967C20.335 20.1553 18.3867 22.0091 16.03 24.158L14 26ZM14 22.1744C16.24 20.1435 18.0833 18.4019 19.53 16.9496C20.9767 15.4973 22.12 14.2339 22.96 13.1594C23.8 12.0849 24.3833 11.1285 24.71 10.2902C25.0367 9.45186 25.2 8.61944 25.2 7.79292C25.2 6.37602 24.7333 5.19528 23.8 4.25068C22.8667 3.30609 21.7 2.83379 20.3 2.83379C19.2033 2.83379 18.1883 3.14669 17.255 3.77248C16.3217 4.39827 15.68 5.19528 15.33 6.16349H12.67C12.32 5.19528 11.6783 4.39827 10.745 3.77248C9.81167 3.14669 8.79667 2.83379 7.7 2.83379C6.3 2.83379 5.13333 3.30609 4.2 4.25068C3.26667 5.19528 2.8 6.37602 2.8 7.79292C2.8 8.61944 2.96333 9.45186 3.29 10.2902C3.61667 11.1285 4.2 12.0849 5.04 13.1594C5.88 14.2339 7.02333 15.4973 8.47 16.9496C9.91667 18.4019 11.76 20.1435 14 22.1744Z' fill='%23084734'/%3E%3C/svg%3E%0A");
+}
+.quick .quick_wrap ul li.naver a::before{
+    background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 22C11.4667 22 12.7222 21.4833 13.7667 20.45C14.8111 19.4167 15.3333 18.1556 15.3333 16.6667C15.3333 15.2 14.8111 13.9444 13.7667 12.9C12.7222 11.8556 11.4667 11.3333 10 11.3333C8.51111 11.3333 7.25 11.8556 6.21667 12.9C5.18333 13.9444 4.66667 15.2 4.66667 16.6667C4.66667 18.1556 5.18333 19.4167 6.21667 20.45C7.25 21.4833 8.51111 22 10 22ZM10 19.3333C9.26667 19.3333 8.63889 19.0722 8.11667 18.55C7.59444 18.0278 7.33333 17.4 7.33333 16.6667C7.33333 15.9333 7.59444 15.3056 8.11667 14.7833C8.63889 14.2611 9.26667 14 10 14C10.7333 14 11.3611 14.2611 11.8833 14.7833C12.4056 15.3056 12.6667 15.9333 12.6667 16.6667C12.6667 17.4 12.4056 18.0278 11.8833 18.55C11.3611 19.0722 10.7333 19.3333 10 19.3333ZM18.6667 25.3333C20.6222 25.3333 22.2222 24.7111 23.4667 23.4667C24.7111 22.2222 25.3333 20.6222 25.3333 18.6667C25.3333 18.2889 25.2056 17.9722 24.95 17.7167C24.6944 17.4611 24.3778 17.3333 24 17.3333C23.6222 17.3333 23.3056 17.4611 23.05 17.7167C22.7944 17.9722 22.6667 18.2889 22.6667 18.6667C22.6667 19.7333 22.2611 20.6667 21.45 21.4667C20.6389 22.2667 19.7111 22.6667 18.6667 22.6667C18.2889 22.6667 17.9722 22.7944 17.7167 23.05C17.4611 23.3056 17.3333 23.6222 17.3333 24C17.3333 24.3778 17.4611 24.6944 17.7167 24.95C17.9722 25.2056 18.2889 25.3333 18.6667 25.3333ZM18.6667 28C17.5333 28 16.5833 27.6167 15.8167 26.85C15.05 26.0833 14.6667 25.1333 14.6667 24C14.6667 22.8889 15.05 21.9444 15.8167 21.1667C16.5833 20.3889 17.5333 20 18.6667 20C18.9778 20 19.2778 19.8556 19.5667 19.5667C19.8556 19.2778 20 18.9778 20 18.6667C20 17.5556 20.3833 16.6111 21.15 15.8333C21.9167 15.0556 22.8667 14.6667 24 14.6667C25.1111 14.6667 26.0556 15.0556 26.8333 15.8333C27.6111 16.6111 28 17.5556 28 18.6667C28 21.3556 27.1167 23.5833 25.35 25.35C23.5833 27.1167 21.3556 28 18.6667 28ZM10 26.6667C6.42222 26.6667 3.86111 25.5556 2.31667 23.3333C0.772222 21.1111 0 18.6667 0 16C0 14.3333 0.25 12.5611 0.75 10.6833C1.25 8.80556 1.95 7.07778 2.85 5.5C3.75 3.92222 4.81111 2.61111 6.03333 1.56667C7.25556 0.522222 8.57778 0 10 0C11.2444 0 12.4111 0.4 13.5 1.2C14.5889 2 15.5611 3.03889 16.4167 4.31667C17.2722 5.59444 17.9889 7.02778 18.5667 8.61667C19.1444 10.2056 19.5444 11.7778 19.7667 13.3333H17.0667C16.8444 12 16.4889 10.6944 16 9.41667C15.5111 8.13889 14.9389 7 14.2833 6C13.6278 5 12.9278 4.19444 12.1833 3.58333C11.4389 2.97222 10.7111 2.66667 10 2.66667C9.15556 2.66667 8.3 3.07778 7.43333 3.9C6.56667 4.72222 5.77778 5.77222 5.06667 7.05C4.35556 8.32778 3.77778 9.75556 3.33333 11.3333C2.88889 12.9111 2.66667 14.4667 2.66667 16C2.66667 17.8 2.94444 19.2333 3.5 20.3C4.05556 21.3667 4.72222 22.1722 5.5 22.7167C6.27778 23.2611 7.08333 23.6111 7.91667 23.7667C8.75 23.9222 9.44444 24 10 24C10.2667 24 10.5722 23.9889 10.9167 23.9667C11.2611 23.9444 11.6222 23.8889 12 23.8C11.9778 24.2444 12 24.6889 12.0667 25.1333C12.1333 25.5778 12.2556 26.0111 12.4333 26.4333C12.0556 26.5222 11.6667 26.5833 11.2667 26.6167C10.8667 26.65 10.4444 26.6667 10 26.6667Z' fill='%23084734'/%3E%3C/svg%3E%0A");
+}
+.quick .quick_wrap ul li.green a::before{
+    background-image: url("data:image/svg+xml,%3Csvg width='33' height='28' viewBox='0 0 33 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.11814 26.5455V22.1818H1.47791C0.887361 22.1818 0.456753 21.9273 0.186084 21.4182C-0.0845838 20.9091 -0.0599776 20.4121 0.259903 19.9273L4.46756 13.4545C3.90162 13.4545 3.47716 13.2061 3.19419 12.7091C2.91122 12.2121 2.94198 11.7212 3.28647 11.2364L10.8529 0.618182C11.1481 0.206061 11.5542 0 12.0709 0C12.5876 0 12.9936 0.206061 13.2889 0.618182L16.5 5.16364L19.7111 0.618182C20.0064 0.206061 20.4124 0 20.9291 0C21.4458 0 21.8518 0.206061 22.1471 0.618182L29.7135 11.2364C30.058 11.7212 30.0888 12.2121 29.8058 12.7091C29.5228 13.2061 29.0984 13.4545 28.5324 13.4545L32.7401 19.9273C33.06 20.4121 33.0846 20.9091 32.8139 21.4182C32.5432 21.9273 32.1126 22.1818 31.5221 22.1818H23.8819V26.5455C23.8819 26.9576 23.7404 27.303 23.4574 27.5818C23.1744 27.8606 22.8238 28 22.4055 28H19.4527C19.0344 28 18.6838 27.8606 18.4008 27.5818C18.1179 27.303 17.9764 26.9576 17.9764 26.5455V22.1818H15.0236V26.5455C15.0236 26.9576 14.8821 27.303 14.5992 27.5818C14.3162 27.8606 13.9656 28 13.5473 28H10.5945C10.1762 28 9.82557 27.8606 9.54259 27.5818C9.25962 27.303 9.11814 26.9576 9.11814 26.5455ZM23.4759 19.2727H28.8277L23.1068 10.5455H25.5797L20.9291 4L18.3086 7.67273L20.8553 11.2364C21.1998 11.7212 21.2305 12.2121 20.9476 12.7091C20.6646 13.2061 20.2401 13.4545 19.6742 13.4545L23.4759 19.2727ZM4.17229 19.2727H19.9695L14.2485 10.5455H16.7215L12.0709 4L7.42031 10.5455H9.89323L4.17229 19.2727ZM4.17229 19.2727H9.89323H7.42031H16.7215H14.2485H19.9695H4.17229ZM23.4759 19.2727H19.6742H22.4055H18.3086H25.5797H23.1068H28.8277H23.4759Z' fill='%23084734'/%3E%3C/svg%3E%0A");
+}
+.quick .quick_wrap ul li.top button::before{
+    top: 19px;
+    background-image: url("data:image/svg+xml,%3Csvg width='28' height='16' viewBox='0 0 28 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.9905 4.17225L3.1377 15.4258C2.76856 15.8086 2.3379 15.9936 1.84571 15.9809C1.35352 15.9681 0.922853 15.7703 0.553712 15.3876C0.18457 15.0048 -1.06433e-06 14.5582 -1.06433e-06 14.0478C-1.06433e-06 13.5375 0.18457 13.0909 0.553712 12.7081L11.8864 0.91866C12.1817 0.61244 12.5139 0.382774 12.883 0.229664C13.2522 0.0765544 13.6213 -6.28512e-07 13.9905 -6.12376e-07C14.3596 -5.9624e-07 14.7288 0.0765545 15.0979 0.229665C15.467 0.382775 15.7993 0.61244 16.0946 0.91866L27.4641 12.7081C27.8333 13.0909 28.0117 13.5439 27.9994 14.067C27.9871 14.5901 27.7964 15.0431 27.4272 15.4258C27.0581 15.8086 26.6274 16 26.1352 16C25.643 16 25.2124 15.8086 24.8432 15.4258L13.9905 4.17225Z' fill='%23084734'/%3E%3C/svg%3E%0A");
+}
+
+
+/* .quick .quick_wrap ul{
+    display: flex;
+    flex-direction: column;
+    gap: 4px 0;
+}
+.quick .quick_wrap ul li a{
+    display: block;
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    border: 1px solid #084734;
+    border-radius: 50%;
+    color: #084734;
+    text-align: center;
+} */
+
+
+
+
+
 .footer{
     background-color: #F4EBDA;
-    color: #1e1e1e;
-}
-.link{
-    position: fixed;
-    left: 50px;
-    top: 50%;
+    color: #5d5d5d;
 }
