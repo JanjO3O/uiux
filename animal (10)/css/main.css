@@ -102,3 +102,149 @@
                 display: none;
             }
 }/*@media*/
+
+
+
+.find{
+    background-color: var(--color-main);
+    color: var(--color-white);
+    padding: clamp(106px, 15vw, 156px) 0 clamp(72px, 12vw, 120px) 0;
+    overflow-x: hidden;  /* 모바일 사이즈가 줄어들 때 가로 스크롤바 생기지 않게 주는 값 */
+}
+.find h2{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    text-align: center;
+}
+.find .tab_list{
+    margin: clamp(38px, 5.4vw, 54px) 0 clamp(18px, 3.6vw, 36px) 0;
+}
+.find .tab_list ul{
+    display: flex; /* li 좌우배치 */
+    gap: 0 12px;
+    justify-content: center;
+}
+.find .tab_list ul li button{
+    font-size: var(--font-size-subtit);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    color: var(--color-w80);  /* 선택되지 않은 애를 기준으로 줌 */
+    padding: 0.417em 1.75em;  /* padding은 안줬다가 생기면 이상하니까 미리 준거임 */
+    border-radius: 50px;
+}
+.find .tab_list ul li.animal.active button{
+    background-color: var(--color-sub2);
+    color: var(--color-white);
+}
+.find .tab_list ul li.people.active button{
+    background-color: var(--color-sub1);
+    color: var(--color-white);
+}
+.find .tab_conts .tab_item{
+    display: none;
+}
+.find .tab_conts .tab_item.active{
+    display: block;
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap{
+    width: calc(100% + var(--gap));
+/* slick은 각각의 list 사이사이 여백을 js에서 못줌
+   css에서 추가해야 하는데, 항목이 4개면 여백도 4개가 생김
+   여백이 3개가 생겨야 좌우가 slide로 딱 끝나는데
+   그래서 list를 감싸는 요소의 넓이를 100% + 여백 1개 값을 더 해줌  */
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item{
+    margin: 0 var(--gap) 0 0;  /* list 사이의 여백을 오른쪽 margin으로 줌 */
+    width: 240px;
+/* width를 모바일 사이즈-를 주는 이유는, js에서 769px까지 slide를 지정한 개수만큼 넓이를 자유롭게 해서 보여주다가
+   768px(모바일)에서부턴 js에서 개수를 지정하지 않고 넓이를 자유롭게 설정해서 넓이를 지정해줘야 함 */
+} 
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item .photo{
+    overflow: hidden;
+    height: 446px;
+    border-radius: 20px;
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item:hover .photo img{
+    transform: scale3d(1.125, 1.125, 1);
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul{
+    margin: 16px 0 0 10px;
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li{
+    display: flex;  /* strong-span 좌우 정렬 */
+    line-height: 1.8;  /* padding으로 줘도 됨 */
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li strong{
+    color: var(--color-w80);
+    width: 4em;  /* 글자 하나가 1em ,, 글자 4개의 여백 -> 4em.. */
+}
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li span{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(100% - 4em);  /* strong의 넓이값을 빼주면 됨 */
+}
+
+
+.find .tab_conts .tab_item .slick-prev {
+    left: -18.5px;
+/* 기존에 있던 css에서 left값을 -25px 줘서 밖에 나가있었음
+   --> 0을 줘서 list 안으로 들여놓고
+   --> 원의 넓이의 반만 list에 걸쳐있는거라서 넓이의 반띵 값을 빼서 반만 걸치게 함 */
+    transform: rotate(180deg) !important;
+}
+.find .tab_conts .tab_item .slick-next {
+    right: calc(var(--gap) - 18.5px);
+/* 기존에 있던 css에서 right값을 -25px 줘서 밖에 나가있었음
+   --> 0을 줘서 list 안으로 들여놓고, (var(--gap)이 24px이라서 일단 그거 줘서 0으로 만들고
+   --> 원의 넓이의 반만 list에 걸쳐있는거라서 넓이의 반띵 값을 빼서 반만 걸치게 함 */
+}
+.find .tab_conts .tab_item .slick-prev,
+.find .tab_conts .tab_item .slick-next {
+    top: 40%;
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    background-color: var(--color-sub2);
+    background-image: var(--icon-arrow-w);
+    background-repeat: no-repeat;
+    background-position: center center;
+    transform: translate(0);
+    z-index: 10;
+}
+.find .tab_conts .tab_item.people .slick-prev,
+.find .tab_conts .tab_item.people .slick-next{
+    background-color: var(--color-sub1);
+}
+.find .tab_conts .tab_item .slick-prev::before,
+.find .tab_conts .tab_item .slick-next::before{
+    display: none;
+}
+@media screen and (max-width:768px){
+            .find .tab_list ul{
+                gap: 0 6px;
+            }
+            .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item .photo{
+                height: 313px;
+                border-radius: 10px;
+            }
+            .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul{
+                margin: 9px 0 0 0;
+            }
+            .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li strong{
+                display: none;
+            }
+            .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li span{
+                width: 100%;  /* strong 없이 혼자 꽉 채우면 됨 */
+            }
+            .find .tab_conts .tab_item .slick-prev, .slick-next {
+                display: none !important;
+            }
+}/*@media*/

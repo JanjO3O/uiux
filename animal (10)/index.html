@@ -140,7 +140,378 @@
                     <button class="play"><span class="sr-only">재생</span></button>  <!-- 재생 버튼 -->
                 </div><!--//ctrl_wrap-->
             </div><!--//visual-->
-            <div class="find"></div><!--//find-->
+            <section class="find">
+                <div class="wrapper">
+                    <h2>찾습니다</h2>
+                    <div class="tab_list">
+                        <ul role="tablist"> <!-- role은 해당요소의 역할을 씀 -->
+                            <!-- id는 이 html안에서 유일한 이름
+                                 aria-selected="true" => 현재 선택된 탭 
+                                 aria-controls에 써 있는 속성값과 같은 id를 가진 요소를 보이게 한다는 이야기 -->
+                            <li id="find_tab01" role="tab" aria-controls="find_conts01" aria-selected="true" class="animal active">
+                                <button><span>반려동물</span><em class="sr-only">선택됨</em></button>
+                                <!-- 선택된 요소는 탭 이름에 선택됨이라고 써줘야 됨 -->
+                            </li>
+                            <li id="find_tab02" role="tab" aria-controls="find_conts02" aria-selected="false" class="people">
+                                <button><span>보호자</span><em class="sr-only"></em></button> <!-- 빈 em을 줘야 js에서 작동이 가능함 -->
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab_conts">
+                        <div id="find_conts01" aria-labelledby="find_tab01" class="tab_item animal active">
+                            <h3 class="sr-only">잃어버린 반려동물을 찾습니다.</h3>
+                            <div class="tab_conts_list_wrap">
+                                <div class="tab_conts_list"> <!-- slick에서 호출하는 이름 -->
+                            <!-- 각 팝업 콘텐츠를 감싸는 요소 (div로 하는 것이 좋다 ul로 하면 일부 기능이 작동 안됨) -->
+                                    <div class="item"> 
+                                        <div class="photo"><img src="images/main/find_animal01.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>실종장소</strong>
+                                                <span>서울 용산구 이태원동</span>
+                                            </li>
+                                            <li>
+                                                <strong>실종날짜</strong>
+                                                <span>2026-03-01</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>삽살개, 7개월, 암컷, 19kg 19kg 19kg 19kg</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>베이지,흰색 섞인 긴 털</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                    <div class="item">
+                                        <div class="photo"><img src="images/main/find_animal02.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>실종장소</strong>
+                                                <span>대구 연암네거리</span>
+                                            </li>
+                                            <li>
+                                                <strong>실종날짜</strong>
+                                                <span>2026-02-25</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>진도믹스, 8살, 암컷, 25kg</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>양뒷발가락 엄지 두개</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                    <div class="item">
+                                        <div class="photo"><img src="images/main/find_animal03.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>실종장소</strong>
+                                                <span>성남시 금광동 신구대학교 후문</span>
+                                            </li>
+                                            <li>
+                                                <strong>실종날짜</strong>
+                                                <span>2026-02-27</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>치와와, 5살, 암컷</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>쫑긋한 귀, 앞 발 흰색 털</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                    <div class="item">
+                                        <div class="photo"><img src="images/main/find_animal04.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>실종장소</strong>
+                                                <span>대구 바르미스시뷔페두산점</span>
+                                            </li>
+                                            <li>
+                                                <strong>실종날짜</strong>
+                                                <span>2026-01-23</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>코숏, 9개월, 암컷, 3.3kg</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>앞발 흰색털, 호박색 눈</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                    <div class="item">
+                                        <div class="photo"><img src="images/main/find_animal05.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>실종장소</strong>
+                                                <span>대전 대청호</span>
+                                            </li>
+                                            <li>
+                                                <strong>실종날짜</strong>
+                                                <span>2025-10-14</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>아비시니안루디, 암컷, 10살</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>성격 온순, 사람을좋아함</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                    <div class="item">
+                                        <div class="photo"><img src="images/main/find_animal06.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>실종장소</strong>
+                                                <span>제주 오라동 민오름 근처</span>
+                                            </li>
+                                            <li>
+                                                <strong>실종날짜</strong>
+                                                <span>2026-02-16</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>암컷, 치즈색</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>덩치가 조금 큽니다</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                    <div class="item">
+                                        <div class="photo"><img src="images/main/find_animal07.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>실종장소</strong>
+                                                <span>경기 평택시 오성면 인근</span>
+                                            </li>
+                                            <li>
+                                                <strong>실종날짜</strong>
+                                                <span>2026-02-17</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>시베리안허스키, 암컷</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>허스키 파란색 가슴줄 메고 있음</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                    <div class="item">
+                                        <div class="photo"><img src="images/main/find_animal08.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>실종장소</strong>
+                                                <span>인천 강화도 자가</span>
+                                            </li>
+                                            <li>
+                                                <strong>실종날짜</strong>
+                                                <span>2024-10-17</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>고양이, 암컷</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>젓소색고양이</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                </div><!--//tab_conts_list-->
+                            </div><!--//tab_conts_list_wrap-->
+                        </div><!--//find_conts01-->
+                        <div id="find_conts02" aria-labelledby="find_tab02" class="tab_item people">
+                            <h3 class="sr-only">떠도는 동물의 보호자를 찾습니다.</h3>
+                            <div class="tab_conts_list_wrap">
+                                <div class="tab_conts_list"> <!-- slick에서 호출하는 이름 -->
+                                    <div class="item"> <!-- 각 팝업 콘텐츠를 감싸는 요소 (div로 하는 것이 좋다 ul로 하면 일부 기능이 작동 안됨) -->
+                                        <div class="photo"><img src="images/main/find_people01.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>발견장소</strong>
+                                                <span>경기 광주시 곤지암읍</span>
+                                            </li>
+                                            <li>
+                                                <strong>발견날짜</strong>
+                                                <span>2026-02-28</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>강아지 암컷</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>털이 깨끗하고 사람을 잘 따름</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                    <div class="item">
+                                        <div class="photo"><img src="images/main/find_people02.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>발견장소</strong>
+                                                <span>경북 영주시 가흥동 신재로</span>
+                                            </li>
+                                            <li>
+                                                <strong>발견날짜</strong>
+                                                <span>2026-02-20</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>슈나우저</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>슈나우저로 추정되는 개 한마리를 발견</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                    <div class="item">
+                                        <div class="photo"><img src="images/main/find_people03.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>발견장소</strong>
+                                                <span>대구 각산역 근처</span>
+                                            </li>
+                                            <li>
+                                                <strong>발견날짜</strong>
+                                                <span>2026-02-11</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>삼색고양이</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>파란 목줄에 검은색 타이끈으로 고정</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                    <div class="item">
+                                        <div class="photo"><img src="images/main/find_people04.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>발견장소</strong>
+                                                <span>경기 시흥</span>
+                                            </li>
+                                            <li>
+                                                <strong>발견날짜</strong>
+                                                <span>2026-02-12</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>래브라도 리트리버</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>3개월된 아기 검정 래브라도</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                    <div class="item">
+                                        <div class="photo"><img src="images/main/find_people05.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>발견장소</strong>
+                                                <span>대전 대청호</span>
+                                            </li>
+                                            <li>
+                                                <strong>발견날짜</strong>
+                                                <span>2025-10-14</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>아비시니안루디, 암컷, 10살</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>성격 온순, 사람을좋아함</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                    <div class="item">
+                                        <div class="photo"><img src="images/main/find_people06.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>발견장소</strong>
+                                                <span>제주 오라동 민오름 근처</span>
+                                            </li>
+                                            <li>
+                                                <strong>발견날짜</strong>
+                                                <span>2026-02-16</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>암컷, 치즈색</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>덩치가 조금 큽니다</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                    <div class="item">
+                                        <div class="photo"><img src="images/main/find_people07.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>발견장소</strong>
+                                                <span>경기 평택시 오성면 인근</span>
+                                            </li>
+                                            <li>
+                                                <strong>발견날짜</strong>
+                                                <span>2026-02-17</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>시베리안허스키, 암컷</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>허스키 파란색 가슴줄 메고 있음</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                    <div class="item">
+                                        <div class="photo"><img src="images/main/find_people08.jpg" alt="동물사진"></div>
+                                        <ul>
+                                            <li>
+                                                <strong>발견장소</strong>
+                                                <span>인천 강화도 자가</span>
+                                            </li>
+                                            <li>
+                                                <strong>발견날짜</strong>
+                                                <span>2024-10-17</span>
+                                            </li>
+                                            <li>
+                                                <strong>품종</strong>
+                                                <span>고양이, 암컷</span>
+                                            </li>
+                                            <li>
+                                                <strong>특징</strong>
+                                                <span>젓소색고양이</span>
+                                            </li>
+                                        </ul>
+                                    </div><!--//item-->
+                                </div><!--//tab_conts_list-->
+                            </div><!--//tab_conts_list_wrap-->
+                        </div><!--//find_conts02-->
+                    </div>
+                </div>
+            </section>
             <div class="message"></div><!--//message-->
             <div class="adopt"></div><!--//adopt-->
             <div class="review"></div><!--//review-->

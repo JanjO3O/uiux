@@ -110,6 +110,9 @@
                 background-position: center center;
                 background-repeat: no-repeat;
             }
+            .header .util .mypage:hover{
+                background-image: var(--icon-mypage-Blue);
+            }
             .header .util .sitemap_btn{
                 position: relative;  /* 3개의 span 정렬의 기준 */
                 z-index: 10; /* sitemap에선 안보여서 준 값 */
@@ -123,6 +126,9 @@
                 height: 2px;
                 background-color: var(--color-white);
                 border-radius: 2px;
+            }
+            .header .util .sitemap_btn:hover span{
+                background-color: var(--color-sub1);
             }
             .header .util .sitemap_btn span.line1{
                 top: 12px; /* line의 top값은 일정한 간격으로 줘야 됨 - 그래야 간격이 유지됨 */
@@ -228,12 +234,24 @@
             .header.menu_over .util .mypage{
                 background-image: var(--icon-mypage);
             }
+            .header.fixed .util .mypage:hover,
+            .header.menu_over .util .mypage:hover{
+                background-image: var(--icon-mypage-Blue);
+            }
             .header.fixed .util .sitemap_btn span,
             .header.menu_over .util .sitemap_btn span{
                 background-color: var(--font-color-default);
             }
+            .header.fixed .util .sitemap_btn:hover span,
+            .header.menu_over .util .sitemap_btn:hover span{
+                background-color: var(--color-sub1);
+            }
             .header.menu_open .util .sitemap_btn span,
             .header.fixed.menu_open .util .sitemap_btn span{
+                background-color: var(--color-white);
+            }
+            .header.menu_open .util .sitemap_btn:hover span,
+            .header.fixed.menu_open .util .sitemap_btn:hover span{
                 background-color: var(--color-white);
             }
 }/*@media*/
@@ -315,6 +333,10 @@
                 top: 0;
                 width: 100vw;
                 height: 100vh;
+                transform: translateX(110%); /* 얘를 안치우면 화면에서 다른 애들이 안눌리고 걸리적거림 */
+            }
+            .header.menu_open .sitemap{
+                transform: translateX(0);
             }
             .header .sitemap .sitemap_wrap{
                 position: fixed;

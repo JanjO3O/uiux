@@ -127,7 +127,7 @@
     color: var(--color-w80);
     border-radius: 50px;
 }
-.find .tab_list ul li.active button{
+.find .tab_list ul li.animal.active button{
     background-color: var(--color-sub2);
     color: var(--color-white);
 }
