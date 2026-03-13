@@ -329,7 +329,7 @@
 /* 
 상단의 여백을 margin이 아닌 padding으로 줘야 나의 여백이 된거라서 나의 영역에 포함됨 - 여백을 줘야 하는 이유는
 기존 swiper-css에서 overflow:hidden 값 때문에 마우스 오버 시 상자의 상단의 일부가 잘려서 swiper 한테 padding값을 주는거임
-box-shadow값이 4번째에 있는 li한테는 나타나지 않아서(첫번쨰 값+세번째 값=20) 오른쪽의 넓이를 넓혀서 보이게 하고 */
+box-shadow값이 4번째에 있는 li한테는 나타나지 않아서(첫번째 값+세번째 값=20) 오른쪽의 넓이를 넓혀서 보이게 하고 */
     width: calc(100% + 20px);
 }
 .story .list .swiper-slide{
