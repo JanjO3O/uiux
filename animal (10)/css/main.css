@@ -123,7 +123,7 @@
 .find .tab_list ul{
     display: flex; /* li 좌우배치 */
     gap: 0 12px;
-    justify-content: center;
+    justify-content: center;  /* 화면의 정가운데 */
 }
 .find .tab_list ul li button{
     font-size: var(--font-size-subtit);
@@ -152,12 +152,12 @@
 /* slick은 각각의 list 사이사이 여백을 js에서 못줌
    css에서 추가해야 하는데, 항목이 4개면 여백도 4개가 생김
    여백이 3개가 생겨야 좌우가 slide로 딱 끝나는데
-   그래서 list를 감싸는 요소의 넓이를 100% + 여백 1개 값을 더 해줌  */
+   그래서 list를 전체적으로 감싸는 대빵한테 요소의 넓이를 100% + 여백 1개 값을 더 해줌  */
 }
 .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item{
     margin: 0 var(--gap) 0 0;  /* list 사이의 여백을 오른쪽 margin으로 줌 */
     width: 240px;
-/* width를 모바일 사이즈-를 주는 이유는, js에서 769px까지 slide를 지정한 개수만큼 넓이를 자유롭게 해서 보여주다가
+/* width를 모바일 사이즈로 주는 이유는, js에서 769px까지 slide를 지정한 개수만큼 넓이를 자유롭게 해서 보여주다가
    768px(모바일)에서부턴 js에서 개수를 지정하지 않고 넓이를 자유롭게 설정해서 넓이를 지정해줘야 함 */
 } 
 .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item .photo{
@@ -174,7 +174,7 @@
 .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item:hover .photo img{
     transform: scale3d(1.125, 1.125, 1);
 }
-.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul{
+.find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul{  /* 글자!! */
     margin: 16px 0 0 10px;
 }
 .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li{
@@ -183,7 +183,7 @@
 }
 .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li strong{
     color: var(--color-w80);
-    width: 4em;  /* 글자 하나가 1em ,, 글자 4개의 여백 -> 4em.. */
+    width: 4em;  /* 글자 하나가 1em ,, 글자 4개의 넓이 -> 4em.. */
 }
 .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li span{
     white-space: nowrap;
@@ -208,8 +208,8 @@
 }
 .find .tab_conts .tab_item .slick-prev,
 .find .tab_conts .tab_item .slick-next {
-    top: 40%;
-    width: 37px;
+    top: 40%;  /* 기존 css에서 50%를 줘서 정중앙보다 살짝 아래에 위치해 있어서 그보다 조금 덜 주는 값인 40%를 주게 됨 */
+    width: 37px; /* 원의 넓이,높이 */
     height: 37px;
     border-radius: 50%;
     background-color: var(--color-sub2);
@@ -217,7 +217,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     transform: translate(0);
-    z-index: 10;
+    z-index: 10; /* 사진 아래 깔려서 준 값 */
 }
 .find .tab_conts .tab_item.people .slick-prev,
 .find .tab_conts .tab_item.people .slick-next{
@@ -225,7 +225,7 @@
 }
 .find .tab_conts .tab_item .slick-prev::before,
 .find .tab_conts .tab_item .slick-next::before{
-    display: none;
+    display: none; /* 기존에 있던 css에서 준 값인데, 화살표 아이콘이랑 겹쳐서 사라지게 함 */
 }
 @media screen and (max-width:768px){
             .find .tab_list ul{
@@ -235,7 +235,7 @@
                 height: 313px;
                 border-radius: 10px;
             }
-            .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul{
+            .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul{  /* 글자 */
                 margin: 9px 0 0 0;
             }
             .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li strong{
@@ -248,3 +248,55 @@
                 display: none !important;
             }
 }/*@media*/
+
+
+
+.message{
+    height: 400vh;
+    border: 1px solid blue;
+    position: relative;
+}
+.message::before{
+    content: "123456789123456789123456789123456789";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 200px;
+    color: #ccc;
+    writing-mode: vertical-rl;
+}
+.message .inner{
+    height: calc(100vh - var(--header-h));
+    border: 1px solid red;
+    /* inner안에 있는 p를 정가운데 위치시키기 위해 주는 값 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+/* message 기준으로 정렬 -> message가 사이즈가 훨씬 크고 그 안에 들어간 inner는 스티키로 가만히 둠 
+   -> 그럼 message가 스크롤 될 때 inner는 가만히 있는거임 */
+    top: var(--header-h); /* 상단에 header 빼고 들어가기 위함 */
+}
+.message p{
+    text-align: center;
+    font-size: 60px;
+    font-weight: 700;
+    color: #ccc;
+    white-space: nowrap; /* 무조건 1줄 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* strong-span 겹쳐서 하나로 보이게 됨 */
+}
+.message p strong{
+    position: relative; /* span 정렬의 기준 */
+}
+.message p strong span{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    color: var(--color-main);
+    overflow: hidden;
+}

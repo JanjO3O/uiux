@@ -160,6 +160,9 @@ $(document).ready(function(){
         // color_start = color_area.offset().top  //--> header와 상관없이 .message가 브라우저의 상단의 딱 맞닿는 지점에서부터 색 변경 시작됨
         // color_end = color_area.offset().top + color_area.height()
 
+        // color_obj.eq(2).find(color_resizer).width('50%')
+        // //-->3번째 strong의 span 넓이 50% -eq는 nth-child 와 같은 기능인데, 0부터 시작함
+
 
         color_start = color_area.offset().top - color_win_h/2  // 색 변경 시작 = .message한테 document의 top의 0 값에서부터(=즉, 메세지가 브라우저의 상단의 딱 맞닿는 지점에서) - 브라우저의 높이의 반띵 한 지점에서부터 색 변경 시작
         color_end = color_area.offset().top + color_area.height() - color_win_h/2

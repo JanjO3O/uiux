@@ -127,4 +127,90 @@ $(document).ready(function(){
     });
 
 
+    /***********************************
+     * message는 높이가 높고 그 안에 inner가 sticky로 고정으로 있음
+     * message가 스크롤 되는 동안 p strong span 태그가 넓이가 넓어지면서 색상 바뀜
+     **********************************/ 
+
+    let color_obj = $('.message p strong')  // 얘는 strong, span 두개 다 포함
+    let color_area = $('.message')
+    let color_resizer = 'span'
+    let color_line = color_obj.length //몇줄인지
+    let color_w //넓이
+    let color_header  //header의 높이
+    let color_win_h  //브라우저의 높이
+
+    let color_start  //색상을 변경하기 시작하는 위치
+    let color_end  //색상 변경이 종료되는 위치
+    let color_total  //색상 변경 전체 길이
+    let color_diff  //색상이 변경되기 시작한 이후에 얼마나 스크롤 되었는지
+    let color_count  //몇 줄 완성하는지
+
+    let scrolling  //현재 스크롤 된 값
+
+    // ▽ 3번째 strong의 span 태그의 넓이를 50% ▽
+    // color_obj.eq(2).find(color_resizer).width('50%') //eq는 카운트를 0부터 시작함
+
+    function color_change(){
+        scrolling = $(window).scrollTop()  //브라우저가 스크롤 되는 값
+        color_win_h = $(window).height()
+        color_header = $('.header').height()
+        
+        // color_start = color_area.offset().top  //--> header와 상관없이 .message가 브라우저의 상단의 딱 맞닿는 지점에서부터 색 변경 시작됨
+        // color_end = color_area.offset().top + color_area.height()
+
+        // color_obj.eq(2).find(color_resizer).width('50%')
+        // //-->3번째 strong의 span 넓이 50% -eq는 nth-child 와 같은 기능인데, 0부터 시작함
+
+
+        color_start = color_area.offset().top - color_win_h/2  // 색 변경 시작 = .message한테 document의 top의 0 값에서부터(=즉, 메세지가 브라우저의 상단의 딱 맞닿는 지점에서) - 브라우저의 높이의 반띵 한 지점에서부터 색 변경 시작
+        color_end = color_area.offset().top + color_area.height() - color_win_h/2
+
+
+        if(color_end < scrolling){
+            console.log('끝')
+            color_obj.find(color_resizer).width('100%')
+        }else if(color_start > scrolling){
+            console.log('시작전')
+            color_obj.find(color_resizer).width('0')
+        }else{
+            console.log('진행중')
+            color_total = color_end - color_start
+            color_diff = scrolling - color_start
+            color_count = color_diff / color_total * 100
+            console.log(color_count)
+            for(i=0; i<color_line; i++){
+                color_w = (color_count - (100/color_line) * i) * color_line
+                if(color_w > 100){
+                    color_w = 100
+                }
+                color_obj.eq(i).find(color_resizer).width(color_w + '%')
+            }
+        //     color_obj.each(function(index){
+
+        //     if(index < Math.floor(color_count)){
+        //         // 이미 완료된 줄
+        //         $(this).find(color_resizer).width('100%')
+
+        //     }else if(index === Math.floor(color_count)){
+        //         // 현재 진행중인 줄
+        //         let percent = (color_count - Math.floor(color_count)) * 100
+        //         $(this).find(color_resizer).width(percent + '%')
+
+        //     }else{
+        //         // 아직 시작 안한 줄
+        //         $(this).find(color_resizer).width('0')
+        //     }
+
+        // })
+            
+        }
+    }
+    
+    color_change()  //문서가 로딩되고 단 1번 실행
+    $(window).scroll(function(){ 
+        color_change()  //스크롤될 때마다 실행
+    })
+
+
 })//$(document)
