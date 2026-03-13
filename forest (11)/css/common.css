@@ -17,6 +17,16 @@ body, html{
         margin: 0 130px; /* 이제 좌우여백이 고정으로 변경 */
     }
 }
+@media screen and (max-width:1024px) {
+    .wrapper{
+        margin: 0 clamp(16px, 3vw, 30px);
+    }
+}
+/* @media screen and (max-width:768px) {
+    .wrapper{
+        margin: 0 16px;
+    }
+} */
 .sr-only {
     position: absolute;
     clip: rect(1px, 1px, 1px, 1px);
