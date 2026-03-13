@@ -653,11 +653,3 @@ box-shadow값이 4번째에 있는 li한테는 나타나지 않아서(첫번째 
                 display: none;
             }
 }/*@media*/
-
-
-
-
-.footer{
-    background-color: #F4EBDA;
-    color: #5d5d5d;
-}

@@ -2,6 +2,20 @@
     layout.css
     header, footer의 스타일이 저장됨...
 */
+.skip_nav{
+    position: fixed;
+    left: 0;
+    top: -100%; /* body에서 사라질거임 */
+    z-index: 999;
+    width: 100%;
+    background-color: rebeccapurple;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+}
+.skip_nav:focus{ /* tab 키로 이동했을 때 보임 */
+    top: 0;
+}
 .header {
     position: fixed;
     left: 0;
