@@ -433,8 +433,8 @@
 }
 .adopt .rolling_wrap .rolling{
     /* 글자의 길이대로 넓이를 인식할 요소가 필요해서 absolute를 줌 -- 일반글자는 내용이 길면 줄바꿈이 됨
-       white-space: nowrap;으로 줄바꿈 금지를 줌 --> 근데 가로 스크롤바가 생김 --> 그래서 overflow-x: hidden;로 스크롤바 막으면
-       넓이가 브라우저의 넓이만큼만 인식함 ---> absolute를 주고 넓이를 안주면 글자가 존재하는만큼 넓이로 인식 */
+       white-space: nowrap;으로 줄바꿈 금지를 줌 --> 근데 가로 스크롤바가 생김 --> 그래서 overflow-x: hidden;로 가로스크롤바 막으면
+       글자의 넓이가 브라우저의 넓이만큼만 인식함 ---> absolute를 주고 넓이를 안주면 글자가 존재하는만큼 넓이로 인식 */
     position: absolute; /* rolling_wrap을 기준으로 정렬 */
     left: 0;
     bottom: 0;
@@ -457,7 +457,7 @@
                 border-radius: 10px;
             }
             .adopt .list_item a strong{
-                margin: -12px 0 7px 0;
+                margin: -12px 0 14px 0;
             }
 }
 

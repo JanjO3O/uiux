@@ -186,6 +186,7 @@
     width: 4em;  /* 글자 하나가 1em ,, 글자 4개의 넓이 -> 4em.. */
 }
 .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li span{
+    /* 1줄 제한 + 잘린 글자 끝에 ... 추가 */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -252,22 +253,10 @@
 
 
 .message{
-    height: 400vh;
-    border: 1px solid blue;
-    position: relative;
-}
-.message::before{
-    content: "123456789123456789123456789123456789";
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-size: 200px;
-    color: #ccc;
-    writing-mode: vertical-rl;
+    height: 300vh;
 }
 .message .inner{
     height: calc(100vh - var(--header-h));
-    border: 1px solid red;
     /* inner안에 있는 p를 정가운데 위치시키기 위해 주는 값 */
     display: flex;
     flex-direction: column;
@@ -280,23 +269,181 @@
 }
 .message p{
     text-align: center;
-    font-size: 60px;
+    font-size: min(6vw, 60px);  /* 최대는 있지만, 최소는 없어야 할 때 주는 값 */
     font-weight: 700;
     color: #ccc;
     white-space: nowrap; /* 무조건 1줄 */
     display: flex;
     flex-direction: column;
     align-items: center;  /* strong-span 겹쳐서 하나로 보이게 됨 */
+    position: relative; /* img 정렬의 기준 */
+    border: 1px solid red;
 }
 .message p strong{
     position: relative; /* span 정렬의 기준 */
 }
 .message p strong span{
-    position: absolute;
+    position: absolute;  /* strong을 기준으로 정렬 */
     left: 0;
     top: 0;
     width: 0;
     height: 100%;
     color: var(--color-main);
     overflow: hidden;
+}
+.message p img{
+    position: absolute; /* p를 기준으로 정렬 */
+}
+/* 위치값은 반응형을 위해 px 이 아닌 % 로 주기 */
+.message img.sun{
+    right: -30%;
+    top: -50%;
+    width: 28%;  /* p태그를 기준으로 정렬했기 때문에 p의 넓이에서 몇 % 가 됨 */
+    animation: up_dowv 3s linear infinite;
+}
+@keyframes up_dowv {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-10%);}
+    100% {transform: translateY(0);}
+}
+@keyframes rotate {
+    0% {transform: rotate(5deg);}
+    50% {transform: rotate(-5deg);}
+    100% {transform: rotate(5deg);}
+}
+@keyframes left-right {
+    0% {transform: translateX(0);}
+    50% {transform: translateX(-10%);}
+    100% {transform: translateX(0);}
+}
+.message img.cat{
+    right: -40%;
+    bottom: -26%;
+    width: 30%;
+    animation: rotate 3s linear infinite ;
+}
+.message img.fish{
+    right: -12%;
+    bottom: -33%;
+    width: 10%;
+    animation: up_dowv 3s linear infinite;
+}
+.message img.dog{
+    left: -26%;
+    bottom: -59%;
+    width: 25%;
+    animation: left-right 3s linear infinite;
+}
+.message img.flower{
+    left: -15%;
+    top: -35%;
+    width: 10%;
+    animation: rotate 3s linear infinite ;
+}
+
+
+
+.adopt{
+    background-color: var(--color-main);
+    color: var(--color-white);
+    padding: clamp(106px, 16vw, 162px) 0 clamp(159px, 30vw, 300px) 0;
+    text-align: center;
+    position: relative; /* rolling_wrap 정렬의 기준 */ 
+}
+.adopt h2{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    margin: 0 0 clamp(29px, 4.8vw, 48px) 0;
+}
+.adopt .list_item{
+    width: clamp(240px, 34vw, 342px);
+    /* margin: 0 calc(var(--gap) / 2);   */  /* 리스트를 센터중심으로 보일거라서 오른쪽으로 여백을 주면 리스트가 오른쪽으로 치우침 그래서 좌우에 반씩 주는 거임 */
+    margin: 0 -5px;  /* 사이즈 줄인거 때문에 좌우여백이 너무 늘어나서 여백을 마이너스로 줄인거임 */
+    transform: scale3d(0.9, 0.9, 1);
+    opacity: 0.8;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.adopt .list_item.slick-center{
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+}
+.adopt .list_item a{
+/* strong의 margin값을 마이너스로 줘서 상자를 이미지 위에 올려주려면 strong이 display:block이여야 함 
+   근데 그러면 strong의 넓이가 넓어져서 inline-block을 줬는데, 그러면 또 margin 값이 안들어가서
+   strong이 display:block 값을 가지고, a 한테 아래 3가지 값을 줘서 해결함 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.adopt .list_item a .photo{
+    overflow: hidden;
+    border-radius: 50%;
+ /* 이미지를 정사각형으로 저장하고, 넓이값만 주면 높이가 비율에 맞게 들어감 
+    높이 입력하면 border-radius 때문에 원이 빠그라짐*/
+}
+.adopt .list_item a .photo img{
+    width: 100%;
+}
+.adopt .list_item a strong{
+    position: relative; /* z-index를 주기 위해 준 값 */
+    z-index: 1; /* img에 깔려서 준 값 */
+    display: block;
+    background-color: var(--color-sub2);
+    padding: 0 19px;
+    border-radius: 50px;
+    margin: -15px 0 11px 0 ; /* margin은 마이너스 값이 가능함(조금일 경우에만) */
+}
+.adopt .list_item a strong.tmp{
+    background-color: var(--color-sub1);
+}
+.adopt .list_item a span{
+    display: block;
+}
+.adopt .rolling_wrap{
+    position: absolute;  /* adopt를 기준으로 정렬 */
+    left: 0;
+    bottom: clamp(18px, 2.2vw, 22px);
+    font-size: clamp(50px, 10vw, 100px);
+    font-weight: var(--font-weight-bold);
+    color: rgba(255, 255, 255, 0.2);
+    white-space: nowrap;  /* 무조건 1줄로 보여야하기 때문에 */
+    height: 1.5em; /* 행간만큼 */
+    width: 100%;
+    overflow-x: hidden;  /* 브라우저에 생기는 스크롤 때문에 줘야 하는 값인데, 얘를 주려면 넓이값이 있어야 함 */
+}
+.adopt .rolling_wrap .rolling{
+    /* 글자의 길이대로 넓이를 인식할 요소가 필요해서 absolute를 줌 -- 일반글자는 내용이 길면 줄바꿈이 됨
+       white-space: nowrap;으로 줄바꿈 금지를 줌 --> 근데 가로 스크롤바가 생김 --> 그래서 overflow-x: hidden;로 가로스크롤바 막으면
+       글자의 넓이가 브라우저의 넓이만큼만 인식함 ---> absolute를 주고 넓이를 안주면 글자가 존재하는만큼 넓이로 인식 */
+    position: absolute; /* rolling_wrap을 기준으로 정렬 */
+    left: 0;
+    bottom: 0;
+    /* transform: translateX(-50%); --나를 기준으로 %를 계산함
+    html에서 글자를 넣을때, 여백없이 써줘야 -50%가 적용됨. 나의 길이를 기준으로 %를 계산함 --> 글자가 움직여서 처음과 동일한 위치가 되는 값 */
+    animation: adopt_roll 20s linear infinite;
+}
+@keyframes adopt_roll {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(-50%);}
+}
+@media screen and (max-width: 768px){  /* 768이하 */
+            .adopt .list_item{
+                margin: 0 calc(var(--gap) / 2); /* 리스트를 센터중심으로 보일거라서 오른쪽으로 여백을 주면 리스트가 오른쪽으로 치우침 그래서 좌우에 반씩 주는 거임 */
+                transform: scale3d(0);
+                opacity: 1;
+                transition: 0;
+            }
+            .adopt .list_item a .photo{
+                border-radius: 10px;
+            }
+            .adopt .list_item a strong{
+                margin: -12px 0 14px 0;
+            }
+}
+
+
+
+.review{
+    
 }
