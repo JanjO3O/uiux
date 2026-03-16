@@ -115,15 +115,15 @@
             }
             .header .util .sitemap_btn{
                 position: relative;  /* 3개의 span 정렬의 기준 */
-                z-index: 10; /* sitemap에선 안보여서 준 값 */
+                z-index: 10; /* sitemap이 펼쳐졌을 땐 안보여서 준 값 */
                 width: 40px;  /* 아이콘이 눌릴 영역 */
                 height: 40px;
             }
             .header .util .sitemap_btn span{  /* 선으로 만든 메뉴 아이콘 */
                 position: absolute;  /* sitemap_btn을 기준으로 정렬 */
                 left: 9px;  /* 아래 transform 값이 들어갈거라 가운데 정렬은 px로 조절하기(가상의 상자로부터 떨어지는 왼쪽 여백 주면 됨) */
-                width: 23px;
-                height: 2px;
+                width: 23px; /* 선의 길이 */
+                height: 2px; /* 선의 두께 */
                 background-color: var(--color-white);
                 border-radius: 2px;
             }

@@ -183,7 +183,7 @@
 }
 .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li strong{
     color: var(--color-w80);
-    width: 4em;  /* 글자 하나가 1em ,, 글자 4개의 넓이 -> 4em.. */
+    width: 4em;  /* 글자 하나가 1em ,, 글자 4개의 넓이 -> 4em.. ===> 글자가 4줄이라서 4em인게 아니라 젤 긴 글자가 4글자라서 4em?? */
 }
 .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li span{
     /* 1줄 제한 + 잘린 글자 끝에 ... 추가 */
@@ -263,8 +263,8 @@
     justify-content: center;
     align-items: center;
     position: sticky;
-/* message 기준으로 정렬 -> message가 사이즈가 훨씬 크고 그 안에 들어간 inner는 스티키로 가만히 둠 
-   -> 그럼 message가 스크롤 될 때 inner는 가만히 있는거임 */
+/* message 기준으로 정렬 -> message가 사이즈가 훨씬 크고 그 안에 들어간 inner는 sticky로 가만히 둠 
+   -> 그럼 message가 스크롤되는 동안 inner는 가만히 있는거임 */
     top: var(--header-h); /* 상단에 header 빼고 들어가기 위함 */
 }
 .message p{
@@ -277,7 +277,6 @@
     flex-direction: column;
     align-items: center;  /* strong-span 겹쳐서 하나로 보이게 됨 */
     position: relative; /* img 정렬의 기준 */
-    border: 1px solid red;
 }
 .message p strong{
     position: relative; /* span 정렬의 기준 */
@@ -358,7 +357,7 @@
 }
 .adopt .list_item{
     width: clamp(240px, 34vw, 342px);
-    /* margin: 0 calc(var(--gap) / 2);   */  /* 리스트를 센터중심으로 보일거라서 오른쪽으로 여백을 주면 리스트가 오른쪽으로 치우침 그래서 좌우에 반씩 주는 거임 */
+    /* margin: 0 calc(var(--gap) / 2);   */  /* 리스트를 센터중심으로 보일거라서 오른쪽으로 여백을 다 주면 리스트가 오른쪽으로 치우침 그래서 좌우에 반씩 주는 거임 */
     margin: 0 -5px;  /* 사이즈 줄인거 때문에 좌우여백이 너무 늘어나서 여백을 마이너스로 줄인거임 */
     transform: scale3d(0.9, 0.9, 1);
     opacity: 0.8;
@@ -398,7 +397,7 @@
     background-color: var(--color-sub1);
 }
 .adopt .list_item a span{
-    display: block;
+    display: block;  /* 그래야 한줄씩 들어감?? */
 }
 .adopt .rolling_wrap{
     position: absolute;  /* adopt를 기준으로 정렬 */
@@ -440,10 +439,29 @@
             .adopt .list_item a strong{
                 margin: -12px 0 14px 0;
             }
-}
+}/*@media*/
 
 
 
 .review{
+    margin: clamp(110px, 16vw, 167px) 0 clamp(95px, 12vw, 120px) 0;
+}
+.review h2{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    color: var(--font-color-tit);
+    margin: 0 0 clamp(20px, 5vw, 50px) 0;
+    padding-bottom: 7px;  /* border랑 글자의 여백 */
+    border-bottom: 1px solid #ededed;
+}
+.review .list_item{
     
 }
+
+@media screen and (max-width: 768px){  /* 768이하 */
+            .review h2{
+                padding-bottom: 0;  /* border랑 글자의 여백 */
+                border-bottom: none;
+            }
+}/*@media*/
