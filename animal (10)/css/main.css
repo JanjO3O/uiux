@@ -183,7 +183,7 @@
 }
 .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li strong{
     color: var(--color-w80);
-    width: 4em;  /* 글자 하나가 1em ,, 글자 4개의 넓이 -> 4em.. ===> 글자가 4줄이라서 4em인게 아니라 젤 긴 글자가 4글자라서 4em?? */
+    width: 4em;  /* (글자 하나가 1em) 대충 넓이 잡아보니까 4em쯤 나와서 준거임 */
 }
 .find .tab_conts .tab_item .tab_conts_list_wrap .tab_conts_list .item ul li span{
     /* 1줄 제한 + 잘린 글자 끝에 ... 추가 */

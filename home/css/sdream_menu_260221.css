@@ -345,6 +345,7 @@
     bottom: -19px;
 }
 /* 화살표가 움직이기 위해 주는 animation 속성 - Start */
+        /* 그냥 위아래로 왔다갔다 하는 animation 속성 */
             /* .visual .scroll::before{
                 animation: scroll1 2s linear infinite ;
             }
@@ -361,6 +362,7 @@
                 50%{bottom: -25px;}
                 100%{bottom: -19px;}
             } */
+        /* 삼천리처럼 내려가면서 사라지는 animation 속성 */
             .visual .scroll::before{
                 animation: scroll1 1.3s linear infinite;
              }

@@ -446,7 +446,6 @@ transform: rotate(-90edg);
         }
     ▽삼천리 사이트처럼 위아래로 왔다갔다하다가 사라지는 애니메이션 효과▽ */
         /* .visual .scroll::after{
-            opacity: 0;
             animation: scroll2 1.5s linear infinite;
         }
         .visual .scroll::before{
