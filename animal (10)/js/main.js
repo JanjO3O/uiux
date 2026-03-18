@@ -256,30 +256,23 @@ $(document).ready(function(){
         //centerMode: true, //가운데정렬(가운데가 1번)
         responsive: [
             {
-            breakpoint: 1300, //1300px 이하
-            settings: {
-                slidesToShow: 4
-            }
+                breakpoint: 1025,
+                settings: {
+                    slidesToShow: 3
+                }
             },
             {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 3
-            }
+                breakpoint: 769,
+                settings: {
+                    slidesToShow: 2
+                }
             },
             {
-            breakpoint: 768,
-            settings: {
-                slidesToShow: 2
-            }
-            },
-            {
-            breakpoint: 375,
-            settings: {
-                slidesToShow: 1
-            }
+                breakpoint: 421,
+                settings: {
+                    variableWidth: true
+                }
             },
         ]
     });
-
 })//$(document)

@@ -446,6 +446,9 @@
 .review{
     margin: clamp(110px, 16vw, 167px) 0 clamp(95px, 12vw, 120px) 0;
 }
+.review .wrapper{
+    position: relative;  /* more 정렬의 기준 */
+}
 .review h2{
     font-size: var(--font-size-tit);
     font-weight: var(--font-weight-bold);
@@ -455,13 +458,124 @@
     padding-bottom: 7px;  /* border랑 글자의 여백 */
     border-bottom: 1px solid #ededed;
 }
+.review .list_wrap{
+    width: calc(100% + var(--gap));
+}
 .review .list_item{
-    
+    width: clamp(240px, 34vw, 342px);
+    margin: 0 var(--gap) 0 0;
+/* slick은 여백을 직접 줘야 하니까 margin으로 준 다음에 list를 감싸는 전체한테 넓이를 여백값만큼 더 줌 */
+}
+.review .list_item a{
+    display: block;
+}
+.review .list_item a .photo{
+    overflow: hidden;
+    height: clamp(240px, 34vw, 342px);
+}
+.review .list_item a .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* 사진이 짤리면 안되니까 contain */
+}
+.review .list_item a h3{
+    font-size: var(--font-size-subtit);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    margin: clamp(20px, 2.8vw, 28px) 0 11px 0;
+    color: var(--font-color-tit);
+    /* 1줄 제한 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.review .list_item a:hover h3{
+    color: #000;
+}
+.review .list_item a h3 span{
+    /* position: relative;  after 정렬의 기준 */
+    background-image: linear-gradient(to right, rgba(7, 99, 213, 0.7) 0%, rgba(179, 213, 255, 0.7) 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 15.5px;
+    background-position: left center;
+    transition: background-size 0.6s;
+}
+.review .list_item a:hover h3 span{
+    background-size: 100% 15.5px;
+}
+/* .review .list_item a h3 span::after{
+    content: "";
+    position: absolute; span을 기준으로 정렬 
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 1px;
+    background-color: var(--font-color-tit);
+    transition: 0.3s;
+}
+.review .list_item a:hover h3 span::after{
+    width: 100%;
+} */
+.review .list_item a p{
+    height: calc(var(--line-height-default) * 2em);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.review .more{
+    position: absolute;  /* wrapper 기준으로 정렬 */
+    right: 0;
+    top: 0;
+}
+.review .more a{
+    display: flex;  /* strong-sapn 좌우 배치 */
+    gap: 0 14px;
+    align-items: center;
+    padding-right: 22px; /* 아이콘이 들어갈 공간 마련 */
+    position: relative; /* after 정렬의 기준 */
+}
+.review .more a::after{
+    content: "";
+    position: absolute; /* a를 기준으로 정렬 */
+    right: 0;
+    top: calc(50% - 7.5px);  /* 위아래 가운데 정렬시키기 위해서 나의 기준으 되는 애의 50%에서 높이값의 절반을 빼주면 됨 */
+    width: 15px;
+    height: 15px;
+    background-image: var(--icon-more);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.review .more a strong{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    color: var(--color-sub1);
 }
 
 @media screen and (max-width: 768px){  /* 768이하 */
             .review h2{
                 padding-bottom: 0;  /* border랑 글자의 여백 */
                 border-bottom: none;
+            }
+            .review .more a{
+                gap: 0;
+                padding-right: 0;
+                border: 1px solid var(--font-color-default);
+                border-radius: 50%;
+                width: 28px;
+                height: 28px;
+            }
+            .review .more a::after{
+                right: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-size: 11px;
+            }
+            .review .more a strong,
+            .review .more a span{
+                display: none;
             }
 }/*@media*/

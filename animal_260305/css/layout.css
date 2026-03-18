@@ -389,6 +389,18 @@
 
 
 
+.container{
+    position: relative;
+    z-index: 10;
+    margin-bottom: 300px;
+    background-color: var(--color-white);
+    /* container 내부 요소가 준 위아래 margin을 적용하기 위해서 */
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+
+
+
 .footer{
     background-color: var(--font-color-tit);
     color: var(--color-w80);
@@ -446,40 +458,34 @@
     margin-right: 28px;  /* br 태그로 줄바꿈되어 있어서 flex 못줌 */
 }
 @media screen and (max-width: 768px) {
-                .footer .top{
-    /* pc에서 준 transform 때문에 right translate-X 50%가 적용되지 못함 !impartant를 주더라도,, 그래서 right값에 50%에서 넓이의 반띵값을 빼서 가운데로 위치시킴 
-       반대로 위아래 가운데 정렬시키려면 50%에서 높이의 반띵값을 빼서 위아래 가운데 정렬시키면 됨*/
-                    right: calc(50% - 39px);  
-                    top: -52px;
-                    width: 78px;
-                    height: 40px;
-                    border-radius: 25px;
-                    background-image: none;
-                    transform: rotate(0);
-                    background-size: 0;
-                }
-                .footer .top span{
-                    display: block;
-                    position: relative; /* after 정렬의 기준 */
-                }
-                .footer .top span::after{
-                    content: "";
-                    position: absolute;
-                    left: 38px;
-                    top: -8px;
-                    width: 7px;
-                    height: 13px;
-                    background-image: var(--icon-arrow-w);
-                    transform: rotate(-90deg);
-                }
+            .footer .top{
+/* pc에서 준 transform 때문에 right translate-X 50%가 적용되지 못함 !impartant를 주더라도,, 그래서 right값에 50%에서 넓이의 반띵값을 빼서 가운데로 위치시킴 
+    반대로 위아래 가운데 정렬시키려면 50%에서 높이의 반띵값을 빼서 위아래 가운데 정렬시키면 됨*/
+                right: calc(50% + 39px);  
+                top: -52px;
+                width: 78px;
+                height: 40px;
+                border-radius: 25px;
+                background-image: none;
+                transform: rotate(0);
+                background-size: 0;
+            }
+            .footer .top span{
+                display: block;
+                position: relative; /* before 정렬의 기준 */
+            }
+            .footer .top span::before{
+                content: "";
+                position: absolute; /* span 기준으로 정렬 */
+                left: calc(50% - 3.5px);
+            /* 만약에 left값을 안주려면 0으로 놓고, width를 100%로 주고, bg-size를 넓이값 주면 됨 */
+                top: -7px;
+                width: 7px;
+                height: 13px;
+                background-image: var(--icon-arrow-w);
+                background-repeat: no-repeat;
+                background-position: center center;
+                transform: rotate(-90deg);
+            }
 }
 
-.container{
-    position: relative;
-    z-index: 10;
-    margin-bottom: 300px;
-    background-color: var(--color-white);
-    /* container 내부 요소가 준 위아래 margin을 적용하기 위해서 */
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-}
