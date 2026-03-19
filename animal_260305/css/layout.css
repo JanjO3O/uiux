@@ -478,7 +478,7 @@
                 content: "";
                 position: absolute; /* span 기준으로 정렬 */
                 left: calc(50% - 3.5px);
-            /* 만약에 left값을 안주려면 0으로 놓고, width를 100%로 주고, bg-size를 넓이값 주면 됨 */
+            /* 만약에 left값을 안주려면 0으로 놓고, width를 100%로 주고, bg-size를 아이콘 넓이값 주면 됨 */
                 top: -7px;
                 width: 7px;
                 height: 13px;
