@@ -1,0 +1,186 @@
+.header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: var(--header-h);
+    padding: 0 var(--wrapper-margin);
+    display: flex;  /* logo-gnb-util 좌우배치 */
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-white);
+    fill: var(--color-white);
+    background-color: black;
+}
+.header .logo a{
+    display: block;
+    background: url(../images/common/logo.svg) no-repeat center center / contain;
+    width: calc(var(--header-h) * 1.66);
+    min-width: 104px;
+    height: calc(var(--header-h) * 0.48);
+    min-height: 31px;
+}
+@media screen and (min-width:1025px){  /* 1025 이상 - pc */
+            .header .gnb{
+                position: relative;
+            }
+            .header .gnb ul.depth1{
+                display: flex; /* li 좌우배치 */
+            }
+            .header .gnb ul.depth1 > li{
+                position: relative; /* 2차메뉴 정렬의 기준 */
+            }
+            .header .gnb ul.depth1 > li > a{
+                font-size: var(--font-size-sub4);
+                line-height: var(--header-h);
+                padding: 0 34px;
+            }
+            .header .gnb ul.depth1 > li:hover > a{
+                font-weight: var(--font-weight-B);
+                color: var(--color-yellow);
+            }
+            .header .gnb ul.depth1 > li > ul.depth2{
+                display: none;
+                position: absolute; /* 1차 메뉴 기준으로 정렬 */
+                left: 50%;
+                transform: translateX(-50%);
+                top: 70px;
+                background-color: var(--background-color-I);
+                color: var(--font-color);
+                padding: 14px 31px;
+                border-radius: 10px;
+            }
+            .header .gnb ul.depth1 > li > ul.depth2 > li a{
+                display: block;
+                padding: 2px 0;
+                text-align: center;
+                white-space: nowrap;
+                
+            }
+            .header .gnb ul.depth1 > li > ul.depth2 > li > a > span{
+                position: relative; /* after 정렬 기준 */
+            }
+            .header .gnb ul.depth1 > li > ul.depth2 > li > a > span::after{
+                content: "";
+                position: absolute; /* span 기준으로 정렬 */
+                left: 0;
+                bottom: -1px;
+                width: 0;
+                height: 1px;
+                background-color: var(--font-color);
+            }
+            .header .gnb ul.depth1 > li > ul.depth2 > li > a:hover > span::after{
+                width: 100%;
+            }
+            .header .gnb .nav_bar{
+                position: absolute; /* 을 기준으로 정렬 */
+                left: 0;
+                bottom: 14px;
+                width: 12px;
+                height: 12px;
+                background-color: var(--color-yellow);
+                border-radius: 50%;
+                opacity: 0;
+                transition-property: opacity, left;
+                transition-duration: 0.3s;
+            }
+            .header .gnb:hover .nav_bar{
+                opacity: 1;
+            }
+            .header .util{
+                display: flex;  /* lang-sitemap_btn 좌우 정렬 */
+            }
+            .header .util .lang{
+                position: relative; /* lang_wrap 정렬의 기준 */
+            }
+            .header .util .lang .lang_open{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 45px;
+                height: 45px;
+                fill: var(--color-white);
+            }
+            .header .util .lang .lang_open:hover{
+                fill: var(--font-color);
+            }
+            .header .util .lang .lang_wrap{
+                opacity: 0;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 48px;
+                transition-property: opacity;
+                transition-duration: 0.3s;
+            }
+            .header .util .lang.over .lang_wrap{
+                opacity: 1;
+            }
+            .header .util .lang .lang_wrap ul{
+                background-color: var(--background-color-I);
+                color: var(--font-color);
+                border-radius: 5px;
+                box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.25);
+                padding: 6px 23px;
+            }
+            .header .util .lang .lang_wrap ul li a{
+                display: block;
+                padding: 4px 0;
+            }
+            .header .util .lang .lang_wrap ul li.active a{
+                font-weight: var(--font-weight-B);
+            }
+            .header .util .lang .lang_wrap ul li a:hover{
+                font-weight: var(--font-weight-B);
+            }
+            .header .util .sitemap_btn{
+                position: relative;  /* span 정렬 기준 */
+                width: 45px;
+                height: 45px;
+                z-index: 10;  /* 안보이니까 준 값 */
+            }
+            .header .util .sitemap_btn:hover span{
+                background-color: var(--font-color);
+            }
+            .header .util .sitemap_btn span{
+                position: absolute;
+                left: calc(50% - 10.5px);
+                width: 21px;
+                height: 2px;
+                background-color: var(--color-white);
+                border-radius: 2px;
+            }
+            .header .util .sitemap_btn span.line1{
+                top: 14px;
+                transition-property: transform, top;
+                transition-duration: 0.3s;
+            }
+            .header .util .sitemap_btn span.line2{
+                top: 21px;
+                opacity: 1;
+                transition: opacity 0.3s;
+            }
+            .header .util .sitemap_btn span.line3{
+                top: 28px;
+                transition-property: transform, top;
+                transition-duration: 0.3s;
+            }
+            .header.menu_open .util .sitemap_btn span.line1{
+                transform: rotate(45deg);
+                top: 50%;
+            }
+            .header.menu_open .util .sitemap_btn span.line2{
+                opacity: 0;
+            }
+            .header.menu_open .util .sitemap_btn span.line3{
+                transform: rotate(-45deg);
+                top: 50%;
+            }
+
+            .header .sitemap{
+                display: none;
+            }
+
+            
+}/*@media*/
