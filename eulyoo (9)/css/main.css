@@ -71,7 +71,7 @@
                 text-align: center;
                 position: relative; /* after 정렬의 기준 (-> 1차메뉴 하단의 밑줄) */
             }
-            .header .gnb .gnb_wrap ul.depth1 > li > a::after{  /* 1차메뉴 제목의 선 */
+            .header .gnb .gnb_wrap ul.depth1 > li > a::after{  /* 1차메뉴 하단의 밑줄 */
                 content: "";
                 position: absolute; /* a를 기준으로 정렬 */
                 left: 50%;

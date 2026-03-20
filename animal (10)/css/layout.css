@@ -46,7 +46,7 @@
                 font-size: 20px;
                 font-weight: var(--font-weight-bold);
                 line-height: var(--header-h); /* 행간을 header의 높이만큼 줘야 위아래로 눌리고, a의 높이도 그만큼이 됨 */
-                padding: 0 29px; /* 여백의 반 = 좌우로도 메뉴가 눌려야 하니까 */
+                padding: 0 22px; /* 여백의 반 = 좌우로도 메뉴가 눌려야 하니까 */
             }
                     /* has라는건 2차메뉴가 있는 1차메뉴만을 의미함 */
             .header .gnb ul.depth1 > li:has(ul.depth2) > a > span{
