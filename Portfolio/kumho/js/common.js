@@ -31,13 +31,13 @@ $(document).ready(function(){
     $('.header .gnb ul.depth1 > li').on('mouseenter focusin', function(){
         if(device_status == 'pc'){
             $('.header').addClass('menu_over')
-            $(this).find('ul.depth2').slideDown()
+            $(this).find('ul.depth2').stop().slideDown()  //stop을 줌으로써 하위메뉴가 펼쳐졌다 닫혔다 무한반복하는 버그를 제어함
         }
     })
     $('.header .gnb ul.depth1 > li').on('mouseleave', function(){
         if(device_status == 'pc'){
             $('.header').removeClass('menu_over')
-            $(this).find('ul.depth2').slideUp()
+            $(this).find('ul.depth2').stop().slideUp()
         }
     })
     $('.header .util .lang').on('mouseenter focusin', function(){

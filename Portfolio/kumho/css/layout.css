@@ -11,7 +11,7 @@
     justify-content: space-between;
     color: var(--color-white);
     fill: var(--color-white);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     transform: translateY(0);
 }
 .header.fixed{
@@ -22,9 +22,9 @@
 }
 .header.menu_over,
 .header.fixed.menu_over{
-    background-color: transparent;
-    color: var(--color-white);
-    fill: var(--color-white);
+    background-color: var(--color-white);
+    color: var(--font-color);
+    fill: var(--font-color);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .header.hide{
@@ -43,7 +43,10 @@
     background-image: url(../images/common/logo_B.svg);
 }
 .header.menu_over .logo a{
-    background-image: url(../images/common/logo.svg);
+    background-image: url(../images/common/logo_B.svg);
+}
+.header.fixed.menu_over .logo a{
+    background-image: url(../images/common/logo_B.svg);
 }
 @media screen and (min-width:1025px){  /* 1025 이상 - pc */
             .header .gnb{
@@ -66,7 +69,7 @@
             }
             .header .gnb ul.depth1 > li:hover > a{
                 font-weight: var(--font-weight-B);
-                color: var(--color-yellow);
+                color: var(--font-color);
             }
             .header .gnb ul.depth1 > li > ul.depth2{
                 display: none;
@@ -91,11 +94,14 @@
             .header .gnb ul.depth1 > li > ul.depth2 > li > a > span::after{
                 content: "";
                 position: absolute; /* span 기준으로 정렬 */
-                left: 0;
+                left: 50%;
                 bottom: -1px;
+                transform: translateX(-50%);
                 width: 0;
                 height: 1px;
                 background-color: var(--font-color);
+                transition-property: width;
+                transition-duration: 0.3s;
             }
             .header .gnb ul.depth1 > li > ul.depth2 > li > a:hover > span::after{
                 width: 100%;
@@ -131,6 +137,7 @@
             .header .util .lang .lang_open:hover{
                 fill: var(--font-color);
             }
+            .header .util .lang .lang_open:hover svg,
             .header.fixed .util .lang .lang_open:hover svg{
                 width: 22px;
                 height: 22px;
@@ -181,8 +188,11 @@
             }
             .header .util .sitemap_btn:hover span{
                 background-color: var(--font-color);
+                height: 3px;
             }
-            .header.fixed .util .sitemap_btn span{
+            .header.fixed .util .sitemap_btn span,
+            .header.menu_over .util .sitemap_btn span,
+            .header.fixed.menu_over .util .sitemap_btn span{
                 background-color: var(--font-color);
             }
             .header.fixed .util .sitemap_btn:hover span{
@@ -244,7 +254,7 @@
                 margin-left: 38px;  /* wrapper에서부터 떨어지는 왼쪽 여백 */
                 display: flex;  /* 1차메뉴-2차메뉴 좌우 정렬 */
                 align-items: center;  /* 위아래 가운데 정렬 */
-                border-bottom: 1px solid var(--color-gray);
+                border-bottom: 1px solid rgba(204, 204, 204, 0.3);
             }
             .header .sitemap .sitemap_wrap ul.depth1 > li:last-child{
                 border-bottom: none;
