@@ -434,29 +434,29 @@
     grid-template-rows: repeat(2, 1fr);
     row-gap: 130px;
 }
-.program .pro_wrap .pro_right .btn_wrap ul{
+.program .pro_wrap .pro_right .list_wrap ul{
     display: grid;
     align-items: center;
     grid-template-columns: repeat(2, minmax(167px, auto));
     grid-template-rows: repeat(2, 62px);
     gap: 46px 44px;
 }
-.program .pro_wrap .pro_right .btn_wrap ul li a{
+.program .pro_wrap .pro_right .list_wrap ul li a{
     display: block;
     font-size: var(--font-size-sub5);
     position: relative;  /* after,svg 정렬 기준 */
 }
-.program .pro_wrap .pro_right .btn_wrap ul li.active{
+.program .pro_wrap .pro_right .list_wrap ul li.active{
     margin-left: -24px;
     margin-right: -20px;
 }
-.program .pro_wrap .pro_right .btn_wrap ul li.active a{
+.program .pro_wrap .pro_right .list_wrap ul li.active a{
     font-weight: var(--font-weight-B);
     background-color: #FFF2DB;
     padding: 16px 39px 16px 24px;
     border-radius: 5px;
 }
-.program .pro_wrap .pro_right .btn_wrap ul li a::after{
+.program .pro_wrap .pro_right .list_wrap ul li a::after{
     content: "";
     position: absolute;  /* a 기준으로 정렬 */
     left: 0;
@@ -465,16 +465,16 @@
     height: 1px;
     background-color: var(--font-color);
 }
-.program .pro_wrap .pro_right .btn_wrap ul li.active a::after{
+.program .pro_wrap .pro_right .list_wrap ul li.active a::after{
     display: none;
 }
-.program .pro_wrap .pro_right .btn_wrap ul li a svg{
+.program .pro_wrap .pro_right .list_wrap ul li a svg{
     position: absolute;  /* a 기준으로 정렬 */
     right: 0;
     top: 50%;
     transform: translateY(-50%);
 }
-.program .pro_wrap .pro_right .btn_wrap ul li.active a svg{
+.program .pro_wrap .pro_right .list_wrap ul li.active a svg{
     right: 19px;
 }
 .program .pro_wrap .pro_right .text_wrap h3{
@@ -492,10 +492,10 @@
                 gap: 0 100px;
                 justify-content: flex-start;
             }
-            .program .pro_wrap .pro_right .btn_wrap ul li.active a{
+            .program .pro_wrap .pro_right .list_wrap ul li.active a{
                 padding: 16px 30px 16px 15px;
             }
-            .program .pro_wrap .pro_right .btn_wrap ul li.active {
+            .program .pro_wrap .pro_right .list_wrap ul li.active {
                 margin-left: -20px;
                 margin-right: -16px;
             }
