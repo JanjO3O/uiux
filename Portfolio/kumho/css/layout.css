@@ -100,8 +100,8 @@
                 width: 0;
                 height: 1px;
                 background-color: var(--font-color);
-                transition-property: width;
-                transition-duration: 0.3s;
+                transition-property: background-color, width;
+                transition-duration: 0.4s;
             }
             .header .gnb ul.depth1 > li > ul.depth2 > li > a:hover > span::after{
                 width: 100%;
@@ -116,7 +116,7 @@
                 border-radius: 50%;
                 opacity: 0;
                 transition-property: opacity, left;
-                transition-duration: 0.3s;
+                transition-duration: 0.4s;
             }
             .header .gnb:hover .nav_bar{
                 opacity: 1;
@@ -287,10 +287,10 @@
                 transform: translateX(-50%);
                 bottom: 0;
                 width: 0;
-                height: 1px;
+                height: 2px;
                 background-color: var(--font-color);
                 transition-property: width;
-                transition-duration: 0.3s;
+                transition-duration: 0.4s;
             }
             .header .sitemap .sitemap_wrap ul.depth1 > li > ul.depth2 > li > a:hover::after{
                 width: 100%;
@@ -305,7 +305,7 @@
                 border-radius: 50%;
                 opacity: 0;
                 transition-property: opacity, top;
-                transition-duration: 0.3s;
+                transition-duration: 0.4s;
             }
             .header .sitemap .sitemap_wrap:hover .sitemap_nav_bar{
                 opacity: 1;
@@ -494,7 +494,7 @@
                 border-radius: 50%;
                 opacity: 0;
                 transition-property: top, opacity;
-                transition-duration: 0.3s;
+                transition-duration: 0.4s;
             }
             .header .sitemap .sitemap_wrap:hover .sitemap_nav_bar{
                 opacity: 1;

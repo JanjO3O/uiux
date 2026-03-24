@@ -230,7 +230,7 @@ $(document).ready(function(){
             let wrap = $('.header .sitemap .sitemap_wrap')
             let nav_bar = $('.header .sitemap .sitemap_wrap .sitemap_nav_bar')
             let dot_h = 12
-            let duration = 300 // 스르륵 이동할 시간 (0.3초 = 300ms)
+            let duration = 400 // 스르륵 이동할 시간 (0.4초 = 400ms)
 
             // 1. 진행 중이던 이전 애니메이션 멈춤
             cancelAnimationFrame(trackAnim)
@@ -270,7 +270,7 @@ $(document).ready(function(){
                 } else {
                     // 완전히 도착하면 다시 CSS transition 원상복구
                     nav_bar.css('top', targetY + 'px') // 오차 없는 정확한 마무리
-                    nav_bar.css('transition', 'top 0.3s, opacity 0.3s')
+                    nav_bar.css('transition', 'top 0.4s, opacity 0.4s')
                 }
             }
 

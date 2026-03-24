@@ -25,9 +25,10 @@
 .visual .visual_bottom .info{
     width: 68.89%;
 }
+.visual .visual_bottom .info ul{
+    display: flex;
+}
 .visual .visual_bottom .info ul li{
-    display: inline-block;
-    float: left;  /* (li 3개의 위치를 동일하게 보이게) 위치를 제대로 잡아주기 위한 값 */
     padding-top: 52px;
     padding-left: 30px;
     margin-right: 72px;
@@ -116,9 +117,6 @@
             .visual .visual_bottom .info{
                 width: 100%;
             }
-            .visual .visual_bottom .info ul{
-                display: flex;
-            }
             .visual .visual_bottom .info ul li{
                 width: calc(100% - 48px);
                 margin-right: 0;
@@ -129,7 +127,7 @@
             }
             .visual .visual_bottom .visual_btn{
                 width: 100%;
-                height: 85px;
+                height: 75px;
             }
 }/*@media*/
 @media screen and (max-width:768px){  /* 768px 이하 */
@@ -177,3 +175,334 @@
                 height: 70px;
             }
 }/*@media*/
+
+
+
+.exhibition .tit{
+    margin: 2em 0 1em 0;
+    font-size: var(--font-size-tit);
+}
+.exhibition .tit h2{
+    font-weight: var(--font-weight-B);
+    line-height: var(--line-height-tit);
+    text-align: center;
+}
+.exhibition .inner{
+    display: flex; /* tab_list-tab_conts 좌우 정렬 */
+    flex-direction: row-reverse;  /* list가 오른쪽에 와야 해서 준 값 */
+    justify-content: space-between;
+    width: 1620px;
+    margin: 0 auto;
+    position: relative;  /* paging 정렬 기준 */
+}
+@media screen and (max-width:1680px){  /* 1620 + 30 + 30  */
+        .exhibition .inner{
+            width: auto;
+            margin: 0 var(--wrapper-margin);
+        }
+}/*@media*/
+.exhibition .tab_list{
+    width: 18.33%;
+}
+.exhibition .tab_list ul{
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--gap) / 2) 0;  /* li 사이 여백 */
+    text-align: right;
+}
+.exhibition .tab_list ul li{
+    font-size: var(--font-size-sub3);
+    line-height: var(--line-height-tit);
+    color: var(--color-gray);
+    position: relative; /* before 정렬 기준 */
+}
+.exhibition .tab_list ul li.active{
+    font-weight: var(--font-weight-B);
+    color: var(--font-color);
+}
+.exhibition .tab_list ul li::before{
+    content: "";
+    position: absolute; /* li 기준으로 정렬 */
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--font-color);
+}
+.exhibition .tab_list ul li.active::before{
+    width: 100%;
+}
+.exhibition .tab_conts{
+    width: 80.18%;
+}
+.exhibition .tab_conts .tab_item{
+    display: none;
+}
+.exhibition .tab_conts .tab_item.active{
+    display: block;
+}
+.exhibition .tab_conts .swiper .swiper-slide .photo{
+    overflow: hidden;
+    height: 700px;
+}
+.exhibition .tab_conts .swiper .swiper-slide .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.exhibition .tab_conts .swiper .swiper-slide ul{
+    position: absolute; /* inner 기준으로 정렬 */
+    left: 0;
+    bottom: 0;
+    background-color: var(--color-white);
+    padding: 15px 14px;
+}
+.exhibition .tab_conts .swiper .swiper-slide ul li{
+    display: flex;  /* strong-span 좌우 정렬 */
+    gap: 0 5px;
+    font-size: var(--font-size-sub5);
+}
+.exhibition .tab_conts .paging{
+    position: absolute; /* inner 기준으로 정렬 */
+    left: auto;
+    right: 0;
+    bottom: 0;
+    width: 18.33%;  /* tab_list랑 동일 */
+    display: flex;
+    flex-direction: column;
+    gap: 12px 0;
+}
+.exhibition .tab_conts .paging span{
+    width: 100%;
+    height: 144px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 0;
+    opacity: 1;
+    margin: 0;
+    position: relative;
+}
+.exhibition .tab_conts .paging span::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    opacity: 1;
+}
+.exhibition .tab_conts .paging span.swiper-pagination-bullet-active{
+    border: 2px solid var(--font-color);
+}
+.exhibition .tab_conts .paging span.swiper-pagination-bullet-active::before{
+    opacity: 0;
+}
+.exhibition .tab_conts .Present .paging span:nth-child(1){
+    background-image: url(../images/main/exh01_pc.jpg);
+}
+.exhibition .tab_conts .Present .paging span:nth-child(2){
+    background-image: url(../images/main/exh02_pc.jpg);
+}
+.exhibition .tab_conts .Present .paging span:nth-child(3){
+    background-image: url(../images/main/exh03_pc.jpg);
+}
+
+.exhibition .tab_conts .Past .paging span:nth-child(1){
+    background-image: url(../images/main/exh04_pc.jpg);
+}
+.exhibition .tab_conts .Past .paging span:nth-child(2){
+    background-image: url(../images/main/exh05_pc.jpg);
+}
+.exhibition .tab_conts .Past .paging span:nth-child(3){
+    background-image: url(../images/main/exh06_pc.jpg);
+}
+
+.exhibition .tab_conts .Future .paging span:nth-child(1){
+    background-image: url(../images/main/exh07_pc.jpg);
+}
+.exhibition .tab_conts .Future .paging span:nth-child(2){
+    background-image: url(../images/main/exh08_pc.jpg);
+}
+.exhibition .tab_conts .Future .paging span:nth-child(3){
+    background-image: url(../images/main/exh09_pc.jpg);
+}
+@media screen and (max-width:1024px){
+            .exhibition .inner{
+                flex-direction: column;
+            }
+            .exhibition .tab_list{
+                width: 100%;
+                margin-bottom: 18px;
+            }
+            .exhibition .tab_list ul{
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(1, minmax(auto, 65px));
+                column-gap: calc(var(--gap) / 2);
+            }
+            .exhibition .tab_list ul li{
+                border-radius: 3px;
+                border: 1px solid var(--font-color);
+                font-size: var(--font-size-sub6);
+                color: var(--font-color);
+                display: flex;
+                justify-content: center;
+            }
+            .exhibition .tab_list ul li.active{
+                background-color: var(--font-color);
+                color: var(--color-white);
+            }
+            .exhibition .tab_conts{
+                width: 100%;
+            }
+            .exhibition .tab_conts .swiper .swiper-slide{
+                width: 80%;
+            }
+            .exhibition .tab_conts .swiper .swiper-slide .photo{
+                height: 450px;
+            }
+            .exhibition .tab_conts .swiper .swiper-slide ul{
+                padding: 6px;
+            }
+            .exhibition .tab_conts .swiper .swiper-slide ul li{
+                display: none;
+            }
+            .exhibition .tab_conts .swiper .swiper-slide ul li.Writer{
+                display: block;
+            }
+            .exhibition .tab_conts .paging{
+                display: none;
+            }
+}/*@media*/
+@media screen and (max-width:840px){
+            .exhibition .tab_list ul{
+                grid-template-rows: repeat(1, minmax(auto, 52px));            
+            }
+            .exhibition .tab_conts .swiper .swiper-slide .photo{
+                height: 300px;
+            }
+}/*@media*/
+@media screen and (max-width:768px){
+            .exhibition .inner{
+                align-items: center;
+            }
+            .exhibition .tab_list{
+                width: 70%;
+            }
+            .exhibition .tab_list ul{
+                grid-template-rows: repeat(1, minmax(auto, 48px));
+            }
+            .exhibition .tab_conts .swiper .swiper-slide{
+                width: 60%;
+                max-width: 350px;
+            }
+            .exhibition .tab_conts .swiper .swiper-slide .photo{
+                height: 280px;
+            }
+}/*@media*/
+
+
+
+.program .tit {
+    margin: 2em 0 1em 0;
+    font-size: var(--font-size-tit);
+}
+.program .tit h2 {
+    font-weight: var(--font-weight-B);
+    line-height: var(--line-height-tit);
+}
+.program .pro_wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.program .pro_wrap .pro_left .photo{
+    overflow: hidden;
+    height: 510px;
+}
+.program .pro_wrap .pro_left .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.program .pro_wrap .pro_right{
+    width: 32.06%;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 130px;
+}
+.program .pro_wrap .pro_right .btn_wrap ul{
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, minmax(167px, auto));
+    grid-template-rows: repeat(2, 62px);
+    gap: 46px 44px;
+}
+.program .pro_wrap .pro_right .btn_wrap ul li a{
+    display: block;
+    font-size: var(--font-size-sub5);
+    position: relative;  /* after,svg 정렬 기준 */
+}
+.program .pro_wrap .pro_right .btn_wrap ul li.active{
+    margin-left: -24px;
+    margin-right: -20px;
+}
+.program .pro_wrap .pro_right .btn_wrap ul li.active a{
+    font-weight: var(--font-weight-B);
+    background-color: #FFF2DB;
+    padding: 16px 39px 16px 24px;
+    border-radius: 5px;
+}
+.program .pro_wrap .pro_right .btn_wrap ul li a::after{
+    content: "";
+    position: absolute;  /* a 기준으로 정렬 */
+    left: 0;
+    bottom: -7px;
+    width: 100%;
+    height: 1px;
+    background-color: var(--font-color);
+}
+.program .pro_wrap .pro_right .btn_wrap ul li.active a::after{
+    display: none;
+}
+.program .pro_wrap .pro_right .btn_wrap ul li a svg{
+    position: absolute;  /* a 기준으로 정렬 */
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.program .pro_wrap .pro_right .btn_wrap ul li.active a svg{
+    right: 19px;
+}
+.program .pro_wrap .pro_right .text_wrap h3{
+    font-size: var(--font-size-sub3);
+    font-weight: var(--font-weight-B);
+    line-height: var(--line-height-tit);
+    margin-bottom: var(--gap);
+}
+.program .pro_wrap .pro_right .text_wrap p{
+    font-size: var(--font-size-sub5);
+    color: var(--color-555);
+}
+@media screen and (max-width:1250px){
+            .program .pro_wrap{
+                gap: 0 100px;
+                justify-content: flex-start;
+            }
+            .program .pro_wrap .pro_right .btn_wrap ul li.active a{
+                padding: 16px 30px 16px 15px;
+            }
+            .program .pro_wrap .pro_right .btn_wrap ul li.active {
+                margin-left: -20px;
+                margin-right: -16px;
+            }
+}/*@media*/
+
+
+
+.program{
+    margin-bottom: 500px;
+}

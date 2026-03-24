@@ -179,10 +179,10 @@
                 <h2 class="sr-only">팝업</h2>
                 <div class="swiper"> <!-- 팝업의 높이와 넓이를 css에서 줄 수 있는 요소 -->
                     <ul class="swiper-wrapper"> <!-- 각 팝업 콘텐츠를 감싸는 요소 -->
-                        <li class="swiper-slide bg1"><img src="images/main/visual01.jpg" alt="미술관 풍경"></li>
-                        <li class="swiper-slide bg2"><img src="images/main/visual02.jpg" alt="미술관 풍경"></li>
-                        <li class="swiper-slide bg3"><img src="images/main/visual03.jpg" alt="미술관 풍경"></li>
-                        <li class="swiper-slide bg4"><img src="images/main/visual04.jpg" alt="미술관 풍경"></li>
+                        <li class="swiper-slide bg1"><img src="images/main/visual01.jpg" alt="작품사진" alt="미술관 풍경"></li>
+                        <li class="swiper-slide bg2"><img src="images/main/visual02.jpg" alt="작품사진" alt="미술관 풍경"></li>
+                        <li class="swiper-slide bg3"><img src="images/main/visual03.jpg" alt="작품사진" alt="미술관 풍경"></li>
+                        <li class="swiper-slide bg4"><img src="images/main/visual04.jpg" alt="작품사진" alt="미술관 풍경"></li>
                     </ul>
                 </div>
                 <div class="visual_bottom">
@@ -234,32 +234,251 @@
             </section><!--//visual-->
             <section class="exhibition">
                 <div class="tit"><h2>EXHIBHIT</h2></div>
-                <div class="tab_list">
-                    <ul role="tablist">
-                        <li id="exh_tap01" role="tab" aria-selected="true" aria-controls="exh_conts01" class="Present active">
-                            <button><span>현재전시</span><em class="sr-only">선택됨</em></button>
-                        </li>
-                        <li id="exh_tap02" role="tab" aria-selected="false" aria-controls="exh_conts02" class="Past">
-                            <button><span>이전전시</span><em class="sr-only"></em></button>
-                        </li>
-                        <li id="exh_tap03" role="tab" aria-selected="false" aria-controls="exh_conts03" class="Future">
-                            <button><span>예정전시</span><em class="sr-only"></em></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tab_conts">
-                    <div id="exh_conts01" aria-labelledby="exh_tap01" class="tab_item Present active">
-                        
+                <div class="inner">
+                    <div class="tab_list">
+                        <ul role="tablist">
+                            <li id="exh_tap01" role="tab" aria-selected="true" aria-controls="exh_conts01" class="Present active">
+                                <button><span>현재전시</span><em class="sr-only">선택됨</em></button>
+                            </li>
+                            <li id="exh_tap02" role="tab" aria-selected="false" aria-controls="exh_conts02" class="Past">
+                                <button><span>이전전시</span><em class="sr-only"></em></button>
+                            </li>
+                            <li id="exh_tap03" role="tab" aria-selected="false" aria-controls="exh_conts03" class="Future">
+                                <button><span>예정전시</span><em class="sr-only"></em></button>
+                            </li>
+                        </ul>
                     </div>
-                    <div id="exh_conts02" aria-labelledby="exh_tap02" class="tab_item Past">
-                        
-                    </div>
-                    <div id="exh_conts03" aria-labelledby="exh_tap03" class="tab_item Future">
-                        
-                    </div>
-                </div>
+                    <div class="tab_conts">
+                        <div id="exh_conts01" aria-labelledby="exh_tap01" class="tab_item Present active">
+                            <h3 class="sr-only">전시목록</h3>
+                            <div class="swiper"> <!-- 팝업의 높이와 넓이를 css에서 줄 수 있는 요소 -->
+                                <ul class="swiper-wrapper">
+                                    <li class="swiper-slide">
+                                        <div class="photo"><img src="images/main/exh01_mo.jpg" alt="작품사진"></div>
+                                        <ul>
+                                            <li class="Writer">
+                                                <strong>작가:</strong>
+                                                <span>박제성</span>
+                                            </li>
+                                            <li>
+                                                <strong>작품제목:</strong>
+                                                <span>세상 끝의 항해자</span>
+                                            </li>
+                                            <li>
+                                                <strong>전시기간:</strong>
+                                                <span>2026.05.15 까지</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <div class="photo"><img src="images/main/exh02_mo.jpg" alt="작품사진"></div>
+                                        <ul>
+                                            <li class="Writer">
+                                                <strong>작가:</strong>
+                                                <span>지희킴</span>
+                                            </li>
+                                            <li>
+                                                <strong>작품제목:</strong>
+                                                <span>내면의 우주 공간</span>
+                                            </li>
+                                            <li>
+                                                <strong>전시기간:</strong>
+                                                <span>2026.06.08 까지</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <div class="photo"><img src="images/main/exh03_mo.jpg" alt="작품사진"></div>
+                                        <ul>
+                                            <li class="Writer">
+                                                <strong>작가:</strong>
+                                                <span>최수인</span>
+                                            </li>
+                                            <li>
+                                                <strong>작품제목:</strong>
+                                                <span>붉은 숲의 이방인</span>
+                                            </li>
+                                            <li>
+                                                <strong>전시기간:</strong>
+                                                <span>2026.06.12 까지</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div><!--//swiper-->
+                            <div class="paging"></div>
+                        </div><!--//exh_conts01-->
+                        <div id="exh_conts02" aria-labelledby="exh_tap02" class="tab_item Past">
+                            <div class="swiper"> <!-- 팝업의 높이와 넓이를 css에서 줄 수 있는 요소 -->
+                                <ul class="swiper-wrapper">
+                                    <li class="swiper-slide">
+                                        <div class="photo"><img src="images/main/exh04_mo.jpg" alt="작품사진"></div>
+                                        <ul>
+                                            <li class="Writer">
+                                                <strong>작가:</strong>
+                                                <span>노은주</span>
+                                            </li>
+                                            <li>
+                                                <strong>작품제목:</strong>
+                                                <span>풍경의 장막을 걷다</span>
+                                            </li>
+                                            <li>
+                                                <strong>전시기간:</strong>
+                                                <span>2025.05.10</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <div class="photo"><img src="images/main/exh05_mo.jpg" alt="작품사진"></div>
+                                        <ul>
+                                            <li class="Writer">
+                                                <strong>작가:</strong>
+                                                <span>윤정선</span>
+                                            </li>
+                                            <li>
+                                                <strong>작품제목:</strong>
+                                                <span>무한한 틀의 환영</span>
+                                            </li>
+                                            <li>
+                                                <strong>전시기간:</strong>
+                                                <span>2025.06.28</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <div class="photo"><img src="images/main/exh06_mo.jpg" alt="작품사진"></div>
+                                        <ul>
+                                            <li class="Writer">
+                                                <strong>작가:</strong>
+                                                <span>이형욱</span>
+                                            </li>
+                                            <li>
+                                                <strong>작품제목:</strong>
+                                                <span>빛과 어둠의 틈새</span>
+                                            </li>
+                                            <li>
+                                                <strong>전시기간:</strong>
+                                                <span>2025.07.19</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div><!--//swiper-->
+                            <div class="paging"></div>
+                        </div><!--//exh_conts02-->
+                        <div id="exh_conts03" aria-labelledby="exh_tap03" class="tab_item Future">
+                            <div class="swiper"> <!-- 팝업의 높이와 넓이를 css에서 줄 수 있는 요소 -->
+                                <ul class="swiper-wrapper">
+                                    <li class="swiper-slide">
+                                        <div class="photo"><img src="images/main/exh07_mo.jpg" alt="작품사진"></div>
+                                        <ul>
+                                            <li class="Writer">
+                                                <strong>작가:</strong>
+                                                <span>송명진</span>
+                                            </li>
+                                            <li>
+                                                <strong>작품제목:</strong>
+                                                <span>짙은 녹음 속 사색</span>
+                                            </li>
+                                            <li>
+                                                <strong>전시기간:</strong>
+                                                <span>2026.08.16 예정</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <div class="photo"><img src="images/main/exh08_mo.jpg" alt="작품사진"></div>
+                                        <ul>
+                                            <li class="Writer">
+                                                <strong>작가:</strong>
+                                                <span>장종완</span>
+                                            </li>
+                                            <li>
+                                                <strong>작품제목:</strong>
+                                                <span>예술의 소비와 선택</span>
+                                            </li>
+                                            <li>
+                                                <strong>전시기간:</strong>
+                                                <span>2026.09.27 예정</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <div class="photo"><img src="images/main/exh09_mo.jpg" alt="작품사진"></div>
+                                        <ul>
+                                            <li class="Writer">
+                                                <strong>작가:</strong>
+                                                <span>황지윤</span>
+                                            </li>
+                                            <li>
+                                                <strong>작품제목:</strong>
+                                                <span>중력을 벗어난 시선</span>
+                                            </li>
+                                            <li>
+                                                <strong>전시기간:</strong>
+                                                <span>2026.11.15 예정</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div><!--//swiper-->
+                            <div class="paging"></div>
+                        </div><!--//exh_conts03-->
+                    </div><!--//tab_conts-->
+                </div><!--//inner-->
             </section><!--//exhibition-->
-            <section class="program"></section><!--//program-->
+            <section class="program">
+                <div class="wrapper">
+                    <div class="tit"><h2>PROGRAM</h2></div>
+                    <div class="pro_wrap">
+                        <div class="pro_left">
+                            <div class="photo"><img src="images/main/program.jpg" alt="프로그램 교육 세미나"></div>
+                        </div><!--//pro_left-->
+                        <div class="pro_right">
+                            <div class="btn_wrap">
+                                <ul>
+                                    <li class="active">
+                                        <a href="#n">
+                                            <span>전시연계프로그램</span>
+                                            <svg width="8" height="14" viewBox="0 0 8 14" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1.20594 14L0 12.7575L5.58811 7L0 1.2425L1.20594 0L8 7L1.20594 14Z"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#n">
+                                            <span>금호예술아카데미</span>
+                                            <svg width="8" height="14" viewBox="0 0 8 14" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1.20594 14L0 12.7575L5.58811 7L0 1.2425L1.20594 0L8 7L1.20594 14Z"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#n">
+                                            <span>키즈팝콘</span>
+                                            <svg width="8" height="14" viewBox="0 0 8 14" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1.20594 14L0 12.7575L5.58811 7L0 1.2425L1.20594 0L8 7L1.20594 14Z"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#n">
+                                            <span>특강</span>
+                                            <svg width="8" height="14" viewBox="0 0 8 14" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1.20594 14L0 12.7575L5.58811 7L0 1.2425L1.20594 0L8 7L1.20594 14Z"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div><!--//list-->
+                            <div class="text_wrap">
+                                <h3>전시연계프로그램</h3>
+                                <p>전시와 연계된 교육 프로그램은 전시의 성격에 따라 어린이 실기 워크샵 및 세미나 등 다양한 형식으로 구성된다.</p>
+                            </div>
+                        </div><!--//pro_right-->
+                    </div><!--//pro_wrap-->
+                </div><!--//wrapper-->
+            </section><!--//program-->
             <section class="collection"></section><!--//collection-->
             <section class="business"></section><!--//business-->
             <section class="community"></section><!--//community-->
