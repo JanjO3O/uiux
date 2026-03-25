@@ -432,7 +432,10 @@
                     <div class="tit"><h2>PROGRAM</h2></div>
                     <div class="pro_wrap">
                         <div class="pro_left">
-                            <div class="photo"><img src="images/main/program.jpg" alt="프로그램 교육 세미나"></div>
+                            <div class="photo active"><img src="images/main/program01.jpg" alt="전시연계프로그램 강연 사진"></div>
+                            <div class="photo"><img src="images/main/program02.jpg" alt="예술아카데미 강연 사진"></div>
+                            <div class="photo"><img src="images/main/program03.jpg" alt="키즈팝콘 사진"></div>
+                            <div class="photo"><img src="images/main/program04.jpg" alt="특강 사진"></div>
                         </div><!--//pro_left-->
                         <div class="pro_right">
                             <div class="list_wrap">
@@ -447,7 +450,7 @@
                                     </li>
                                     <li>
                                         <a href="#n">
-                                            <span>금호예술아카데미</span>
+                                            <span>예술아카데미</span>
                                             <svg width="8" height="14" viewBox="0 0 8 14" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M1.20594 14L0 12.7575L5.58811 7L0 1.2425L1.20594 0L8 7L1.20594 14Z"/>
                                             </svg>
@@ -472,14 +475,409 @@
                                 </ul>
                             </div><!--//list_wrap-->
                             <div class="text_wrap">
-                                <h3>전시연계프로그램</h3>
-                                <p>전시와 연계된 교육 프로그램은 전시의 성격에 따라 어린이 실기 워크샵 및 세미나 등 다양한 형식으로 구성된다.</p>
+                                <ul>
+                                    <li class="active">
+                                        <h3>전시연계프로그램</h3>
+                                        <p>전시의 성격에 따라 어린이 실기 워크샵이나 세미나 등 다양한 형식으로 구성됩니다.</p>
+                                    </li>
+                                    <li>
+                                        <h3>예술아카데미</h3>
+                                        <p>미술을 중심으로 음악, 건축, 디자인 등 문화예술 전반의 다양한 이론 강좌입니다.</p>
+                                    </li>
+                                    <li>
+                                        <h3>키즈팝콘</h3>
+                                        <p>전시와 연계하여 어린이들을 대상으로 진행해 보는 미술 실기 워크샵 프로그램입니다.</p>
+                                    </li>
+                                    <li>
+                                        <h3>특강</h3>
+                                        <p>문화예술 전문가 및 전공자를 위한 전문 특강으로, 최근 ‘도시와 문화’를 다룹니다.</p>
+                                    </li>
+                                </ul>
                             </div><!--//text_wrap-->
                         </div><!--//pro_right-->
                     </div><!--//pro_wrap-->
                 </div><!--//wrapper-->
             </section><!--//program-->
-            <section class="collection"></section><!--//collection-->
+            <section class="collection">
+                <div class="inner">
+                    <div class="tit"><h2>COLLECTION</h2></div>
+                    <div class="tab_wrap">
+                        <div class="tab_list">
+                            <ul role="tablist">
+                                <li id="collect_tab01" role="tab" aria-selected="true" aria-controls="collect_conts01" class="art active">
+                                    <button><span>현대미술</span><em class="sr-only">선택됨</em></button>
+                                </li>
+                                <li id="collect_tab02" role="tab" aria-selected="false" aria-controls="collect_conts02" class="design">
+                                    <button><span>디자인</span><em class="sr-only"></em></button>
+                                </li>
+                            </ul>
+                            <div class="curr_cont"></div>
+                        </div><!--//tab_list-->
+                        <div class="tab_conts">
+                            <div id="collect_conts01" aria-labelledby="collect_tab01" class="tab_item art active">
+                                <h3 class="sr-only">작품목록</h3>
+                                <div class="list">
+                                    <div class="swiper"> <!-- 팝업의 높이와 넓이를 css에서 줄 수 있는 요소 -->
+                                        <ul class="swiper-wrapper">
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/collec01.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul class="active">
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>강동훈</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>트라이글로시아</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 1전시장</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/collec02.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>안창홍</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>풀잎사랑</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 1전시장</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/collec03.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>강철규</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>데우스 엑스 마키나</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 1전시장</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/collec04.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>정재호</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>회현동 기념비</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 2전시장</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/collec05.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>박형근</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>텐슬리스-56, 겨울꽃</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 2전시장</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/collec06.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>서원미</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>따라다니는 영원_ 하루</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 2전시장</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/collec07.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>주형준</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>어둠 속엔 그림자조차 없다</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 3전시장</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/collec08.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>민정기</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>숲에서</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 3전시장</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div><!--//swiper-->
+                                </div><!--//list-->
+                                <div class="btn_wrap">
+                                    <button class="prev">
+                                        <span class="sr-only">이전팝업보기</span>
+                                        <svg width="16" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 12L0 6L6 0L7.4 1.45L3.85 5H16V7H3.85L7.4 10.55L6 12Z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="next">
+                                        <span class="sr-only">다음팝업보기</span>
+                                        <svg width="16" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10 -5.24537e-07L16 6L10 12L8.6 10.55L12.15 7L4.37114e-07 7L6.11959e-07 5L12.15 5L8.6 1.45L10 -5.24537e-07Z"/>
+                                        </svg>
+                                    </button>
+                                    <a href="#n" class="more">
+                                        <span class="sr-only">더보기</span>
+                                        <svg width="15" height="15" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.42857 8.57143H0V6.42857H6.42857V0H8.57143V6.42857H15V8.57143H8.57143V15H6.42857V8.57143Z"/>
+                                        </svg>
+                                    </a>
+                                </div><!--//btn_wrap-->
+                            </div><!--//collect_conts01-->
+                            <div id="collect_conts02" aria-labelledby="collect_tab02" class="tab_item design">
+                                <div class="list">
+                                    <div class="swiper"> <!-- 팝업의 높이와 넓이를 css에서 줄 수 있는 요소 -->
+                                        <ul class="swiper-wrapper">
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/design01.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>마르셀 브로이어</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>B9 네스팅 테이블</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 1전시관</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/design02.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>칼만 렝옐</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>구성주의 책상</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 1전시관</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/design03.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>레나테 뮐러</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>흔들 거위</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 2전시관</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/design04.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>찰스 & 레이 임스</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>합판 코끼리</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 2전시관</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/design05.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>엔조 마리</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>16마리의 동물</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 2전시관</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/design06.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>빌헬름 바겐펠트</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>금속 주전자</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 1전시관</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/design07.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>미스 반 데어 로에</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>바르셀로나 체어</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 3전시관</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <div class="photo"><img src="images/main/design08.jpg" alt="작품사진"></div>
+                                                <div class="text_info">
+                                                    <ul>
+                                                        <li>
+                                                            <strong>작가</strong>
+                                                            <span>루이지 콜라니</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>작품 제목</strong>
+                                                            <span>시츠거래트 콜라니</span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>전시 장소</strong>
+                                                            <span>제 3전시관</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div><!--//swiper-->
+                                </div><!--//list-->
+                                <div class="btn_wrap">
+                                    <button class="prev">
+                                        <span class="sr-only">이전팝업보기</span>
+                                        <svg width="16" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 12L0 6L6 0L7.4 1.45L3.85 5H16V7H3.85L7.4 10.55L6 12Z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="next">
+                                        <span class="sr-only">다음팝업보기</span>
+                                        <svg width="16" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10 -5.24537e-07L16 6L10 12L8.6 10.55L12.15 7L4.37114e-07 7L6.11959e-07 5L12.15 5L8.6 1.45L10 -5.24537e-07Z"/>
+                                        </svg>
+                                    </button>
+                                    <a href="#n" class="more">
+                                        <span class="sr-only">더보기</span>
+                                        <svg width="15" height="15" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.42857 8.57143H0V6.42857H6.42857V0H8.57143V6.42857H15V8.57143H8.57143V15H6.42857V8.57143Z"/>
+                                        </svg>
+                                    </a>
+                                </div><!--//btn_wrap-->
+                            </div><!--//collect_conts02-->
+                        </div><!--//tab_conts-->
+                    </div>
+            </section><!--//collection-->
             <section class="business"></section><!--//business-->
             <section class="community"></section><!--//community-->
         </main><!--//container-->
