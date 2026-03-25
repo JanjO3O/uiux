@@ -461,11 +461,18 @@
     position: relative;  /* after, svg 정렬 기준 */
     font-size: var(--font-size-sub5);
 }
+.program .pro_wrap .pro_right .list_wrap ul li a:hover{
+    letter-spacing: 4px;
+    font-weight: var(--font-weight-B);
+}
 .program .pro_wrap .pro_right .list_wrap ul li.active a{
     font-weight: var(--font-weight-B);
     padding: 0.8em 2em 0.8em 1.2em;
     background-color: #FFF2DB;
     border-radius: 5px;
+}
+.program .pro_wrap .pro_right .list_wrap ul li.active a:hover{
+    letter-spacing: 0;
 }
 .program .pro_wrap .pro_right .list_wrap ul li a::after{
     content: "";
@@ -482,8 +489,12 @@
 .program .pro_wrap .pro_right .list_wrap ul li a svg{
     position: absolute;  /* a 기준으로 정렬 */
     right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    top: calc(50% - 7px);
+    transition-property: transform;
+    transition-duration: 0.4s;
+}
+.program .pro_wrap .pro_right .list_wrap ul li a:hover svg{
+    transform: rotate(-45deg);
 }
 .program .pro_wrap .pro_right .list_wrap ul li.active a svg{
     right: 19px;
@@ -658,6 +669,12 @@
     padding: 20px 46px;
     border: 1px solid var(--font-color);
     border-radius: 3px;
+    cursor: pointer;
+}
+.collection .tab_wrap .tab_list > ul > li:hover{
+    font-weight: var(--font-weight-B);
+    color: var(--color-white);
+    background-color: var(--font-color);
 }
 .collection .tab_wrap .tab_list > ul > li.active{
     font-weight: var(--font-weight-B);
@@ -698,9 +715,6 @@
 .collection .tab_wrap .tab_conts .tab_item.active{
     display: block;
 }
-/* .collection .tab_wrap .tab_conts .tab_item .list .swiper{
-    padding-right: var(--wrapper-margin);  /* 마지막 slide에 오른쪽 여백을 위함
-} */
 .collection .tab_wrap .tab_conts .tab_item .list .swiper .swiper-slide{
     width: 404px;
 }
@@ -739,7 +753,17 @@
     background-color: var(--font-color);
     fill: var(--color-white);
 }
-@media screen and (max-width:1024px){
+.collection .tab_wrap .tab_conts .btn_wrap a svg{
+    transition-property: transform;
+    transition-duration: 1s;
+}
+.collection .tab_wrap .tab_conts .btn_wrap a:hover svg{
+    transform: rotate(360deg);
+}
+@media screen and (max-width:1024px){  /* 1024 이하 */
+            .collection .tab_wrap .tab_list > ul > li{
+                padding: 17px 46px;
+            }
             .collection .tab_wrap .tab_conts .tab_item .list .swiper .swiper-slide{
                 width: 70%;
             }
@@ -749,9 +773,90 @@
             .collection .tab_wrap .tab_conts .btn_wrap{
                 bottom: 90px;
             }
+}/*@media*/
+@media screen and (max-width:950px){  /* 950 ~ 841 사이 */
+            .collection .tab_wrap .tab_conts {
+                width: calc(100% - 400px);
+            }
+}/*@media*/
+@media screen and (max-width:840px){  /* 840 이하 -> 840~769 사이 */
+            .collection .tab_wrap .tab_list > ul > li{
+                font-size: var(--font-size-sub6);
+                padding: 10px 40px;
+            }
+            .collection .tab_wrap .tab_conts {
+                width: calc(100% - 378px);
+            }
+            .collection .tab_wrap .tab_conts .tab_item .list .swiper .swiper-slide{
+                width: 80%;
+            }
+                .collection .tab_wrap .tab_conts .tab_item .list .swiper .swiper-slide .photo {
+                height: 400px;
+            }
+            .collection .tab_wrap .tab_conts .btn_wrap {
+                bottom: 70px;
+            }
             .collection .tab_wrap .tab_conts .btn_wrap button,
-            .collection .tab_wrap .tab_conts .btn_wrap a{
+            .collection .tab_wrap .tab_conts .btn_wrap a {
                 width: 45px;
                 height: 45px;
             }
+            .collection .tab_wrap .tab_conts .btn_wrap button svg{
+                width: 14px;
+            }
+            .collection .tab_wrap .tab_conts .btn_wrap a svg{
+                width: 13px;
+            }
 }/*@media*/
+@media screen and (max-width:768px){
+            .collection .inner{
+                margin: 0 var(--wrapper-margin);
+            }
+            .collection .tab_wrap{
+                flex-direction: column;
+            }
+            .collection .tab_wrap .tab_list{
+                margin-bottom: 2.5em;
+            }
+            .collection .tab_wrap .tab_list > ul > li{
+                padding: 13px 49px;
+            }
+            .collection .tab_wrap .tab_list .curr_cont.active,
+            .collection .tab_wrap .tab_list .curr_cont .text_info{
+                display: none;
+            }
+            .collection .tab_wrap .tab_conts{
+                width: 100%;
+            }
+            .collection .tab_wrap .tab_conts .tab_item .list .swiper .swiper-slide{
+                width: 300px;
+            }
+            .collection .tab_wrap .tab_conts .tab_item .list .swiper .swiper-slide .photo {
+                height: 350px;
+            }
+            .collection .tab_wrap .tab_conts .btn_wrap{
+                display: none;
+            }
+}/*@media*/
+
+
+
+.business{
+    background: url(../images/main/writer_bg.jpg) no-repeat center center / cover;
+    padding: clamp(72px, 10.4vw, 104px) 0;
+    fill: var(--color-white);
+}
+.business .tit{
+    text-align: center;
+}
+.business .tit h2{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-B);
+    line-height: var(--line-height-tit);
+    margin-bottom: var(--gap);
+}
+.business .tit p{
+    display: inline-block;
+    width: 40.55%;
+    margin-bottom: 5.625em;
+}
