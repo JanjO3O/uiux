@@ -5,7 +5,7 @@ $(document).ready(function(){
     const visual_swiper = new Swiper('.visual .swiper', { /* 팝업을 감싸는 요소의 class명 */
         autoplay: {  /* 팝업 자동 실행 */
             delay: 3000,
-            disableOnInteraction: false,  //이게 false여야 마우스로 넘겼다가 떼도 swiper가 자동재생됨
+            disableOnInteraction: false,  //이게 false여야 마우스로 넘겼다가 떼도 swiper가 자동재생됨!!!
         },
         effect: "fade", /* fade 효과 */
         loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
@@ -257,23 +257,42 @@ $(document).ready(function(){
 
     
 
+    $('.business .list .swiper-slide:nth-child(even)').addClass('even-slide');
     const business_swiper = new Swiper('.business .swiper', { /* 팝업을 감싸는 요소의 class명 */
-        slidesPerView: 2, /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
-        spaceBetween: 16, /* 팝업과 팝업 사이 여백 */
+        
+        slidesPerView: 1, /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+        spaceBetween: 6, /* 팝업과 팝업 사이 여백 */
         breakpoints: {
-            640: {    /* 640px 이상일때 적용 */
-                slidesPerView: 3,    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
-                spaceBetween: 20,
+            426: {    /* 426~651px 사이 */
+                slidesPerView: 2,
+                spaceBetween: 6,
+            },
+            651: {    /* 950~651px 사이 */
+                slidesPerView: 'auto',
+                spaceBetween: 12,
+            },
+            951: {    /* 951 이상 */
+                slidesPerView: 3,
+                spaceBetween: 12,
             },
         },
         //centeredSlides: true, /* 팝업을 화면에 가운데 정렬(가운데 1번이 옴) */
         loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
-        // autoplay: {  /* 팝업 자동 실행 */
-        //     delay: 2500,
-        //     disableOnInteraction: true,
-        // },
+        autoplay: {  /* 팝업 자동 실행 */
+            delay: 1000,
+            disableOnInteraction: false,
+        },
+        on: {
+            init: function () {
+            this.el.addEventListener('mouseenter', () => {
+                this.autoplay.stop();
+            });
+            this.el.addEventListener('mouseleave', () => {
+                this.autoplay.start();
+            });
+            },
+        },
     });
-
 
 
 })//$(document).ready

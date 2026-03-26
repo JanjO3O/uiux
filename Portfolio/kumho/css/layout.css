@@ -524,3 +524,78 @@
             }
 }/*@media*/
 
+
+
+.footer{
+    background-color: #f6f6f6;
+    padding: clamp(17px, 2.4vw, 24px) 0;
+}
+.footer .top{
+    position: fixed;
+    right: var(--wrapper-margin);
+    bottom: var(--wrapper-margin);
+    z-index: 100;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #444B51;
+    background-image: url("data:image/svg+xml,%3Csvg width='27' height='16' viewBox='0 0 27 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M27 13.5881L24.6038 16L13.5 4.82378L2.39625 16L0 13.5881L13.5 3.63571e-07L27 13.5881Z' fill='white'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 27px;
+}
+.footer .footer_head{
+    padding-bottom: clamp(20px, 3vw, 30px);
+    border-bottom: 1px solid rgba(29, 29, 29, 0.5);
+}
+.footer .footer_body{
+    padding-top: var(--gap);
+}
+.footer .footer_body .f_nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 50px;
+}
+.footer .footer_body .f_nav ul li{
+    position: relative; /* after 정렬 기준 */
+}
+.footer .footer_body .f_nav ul li.imp{
+    font-weight: var(--font-weight-B);
+}
+.footer .footer_body .f_nav ul li::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--font-color);
+    transition-property: width;
+    transition-duration: 0.3s;
+}
+.footer .footer_body .f_nav ul li:hover::after{
+    width: 100%;
+}
+.footer .footer_body .f_nav ul li a{
+    display: block;
+    position: relative;  /* before 정렬 기준 */
+}
+.footer .footer_body .f_nav ul li a::before{
+    content: "";
+    position: absolute;
+    left: -23px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 12px;
+    background-color: var(--color-gray);
+}
+.footer .footer_body .f_nav ul li:first-child a::before{
+    display: none;
+}
+.footer .footer_body .f_info{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 46px;
+    margin: clamp(20px, 2.4vw, 24px) 0;
+}
