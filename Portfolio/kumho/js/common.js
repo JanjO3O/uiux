@@ -131,7 +131,6 @@ $(document).ready(function(){
 
 
     let trackAnim;
-
     $('.header .sitemap .sitemap_wrap ul.depth1 > li > button').on('mouseenter', function(){
         if(device_status == 'mo'){
             let btn = $(this)
@@ -185,6 +184,23 @@ $(document).ready(function(){
             // 유도 미사일 발사!
             trackAnim = requestAnimationFrame(animateIndicator)
         }
+    })
+
+    $('.top').on('click', function(){
+        $('html, body').animate({
+            scrollTop: 0
+        }, 500)
+    })
+
+    function footer_count(){ //함수 선언
+        footer_h = $('.footer').outerHeight()
+        // console.log(footer_h)
+        $('.container').css('margin-bottom', footer_h)
+    }
+
+    footer_count()  //로딩되고 단 한 번 실행
+    $(window).resize(function(){  //브라우저 리사이즈 될 때마다 실행
+        footer_count()
     })
 
 })//$(document).ready
