@@ -1004,6 +1004,24 @@
     align-items: center;
     justify-content: space-between;
     padding: var(--gap) 0;
+    position: relative;
+}
+.community .notice_wrap .list ul li a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 224, 172, 1) 0, rgba(255, 224, 172, 0.7) 75%);
+    opacity: 0;
+    transition-property: width, opacity;
+    transition-duration: 0.6s;
+}
+.community .notice_wrap .list ul li a:hover::after{
+    width: 100%;
+    opacity: 1;
 }
 .community .notice_wrap .list ul li a h4{
     font-size: var(--font-size-sub5);
