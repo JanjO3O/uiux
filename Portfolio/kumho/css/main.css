@@ -1014,10 +1014,10 @@
     z-index: -1;
     width: 0;
     height: 100%;
-    background: linear-gradient(to right, rgba(255, 224, 172, 1) 0, rgba(255, 224, 172, 0.7) 75%);
+    background: linear-gradient(to right,#FFF2DB 0%, #FFF2DB 100%);
     opacity: 0;
     transition-property: width, opacity;
-    transition-duration: 0.6s;
+    transition-duration: 0.8s;
 }
 .community .notice_wrap .list ul li a:hover::after{
     width: 100%;
@@ -1030,6 +1030,11 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition-property: font-weight;
+    transition-delay: 0.2s;
+}
+.community .notice_wrap .list ul li a:hover h4{
+    font-weight: var(--font-weight-B);
 }
 .community .notice_wrap .list ul li a .date{
     display: flex;

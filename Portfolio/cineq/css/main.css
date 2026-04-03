@@ -1,0 +1,9 @@
+@import url(common.css);
+@import url(default.css);
+@import url(fonts.css);
+@import url(layout.css);
+
+
+.visual{
+    display: none;
+}

@@ -1,0 +1,61 @@
+.skip_nav{
+    position: fixed;
+    left: 0;
+    top: -100%;
+    z-index: 999;
+    width: 100%;
+    padding: 5px 0;
+    text-align: center;
+    background-color: var(--color-white);
+    color: var(--color-B);
+}
+.skip_nav:focus{
+    top: 0;
+}
+.header_wrap{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 215px;
+    background-color: var(--color-white);
+    color: var(--color-B);
+}
+.header_wrap .header_banner{
+    height: 50px;
+    background-color: var(--color-f6);
+}
+.header_wrap .header_banner .inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header_wrap .header_banner .inner .lang_wrap{
+    position: relative;  /* lang_list 정렬 기준 */
+}
+.header_wrap .header_banner .inner .lang_wrap button span{
+    padding-left: 26px;
+    position: relative;  /* before 정렬 기준 */
+}
+.header_wrap .header_banner .inner .lang_wrap button span::before{
+    content: "";
+    position: absolute;  /* span 기준 정렬 */
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: url(../images/common/lang_Ko.jpg) no-repeat center center / cover;
+}
+.header_wrap .header_banner .inner .lang_wrap .lang_list{
+    position: absolute;  /* lang_wrap 기준 정렬 */
+    left: 50%;
+    transform: translateX(-50%);
+    top: 27px;
+    background-color: var(--color-f6);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 6px 17px;
+}
