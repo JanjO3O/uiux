@@ -62,7 +62,7 @@ body{
 }
 @media screen and (max-width:1024px){
     :root{
-        --header-h: 90px;
+        --header-h: 72px;
         --font-size-tit: 32px;
         --font-size-default: 16px;
         --font-size-sub1: 28px;
