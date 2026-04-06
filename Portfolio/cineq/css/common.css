@@ -60,7 +60,8 @@ body{
     --color-15: #DD7430;
     --color-19: #D92B35;
     --gap: 24px;
-    
+    --header_mid-h: 105px;
+    --header_bot-h: 60px;
 }
 @media screen and (max-width:1024px){
     :root{
@@ -69,6 +70,8 @@ body{
         --font-size-tit: 32px;
         --font-size-sub1: 22px;
         --font-size-sub2: 19px;
+        --header_mid-h: 80px;
+        --header_bot-h: 45px;
     }
 }
 @media screen and (max-width:768px){

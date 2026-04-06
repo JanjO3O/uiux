@@ -19,28 +19,34 @@
         <header class="header_wrap">
             <div class="header_banner">
                 <div class="inner">
-                    <div class="lang_wrap">
-                        <button><span>한국어</span></button>
-                        <ul class="lang_list">
-                            <li class="En"><a href="#n"><span>English</span></a></li>
-                            <li class="Jp"><a href="#n"><span>日本語</span></a></li>
-                            <li class="Ch"><a href="#n"><span>中文</span></a></li>
-                        </ul>
-                    </div><!--//lang_wrap-->
-                    <div class="header_action">
-                        <ul>
-                            <li><a href="#n"><span>로그인</span></a></li>
-                            <li><a href="#n"><span>예매확인/취소</span></a></li>
-                            <li><a href="#n"><span>회원가입</span></a></li>
-                            <li><a href="#n"><span>고객센터</span></a></li>
-                        </ul>
-                    </div><!--//header_action-->
+                    <div class="wrapper">
+                        <div class="lang_wrap">
+                            <button><span>한국어</span></button>
+                            <ul class="lang_list">
+                                <li class="En"><a href="#n"><span>English</span></a></li>
+                                <li class="Jp"><a href="#n"><span>日本語</span></a></li>
+                                <li class="Cn"><a href="#n"><span>中文</span></a></li>
+                            </ul>
+                        </div><!--//lang_wrap-->
+                        <div class="header_action">
+                            <ul>
+                                <li><a href="#n"><span>로그인</span></a></li>
+                                <li><a href="#n"><span>예매확인/취소</span></a></li>
+                                <li><a href="#n"><span>회원가입</span></a></li>
+                                <li><a href="#n"><span>고객센터</span></a></li>
+                            </ul>
+                        </div><!--//header_action-->
+                    </div><!--//wrapper-->
                 </div><!--//inner-->
             </div><!--//header_banner-->
-            <div class="wrapper">
-                <div class="header">
-                    <div class="header_mid"><h1 class="logo"><a href="index.html"><span class="sr-only">CINEQ</span></a></h1></div>
-                    <div class="header_bot">
+            <div class="header">
+                <div class="header_mid">
+                    <div class="wrapper">
+                        <h1 class="logo"><a href="index.html"><span class="sr-only">CINEQ</span></a></h1>
+                    </div>
+                </div><!--//header_mid-->
+                <div class="header_bot">
+                    <div class="wrapper">
                         <nav class="gnb">
                             <ul class="depth1">
                                 <li>
@@ -82,11 +88,15 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <div class="img_box">
+                            <div class="depth2_bg">
+                                 <div class="img_box">
                                     <span>예매율순</span>
-                                    <div class="photo"><img src="images/common/img_box1.jpg" alt="왕과 사는 남자 영화 포스터"></div>
-                                    <div class="photo"><img src="images/common/img_box2.jpg" alt="끝장수사 영화 포스터"></div>
-                                    <div class="photo"><img src="images/common/img_box3.jpg" alt="귀멸의 칼날 영화 포스터"></div>
+                                    <div class="photo_wrap">
+                                        <div class="photo"><img src="images/common/img_box1.jpg" alt="왕과 사는 남자 영화 포스터"></div>
+                                        <div class="photo"><img src="images/common/img_box2.jpg" alt="끝장수사 영화 포스터"></div>
+                                        <div class="photo"><img src="images/common/img_box3.jpg" alt="귀멸의 칼날 영화 포스터"></div>
+                                    </div>
+                                </div>
                             </div>
                         </nav>
                         <div class="search_wrap">
@@ -101,16 +111,16 @@
                                 </fieldset>
                             </form>
                         </div>
-                    </div>
-                    <div class="mo_gnb">
-                        <div class="gnb_open">
-                            <button>
-                                <span class="sr-only">메뉴 열기</span>
-                                <svg width="22" height="17" viewBox="0 0 22 17" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M0 2.42857V0H22V2.42857H0ZM0 17V14.5714H22V17H0ZM0 9.71429V7.28571H22V9.71429H0Z"/>
-                                </svg>
-                            </button>
-                        </div>
+                    </div><!--//wrapper-->
+                </div><!--//header_bot-->
+                <div class="mo_gnb">
+                    <div class="wrapper">
+                        <button class="gnb_open">
+                            <span class="sr-only">메뉴 열기</span>
+                            <svg width="22" height="17" viewBox="0 0 22 17" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 2.42857V0H22V2.42857H0ZM0 17V14.5714H22V17H0ZM0 9.71429V7.28571H22V9.71429H0Z"/>
+                            </svg>
+                        </button>
                         <div class="gnb_wrap">
                             <div class="gnb_logo"><div class="photo"><img src="images/common/logo.svg" alt="씨네큐 로고"></div></div>
                             <div class="gnb">
@@ -155,19 +165,17 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="gnb_close">
-                                <button>
-                                    <span class="sr-only">메뉴 닫기</span>
-                                    <svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2.2 22L0 19.8L8.8 11L0 2.2L2.2 0L11 8.8L19.8 0L22 2.2L13.2 11L22 19.8L19.8 22L11 13.2L2.2 22Z"/>
-                                    </svg>
-                                </button>
-                            </div>
+                            <button class="gnb_close">
+                                <span class="sr-only">메뉴 닫기</span>
+                                <svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.2 22L0 19.8L8.8 11L0 2.2L2.2 0L11 8.8L19.8 0L22 2.2L13.2 11L22 19.8L19.8 22L11 13.2L2.2 22Z"/>
+                                </svg>
+                            </button>
                         </div><!--//gnb_wrap-->
                         <div class="gnb_bg"></div>
-                    </div><!--//mo_gnb-->
-                </div>
-            </div><!--//wrapper-->
+                    </div>
+                </div><!--//mo_gnb-->
+            </div><!--//header-->
         </header>
         <section class="visual" id="skip_contents">
             <div class="swiper"> <!-- 팝업의 높이와 넓이를 css에서 줄 수 있는 요소-->
