@@ -167,7 +167,7 @@
                 align-items: center;
             }
             .header_wrap .header_bot .gnb{
-                position: relative;  /* img_box 정렬 기준 */
+                position: relative;  /* depth2_bg 정렬 기준 */
             }
             .header_wrap .header_bot .gnb ul.depth1{
                 width: 100%;
@@ -197,8 +197,8 @@
                 z-index: 10;
                 /* width: calc(100vw + var(--wrapper-width));
                 height: 380px; */
-                padding-top: 30px;
-               padding-left: 30px;   /* 1차메뉴와 시작부분 맞추기 위해 1차메뉴에 준 padding값 똑같이 줌 */
+                padding-top: 10px;
+                padding-left: 30px;   /* 1차메뉴와 시작부분 맞추기 위해 1차메뉴에 준 padding값 똑같이 줌 */
                 display: none;
             }
             .header_wrap .header_bot .gnb ul.depth1 > li:first-child > ul.depth2{
@@ -228,8 +228,9 @@
             .header_wrap .header_bot .gnb ul.depth1 > li > ul.depth2 > li > a:hover > span::after{
                 width: 100%;
             }
+
             .header_wrap .header_bot .gnb .depth2_bg{
-                position: absolute;
+                position: absolute;  /* gnb 기준 정렬 */
                 left: 0;
                 top: var(--header_bot-h);
                 border-top: 1px solid rgba(204, 204, 204, 0.5);
@@ -240,19 +241,59 @@
                 display: none;
                 overflow: hidden;
             }
-            .header_wrap .header_bot .gnb .img_box{
-                position: absolute;  /* gnb 기준 정렬 */
-                right: calc(100% - var(--wrapper-width));
+            
+            .header_wrap .header_bot .gnb .depth2_bg .Q_logo{
+                position: absolute;  /* depth2_bg 기준 정렬 */
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                display: none;
+                opacity: 0.6;
+            }
+            .header_wrap .header_bot .gnb .depth2_bg .Q_logo .photo1{
+                position: absolute;
+                left: 70px;
+                top: 64px;
+                width: 177px;
+                height: 245px;
+            }
+            .header_wrap .header_bot .gnb .depth2_bg .Q_logo .photo2{
+                position: absolute;
+                left: 25%;
+                top: 11px;
+                width: 100px;
+                height: 137px;
+            }
+            .header_wrap .header_bot .gnb .depth2_bg .Q_logo .photo3{
+                position: absolute;
+                right: 45%;
+                top: 230px;
+                width: 154px;
+                height: 213px;
+            }
+            .header_wrap .header_bot .gnb .depth2_bg .Q_logo .photo4{
+                position: absolute;
+                right: -52px;
+                top: 0;
+                width: 177px;
+                height: 245px;
+            }
+            .header_wrap .header_bot .gnb .depth2_bg .Q_logo img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .header_wrap .header_bot .gnb .depth2_bg .img_box{
+                position: absolute;  /* depth2_bg 기준 정렬 */
+                right: calc(calc(100vw - var(--wrapper-width)) / 2);
                 top: 20px;
                 text-align: right;
             }
-            /* .header_wrap .header_bot .gnb.open .img_box{
-                opacity: 1;
-            } */
-            .header_wrap .header_bot .gnb .img_box span{
+            .header_wrap .header_bot .gnb .depth2_bg .img_box span{
                 position: relative;
             }
-            .header_wrap .header_bot .gnb .img_box span::before{
+            .header_wrap .header_bot .gnb .depth2_bg .img_box span::before{
                 content: "";
                 position: absolute;
                 right: -18px;
@@ -261,7 +302,7 @@
                 height: 22px;
                 background: url(../images/common/img_star.png) no-repeat center center / cover;
             }
-            .header_wrap .header_bot .gnb .img_box span::after{
+            .header_wrap .header_bot .gnb .depth2_bg .img_box span::after{
                 content: "";
                 position: absolute;
                 left: -7px;
@@ -270,20 +311,27 @@
                 height: 4px;
                 background: url(../images/common/img_underline.png) no-repeat center center / cover;
             }
-            .header_wrap .header_bot .gnb .img_box .photo_wrap{
+            .header_wrap .header_bot .gnb .depth2_bg .img_box .photo_wrap{
                 display: flex;
                 gap: 0 12px;
             }
-            .header_wrap .header_bot .gnb .img_box .photo_wrap .photo{
+            .header_wrap .header_bot .gnb .depth2_bg .img_box .photo_wrap .photo{
                 overflow: hidden;
                 border-radius: 5px;
+                width: 32.05%;
             }
-            .header_wrap .header_bot .gnb .img_box .photo_wrap .photo img{
+            .header_wrap .header_bot .gnb .depth2_bg .img_box .photo_wrap .photo img{
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
                 vertical-align: top;
+                /* animation: zoom 1.2s linear 0.3s 1 forwards; */
             }
+            /* @keyframes zoom{
+                0%{width: 50%; height: 50%;}
+                0%{width: 100%; height: 100%;}
+                0%{width: 50%; height: 50%;}
+            } */
             .header_wrap .header_bot .search_wrap form fieldset .search{
                 position: relative; /* before 정렬 기준 */
             }
@@ -315,5 +363,19 @@
             }
             .header_wrap .mo_gnb{
                 display: none;
+            }
+}/*@media*/
+@media screen and (max-width:1360px){
+            .header_wrap .header_bot .gnb .depth2_bg{
+                margin-left: calc(var(--wrapper-margin) * -1);
+            }
+            .header_wrap .header_bot .gnb .depth2_bg .img_box{
+                right: var(--wrapper-margin);
+            }
+}/*@media*/
+@media screen and (max-width:1260px){
+            .header_wrap .header_bot .gnb .depth2_bg .img_box .photo_wrap .photo{
+                max-width: 120px;
+                width: auto;
             }
 }/*@media*/

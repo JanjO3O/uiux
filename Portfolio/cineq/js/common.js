@@ -26,14 +26,16 @@ $(document).ready(function(){
     $('.header_wrap .header_bot .gnb ul.depth1 > li').on('mouseenter ', function(){
         $('.header_wrap .header_bot .gnb ul.depth1 > li').removeClass('over')
         $(this).addClass('over')
-        $('.header_wrap .header_bot .gnb ul.depth1 > li > ul.depth2').slideUp()
-        $(this).find('ul.depth2').slideDown()
+        $('.header_wrap .header_bot .gnb ul.depth1 > li > ul.depth2').hide()
+        $(this).find('ul.depth2').show()
         $('.header_wrap .header_bot .gnb .depth2_bg').slideDown()
+        $('.header_wrap .header_bot .gnb .depth2_bg .Q_logo').show()
     })
     $('.header_wrap .header_bot .gnb').on('mouseleave ', function(){
         $('.header_wrap .header_bot .gnb ul.depth1 > li').removeClass('over')
-        $('.header_wrap .header_bot .gnb ul.depth1 > li > ul.depth2').slideUp()
+        $('.header_wrap .header_bot .gnb ul.depth1 > li > ul.depth2').hide()
         $('.header_wrap .header_bot .gnb .depth2_bg').slideUp()
+        $('.header_wrap .header_bot .gnb .depth2_bg .Q_logo').hide()
     })
     
     
