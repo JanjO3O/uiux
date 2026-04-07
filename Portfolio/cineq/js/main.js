@@ -19,4 +19,6 @@ $(document).ready(function(){
             },
         },
     });
+
+    $('.visual .paging .swiper-pagination-bullet').text('')
 })

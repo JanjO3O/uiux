@@ -4,6 +4,75 @@
 @import url(layout.css);
 
 
+
 .visual{
+    margin-top: 215px;
+    max-height: 700px;
+    height: 100%;
+    width: 100vw;
+}
+.visual .swiper{
+    height: 100%;
+    position: relative;  /* paging 정렬 기준 */
+}
+.visual .swiper-slide video{
+    display: block;
+    width: 100vw;
+    height: 100%;
+}
+ .visual .paging{
+    position: absolute;  /* swiper 기준 정렬 */
+    left: var(--wrapper-margin);
+    bottom: 2.85%;
+    z-index: 1;
+    display: flex;
+    gap: 0 12px;
+ }
+.visual .paging .swiper-pagination-bullet{
+    width: 80px;
+    height: 120px;
+    border-radius: 10px;
+    background: url(../images/main/video1.jpg) no-repeat center center / cover;
+    margin: 0;
+    opacity: 1;
+    position: relative;
+}
+.visual .paging .swiper-pagination-bullet:nth-child(2){
+    background-image: url(../images/main/video2.jpg);
+}
+.visual .paging .swiper-pagination-bullet:nth-child(3){
+    background-image: url(../images/main/video3.jpg);
+}
+.visual .paging .swiper-pagination-bullet:nth-child(4){
+    background-image: url(../images/main/video4.jpg);
+}
+.visual .paging .swiper-pagination-bullet:nth-child(5){
+    background-image: url(../images/main/video5.jpg);
+}
+.visual .paging .swiper-pagination-bullet::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+}
+.visual .paging .swiper-pagination-bullet-active{
+    border: 3px solid var(--color-white);
+}
+.visual .paging .swiper-pagination-bullet-active::before{
     display: none;
 }
+
+
+
+/* main{
+    position: relative;
+    z-index: 2;  /* header보다 위
+    background-color: var(--color-white);
+    width: 100vw;
+    height: 1500px;
+    margin-top: calc(100vh + 200px);
+} */

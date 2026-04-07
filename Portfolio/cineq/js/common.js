@@ -15,28 +15,75 @@ $(document).ready(function(){
         lang_list.hide()
     })
     $(header_action).on('focusin', function(){
-        lang_wrap.closest('open')
+        lang_wrap.removeClass('open')
         lang_list.hide()
     })
 
 
+    let gnb = $('.header_wrap .header_bot .gnb')
+    let depth1_li = $('.header_wrap .header_bot .gnb ul.depth1 > li')
+    let depth2_bg = $('.header_wrap .header_bot .gnb .depth2_bg')
 
-    
-
-    $('.header_wrap .header_bot .gnb ul.depth1 > li').on('mouseenter ', function(){
-        $('.header_wrap .header_bot .gnb ul.depth1 > li').removeClass('over')
+    depth1_li.on('mouseenter', function(){
+        depth1_li.removeClass('over')
         $(this).addClass('over')
-        $('.header_wrap .header_bot .gnb ul.depth1 > li > ul.depth2').hide()
-        $(this).find('ul.depth2').show()
-        $('.header_wrap .header_bot .gnb .depth2_bg').slideDown()
-        $('.header_wrap .header_bot .gnb .depth2_bg .Q_logo').show()
+        depth2_bg.stop().slideDown()
     })
-    $('.header_wrap .header_bot .gnb').on('mouseleave ', function(){
-        $('.header_wrap .header_bot .gnb ul.depth1 > li').removeClass('over')
-        $('.header_wrap .header_bot .gnb ul.depth1 > li > ul.depth2').hide()
-        $('.header_wrap .header_bot .gnb .depth2_bg').slideUp()
-        $('.header_wrap .header_bot .gnb .depth2_bg .Q_logo').hide()
+    gnb.on('focusin', function(e){
+        let li = $(e.target).closest('ul.depth1 > li')
+        depth1_li.removeClass('over')
+        li.addClass('over')
+        $('.depth2_bg').stop().slideDown()
+    })
+    gnb.on('mouseleave', function(){
+        depth1_li.removeClass('over')
+        depth2_bg.stop().slideUp()
+    })
+    $('.header_wrap .header_bot .search_wrap').on('focusin', function(){
+        depth1_li.removeClass('over')
+        depth2_bg.stop().slideUp()
     })
     
+
+    let gnb_open = $('.header_wrap .header .mo_gnb .mo_header .gnb_open')
+    let gnb_close = $('.header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb_close')
+    let site_map = $('.header_wrap .header .mo_gnb .site_map')
+    let mo_bg = $('.header_wrap .header .mo_gnb .site_map .gnb_bg')
+    let mo_depth1 = $('.header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb ul.depth1 > li')
+    let mo_depth2 = $('.header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb ul.depth1 > li > ul.depth2')
+
+    gnb_open.on('click', function(){
+        site_map.addClass('open')
+    })
+    gnb_close.on('click', function(){
+        site_map.removeClass('open')
+        mo_depth1.removeClass('active')
+        mo_depth1.removeClass('n_active')
+        mo_depth2.slideUp()
+    })
+    mo_bg.on('click', function(){
+        site_map.removeClass('open')
+        mo_depth1.removeClass('active')
+        mo_depth1.removeClass('n_active')
+        mo_depth2.slideUp()
+    })
+
+
     
+
+    mo_depth1.on('click', function(){
+        if($(this).hasClass('active') == true){ //내가 열린 경우
+            $(this).removeClass('active')
+            $(this).find('.depth2').slideUp() 
+        }else{ //열려 있지 않은 다른 요소를 클릭했을때
+            mo_depth1.removeClass('active')
+            mo_depth2.slideUp()
+
+            $(this).addClass('active')
+            $(this).find('.depth2').slideDown()
+        }
+    })
+    
+
+
 })
