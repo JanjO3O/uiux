@@ -7,20 +7,23 @@
 
 .visual{
     margin-top: 215px;
-    max-height: 700px;
-    height: 100%;
-    width: 100vw;
+    width: 100%;
+    overflow: hidden;
 }
-.visual .swiper{
-    height: 100%;
+.visual .swiper_pc{
     position: relative;  /* paging 정렬 기준 */
 }
-.visual .swiper-slide video{
-    display: block;
-    width: 100vw;
-    height: 100%;
+.visual .swiper_pc .swiper-slide{
+    width: 100%;
+    height: max(80vh, 100%);
 }
- .visual .paging{
+.visual .swiper_pc .swiper-slide video{
+    display: block;
+    width: 100%;
+    height: max(80vh, 100%);
+    overflow: hidden;
+}
+ .visual .swiper_pc .paging{
     position: absolute;  /* swiper 기준 정렬 */
     left: var(--wrapper-margin);
     bottom: 2.85%;
@@ -28,7 +31,7 @@
     display: flex;
     gap: 0 12px;
  }
-.visual .paging .swiper-pagination-bullet{
+.visual .swiper_pc .paging .swiper-pagination-bullet{
     width: 80px;
     height: 120px;
     border-radius: 10px;
@@ -37,19 +40,19 @@
     opacity: 1;
     position: relative;
 }
-.visual .paging .swiper-pagination-bullet:nth-child(2){
+.visual .swiper_pc .paging .swiper-pagination-bullet:nth-child(2){
     background-image: url(../images/main/video2.jpg);
 }
-.visual .paging .swiper-pagination-bullet:nth-child(3){
+.visual .swiper_pc .paging .swiper-pagination-bullet:nth-child(3){
     background-image: url(../images/main/video3.jpg);
 }
-.visual .paging .swiper-pagination-bullet:nth-child(4){
+.visual .swiper_pc .paging .swiper-pagination-bullet:nth-child(4){
     background-image: url(../images/main/video4.jpg);
 }
-.visual .paging .swiper-pagination-bullet:nth-child(5){
+.visual .swiper_pc .paging .swiper-pagination-bullet:nth-child(5){
     background-image: url(../images/main/video5.jpg);
 }
-.visual .paging .swiper-pagination-bullet::before{
+.visual .swiper_pc .paging .swiper-pagination-bullet::before{
     content: "";
     position: absolute;
     left: 0;
@@ -59,20 +62,242 @@
     background: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
 }
-.visual .paging .swiper-pagination-bullet-active{
+.visual .swiper_pc .paging .swiper-pagination-bullet-active{
     border: 3px solid var(--color-white);
 }
-.visual .paging .swiper-pagination-bullet-active::before{
+.visual .swiper_pc .paging .swiper-pagination-bullet-active::before{
+    display: none;
+}
+.visual .swiper_mo{
+    display: none;
+}
+@media screen and (max-width:1150px){
+            .visual{
+                margin-top: 205px;
+            }
+}/*@media*/
+@media screen and (max-width:1024px){
+            .visual{
+                margin-top: 165px;
+            }
+}/*@media*/
+@media screen and (max-width:768px){
+            .visual{
+                margin-top: var(--header-h);
+            }
+            .visual .swiper_pc{
+                display: none;
+            }
+            .visual .swiper_mo{
+                display: block;
+                position: relative;  /* btn_wrap 정렬 기준 */
+            }
+            .visual .swiper_mo .swiper-slide{
+                height: 80vh;
+            }
+            .visual .swiper_mo .swiper-slide .photo{
+                height: 80vh;
+                overflow: hidden;
+            }
+            .visual .swiper_mo .swiper-slide .photo img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: bottom;
+            }
+            .visual .swiper_mo .btn_wrap{
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1;
+                fill: var(--color-white);
+                width: 100%;
+            }
+            .visual .swiper_mo .btn_wrap button{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .visual .swiper_mo .btn_wrap button.prev{
+                position: absolute;
+                left: 10px;
+            }
+            .visual .swiper_mo .btn_wrap button.next{
+                position: absolute;
+                right: 10px;
+            }
+}/*@media*/
+
+
+
+.Box_Office{
+    margin: 2em 0;
+    font-size: var(--font-size-L);
+}
+.Box_Office h2{
+    font-family: var(--font-family-Paperozi);
+    font-weight: 900;
+    line-height: var(--line-height-tit);
+    text-align: center;
+    margin-bottom: 1em;
+}
+.Box_Office .list{
+    overflow: hidden;
+}
+.Box_Office .swiper{
+    position: relative;
+    /* padding: 60px 0; */
+    overflow: visible;
+    perspective: 1200px; 
+/* (3D 원근감을 주는 초점, z축(=깊이)을 따라 관찰자의 거리=깊이감을 나타냄 )3D 입체 효과를 주는 속성으롤 작을수록 원근감이 커져서 왜곡이 크고, 튀어나온 느낌 <-> 클수록 원근감이 약해서 평면처럼 느껴짐 */
+}
+.Box_Office .swiper::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 140px;
+    height: 100%;
+    background: url(../images/main/BoxOffice_before.png) no-repeat center center / cover ;
+}
+.Box_Office .swiper::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    width: 140px;
+    height: 100%;
+    transform: rotate(180deg);
+    background: url(../images/main/BoxOffice_before.png) no-repeat center center / cover ;
+}
+.Box_Office .swiper .swiper-wrapper{
+    transition-timing-function: linear !important;
+}
+.Box_Office .swiper .swiper-slide{
+    /* width: 33.17%; */
+    width: 300px;
+    max-width: 400px;
+    /* height: 600px; */
+    /* opacity: 0.4; */
+    transform: scale(0.8);  /* 사이즈를 0.8로 줄임(기본값->1) */
+    /* filter: blur(1px); */
+    transform-origin: center center; /* 좌우,위아래 - 가운데 기준으로 transform 시작 */
+    transform-style: preserve-3d;  /* x,y,z축을 중심으로 3d 공간에서 효과 적용하기 */
+    transition: 0.5s;
+    position: relative;  /* txt 정렬 기준 */
+    cursor: pointer;
+}
+.Box_Office .swiper .swiper-slide-active{
+    opacity: 1;
+    transform: scale(1.1);  /* 1.1배 */
+    /* filter: blur(0); */
+}
+.Box_Office .swiper .swiper-slide-prev,
+.Box_Office .swiper .swiper-slide-next{
+    /* opacity: 0.7; */
+    transform: scale(0.9);
+}
+.Box_Office .swiper .swiper-slide .movie_box{
+    position: relative;
+}
+.Box_Office .swiper .swiper-slide .movie_box::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    opacity: 0;
+    transition: 0.3s;
+}
+.Box_Office .swiper .swiper-slide-active:hover .movie_box::after,
+.Box_Office .swiper .swiper-slide-prev:hover .movie_box::after,
+.Box_Office .swiper .swiper-slide-next:hover .movie_box::after{
+    opacity: 1;
+}
+.Box_Office .swiper .swiper-slide .movie_box .photo{
+    border-radius: 20px;
+    overflow: hidden;
+}
+.Box_Office .swiper .swiper-slide .movie_box .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    vertical-align: top;
+}
+.Box_Office .swiper .swiper-slide .movie_box .txt{
+    font-size: var(--font-size-sub1);
+    font-weight: var(--font-weight-B);
+    line-height: var(--line-height-tit);
+    position: absolute;  /* swiper-slide 기준 정렬 */
+    left: 50%;
+    top: 50%;
+    z-index: 1; /* after보다 위 */
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: 0.3s;
+    cursor: inherit;
+}
+.Box_Office .swiper .swiper-slide-active:hover .movie_box .txt,
+.Box_Office .swiper .swiper-slide-prev:hover .movie_box .txt,
+.Box_Office .swiper .swiper-slide-next:hover .movie_box .txt{
+    opacity: 1;
+}
+
+
+
+.biz{
+    background-color: var(--background-color);
+    padding: 175px 0;
+}
+.biz .wrapper{
+    display: flex;
+    align-items: center;
+}
+.biz .left_box{
+    width: calc(100% - 654px);
+}
+.biz .right_box{
+    width: 100%;
+    margin-left: 36px;
+}
+.biz .right_box .txt_wrap .txt h3{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-B);
+    line-height: var(--line-height-tit);
+    opacity: 0;
+    display: none;
+    transition: 0.3s;
+}
+.biz .right_box .txt_wrap .txt.on h3{
+    opacity: 1;
+    display: block;
+}
+.biz .right_box .txt_wrap .txt p{
+    opacity: 0;
+    word-break: normal;
+    display: none;
+}
+.biz .right_box .txt_wrap .txt.on p{
+    opacity: 1;
+    display: block;
+}
+.biz .right_box .img_wrap{
+    display: flex;
+    gap: 0 calc(var(--gap) / 2);
+}
+
+
+
+
+
+header{
     display: none;
 }
 
 
-
-/* main{
-    position: relative;
-    z-index: 2;  /* header보다 위
-    background-color: var(--color-white);
-    width: 100vw;
-    height: 1500px;
-    margin-top: calc(100vh + 200px);
-} */

@@ -17,7 +17,7 @@
     left: 0;
     top: 0;
     z-index: 100;
-    width: 100vw;
+    width: 100%;
     height: 215px;
     background-color: var(--color-white);
     color: var(--color-B);
@@ -322,13 +322,16 @@
             .header_wrap .mo_gnb{
                 display: none;
             }
+            .header_wrap .site_map{
+                display: none;
+            }
 }/*@media*/
 @media screen and (max-width:1360px){
             .header_wrap .header_bot .gnb .depth2_bg{
                 margin-left: calc(var(--wrapper-margin) * -1);
             }
             .header_wrap .header_bot .gnb .depth2_bg .img_box{
-                right: var(--wrapper-margin);
+                right: calc(var(--wrapper-margin) + 14px);
             }
 }/*@media*/
 @media screen and (max-width:1260px){
@@ -435,9 +438,6 @@
             .header_wrap .header .mo_gnb{
                 display: block;
             }
-            .header_wrap .header .mo_gnb .wrapper{
-                margin-right: 0;
-            }
             .header_wrap .header .mo_gnb .mo_header{
                 position: fixed;
                 left: 0;
@@ -468,15 +468,17 @@
                 justify-content: center;
                 fill: var(--color-white);
             }
-            .header_wrap .header .mo_gnb .site_map{
-                margin-left: calc(var(--wrapper-margin) * -1);
+            .header_wrap .site_map{
+                /* margin-left: calc(var(--wrapper-margin) * -1); */
                 opacity: 0;
+                visibility: hidden;
                 transition: 0.4s;
             }
-            .header_wrap .header .mo_gnb .site_map.open{
+            .header_wrap .site_map.open{
                 opacity: 1;
+                visibility: visible;
             }
-            .header_wrap .header .mo_gnb .site_map .gnb_wrap{
+            .header_wrap .site_map .gnb_wrap{
                 position: relative;
                 z-index: 102;  /* mo_header랑 gnb_bg보다 위 */
                 width: 100vw;
@@ -485,7 +487,7 @@
                 align-items: center;
                 justify-content: center;
             }
-            .header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box{
+            .header_wrap .site_map .gnb_wrap .gnb_box{
                 width: 83.33%;
                 max-width: 300px;
                 background: var(--color-white);
@@ -498,63 +500,63 @@
                 transition: opacity 0.6s, transform 0.6s;
                 position: relative;  /* gnb_close 정렬 기준 */
             }
-            .header_wrap .header .mo_gnb .site_map.open .gnb_wrap .gnb_box{
+            .header_wrap .site_map.open .gnb_wrap .gnb_box{
                 opacity: 1;
                 transform: translateY(0);
             }
-            .header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb_logo{
+            .header_wrap .site_map .gnb_wrap .gnb_box .gnb_logo{
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
-            .header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb_logo .photo{
+            .header_wrap .site_map .gnb_wrap .gnb_box .gnb_logo .photo{
                 width: 100%;
                 max-width: 100px;
                 overflow: hidden;
             }
-            .header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb_logo .photo img{
+            .header_wrap .site_map .gnb_wrap .gnb_box .gnb_logo .photo img{
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
                 vertical-align: top;
             }
-            .header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb{
+            .header_wrap .site_map .gnb_wrap .gnb_box .gnb{
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
             }
-            .header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb ul.depth1{
+            .header_wrap .site_map .gnb_wrap .gnb_box .gnb ul.depth1{
                 padding: 30px 0;
                 text-align: center;
             }
-            .header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb ul.depth1 > li > button{
+            .header_wrap .site_map .gnb_wrap .gnb_box .gnb ul.depth1 > li > button{
                 font-size: var(--font-size-sub1);
                 padding: 15px 0;
             }
-            .header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb ul.depth1 > li.active > button > span{
+            .header_wrap .site_map .gnb_wrap .gnb_box .gnb ul.depth1 > li.active > button > span{
                 /* active인 li */
                 font-weight: var(--font-weight-B);
                 color: var(--color-B);
             }
             /* ul.depth1:has(.active) -- 나의 하위에 active 클래스가 있는 경우
                li:not(.active) -- 나한테 active 클래스가 없는 경우  */
-            .header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb ul.depth1:has(.active) > li:not(.active) > button > span{
+            .header_wrap .site_map .gnb_wrap .gnb_box .gnb ul.depth1:has(.active) > li:not(.active) > button > span{
                 /* active 아닌 li */
                 color: rgba(0, 0, 0, 0.4);
             }
-            .header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb ul.depth1 > li > ul.depth2{
+            .header_wrap .site_map .gnb_wrap .gnb_box .gnb ul.depth1 > li > ul.depth2{
                 background: var(--color-B);
                 color: var(--color-white);
                 padding: 19px 0;
                 border-radius: 10px;
                 display: none;
             }
-            .header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb ul.depth1 > li > ul.depth2 > li > a{
+            .header_wrap .site_map .gnb_wrap .gnb_box .gnb ul.depth1 > li > ul.depth2 > li > a{
                 display: block;
                 padding: 6px 22px;
             }
-            .header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb .btn a{
+            .header_wrap .site_map .gnb_wrap .gnb_box .gnb .btn a{
                 display: block;
                 padding: 9px 89px;
                 border-radius: 10px;
@@ -562,7 +564,7 @@
                 color: var(--color-white);
                 font-weight: 500;
             }
-            .header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb_close{
+            .header_wrap .site_map .gnb_wrap .gnb_box .gnb_close{
                 position: absolute;  /* gnb_box 기준 정렬 */
                 right: 0;
                 top: 0;
@@ -573,7 +575,7 @@
                 align-items: center;
                 justify-content: center;
             }
-            .header_wrap .header .mo_gnb .site_map .gnb_bg{
+            .header_wrap .site_map .gnb_bg{
                 position: fixed;
                 left: 0;
                 top: 0;
@@ -584,7 +586,7 @@
                 backdrop-filter: blur(0);
                 opacity: 0;
             }
-            .header_wrap .header .mo_gnb .site_map.open .gnb_bg{
+            .header_wrap .site_map.open .gnb_bg{
                 opacity: 1;
                 backdrop-filter: blur(4px);
             }

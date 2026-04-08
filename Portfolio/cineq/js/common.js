@@ -46,11 +46,11 @@ $(document).ready(function(){
     
 
     let gnb_open = $('.header_wrap .header .mo_gnb .mo_header .gnb_open')
-    let gnb_close = $('.header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb_close')
-    let site_map = $('.header_wrap .header .mo_gnb .site_map')
-    let mo_bg = $('.header_wrap .header .mo_gnb .site_map .gnb_bg')
-    let mo_depth1 = $('.header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb ul.depth1 > li')
-    let mo_depth2 = $('.header_wrap .header .mo_gnb .site_map .gnb_wrap .gnb_box .gnb ul.depth1 > li > ul.depth2')
+    let gnb_close = $('.header_wrap .site_map .gnb_wrap .gnb_box .gnb_close')
+    let site_map = $('.header_wrap .site_map')
+    let mo_bg = $('.header_wrap .site_map .gnb_bg')
+    let mo_depth1 = $('.header_wrap .site_map .gnb_wrap .gnb_box .gnb ul.depth1 > li')
+    let mo_depth2 = $('.header_wrap .site_map .gnb_wrap .gnb_box .gnb ul.depth1 > li > ul.depth2')
 
     gnb_open.on('click', function(){
         site_map.addClass('open')
