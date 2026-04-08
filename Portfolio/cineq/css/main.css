@@ -251,46 +251,6 @@
 
 
 
-.biz{
-    background-color: var(--background-color);
-    padding: 175px 0;
-}
-.biz .wrapper{
-    display: flex;
-    align-items: center;
-}
-.biz .left_box{
-    width: calc(100% - 654px);
-}
-.biz .right_box{
-    width: 100%;
-    margin-left: 36px;
-}
-.biz .right_box .txt_wrap .txt h3{
-    font-size: var(--font-size-tit);
-    font-weight: var(--font-weight-B);
-    line-height: var(--line-height-tit);
-    opacity: 0;
-    display: none;
-    transition: 0.3s;
-}
-.biz .right_box .txt_wrap .txt.on h3{
-    opacity: 1;
-    display: block;
-}
-.biz .right_box .txt_wrap .txt p{
-    opacity: 0;
-    word-break: normal;
-    display: none;
-}
-.biz .right_box .txt_wrap .txt.on p{
-    opacity: 1;
-    display: block;
-}
-.biz .right_box .img_wrap{
-    display: flex;
-    gap: 0 calc(var(--gap) / 2);
-}
 
 
 
