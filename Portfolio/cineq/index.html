@@ -7,13 +7,15 @@
     <script src="js/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
 
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <link rel="stylesheet" href="css/main.css">
     <script src="js/common.js"></script>
     <script src="js/main.js"></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>씨네Q</title>
 </head>
-<body>
     <a href="#skip_contents" class="skip_nav">본문 바로가기</a>
     <div id="wrap">
         <header class="header_wrap">
@@ -385,7 +387,8 @@
                         <ul role="tablist">
                             <li id="biz_tab01" role="tab" aria-selected="true" aria-controls="biz_conts01" class="suite active">
                                 <button>
-                                    <div class="photo"><img src="images/main/biz_min01.jpg" alt="스위트 영화관 사진"></div><em class="sr-only">선택됨</em>
+                                    <div class="photo"><img src="images/main/biz_min01.jpg" alt="스위트 영화관 사진"></div>
+                                    <em class="sr-only">선택됨</em>
                                 </button>
                             </li>
                             <li id="biz_tab02" role="tab" aria-selected="false" aria-controls="biz_conts02" class="reserve">
@@ -407,64 +410,74 @@
                     </div><!--//tab_list-->
                     <div class="tab_conts">
                         <div id="biz_conts01" role="tabpanel" aria-labelledby="biz_tab01" class="tab_item suite active">
-                            <div class="list">
-                                <div class="swiper"> <!-- 팝업의 높이와 넓이를 css에서 줄 수 있는 요소-->
-                                    <ul class="swiper-wrapper">
-                                        <li class="swiper-slide">
-                                            <div class="photo"><img src="images/main/biz01.jpg" alt="스위트 영화관 사진"></div>
-                                            <div class="text_wrap">
-                                                <h3>스위트</h3>
-                                                <p>전 좌석 리클라이너와 넓은 간격으로 구성된 프라이빗 상영관으로, 소수 인원만 이용 가능해 조용하고 몰입도 높은 관람이 가능하다. 전용 라운지까지 제공되는 프리미엄 공간으로, 최신 음향 시스템과 고화질 스크린을 통해 한층 더 생생한 영화 경험을 제공한다.</p>
-                                            </div>
-                                        </li>
-                                    </ul>
+                            <div class="tab_wrap">
+                                <div class="photo"><img src="images/main/biz01.jpg" alt="스위트 영화관 사진"></div>
+                                <div class="text_wrap">
+                                    <h3>스위트</h3>
+                                    <p>전 좌석 리클라이너와 넓은 간격으로 구성된 프라이빗 상영관으로, 소수 인원만 이용 가능해 조용하고 몰입도 높은 관람이 가능하다. 전용 라운지까지 제공되는 프리미엄 공간으로, 최신 음향 시스템과 고화질 스크린을 통해 한층 더 생생한 영화 경험을 제공한다.</p>
                                 </div>
                             </div>
                         </div>
                         <div id="biz_conts02" role="tabpanel" aria-labelledby="biz_tab02" class="tab_item reserve">
-                            <div class="list">
-                                <div class="swiper">
-                                    <ul class="swiper-wrapper">
-                                        <li class="swiper-slide">
-                                            <div class="photo"><img src="images/main/biz02.jpg" alt="리저브 영화관 사진"></div>
-                                            <div class="text_wrap">
-                                                <h3>리저브</h3>
-                                                <p>전 좌석 리클라이너와 개인 칸막이가 적용된 프리미엄 상영관으로, 넓은 좌석 간격과 편안한 자세 조절이 가능해 영화에 집중하기 최적화된 몰입형 관람 환경을 제공하며, 주변 소음을 최소화한 설계로 개인만의 영화 감상에 더욱 집중할 수 있는 환경을 완성했다.</p>
-                                            </div>
-                                        </li>
-                                    </ul>
+                            <div class="tab_wrap">
+                                <div class="photo"><img src="images/main/biz02.jpg" alt="리저브 영화관 사진"></div>
+                                <div class="text_wrap">
+                                    <h3>리저브</h3>
+                                    <p>전 좌석 리클라이너와 개인 칸막이가 적용된 프리미엄 상영관으로, 넓은 좌석 간격과 편안한 자세 조절이 가능해 영화에 집중하기 최적화된 몰입형 관람 환경을 제공하며, 주변 소음을 최소화한 설계로 개인만의 영화 감상에 더욱 집중할 수 있는 환경을 완성했다.</p>
                                 </div>
                             </div>
                         </div>
                         <div id="biz_conts03" role="tabpanel" aria-labelledby="biz_tab03" class="tab_item recliner">
-                            <div class="list">
-                                <div class="swiper">
-                                    <ul class="swiper-wrapper">
-                                        <li class="swiper-slide">
-                                            <div class="photo"><img src="images/main/biz03.jpg" alt="리클라이너 영화관 사진"></div>
-                                            <div class="text_wrap">
-                                                <h3>리클라이너</h3>
-                                                <p>전 좌석 리클라이너와 양팔걸이 구조로 넓고 쾌적한 환경을 제공하며, 편안한 자세와 여유로운 간격으로 몰입감 있는 관람이 가능하고, 장시간 관람에도 피로감을 줄여주는 설계로 더욱 여유로운 영화 관람을 지원한다.</p>
-                                            </div>
-                                        </li>
-                                    </ul>
+                            <div class="tab_wrap">
+                                <div class="photo"><img src="images/main/biz03.jpg" alt="리클라이너 영화관 사진"></div>
+                                <div class="text_wrap">
+                                    <h3>리클라이너</h3>
+                                    <p>전 좌석 리클라이너와 양팔걸이 구조로 넓고 쾌적한 환경을 제공하며, 편안한 자세와 여유로운 간격으로 몰입감 있는 관람이 가능하고, 장시간 관람에도 피로감을 줄여주는 설계로 더욱 여유로운 영화 관람을 지원한다.</p>
                                 </div>
                             </div>
                         </div>
                         <div id="biz_conts04" role="tabpanel" aria-labelledby="biz_tab04" class="tab_item small">
-                            <div class="list">
-                                <div class="swiper">
-                                    <ul class="swiper-wrapper">
-                                        <li class="swiper-slide">
-                                            <div class="photo"><img src="images/main/biz04.jpg" alt="작은 영화관 사진"></div>
-                                            <div class="text_wrap">
-                                                <h3>작은 영화관</h3>
-                                                <p>지역 기반 문화공간으로 운영되는 소규모 영화관으로, 접근성이 낮은 지역에서도 다양한 영화를 즐길 수 있도록 제공되며 지역 커뮤니티와 연계된 문화 플랫폼 역할을 하고, 지역 주민 참여 프로그램과 다양한 문화 이벤트를 통해 소통과 교류의 장을 마련한다.</p>
-                                            </div>
-                                        </li>
-                                    </ul>
+                            <div class="tab_wrap">
+                                <div class="photo"><img src="images/main/biz04.jpg" alt="작은 영화관 사진"></div>
+                                <div class="text_wrap">
+                                    <h3>작은 영화관</h3>
+                                    <p>지역 기반 문화공간으로 운영되는 소규모 영화관으로, 접근성이 낮은 지역에서도 다양한 영화를 즐길 수 있도록 제공되며 지역 커뮤니티와 연계된 문화 플랫폼 역할을 하고, 지역 주민 참여 프로그램과 다양한 문화 이벤트를 통해 소통과 교류의 장을 마련한다.</p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="mo_list">
+                        <div class="swiper"> <!-- 팝업의 높이와 넓이를 css에서 줄 수 있는 요소 -->
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">
+                                    <div class="txt">
+                                        <h3>스위트</h3>
+                                        <p>리클라이너 프라이빗 상영관으로, 소수 관람과 몰입감 높은 영화 경험을 제공</p>
+                                    </div>
+                                    <div class="photo"><img src="images/main/biz_mo01.jpg" alt="스위트 영화관"></div>
+                                </li>
+                                <li class="swiper-slide">
+                                    <div class="txt">
+                                        <h3>리저브</h3>
+                                        <p>리클라이너와 칸막이 상영관으로, 소음을 줄이고 몰입형 관람 환경을 제공</p>
+                                    </div>
+                                    <div class="photo"><img src="images/main/biz_mo02.jpg" alt="리저브 영화관"></div>
+                                </li>
+                                <li class="swiper-slide">
+                                    <div class="txt">
+                                        <h3>리클라이너</h3>
+                                        <p>리클라이너와 양팔걸이 구조로, 편안하고 쾌적한 관람 환경을 제공</p>
+                                    </div>
+                                    <div class="photo"><img src="images/main/biz_mo03.jpg" alt="리클라이너 영화관"></div>
+                                </li>
+                                <li class="swiper-slide">
+                                    <div class="txt">
+                                        <h3>작은 영화관</h3>
+                                        <p>지역 기반 소규모 영화관으로, 다양한 영화와 커뮤니티 프로그램을 운영</p>
+                                    </div>
+                                    <div class="photo"><img src="images/main/biz_mo04.jpg" alt="작은 영화관"></div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div><!--//wrapper-->
@@ -790,10 +803,10 @@
                     </div>
                     <div class="cineq"><span>CINE Q     CINE Q     CINE Q     CINE Q     CINE Q     CINE Q     CINE Q</span></div>
                     <div class="event_bg">
-                        <div class="photo circle01"><img src="images/main/Circle01.jpg" alt="원"></div>
-                        <div class="photo circle02"><img src="images/main/Circle02.jpg" alt="원"></div>
-                        <div class="photo circle03"><img src="images/main/Circle03.jpg" alt="원"></div>
-                        <div class="photo red"><img src="images/main/red_Circle.jpg" alt="빨간 반원"></div>
+                        <div class="photo circle01"><img src="images/main/Circle01.png" alt="원"></div>
+                        <div class="photo circle02"><img src="images/main/Circle02.png" alt="원"></div>
+                        <div class="photo circle03"><img src="images/main/Circle03.png" alt="원"></div>
+                        <div class="photo red"><img src="images/main/red_Circle.png" alt="빨간 반원"></div>
                     </div>
                 </div>
             </section>
