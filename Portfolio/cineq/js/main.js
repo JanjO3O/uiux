@@ -124,9 +124,9 @@ $(document).ready(function(){
         head_h = $('.header_wrap').height()
 
         line1_start = line_area.offset().top
-        line1_end = line_area.offset().top + win_h/4
+        line1_end = line_area.offset().top + win_h/3
 
-        line2_start = line_area.offset().top + win_h/4 //line1 종료지점에서부터 시작
+        line2_start = line_area.offset().top + win_h/3 //line1 종료지점에서부터 시작
         line2_end = line_area.offset().top + win_h/2  //반띵한 높이에서  종료
 
         if(line1_end < scrolling){
