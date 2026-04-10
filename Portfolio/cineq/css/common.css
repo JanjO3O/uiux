@@ -69,7 +69,7 @@ body{
         --font-size-L: 45px;
         --font-size-tit: 32px;
         --font-size-sub1: 22px;
-        --font-size-sub2: 19px;
+        --font-size-sub2: 18px;
         --header_mid-h: 80px;
         --header_bot-h: 45px;
     }
@@ -82,7 +82,7 @@ body{
         --font-size-tit: 28px;
         --font-size-default: 15px;
         --font-size-sub1: 20px;
-        --font-size-sub2: 18px;
+        --font-size-sub2: 16px;
         --gap: 12px;
     }
 }

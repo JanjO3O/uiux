@@ -172,10 +172,10 @@ $(document).ready(function(){
             },
         },
         loop: false,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
-        // autoplay: {  /* 팝업 자동 실행 */
-        //     delay: 2500,
-        //     disableOnInteraction: true,
-        // },
+        autoplay: {  /* 팝업 자동 실행 */
+            delay: 3000,
+            disableOnInteraction: false,
+        },
     });
 
 
@@ -185,24 +185,34 @@ $(document).ready(function(){
 
     const movie_swiper = new Swiper('.movie .swiper', { /* 팝업을 감싼는 요소의 class명 */
         slidesPerView: 'auto', /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
-        spaceBetween: 16, /* 팝업과 팝업 사이 여백 */
+        spaceBetween: 6, /* 팝업과 팝업 사이 여백 */
         breakpoints: {
             769: {    /* 769px 이상일때 적용 */
                 slidesPerView: 'auto',    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
-                spaceBetween: 24,
+                spaceBetween: 6,
+            },
+            1025: {    /* 769px 이상일때 적용 */
+                slidesPerView: 'auto',    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 12,
+            },
+            1261: {    /* 1261px 이상일때 적용 */
+                slidesPerView: 'auto',    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 16,
             },
         },
         //centeredSlides: true, /* 팝업을 화면에 가운데 정렬(가운데 1번이 옴) */
         loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
-        // autoplay: {  /* 팝업 자동 실행 */
-        //     delay: 2500,
-        //     disableOnInteraction: true,
-        // },
+        autoplay: {  /* 팝업 자동 실행 */
+            delay: 5000,
+            disableOnInteraction: false,
+        },
         navigation: {
             nextEl: '.movie .next',
             prevEl: '.movie .prev',
         },
     });
+
+
 
     let mov_tab_list = $('.movie .tab_list ul li')
     let mov_tab_name
@@ -219,6 +229,98 @@ $(document).ready(function(){
         $('.movie .tab_conts .tab_item').removeClass('active')
         $('.movie .tab_conts').find('#' + mov_tab_name).addClass('active')
     })
+
+
+    const movie_mo_swiper = new Swiper('.movie .mo_swiper', {
+        slidesPerView: 1, /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+        spaceBetween: 12, /* 팝업과 팝업 사이 여백 */
+        breakpoints: {
+            501: {    /* 640px 이상일때 적용 */
+                slidesPerView: 2,    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 12,
+            },
+            651: {    /* 640px 이상일때 적용 */
+                slidesPerView: 3,    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 12,
+            },
+        },
+        //centeredSlides: true, /* 팝업을 화면에 가운데 정렬(가운데 1번이 옴) */
+        loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
+        autoplay: {  /* 팝업 자동 실행 */
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });
+
+
+
+
+
+
+    const event_left_swiper = new Swiper('.event .event_left .ticket.swiper', {
+
+        // autoplay: {  /* 팝업 자동 실행 */
+        //     delay: 2500,
+        //     disableOnInteraction: false,
+        // },
+
+        effect: "fade", /* fade 효과 */
+
+        // loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
+
+        // pagination: {  /* 몇개의 팝업이 있는지 보여주는 동그라미 */
+        //     el: '.event .event_left .ticket_right .paging', /* 해당 요소의 class명 */
+        //     clickable: true,  /* 클릭하면 해당 팝업으로 이동할 것인지 값 */
+        //     type: 'fraction',  /* type fraction을 주면 paging이 숫자로 표시됨 */
+        //     renderBullet: function (index, className) {   /* paging에 특정 코드 넣기 */
+        //         return '<span class="' + className + '">' + (index + 1) + "</span>";
+        //     },
+        // },
+
+        
+        navigation: {  /* 이전, 다음 버튼 */
+            nextEl: '.event .event_left .ticket_right .next',
+            prevEl: '.event .event_left .ticket_right .prev',  
+	    },
+    });
+    // swiper.autoplay.stop();  /* 일시정지 기능 */
+    // swiper.autoplay.start();  /* 재생 기능 */
+
+
+
+    // const event_right_swiper = new Swiper('.event .event_right .swiper', { /* 팝업을 감싼는 요소의 class명 */
+
+    //     // autoplay: {  /* 팝업 자동 실행 */
+    //     //     delay: 2500,
+    //     //     disableOnInteraction: true,
+    //     // },
+
+    //     //effect: "fade", /* fade 효과 */
+
+    //     loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
+
+    // });
+
+
+    const event_right_swiper = new Swiper('.event .event_right .swiper', { /* 팝업을 감싼는 요소의 class명 */
+        slidesPerView: 1, /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+        spaceBetween: 12, /* 팝업과 팝업 사이 여백 */
+        breakpoints: {
+            769: {    /* 640px 이상일때 적용 */
+                slidesPerView: 'auto',    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 0,
+            },
+        },
+        //centeredSlides: true, /* 팝업을 화면에 가운데 정렬(가운데 1번이 옴) */
+        loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
+        // autoplay: {  /* 팝업 자동 실행 */
+        //     delay: 2500,
+        //     disableOnInteraction: true,
+        // },
+    });
+
+
+
 
 
 
