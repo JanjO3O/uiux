@@ -228,6 +228,7 @@ $(document).ready(function(){
 
         $('.movie .tab_conts .tab_item').removeClass('active')
         $('.movie .tab_conts').find('#' + mov_tab_name).addClass('active')
+        
     })
 
 
@@ -277,7 +278,7 @@ $(document).ready(function(){
         //     },
         // },
 
-        
+
         navigation: {  /* 이전, 다음 버튼 */
             nextEl: '.event .event_left .ticket_right .next',
             prevEl: '.event .event_left .ticket_right .prev',  
