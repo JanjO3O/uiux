@@ -180,6 +180,48 @@ $(document).ready(function(){
 
 
 
+
+
+
+    const movie_swiper = new Swiper('.movie .swiper', { /* 팝업을 감싼는 요소의 class명 */
+        slidesPerView: 'auto', /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+        spaceBetween: 16, /* 팝업과 팝업 사이 여백 */
+        breakpoints: {
+            769: {    /* 769px 이상일때 적용 */
+                slidesPerView: 'auto',    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 24,
+            },
+        },
+        //centeredSlides: true, /* 팝업을 화면에 가운데 정렬(가운데 1번이 옴) */
+        loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
+        // autoplay: {  /* 팝업 자동 실행 */
+        //     delay: 2500,
+        //     disableOnInteraction: true,
+        // },
+        navigation: {
+            nextEl: '.movie .next',
+            prevEl: '.movie .prev',
+        },
+    });
+
+    let mov_tab_list = $('.movie .tab_list ul li')
+    let mov_tab_name
+
+    mov_tab_list.on('click', function(){
+        mov_tab_list.removeClass('active')
+        mov_tab_list.attr('aria-selected', 'false')
+        mov_tab_list.find('button em').text('')
+        $(this).addClass('active')
+        $(this).attr('aria-selected', 'true')
+        $(this).find('button em').text('선택됨')
+        mov_tab_name = $(this).attr('aria-controls')
+
+        $('.movie .tab_conts .tab_item').removeClass('active')
+        $('.movie .tab_conts').find('#' + mov_tab_name).addClass('active')
+    })
+
+
+
     AOS.init({
         offset: 150, // 해당 콘텐츠가 하단에서 몇 px 위로 올라와에 나타나는 효과가 나타날지 셋팅하는 값
         duration: 500, // 애니메이션 효과가 작동되는 시간
