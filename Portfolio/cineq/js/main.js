@@ -183,6 +183,9 @@ $(document).ready(function(){
 
 
 
+    let mov_tab_list = $('.movie .tab_list ul li')
+    let mov_tab_name
+
     const movie_swiper = new Swiper('.movie .swiper', { /* 팝업을 감싼는 요소의 class명 */
         slidesPerView: 'auto', /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
         spaceBetween: 6, /* 팝업과 팝업 사이 여백 */
@@ -203,7 +206,7 @@ $(document).ready(function(){
         //centeredSlides: true, /* 팝업을 화면에 가운데 정렬(가운데 1번이 옴) */
         loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
         autoplay: {  /* 팝업 자동 실행 */
-            delay: 5000,
+            delay: 4000,
             disableOnInteraction: false,
         },
         navigation: {
@@ -212,24 +215,76 @@ $(document).ready(function(){
         },
     });
 
+    movie_swiper.emit('slideChange')
 
+    function changeMovieTab(index){
+        let currentTab = mov_tab_list.eq(index)
 
-    let mov_tab_list = $('.movie .tab_list ul li')
-    let mov_tab_name
-
-    mov_tab_list.on('click', function(){
+        // 탭 active 변경
         mov_tab_list.removeClass('active')
         mov_tab_list.attr('aria-selected', 'false')
         mov_tab_list.find('button em').text('')
-        $(this).addClass('active')
-        $(this).attr('aria-selected', 'true')
-        $(this).find('button em').text('선택됨')
-        mov_tab_name = $(this).attr('aria-controls')
+
+        currentTab.addClass('active')
+        currentTab.attr('aria-selected', 'true')
+        currentTab.find('button em').text('선택됨')
+
+        // 컨텐츠 변경
+        let mov_tab_name = currentTab.attr('aria-controls')
 
         $('.movie .tab_conts .tab_item').removeClass('active')
-        $('.movie .tab_conts').find('#' + mov_tab_name).addClass('active')
-        
+        $('#' + mov_tab_name).addClass('active')
+    }
+
+    movie_swiper.on('transitionEnd', function () {
+        let index = movie_swiper.realIndex
+        changeMovieTab(index)
     })
+
+    
+    movie_swiper.on('transitionEnd', function () {
+        let index = movie_swiper.realIndex
+
+        // 탭 active 변경
+        mov_tab_list.removeClass('active')
+        mov_tab_list.attr('aria-selected', 'false')
+        mov_tab_list.find('button em').text('')
+
+        let currentTab = mov_tab_list.eq(index)
+
+        currentTab.addClass('active')
+        currentTab.attr('aria-selected', 'true')
+        currentTab.find('button em').text('선택됨')
+
+        // 컨텐츠 변경
+        let mov_tab_name = currentTab.attr('aria-controls')
+
+        $('.movie .tab_conts .tab_item').removeClass('active')
+        $('#' + mov_tab_name).addClass('active')
+    })
+
+
+    // mov_tab_list.on('click', function(){
+    //     let index = $(this).index()
+
+    //     movie_swiper.slideToLoop(index)
+
+    //     changeMovieTab(index)
+
+    //     mov_tab_list.removeClass('active')
+    //     mov_tab_list.attr('aria-selected', 'false')
+    //     mov_tab_list.find('button em').text('')
+
+    //     $(this).addClass('active')
+    //     $(this).attr('aria-selected', 'true')
+    //     $(this).find('button em').text('선택됨')
+
+    //     mov_tab_name = $(this).attr('aria-controls')
+
+    //     $('.movie .tab_conts .tab_item').removeClass('active')
+    //     $('.movie .tab_conts').find('#' + mov_tab_name).addClass('active')
+    // })
+
 
 
     const movie_mo_swiper = new Swiper('.movie .mo_swiper', {
@@ -248,7 +303,7 @@ $(document).ready(function(){
         //centeredSlides: true, /* 팝업을 화면에 가운데 정렬(가운데 1번이 옴) */
         loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
         autoplay: {  /* 팝업 자동 실행 */
-            delay: 5000,
+            delay: 4000,
             disableOnInteraction: false,
         },
     });
@@ -257,35 +312,66 @@ $(document).ready(function(){
 
 
 
+    let ticket_right_bar_w
+    const event_left_swiper = new Swiper('.event .ticket_right .swiper', {
+        slidesPerView: 1, /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+        spaceBetween: 8, /* 팝업과 팝업 사이 여백 */
+        breakpoints: {
+            501: {    /* 769px 이상일때 적용 */
+                slidesPerView: 'auto',    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 12,
+            },
+            769: {    /* 769px 이상일때 적용 */
+                slidesPerView: 'auto',    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 12,
+            },
+            1025: {    /* 1025px 이상일때 적용 */
+                slidesPerView: 'auto',    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 16,
+            },
+        },
+        autoplay: {  /* 팝업 자동 실행 */
+            delay: 4000,
+            disableOnInteraction: false,
+        },
 
-    const event_left_swiper = new Swiper('.event .event_left .ticket.swiper', {
+        // effect: "fade", /* fade 효과 */
 
-        // autoplay: {  /* 팝업 자동 실행 */
-        //     delay: 2500,
-        //     disableOnInteraction: false,
-        // },
+        loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
 
-        effect: "fade", /* fade 효과 */
-
-        // loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
-
-        // pagination: {  /* 몇개의 팝업이 있는지 보여주는 동그라미 */
-        //     el: '.event .event_left .ticket_right .paging', /* 해당 요소의 class명 */
-        //     clickable: true,  /* 클릭하면 해당 팝업으로 이동할 것인지 값 */
-        //     type: 'fraction',  /* type fraction을 주면 paging이 숫자로 표시됨 */
-        //     renderBullet: function (index, className) {   /* paging에 특정 코드 넣기 */
-        //         return '<span class="' + className + '">' + (index + 1) + "</span>";
-        //     },
-        // },
-
-
+        pagination: {  /* 몇개의 팝업이 있는지 보여주는 동그라미 */
+            el: '.event .event_left .ticket_right .paging', /* 해당 요소의 class명 */
+            clickable: true,  /* 클릭하면 해당 팝업으로 이동할 것인지 값 */
+            type: 'fraction',  /* type fraction을 주면 paging이 숫자로 표시됨 */
+            renderBullet: function (index, className) {   /* paging에 특정 코드 넣기 */
+                return '<span class="' + className + '">' + (index + 1) + "</span>";
+            },
+        },
         navigation: {  /* 이전, 다음 버튼 */
             nextEl: '.event .event_left .ticket_right .next',
             prevEl: '.event .event_left .ticket_right .prev',  
 	    },
+
+        on: {
+            autoplayTimeLeft(s, time, progress) {
+                // progress: 1 -> 0 
+                // 0% -> 100%로 되어야 함 (가상선택자인 before,after는 제어가 안됨)
+                ticket_right_bar_w = 100 - (100 * progress)
+                $('.event .ticket_right .btn_wrap .bar span').width(ticket_right_bar_w + '%')
+            }
+        }
     });
-    // swiper.autoplay.stop();  /* 일시정지 기능 */
-    // swiper.autoplay.start();  /* 재생 기능 */
+    
+    $('.event .event_left .ticket .ticket_right .btn_wrap button.stop').on('click', function(){
+        event_left_swiper.autoplay.stop()
+        $(this).hide()
+        $('.event .event_left .ticket .ticket_right .btn_wrap button.play').show()
+    })
+    $('.event .event_left .ticket .ticket_right .btn_wrap button.play').on('click', function(){
+        event_left_swiper.autoplay.start()
+        $(this).hide()
+        $('.event .event_left .ticket .ticket_right .btn_wrap button.stop').show()
+    })
 
 
 
@@ -304,12 +390,16 @@ $(document).ready(function(){
 
 
     const event_right_swiper = new Swiper('.event .event_right .swiper', { /* 팝업을 감싼는 요소의 class명 */
-        slidesPerView: 1, /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+        slidesPerView: 2, /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
         spaceBetween: 12, /* 팝업과 팝업 사이 여백 */
         breakpoints: {
             769: {    /* 640px 이상일때 적용 */
+                slidesPerView: 2,    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 16,
+            },
+            1025: {    /* 640px 이상일때 적용 */
                 slidesPerView: 'auto',    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
-                spaceBetween: 0,
+                spaceBetween: 16,
             },
         },
         //centeredSlides: true, /* 팝업을 화면에 가운데 정렬(가운데 1번이 옴) */
@@ -318,6 +408,7 @@ $(document).ready(function(){
         //     delay: 2500,
         //     disableOnInteraction: true,
         // },
+            // effect: "fade", /* fade 효과 */
     });
 
 

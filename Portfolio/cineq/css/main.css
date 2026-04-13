@@ -450,6 +450,10 @@
                 left: calc(100% + 27px);
                 width: 397px;
             }
+            .biz .line1,
+            .biz .line2{
+                display: none;
+            }
 }/*@media*/
 @media screen and (max-width:920px){
             .biz .tab_list ul{
@@ -544,6 +548,10 @@
 }
 .movie .tab_list ul li{
     width: calc(calc(25% - 18px) + 33px);
+    opacity: 0.2;
+}
+.movie .tab_list ul li.active{
+    opacity: 1;
 }
 .movie .tab_list ul li button{
     height: 100%;
@@ -751,7 +759,7 @@
                 height: 160px;
             }
             .movie .tab_list ul li {
-                width: calc(33.33% - 11px);
+                width: calc(25% + 4px);
             }
             .movie .tab_conts .tab_item .movie_wrap .movie_left .btn_wrap a{
                 border-radius: 3px;
@@ -856,8 +864,6 @@
 
 .event{
     margin: clamp(80px, 18vw, 200px) 0;
-}
-.event .wrapper{
     position: relative;  /* cineq,event_bg 정렬 기준 */
 }
 .event h2{
@@ -865,6 +871,9 @@
     font-weight: var(--font-weight-B);
     line-height: var(--line-height-tit);
     margin-bottom: 0.25em;
+}
+.event .sub_tit{
+    display: none;
 }
 .event .inner{
     display: flex;
@@ -876,6 +885,8 @@
 .event .event_left .ticket{
     display: flex;
     justify-content: space-between;
+    flex: 1;
+    position: relative;  /* .ticket_right의 btn_wrap 정렬 기준 */
 }
 .event .event_left .ticket .ticket_left{
     /* width: calc(100% - 373px); */
@@ -883,6 +894,7 @@
 .event .event_left .ticket .ticket_left strong{
     font-size: var(--font-size-sub1);
     line-height: var(--line-height-tit);
+    white-space: nowrap;
 }
 .event .event_left .ticket .ticket_left h3{
     font-size: var(--font-size-tit);
@@ -898,6 +910,7 @@
 .event .event_left .ticket .ticket_right{
     width: calc(100% - 327px);
 }
+
 .event .event_left .ticket .ticket_right .photo{
     overflow: hidden;
     border-radius: 10px;
@@ -908,18 +921,308 @@
     object-fit: cover;
     vertical-align: top;
 }
-.event .event_left .ticket .ticket_right{
-
+.event .event_left .ticket .ticket_right .btn_wrap{
+    position: absolute; /* ticket을 기준으로 정렬 */
+    left: 0;
+    bottom: 0;
+    /* width: calc(100% - 334px); */
+    fill: var(--color-white);
+    height: 15px;
+    display: flex;
+    align-items: center;
+    gap: 0 12px;
+}
+.event .event_left .ticket .ticket_right .btn_wrap .bar{
+    width: 172px;
+    height: 5px;
+    background-color: var(--color-white);
+    position: relative;  /* span 정렬 기준 */
+}
+.event .event_left .ticket .ticket_right .btn_wrap .bar span{
+    position: absolute;  /* bar 기준 정렬 */
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--color-red1);
+}
+.event .event_left .ticket .ticket_right .btn_wrap button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.event .event_left .ticket .ticket_right .btn_wrap button.play{
+    display: none;
+}
+.event .event_left .ticket .ticket_right .btn_wrap .paging{
+    width: calc(100% - 262px);
+    display: flex;
+    gap: 0 3px;
+}
+.event .event_left .ticket .ticket_right .btn_wrap .paging .swiper-pagination-total{
+    opacity: 0.4;
+}
+.event .event_left .benefit{
+    display: flex;
+    align-items: flex-end;
+    flex: 1;
+    gap: 0 calc(var(--gap) / 2);
+    margin-top: 50px;
+}
+.event .event_left .benefit .q-club .photo,
+.event .event_left .benefit .vip .photo{
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.event .event_left .benefit .q-club .photo img,
+.event .event_left .benefit .vip .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
 }
 .event .event_right{
     width: calc(100% - 654px);
+    height: 100%;
 }
-.event .cineq{
-    display: none;
+.event .event_right .list ul li .photo{
+    overflow: hidden;
+    height: 640px;
+    border-radius: 10px;
 }
+.event .event_right .list ul li .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    vertical-align: top;
+}
+.event .rolling_wrap{
+    position: absolute;  /* event 기준 정렬 */
+    left: 0;
+    bottom: -22%;
+    width: 100%;
+    height: 1.3em;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: var(--font-family-Paperozi);
+    font-size: 60px;
+    font-weight: 800;
+    -webkit-text-stroke: 1px var(--color-white);
+    -webkit-text-fill-color: transparent;
+    opacity: 0.6;
+}
+.event .rolling_wrap .rolling{
+    position: absolute;  /* rolling_wrap 기준 정렬 */
+    left: 0;
+    bottom: 0;
+    /* transform: translateX(-50%); */
+    animation: roll 50s linear infinite;
+}
+@keyframes roll {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(-50%);}
+}
+/* @keyframes roop {
+    0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    }
+    100% {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }         
+} */
 .event .event_bg{
-    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
 }
+.event .event_bg .photo{
+    overflow: hidden;
+}
+.event .event_bg .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
+}
+.event .event_bg .photo.circle01{
+    position: absolute;
+    left: -5%;
+    top: -10%;
+    width: 286px;
+    height: 286px;
+    animation: circle 3s linear infinite;
+    transform-origin: 150px center;
+}
+.event .event_bg .photo.circle02{
+    position: absolute;
+    left: 13%;
+    top: 30%;
+    width: 157px;
+    height: 157px;
+    opacity: 0.7;
+    animation: circle 2.2s linear infinite;
+    transform-origin: 90px center;
+}
+.event .event_bg .photo.circle03{
+    position: absolute;
+    left: 0;
+    top: 56%;
+    width: 94px;
+    height: 94px;
+    opacity: 0.8;
+    animation: circle 2.2s linear infinite;
+    transform-origin: 40px center;
+}
+.event .event_bg .photo.red{
+    position: absolute;
+    left: 0;
+    bottom: -23%;
+    width: 100vw;
+    height: 400px;
+}
+@keyframes circle {
+    from{
+        transform: rotate(0);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+@media screen and (max-width:1360px){
+            .event h2{
+                margin-left: var(--wrapper-margin);
+            }
+            .event .inner{
+                width: auto;
+                margin: 0 var(--wrapper-margin);
+                justify-content: space-between;
+            }
+            .event .event_left{
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+            .event .event_left .ticket{
+                gap: 0 30px;
+            }
+            .event .event_left .ticket .ticket_left{
+                flex: 1;
+            }
+            .event .event_left .ticket .ticket_right{
+                flex: 1.2;
+            }
+            .event .event_left .ticket .ticket_right .btn_wrap{
+                width: calc(100% - 334px);
+            }
+            .event .event_right{
+                flex: 1;
+            }
+            .event .event_right .list ul li .photo{
+                height: 610px;
+            }
+}/*@media*/
+@media screen and (max-width:1280px){
+            .event .event_left .ticket .ticket_left span{
+                display: none;
+            }
+            .event .event_left .ticket .ticket_right .btn_wrap{
+                display: none;
+            }
+            .event .event_right .list ul li .photo{
+                height: 560px;
+            }
+}/*@media*/
+@media screen and (max-width:1180px){
+            .event .event_right .list ul li .photo{
+                height: 500px;
+            }
+            .event .rolling_wrap{
+                font-size: 50px;
+            }
+            .event .event_bg .photo.circle01{
+                width: 226px;
+                height: 226px;
+                animation-duration: 4s;
+                transform-origin: 120px center;
+            }
+            .event .event_bg .photo.circle02{
+                width: 117px;
+                height: 117px;
+                animation-duration: 4s;
+                transform-origin: 70px center;
+            }
+            .event .event_bg .photo.red{
+                height: 280px;
+            }
+}/*@media*/
+@media screen and (max-width:1024px){
+            .event .sub_tit{
+                display: flex;
+                gap: 0 6px;
+                margin: 1em var(--wrapper-margin) 0.7em var(--wrapper-margin);
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+            .event .sub_tit::-webkit-scrollbar{
+                width: 5px;
+                height: 5px;
+            }
+            .event .sub_tit::-webkit-scrollbar-thumb{
+                background-color: var(--color-white);
+                border-radius: 10px;
+            }
+            .event .sub_tit::-webkit-scrollbar-track{
+                background-color: var(--color-B);
+            }
+            .event .sub_tit h3{
+                border: 1px solid var(--color-white);
+                border-radius: 3px;
+                padding: 0.43em 1.25em;
+                white-space: nowrap;
+            }
+            .event .sub_tit h3.first{
+                background-color: var(--color-white);
+                color: var(--color-B);
+                font-weight: var(--font-weight-B);
+            }
+            .event .sub_tit h3:hover{
+                background-color: var(--color-white);
+                color: var(--color-B);
+                font-weight: var(--font-weight-B);
+            }
+            .event .inner{
+                display: block;
+            }
+            .event .event_left{
+                width: 100%;
+            }
+            .event .event_left .ticket_left,
+            .event .event_left .benefit,
+            .event .event_right{
+                display: none;
+            }
+            .event .event_left .ticket .ticket_right ul li{
+                width: 70%;
+            }
+            .event .event_left .ticket .ticket_right .photo{
+                border-radius: 3px;
+            }
+            .event .rolling_wrap{
+                display: none;
+            }
+            .event .event_bg{
+                display: none;
+            }
+}/*@media*/
+
+
 
 body{
     overflow-x: hidden;
