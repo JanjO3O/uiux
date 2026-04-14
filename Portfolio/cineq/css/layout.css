@@ -22,6 +22,12 @@
     background-color: var(--color-white);
     color: var(--color-B);
 }
+.header_wrap.fixed{
+    transform: translateY(calc(var(--header_visible-h) * -1));
+}
+.header_wrap.hide{
+    transform: translateY(-110%);
+}
 @media screen and (min-width: 769px){  /* 769px 이상 - pc */
             .header_wrap .header_banner{
                 height: 50px;
@@ -708,23 +714,6 @@
 }
 .footer .footer_bot .bot_t .txt .imp span{
     color: rgba(255, 255, 255, 1);
-}
-.footer .footer_bot .bot_t .txt span::after{
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -1px;
-    transform: translateX(-50%);
-    width: 0;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.6);
-    transition: 0.3s;
-}
-.footer .footer_bot .bot_t .txt .imp span::after{
-    background-color: var(--color-white);
-}
-.footer .footer_bot .bot_t .txt span:hover::after{
-    width: 100%;
 }
 .footer .footer_bot .bot_t .txt span{
     color: rgba(255, 255, 255, 0.8);

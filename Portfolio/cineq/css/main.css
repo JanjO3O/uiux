@@ -6,7 +6,7 @@
 
 
 .visual{
-    margin-top: 215px;
+    margin-top: var(--header_wrap-h);
     width: 100%;
     overflow: hidden;
 }
@@ -71,20 +71,7 @@
 .visual .swiper_mo{
     display: none;
 }
-@media screen and (max-width:1150px){
-            .visual{
-                margin-top: 205px;
-            }
-}/*@media*/
-@media screen and (max-width:1024px){
-            .visual{
-                margin-top: 165px;
-            }
-}/*@media*/
 @media screen and (max-width:768px){
-            .visual{
-                margin-top: var(--header-h);
-            }
             .visual .swiper_pc{
                 display: none;
             }
@@ -94,8 +81,17 @@
             }
             .visual .swiper_mo .swiper-slide{
                 height: 80vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
-            .visual .swiper_mo .swiper-slide .photo{
+            .visual .swiper_mo .swiper-slide video{
+                width: 100%;
+                height: 80vh;
+                object-fit: cover;
+                object-position: center center;
+            }
+            /* .visual .swiper_mo .swiper-slide .photo{
                 height: 80vh;
                 overflow: hidden;
             }
@@ -104,7 +100,7 @@
                 height: 100%;
                 object-fit: cover;
                 object-position: bottom;
-            }
+            } */
             .visual .swiper_mo .btn_wrap{
                 position: absolute;
                 left: 0;
@@ -132,7 +128,8 @@
 
 
 .Box_Office{
-    margin: 2em 0;
+    background-color: #000;
+    padding: 2em 0;
     font-size: var(--font-size-L);
 }
 .Box_Office h2{
@@ -528,7 +525,7 @@
 
 
 .movie{
-    background-color: rgba(20, 20, 38, 0.4);
+    background-color: #0A0A13;
     padding: clamp(80px, 18vw, 200px) 0;
 }
 .movie .wrapper{
@@ -638,6 +635,9 @@
     border: 1px solid transparent;
     color: var(--color-B);
 }
+.movie .tab_conts .tab_item .movie_wrap .movie_left .btn_wrap a.info:hover svg{
+    fill: var(--color-B);
+}
 .movie .tab_conts .tab_item .movie_wrap .movie_right{
     flex: 2;
 }
@@ -654,6 +654,12 @@
     font-size: var(--font-size-tit);
     font-weight: 800;
     line-height: var(--line-height-tit);
+}
+.movie .tab_conts .tab_item .movie_wrap .movie_right .tit h3.long{
+    width: calc(100% - 195px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .movie .tab_conts .tab_item .movie_wrap .movie_right .tit span{
     font-weight: 800;
@@ -863,8 +869,13 @@
 
 
 .event{
-    margin: clamp(80px, 18vw, 200px) 0;
+    background-color: #000;
+    padding: clamp(80px, 18vw, 200px) 0;
     position: relative;  /* cineq,event_bg 정렬 기준 */
+}
+.event .wrapper{
+    position: relative;
+    z-index: 10;
 }
 .event h2{
     font-size: var(--font-size-tit);
@@ -1001,7 +1012,8 @@
 .event .rolling_wrap{
     position: absolute;  /* event 기준 정렬 */
     left: 0;
-    bottom: -22%;
+    bottom: 0;
+    z-index: 7;
     width: 100%;
     height: 1.3em;
     overflow: hidden;
@@ -1038,7 +1050,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    z-index: -1;
+    z-index: 6;
     width: 100%;
     height: 100%;
 }
@@ -1054,7 +1066,7 @@
 .event .event_bg .photo.circle01{
     position: absolute;
     left: -5%;
-    top: -10%;
+    top: 10%;
     width: 286px;
     height: 286px;
     animation: circle 3s linear infinite;
@@ -1073,7 +1085,7 @@
 .event .event_bg .photo.circle03{
     position: absolute;
     left: 0;
-    top: 56%;
+    top: 54%;
     width: 94px;
     height: 94px;
     opacity: 0.8;
@@ -1083,7 +1095,7 @@
 .event .event_bg .photo.red{
     position: absolute;
     left: 0;
-    bottom: -23%;
+    bottom: 0;
     width: 100vw;
     height: 400px;
 }
@@ -1224,11 +1236,82 @@
 
 
 
+.page{
+    height: 700vh;
+    position: relative;
+    z-index: 5;
+    background-color: #000;
+    transition: background-color 0.3s linear;
+}
+.page .word{
+    height: 100vh;
+    font-family: var(--font-family-Paperozi);
+    font-size: 20vw;
+    font-weight: 800;
+    line-height: var(--line-height-tit);
+    color: var(--color-white);
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+}
+.page .word .text{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    overflow: hidden;
+}
+.page .word .line05 span{
+    display: flex;
+    align-items: center;
+}
+.page .word .line05 img{
+    width: 16vw;
+}
+.page .word .line06 img,
+.page .word .line07 img{
+    transform-origin: center center;
+    will-change: transform, opacity;
+    width: 100vw;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.container{
+    position: relative;
+    z-index: 10;
+}
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 6;
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 0.4s, transform 0.6s;
+}
+
 body{
     overflow-x: hidden;
 }
-header{
-    display: none;
+
+.top{
+    position: fixed;
+    right: var(--wrapper-margin);
+    bottom: var(--wrapper-margin);
+    z-index: 100;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.5 24L13.5 5.7375L21.9 14.1375L24 12L12 8.58275e-07L-8.58275e-07 12L2.1 14.1375L10.5 5.7375L10.5 24L13.5 24Z' fill='black'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 24px;
 }
-
-
+.top:hover{
+    background-color: rgba(255, 255, 255, 0.8);
+}
