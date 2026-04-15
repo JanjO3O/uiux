@@ -377,192 +377,207 @@ $(document).ready(function(){
     /**********************
      * CINE Q 글자 계산
      ********************/ 
-    let cine_area_name = $('.page')
 
-    //  텍스트 (Q 제외)
-    let cine_text_items = $('.page .word .text').not('.line06, .line07')
+    let device_status //브라우저 상태 -> pc인지 모바일인지
+    let mobile_size = 1024 //모바일 사이즈
+    let window_w  //브라우저 넓이
 
-    //  Q wrap
-    let cine_Q_first_wrap = $('.page .word .line06')
-    let cine_Q_last_wrap = $('.page .word .line07')
-
-    //  Q img
-    let cine_Q_first = cine_Q_first_wrap.find('img')
-    let cine_Q_last = cine_Q_last_wrap.find('img')
-
-    let cine_area_start
-    let cine_area_end
-    let cine_area
-
-    let cine_all_step = 9
-    let cine_Q_first_step = 3
-    let cine_Q_last_step = 1
-
-    let Q_start_step = cine_all_step - cine_Q_first_step - cine_Q_last_step
-
-    let cine_Q_start = 50
-    let cine_Q_mid = 100
-    let cine_Q_end = 400
-
-    let current_step = -1
-    let current_q_state = '' // '', 'first', 'last'
-
-    function cine_chk(){
-
-        cine_area_start = cine_area_name.offset().top - win_h
-        cine_area_end = cine_area_start + cine_area_name.height()
-        cine_area = cine_area_end - cine_area_start
-
-        let progress = (scrolling - cine_area_start) / cine_area
-        progress = Math.max(0, Math.min(1, progress))
-
-        let step = Math.floor(progress * cine_all_step)
-
-        /* =========================
-        시작 전
-        ========================= */
-        if(scrolling < cine_area_start){
-
-            if(current_step !== 0){
-                cine_text_items.stop(true,true).fadeOut(200)
-                cine_text_items.eq(0).stop(true,true).fadeIn(200)
-                current_step = 0
-            }
-
-            //  Q 완전 초기화
-            cine_Q_first_wrap.hide()
-            cine_Q_last_wrap.hide()
-            current_q_state = ''
-
-            cine_Q_first.css({ width: cine_Q_start + 'vw' })
-            cine_Q_last.css({ width: cine_Q_mid + 'vw', opacity: 1 })
-
-            cine_area_name.css({ backgroundColor: 'rgba(0,0,0,1)' })
-
-            return
+    function device_chk(){
+        window_w = $(window).width()
+        if(window_w > mobile_size){
+            device_status = 'pc'
+        }else{
+            device_status = 'mo'
         }
-
-        /* =========================
-        종료 후
-        ========================= */
-        if(scrolling > cine_area_end){
-
-            cine_text_items.stop(true,true).fadeOut(200)
-
-            cine_Q_first_wrap.hide()
-            cine_Q_last_wrap.show()
-            current_q_state = 'last'
-
-            cine_Q_last.css({
-                width: cine_Q_end + 'vw',
-                opacity: 0
-            })
-
-            cine_area_name.css({
-                backgroundColor: 'rgba(0,0,0,0)'
-            })
-
-            return
-        }
-
-        /* =========================
-        텍스트 fade
-        ========================= */
-        if(step !== current_step){
-            current_step = step
-
-            if(step < Q_start_step){
-                cine_text_items.stop(true,true).fadeOut(200)
-                cine_text_items.eq(step).stop(true,true).fadeIn(200)
-            }else{
-                cine_text_items.stop(true,true).fadeOut(200)
-            }
-        }
-
-        /* =========================
-         Q 구간 완전 제어 (핵심)
-        ========================= */
-
-        //  FIRST 구간
-        if(step >= Q_start_step && step < Q_start_step + cine_Q_first_step){
-
-            if(current_q_state !== 'first'){
-                cine_Q_last_wrap.stop(true,true).fadeOut(200)
-                cine_Q_first_wrap.stop(true,true).fadeIn(200)
-                current_q_state = 'first'
-            }
-
-            let q_progress = (progress * cine_all_step - Q_start_step) / cine_Q_first_step
-            q_progress = Math.max(0, Math.min(1, q_progress))
-
-            let width = cine_Q_start + (cine_Q_mid - cine_Q_start) * q_progress
-
-            cine_Q_first.css({
-                width: width + 'vw'
-            })
-        }
-
-        //  LAST 구간
-        else if(step >= cine_all_step - cine_Q_last_step){
-
-            if(current_q_state !== 'last'){
-                cine_Q_first_wrap.stop(true,true).fadeOut(200)
-                cine_Q_last_wrap.stop(true,true).fadeIn(200)
-                current_q_state = 'last'
-            }
-
-            let q_progress = (progress * cine_all_step - (cine_all_step - cine_Q_last_step)) / cine_Q_last_step
-            q_progress = Math.max(0, Math.min(1, q_progress))
-
-            let width = cine_Q_mid + (cine_Q_end - cine_Q_mid) * q_progress
-            let opacity = 1 - q_progress
-
-            cine_Q_last.css({
-                width: width + 'vw',
-                opacity: opacity
-            })
-
-            $('.footer').css({
-                opacity: 1 - opacity
-            })
-
-            cine_area_name.css({
-                backgroundColor: `rgba(0,0,0,${opacity})`
-            })
-        }
-
-        //   둘 다 아닌 구간 (이게 핵심 해결)
-        else{
-            if(current_q_state !== ''){
-                cine_Q_first_wrap.stop(true,true).fadeOut(200)
-                cine_Q_last_wrap.stop(true,true).fadeOut(200)
-                current_q_state = ''
-            }
-
-            cine_Q_first.css({ width: cine_Q_start + 'vw' })
-            cine_Q_last.css({ width: cine_Q_mid + 'vw', opacity: 1 })
-
-            $('.footer').css({ opacity: 0 })
-
-            cine_area_name.css({
-                backgroundColor: 'rgba(0,0,0,1)'
-            })
-        }
-
-        
-
-
+        console.log(device_status)
     }
-
-    /* =========================
-    실행
-    ========================= */
-    cine_chk()
-
-    $(window).scroll(function(){
-        scrolling = $(window).scrollTop()
-        cine_chk()
+    device_chk()  //문서 로딩되고 단 한 번 실행
+    $(window).resize(function(){  //리사이즈 될 때마다 실행
+        device_chk()
     })
+
+    if(device_status == 'pc'){
+
+        let cine_area_name = $('.page')
+
+        //  텍스트 (Q 제외)
+        let cine_text_items = $('.page .word .text').not('.line06, .line07')
+
+        //  Q wrap
+        let cine_Q_first_wrap = $('.page .word .line06')
+        let cine_Q_last_wrap = $('.page .word .line07')
+
+        //  Q img
+        let cine_Q_first = cine_Q_first_wrap.find('img')
+        let cine_Q_last = cine_Q_last_wrap.find('img')
+
+        let cine_area_start
+        let cine_area_end
+        let cine_area
+
+        let cine_all_step = 9
+        let cine_Q_first_step = 3
+        let cine_Q_last_step = 1
+
+        let Q_start_step = cine_all_step - cine_Q_first_step - cine_Q_last_step
+
+        let cine_Q_start = 50
+        let cine_Q_mid = 100
+        let cine_Q_end = 400
+
+        let current_step = -1
+        let current_q_state = '' // '', 'first', 'last'
+
+        function cine_chk(){
+            if(device_status !== 'pc') return;
+
+            cine_area_start = cine_area_name.offset().top - win_h
+            cine_area_end = cine_area_start + cine_area_name.height()
+            cine_area = cine_area_end - cine_area_start
+
+            let progress = (scrolling - cine_area_start) / cine_area
+            progress = Math.max(0, Math.min(1, progress))
+
+            let step = Math.floor(progress * cine_all_step)
+
+            /* =========================
+            시작 전
+            ========================= */
+            if(scrolling < cine_area_start){
+
+                if(current_step !== 0){
+                    cine_text_items.stop(true,true).fadeOut(200)
+                    cine_text_items.eq(0).stop(true,true).fadeIn(200)
+                    current_step = 0
+                }
+
+                //  Q 완전 초기화
+                cine_Q_first_wrap.hide()
+                cine_Q_last_wrap.hide()
+                current_q_state = ''
+
+                cine_Q_first.css({ width: cine_Q_start + 'vw' })
+                cine_Q_last.css({ width: cine_Q_mid + 'vw', opacity: 1 })
+
+                cine_area_name.css({ backgroundColor: 'rgba(0,0,0,1)' })
+
+                return
+            }
+
+            /* =========================
+            종료 후
+            ========================= */
+            if(scrolling > cine_area_end){
+
+                cine_text_items.stop(true,true).fadeOut(200)
+
+                cine_Q_first_wrap.hide()
+                cine_Q_last_wrap.show()
+                current_q_state = 'last'
+
+                cine_Q_last.css({
+                    width: cine_Q_end + 'vw',
+                    opacity: 0
+                })
+
+                cine_area_name.css({
+                    backgroundColor: 'rgba(0,0,0,0)'
+                })
+
+                return
+            }
+
+            /* =========================
+            텍스트 fade
+            ========================= */
+            if(step !== current_step){
+                current_step = step
+
+                if(step < Q_start_step){
+                    cine_text_items.stop(true,true).fadeOut(200)
+                    cine_text_items.eq(step).stop(true,true).fadeIn(200)
+                }else{
+                    cine_text_items.stop(true,true).fadeOut(200)
+                }
+            }
+
+            /* =========================
+            Q 구간 완전 제어 (핵심)
+            ========================= */
+
+            //  FIRST 구간
+            if(step >= Q_start_step && step < Q_start_step + cine_Q_first_step){
+
+                if(current_q_state !== 'first'){
+                    cine_Q_last_wrap.stop(true,true).fadeOut(200)
+                    cine_Q_first_wrap.stop(true,true).fadeIn(200)
+                    current_q_state = 'first'
+                }
+
+                let q_progress = (progress * cine_all_step - Q_start_step) / cine_Q_first_step
+                q_progress = Math.max(0, Math.min(1, q_progress))
+
+                let width = cine_Q_start + (cine_Q_mid - cine_Q_start) * q_progress
+
+                cine_Q_first.css({
+                    width: width + 'vw'
+                })
+            }
+
+            //  LAST 구간
+            else if(step >= cine_all_step - cine_Q_last_step){
+
+                if(current_q_state !== 'last'){
+                    cine_Q_first_wrap.stop(true,true).fadeOut(200)
+                    cine_Q_last_wrap.stop(true,true).fadeIn(200)
+                    current_q_state = 'last'
+                }
+
+                let q_progress = (progress * cine_all_step - (cine_all_step - cine_Q_last_step)) / cine_Q_last_step
+                q_progress = Math.max(0, Math.min(1, q_progress))
+
+                let width = cine_Q_mid + (cine_Q_end - cine_Q_mid) * q_progress
+                let opacity = 1 - q_progress
+
+                cine_Q_last.css({
+                    width: width + 'vw',
+                    opacity: opacity
+                })
+
+                $('.footer').css({
+                    opacity: 1 - opacity
+                })
+
+                cine_area_name.css({
+                    backgroundColor: `rgba(0,0,0,${opacity})`
+                })
+            }
+
+            //   둘 다 아닌 구간 (이게 핵심 해결)
+            else{
+                if(current_q_state !== ''){
+                    cine_Q_first_wrap.stop(true,true).fadeOut(200)
+                    cine_Q_last_wrap.stop(true,true).fadeOut(200)
+                    current_q_state = ''
+                }
+
+                cine_Q_first.css({ width: cine_Q_start + 'vw' })
+                cine_Q_last.css({ width: cine_Q_mid + 'vw', opacity: 1 })
+
+                $('.footer').css({ opacity: 0 })
+
+                cine_area_name.css({
+                    backgroundColor: 'rgba(0,0,0,1)'
+                })
+            }
+        }
+        cine_chk()
+
+        $(window).scroll(function(){
+            scrolling = $(window).scrollTop()
+            cine_chk()
+        })
+    }
 
     
     

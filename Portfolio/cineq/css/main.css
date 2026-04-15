@@ -263,15 +263,18 @@
     position: relative;  /* line 정렬 기준 */
 }
 .biz .wrapper{
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-end;
-    gap: 0 36px;
+    position: relative;  /* tab_list 정렬 기준 */
+}
+.biz .tab_list{
+    position: absolute;  /* wrapper 기준 정렬 */
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 48.28%;
 }
 .biz .tab_list ul{
     display: flex;
-    gap: 0 12px;
-    height: 180px;
+    justify-content: space-between;
 }
 .biz .tab_list ul li{
     width: calc(25% - 9px);
@@ -285,9 +288,8 @@
 }
 .biz .tab_list ul li button .photo{
     overflow: hidden;
-    width: 100%;
-    height: 100%;
     position: relative;
+    height: 100%;
 }
 .biz .tab_list ul li button .photo img{
     width: 100%;
@@ -307,9 +309,6 @@
 .biz .tab_list ul li.active button .photo::before{
     display: none;
 }
-.biz .tab_conts{
-    width: calc(100% - 654px);
-}
 .biz .tab_conts .tab_item{
     display: none;
 }
@@ -317,10 +316,12 @@
     display: block;
 }
 .biz .tab_conts .tab_item .tab_wrap{
-    position: relative; /* text_wrap 정렬 기준 */
+    display: flex;
+    justify-content: space-between;
 }
 .biz .tab_conts .tab_item .tab_wrap .photo{
     overflow: hidden;
+    width: 49.06%;
 }
 .biz .tab_conts .tab_item .tab_wrap .photo img{
     width: 100%;
@@ -329,11 +330,9 @@
     vertical-align: top;
 }
 .biz .tab_conts .tab_item .tab_wrap .text_wrap{
-    position: absolute;
-    left: calc(100% + 36px);
-    top: 70px;
-    width: 98.49%;
+    width: 48.28%;
     word-break: normal;
+    margin-top: 5%;
 }
 .biz .tab_conts .tab_item .tab_wrap .text_wrap h3{
     font-size: var(--font-size-tit);
@@ -379,97 +378,11 @@
     transform: translateX(100%);
     transition: 2s;
 }
-@media screen and (max-width:1360px){  /* wrapper 풀리는 지점 */
-            .biz .tab_conts{
-                width: auto;
-                flex: 1;
-            }
-            .biz .tab_conts .tab_item .tab_wrap .text_wrap{
-                width: 619px;
-            }
-            .biz .tab_conts .tab_item .tab_wrap .text_wrap h3{
-                font-size: 36px;
-                margin-bottom: 0.4em;
-            }
-}/*@media*/
-@media screen and (max-width:1300px){
-            .biz .tab_list ul{
-                height: 170px;
-            }
-            .biz .tab_conts .tab_item .tab_wrap .text_wrap{
-                width: 588px;
-            }
-}/*@media*/
-@media screen and (max-width:1250px){
-            .biz .tab_list ul{
-                height: 160px;
-            }
-            .biz .tab_conts .tab_item .tab_wrap .text_wrap{
-                width: 555px;
-            }
-}/*@media*/
-@media screen and (max-width:1180px){
-            .biz .tab_list ul{
-                height: 150px;
-            }
-            .biz .tab_conts .tab_item .tab_wrap .text_wrap{
-                width: 523px;
-            }
-            .biz .tab_conts .tab_item .tab_wrap .text_wrap h3{
-                font-size: 32px;
-                margin-bottom: 0.3em;
-            }
-}/*@media*/
-@media screen and (max-width:1100px){ 
-            .biz .tab_list ul{
-                height: 135px;
-            }
-            .biz .tab_conts .tab_item .tab_wrap .text_wrap{
-                width: 474px;
-            }
-            .biz .tab_conts .tab_item .tab_wrap .text_wrap h3{
-                font-size: 30px;
-                margin-bottom: 0.2em;
-            }
-}/*@media*/
 @media screen and (max-width:1024px){
-            .biz .wrapper{
-                gap: 0 24px;
-            }
-            .biz .tab_list ul{
-                gap: 0 8px;
-                height: 115px;
-            }
-            .biz .tab_list ul li{
-                width: calc(25% - 6px);
-            }
-            .biz .tab_conts .tab_item .tab_wrap .text_wrap{
-                left: calc(100% + 27px);
-                width: 397px;
-            }
             .biz .line1,
             .biz .line2{
                 display: none;
             }
-}/*@media*/
-@media screen and (max-width:920px){
-            .biz .tab_list ul{
-                height: 100px;
-            }
-            .biz .tab_conts .tab_item .tab_wrap .text_wrap{
-                top: 70px;
-                width: 343px;
-            }
-}/*@media*/
-@media screen and (max-width:840px){
-                .biz .wrapper{
-                    gap: 0 16px;
-                }
-                .biz .tab_conts .tab_item .tab_wrap .text_wrap{
-                    top: 30px;
-                    left: calc(100% + 15px);
-                    width: 349px;
-                }
 }/*@media*/
 @media screen and (max-width:768px){
             .biz .wrapper{
@@ -482,10 +395,6 @@
             .biz .mo_list{
                 display: block;
             }
-            /* .biz .mo_list ul{
-                overflow: auto;
-                width: ;
-            } */
             .biz .mo_list .swiper-slide{
                 width: 40%;
                 display: flex;
@@ -499,7 +408,6 @@
                 font-weight: var(--font-weight-B);
                 line-height: var(--line-height-tit);
                 margin-bottom: 0.1em;
-                /* text-align: center; */
             }
             .biz .mo_list .swiper-slide .txt p{
                 height: calc(var(--line-height-default) * 2);
@@ -1036,16 +944,6 @@
     0% {transform: translateX(0);}
     100% {transform: translateX(-50%);}
 }
-/* @keyframes roop {
-    0% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    }
-    100% {
-        -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
-    }         
-} */
 .event .event_bg{
     position: absolute;
     left: 0;
@@ -1277,11 +1175,21 @@
     object-fit: cover;
     object-position: center center;
 }
-
-.container{
-    position: relative;
-    z-index: 10;
-}
+@media screen and (max-width:1024px){
+            .page{
+                display: none !important;
+                height: 0 !important;
+            }
+            .footer{
+                position: relative !important;
+                left: auto;
+                bottom: auto;
+                opacity: 1 !important;
+                width: auto !important;
+                height: auto !important;
+                transform: none !important;
+            }
+}/*@media*/
 .footer{
     position: fixed;
     left: 0;
@@ -1294,9 +1202,7 @@
     transition: opacity 0.4s, transform 0.6s;
 }
 
-body{
-    overflow-x: hidden;
-}
+
 
 .top{
     position: fixed;
@@ -1314,4 +1220,19 @@ body{
 }
 .top:hover{
     background-color: rgba(255, 255, 255, 0.8);
+}
+@media screen and (max-width:768px){
+            .top{
+                display: none;
+            }
+}/*@media*/
+
+
+
+.container{
+    position: relative;
+    z-index: 10;
+}
+body{
+    overflow-x: hidden;
 }

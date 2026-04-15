@@ -876,3 +876,11 @@
                 align-items: flex-end;
             }
 }/*@media*/
+@media screen and (max-width:450px){
+            .footer .footer_bot .bot_b{
+                display: block;
+            }
+            .footer .footer_bot .bot_b .sns{
+                display: none;
+            }
+}/*@media*/
