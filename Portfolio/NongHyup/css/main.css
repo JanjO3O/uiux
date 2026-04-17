@@ -1,0 +1,75 @@
+@import url(common.css);
+@import url(default.css);
+@import url(fonts.css);
+@import url(layout.css);
+
+body{
+    overflow-x: hidden;
+}
+
+
+.visual{
+    height: clamp(600px, 85vw, 900px);
+    color: var(--color-white);
+    position: relative;  /* text_wrap 정렬 기준 */
+}
+.visual video{
+    height: 100%;
+}
+.visual .wrapper{
+    position: absolute;  /* visual 기준 정렬 */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.visual .text_wrap{
+    width: 90%;
+    text-align: center;
+    position: relative;
+}
+.visual .text_wrap::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -61px;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 45px;
+    background-color: var(--color-white);
+}
+.visual .text_wrap::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -61px;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 45px;
+    background-color: var(--color-white);
+}
+.visual .text_wrap h2{
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(40px, 6vw, 60px);
+    font-weight: var(--font-weight-B);
+    line-height: var(--line-height-tit);
+}
+.visual .text_wrap p{
+    font-size: var(--font-size-sub2);
+    font-weight: var(--font-weight-M);
+    line-height: var(--line-height-tit);
+    margin-top: 0.57em;
+}
+@media screen and (max-width:1540px){  /* wrapper 풀리는 지점 */
+            .visual .wrapper{
+                width: calc(100% - calc( var(--wrapper-margin) * 2 ) );
+                margin: 0;
+            }
+}/*@media*/
+@media screen and (max-width:1024px){
+            .visual .text_wrap p{
+                display: none;
+            }
+}/*@media*/
