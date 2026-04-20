@@ -612,6 +612,20 @@
 }
 .movie .tab_conts .more a{
     display: block;
+    position: relative;
+}
+.movie .tab_conts .more a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-white);
+    transition: 0.3s;
+}
+.movie .tab_conts .more a:hover::after{
+    width: 100%;
 }
 .movie .tab_conts .more a span{
     padding-right: 21px;
