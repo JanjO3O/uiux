@@ -73,3 +73,176 @@ body{
                 display: none;
             }
 }/*@media*/
+
+
+
+.history{
+    background-color: var(--bg-color-I2);
+    padding: clamp(60px, 11vw, 120px) 0 clamp(70px, 8vw, 80px) 0;
+}
+.history h2{
+    font-size: var(--font-size-sub3);
+    line-height: var(--line-height-tit);
+    text-align: center;
+}
+.history .graph{
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    margin-bottom: 126px;
+    position: relative;
+}
+.history .graph::after{
+    content: "";
+    position: absolute;
+    left: calc(calc(100vw - var(--wrapper-width)) / 2 * -1);
+    bottom: 0;
+    width: 100vw;
+    height: 4px;
+    background-color: var(--color-green1);
+}
+.history .box{
+    position: relative;
+    width: 31.59%;
+    height: 224px;
+}
+.history .box::before{
+    content: "";
+    position: absolute;  /* box 기준 정렬 */
+    left: 8px;
+    top: 45px;
+    width: 2px;
+    height: calc(100% - 49px);
+    background-color: var(--color-green1);
+}
+.history .box::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -9px;
+    width: 18px;
+    height: 18px;
+    background-color: var(--color-green1);
+    border-radius: 50%;
+}
+.history .box .dot{
+    position: absolute;  /* box 기준 정렬 */
+    left: 0;
+    top: 27px;
+    width: 18px;
+    height: 18px;
+    background-color: var(--color-green1);
+    border-radius: 50%;
+}
+.history .box .dot::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: rgba(67, 86, 74, 0.4);
+    border-radius: 50%;
+    transform-origin: center center;
+    opacity: 1;
+    will-change: opacity;
+    animation: dot 2s infinite;
+}
+@keyframes dot {
+    0% {
+        opacity: 0;
+    }
+    5% {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+    }
+    95% {
+        width: 500%;
+        height: 500%;
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.history .box strong{
+    margin-left: 34px;
+    font-size: var(--font-size-sub2);
+    font-weight: var(--font-weight-B);
+    line-height: var(--line-height-tit);
+    color: var(--color-green1);
+    display: flex;
+}
+.history ul{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: calc(100vw - 468px);
+    position: relative;
+}
+.history ul li{
+    width: calc(16.66% - 15px);
+    cursor: pointer;
+}
+.history ul li:nth-child(even){
+    transform: translateY(100%);
+}
+.history ul li .box{
+    position: relative;
+    width: 100%;
+    height: 126px;
+}
+.history ul li .box::before{
+    content: "";
+    position: absolute;
+    top: 32px;
+    height: calc(100% - 27px);
+}
+.history ul li:nth-child(even) .box::before{
+    top: 4px;
+}
+.history ul li:nth-child(even) .box::after{
+    position: absolute;
+    top: -9px;
+}
+.history ul li .box .dot{
+    position: absolute;
+    left: 3px;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+}
+.history ul li:nth-child(even) .box .dot{
+    top: auto;
+    bottom: 20px;
+}
+.history ul li .box .dot::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-green1);
+    border-radius: 50%;
+    background: rgba(67, 86, 74, 0.1);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s;
+    animation: none;
+}
+.history ul li:hover .box .dot::after{
+    transform: translate(-50%, -50%) scale(1);
+}
+.history ul li .box strong{
+    font-size: var(--font-size-sub3);
+}
+@media screen and (max-width:1540px){  /* wrapper 풀리는 지점 */
+            .history .graph::after{
+                left: calc(var(--wrapper-margin) * -1);
+            }
+            .history ul{
+                width: 67.36%;
+            }
+}/*@media*/

@@ -21,13 +21,35 @@ $(document).ready(function(){
     let gnb = $('.header .gnb')
     let gnb_open = $('.header .gnb .gnb_open')
     let gnb_close = $('.header .gnb .gnb_wrap .gnb_close')
-    let gnb_wrap = $('.header .gnb.open .gnb_wrap')
+    
+    let depth1 = $('.header .gnb .gnb_wrap ul.depth1 > li')
+    let depth2 = $('.header .gnb .gnb_wrap ul.depth1 > li > ul.depth2')
 
     gnb_open.on('click focusin', function(){
         gnb.addClass('open')
+        if(device_status == 'pc'){
+            depth2.removeAttr('style')
+        }
     })
     gnb_close.on('click focusin', function(){
         gnb.removeClass('open')
+        if(device_status == 'mo'){
+            depth1.removeClass('open')
+            depth2.hide()
+        }
     })
+
+    depth1.on('click', function(){
+        if(device_status == 'mo'){
+            depth1.removeClass('open')
+            depth2.hide()
+            $(this).addClass('open')
+            $(this).find('ul.depth2').show()
+        }
+    })
+    
+    
+
+
 
 })

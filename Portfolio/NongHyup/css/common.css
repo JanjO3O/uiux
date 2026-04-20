@@ -62,6 +62,7 @@ body{
 @media screen and (max-width:1024px){
     :root{
         --header-h: 62px;
+        --wrapper-margin: 30px;
         --font-size-tit: 32px;
         --font-size-default: 16px;
         --font-size-sub1: 45px;
