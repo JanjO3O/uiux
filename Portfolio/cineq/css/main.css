@@ -231,6 +231,9 @@
 .Box_Office .swiper .swiper-slide-next:hover .movie_box .txt{
     opacity: 1;
 }
+.Box_Office .swiper .swiper-slide .movie_box .txt h3{
+    text-align: center;
+}
 @media screen and (max-width:768px){
             .Box_Office .swiper{
                 padding: 60px 0;
