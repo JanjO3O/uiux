@@ -108,7 +108,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                border: 1px solid var(---color-222);
+                border: 1px solid var(--color-222);
             }
             .header .util{
                 display: flex;
