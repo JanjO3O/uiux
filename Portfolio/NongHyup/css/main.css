@@ -427,7 +427,7 @@ body::-webkit-scrollbar-track{
 
 
 .product{
-    margin: clamp(75px, 15vw, 150px) 0;
+    margin: clamp(75px, 12vw, 150px) 0;
 }
 .product h2{
     font-size: var(--font-size-sub3);
@@ -672,7 +672,7 @@ body::-webkit-scrollbar-track{
 
 
 .vision{
-    padding: clamp(75px, 15vw, 150px) 0;
+    padding: 150px 0;
     margin-bottom: 200px;
     background-color: var(--bg-color-green);
     color: var(--color-white);
@@ -686,7 +686,7 @@ body::-webkit-scrollbar-track{
 }
 .vision h3{
     font-family: "Cormorant Garamond", serif;
-    font-size: 190px;
+    font-size: clamp(140px, 13vw, 190px);
     line-height: 1.1;
     margin-bottom: 0.31em;
     position: relative; /* z-index를 주기 위함 */
@@ -697,19 +697,21 @@ body::-webkit-scrollbar-track{
 }
 .vision .list ul li{
     position: relative;  /* photo 정렬 기준 */
-    display: none;
-}
-.vision .list ul li.swiper-slide-active{
-    display: block;
 }
 .vision .list ul li .text_wrap{
-    width: calc(100% - 780px);
+    width: auto;
+    max-width: 37.92%;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     position: relative;
     padding-top: 60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.vision .list ul li.swiper-slide-active .text_wrap{
+    opacity: 1;
 }
 .vision .list ul li .text_wrap::before{
     content: "";
@@ -729,7 +731,7 @@ body::-webkit-scrollbar-track{
 .vision .list ul li .text_wrap p{
     line-height: var(--line-height-tit);
     margin: 1em 0 1.875em 0;
-    width: calc(100% - 114px);
+    /* width: 82.73%; */
 }
 .vision .list ul li .photo{
     position: absolute;  /* li 기준 정렬 */
@@ -738,7 +740,9 @@ body::-webkit-scrollbar-track{
     z-index: -1;
     transform: translateY(-200px);
     width: 70.83%;
-    height: 780px;
+    max-width: calc(100vw - 46.87%);  /* 46.87% -> photo의 넓이를 제외한 나머지 영역을 %로 변환한 값 */
+    aspect-ratio: 1 / 0.76;
+
     overflow: hidden;
 }
 .vision .list ul li .photo img{
@@ -746,4 +750,180 @@ body::-webkit-scrollbar-track{
     height: 100%;
     object-fit: cover;
     vertical-align: top;
+}
+.vision .paging{
+    width: 37.92%;  /* text_wrap의 넓이와 동일 */
+    display: flex;
+    justify-content: center;
+    position: absolute; /* swiper 기준 정렬 */
+    left: 0;
+    bottom: -144px;
+}
+.vision .paging .swiper-pagination-bullet{
+    margin: 0 6px 0 0;
+    width: 7px;
+    height: 7px;
+    background: rgba(255, 255, 255, 0.6);
+    opacity: 1;
+}
+.vision .paging .swiper-pagination-bullet-active{
+    background: var(--color-white);
+}
+.vision button{
+    display: none;
+}
+@media screen and (max-width:1540px){  /* wrapper 풀리는 지점 */
+            .vision .list ul li .photo{
+                right: calc(var(--wrapper-margin) * -1);
+            }
+}/*@media*/
+@media screen and (max-width:1380px){
+            .vision h3{
+                font-size: clamp(120px, 12vw, 140px);
+            }
+            .vision .list ul li .photo{
+                height: 572px;
+            }
+}/*@media*/
+@media screen and (max-width:1024px){
+            .vision{
+                padding: 75px 0;
+                margin-bottom: 0;
+            }
+            .vision h3{
+                display: none;
+            }
+            .vision .list ul li{
+                display: flex;
+                flex-direction: column-reverse;
+                gap: 70px 0;
+            }
+            .vision .list ul li .text_wrap{
+                width: 100%;
+                max-width: 100%;
+                padding-top: 30px;
+            }
+            .vision .list ul li .text_wrap::before{
+                left: 0;
+                top: 0;
+                transform: translateX(0);
+                width: 100%;
+                height: 1px;
+            }
+            .vision .list ul li .photo{
+                position: relative; /* absolute 해제 */
+                right: auto;
+                top: auto;
+                z-index: 0;
+                transform: translateY(0);
+                width: 100%;
+                max-width: 100%;
+                height: 600px;
+            }
+            .vision .paging{
+                display: none;
+            }
+            .vision button{
+                display: block;
+                position: absolute;  /* swiper 기준 정렬 */
+                left: -11px;
+                top: 32%;
+                z-index: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .vision button.next{
+                left: auto;
+                right: -11px;
+            }
+            .vision button svg{
+                width: 18px;
+                height: 25px;
+            }
+}/*@media*/
+@media screen and (max-width:768px){
+            .vision{
+                padding: 30px 0 45px 0;
+            }
+            .vision .list ul li{
+                gap: 35px 0;
+            }
+            .vision .list ul li .text_wrap p{
+                margin: 0.75em 0 0.94em 0;
+            }
+            .vision .list ul li .photo{
+                height: 350px;
+            }
+            .vision button{
+                left: -6px;
+            }
+            .vision button.next{
+                right: -6px;
+            }
+            .vision button svg {
+                width: 9px;
+                height: 16px;
+            }
+}/*@media*/
+
+
+
+.RD{
+    padding: 250px 0; 
+    background: url(../images/main/R&D_bg.jpg) no-repeat center center / cover;
+    color: var(--color-white);
+    position: relative;
+}
+.RD::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 60%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0.15;
+}
+.RD h2{
+    font-size: var(--font-size-sub3);
+    line-height: var(--line-height-tit);
+    margin-bottom: 1.2em;
+    position: relative;
+    z-index: 2;  /* .RD::after에 깔려서 준 값 */
+}
+.RD p{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-B);
+    line-height: var(--line-height-tit);
+    margin-bottom: 2.65em;
+}
+.RD .text_wrap{
+    position: relative;
+    z-index: 2;  /* .RD::after에 깔려서 준 값 */
+}
+.RD .text_wrap ul{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 120px var(--gap);
+}
+.RD .text_wrap ul li:nth-child(odd){
+    grid-column: 2 / 3;
+}
+.RD .text_wrap ul li:nth-child(3){
+    grid-row: 3 / 4;
+}
+.RD .text_wrap ul li:nth-child(4){
+    grid-row: 4 / 5;
+}
+.RD .text_wrap ul li{
+    display: flex;
+    flex-direction: column;
+}
+.RD .text_wrap ul li strong{
+    font-size: 60px;
+    font-weight: var(--font-weight-M);
+    line-height: var(--line-height-tit);
+    margin-bottom: 0.4em;
 }

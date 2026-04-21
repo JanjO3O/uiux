@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    const vision_swiper = new Swiper('.vision .swiper', { /* 팝업을 감싼는 요소의 class명 */
+    const vision_swiper = new Swiper('.vision .swiper', {
         // autoplay: {  /* 팝업 자동 실행 */
         //     delay: 2500,
         //     disableOnInteraction: true,
@@ -12,11 +12,16 @@ $(document).ready(function(){
         pagination: {  /* 몇개의 팝업이 있는지 보여주는 동그라미 */
             el: '.paging', /* 해당 요소의 class명 */
             clickable: true,  /* 클릭하면 해당 팝업으로 이동할 것인지 값 */
-            type: 'fraction',  /* type fraction을 주면 paging이 숫자로 표시됨 */
+            // type: 'fraction',  /* type fraction을 주면 paging이 숫자로 표시됨 */
             renderBullet: function (index, className) {   /* paging에 특정 코드 넣기 */
                 return '<span class="' + className + '">' + (index + 1) + "</span>";
             },
         },
+        navigation: {
+		    nextEl: '.vision .next',
+		    prevEl: '.vision .prev',  
+	    },
     });
 
+    $('.vision .paging span').text('')
 })
