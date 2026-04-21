@@ -31,7 +31,7 @@
                 left: 0;
                 top: 0;
                 width: 50vw;
-                height: clamp(600px, 85vw, 900px);  /* visual 높이랑 동일 */
+                height: 100%;
                 padding: 9em var(--wrapper-margin) 0 var(--wrapper-margin);
                 background-color: rgba(225, 216, 207, 0.65);
                 backdrop-filter: blur(50px);
@@ -85,7 +85,7 @@
                 transform: translateX(-50%);
                 width: 0;
                 height: 1px;
-                background-color: var(---color-222);
+                background-color: var(--color-222);
                 transition: 0.3s;
             }
             .header .gnb .gnb_wrap ul.depth1 > li > ul.depth2 > li > a:hover::after{
@@ -237,7 +237,7 @@
             }
             .header .gnb .gnb_wrap ul.depth1::-webkit-scrollbar-thumb{
                 height: 30%;
-                background: var(---color-222);
+                background: var(--color-222);
                 border-radius: 10px;
             }
             .header .gnb .gnb_wrap ul.depth1::-webkit-scrollbar-track{
