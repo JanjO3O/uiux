@@ -1,3 +1,17 @@
+.skip_nav{
+    position: fixed;
+    left: 0;
+    top: -100%;
+    z-index: 999;
+    width: 100%;
+    padding: 5px 0;
+    text-align: center;
+    background-color: var(--color-white);
+    color: var(--font-color);
+}
+.skip_nav:focus{
+    top: 0;
+}
 .header{
     position: fixed;
     left: var(--wrapper-margin);
@@ -316,5 +330,98 @@
             }
             .header .util{
                 display: none;
+            }
+}/*@media*/
+
+
+
+.footer{
+    padding: clamp(24px, 4vw, 40px) 0;
+    background: var(--color-green1);
+    color: rgba(255, 255, 255, 0.7);
+}
+.footer .footer_body{
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 3vw, 30px) 0;
+    padding-bottom: clamp(24px, 3vw, 30px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.footer .footer_body .f_body ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 37px;
+}
+.footer .footer_body .f_body ul li a{
+    display: block;
+    position: relative;
+}
+.footer .footer_body .f_body ul li a::before{
+    content: "";
+    position: absolute;
+    left: -19px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.footer .footer_body .f_body ul li:first-child a::before{
+    display: none;
+}
+.footer .footer_body .f_body ul li a.imp{
+    font-weight: var(--font-weight-B);
+    color: var(--color-white);
+}
+.footer .footer_body .f_info{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 60px;
+}
+.footer .foor_bottom{
+    display: flex;
+    gap: var(--gap) 0;
+    align-items: center;
+    margin-top: clamp(24px, 3vw, 30px);
+    position: relative;  /* f_nav 정렬 기준 */
+}
+.footer .foor_bottom .f_logo{
+    margin-right: var(--gap);
+}
+.footer .foor_bottom .f_logo .photo{
+    overflow: hidden;
+}
+.footer .foor_bottom .f_logo .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
+}
+.footer .foor_bottom .copyright{
+    font-size: 12px;
+}
+.footer .foor_bottom .f_nav{
+    position: absolute;  /* foor_bottom 기준 정렬 */
+    right: 0;
+}
+.footer .foor_bottom .f_nav ul{
+    display: flex;
+    gap: 0 18px;
+}
+.footer .foor_bottom .f_nav ul li a{
+    display: block;
+}
+.footer .foor_bottom .f_nav ul li a:hover{
+    color: var(--color-white);
+}
+@media screen and (max-width:1200px){
+            .footer .foor_bottom .f_nav{
+                display: none;
+            }
+}/*@media*/
+@media screen and (max-width:768px){
+            .footer .foor_bottom{
+                flex-direction: column;
+                align-items: flex-start;
             }
 }/*@media*/

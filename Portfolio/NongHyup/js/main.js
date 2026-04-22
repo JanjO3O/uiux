@@ -1,21 +1,21 @@
 $(document).ready(function(){
 
     const vision_swiper = new Swiper('.vision .swiper', {
-        // autoplay: {  /* 팝업 자동 실행 */
-        //     delay: 2500,
-        //     disableOnInteraction: true,
-        // },
+        autoplay: {  /* 팝업 자동 실행 */
+            delay: 5000,
+            disableOnInteraction: true,
+        },
         effect: "fade", /* fade 효과 */
 
         loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
 
         pagination: {  /* 몇개의 팝업이 있는지 보여주는 동그라미 */
-            el: '.paging', /* 해당 요소의 class명 */
+            el: '.vision .paging', /* 해당 요소의 class명 */
             clickable: true,  /* 클릭하면 해당 팝업으로 이동할 것인지 값 */
-            // type: 'fraction',  /* type fraction을 주면 paging이 숫자로 표시됨 */
-            renderBullet: function (index, className) {   /* paging에 특정 코드 넣기 */
-                return '<span class="' + className + '">' + (index + 1) + "</span>";
-            },
+            renderBullet: function (i, className) {
+                return '<button class="' + className + '"><svg viewBox="0 0 73 73" xmlns="http://www.w3.org/2000/svg"><circle cx="36.5" cy="36.5" r="35.5" class="circle"></circle></svg></button>';
+            /* svg에는 넓이높이 삭제, svg안에 circle이든 path든 fill/storke 삭제, 그리고 반드시 circle 클래스 추가 */
+            }
         },
         navigation: {
 		    nextEl: '.vision .next',
@@ -23,5 +23,21 @@ $(document).ready(function(){
 	    },
     });
 
-    $('.vision .paging span').text('')
+    
+    $('.counseling .list_wrap ul.list > li').on('mouseenter', function(){
+        let idx = $(this).index()
+        $('.counseling')
+            .removeClass('bg1 bg2 bg3')
+            .addClass('bg' + (idx + 1))
+    })
+    $('.counseling .list_wrap ul.list > li').on('mouseleave', function(){
+        $('.counseling').removeClass('bg1 bg2 bg3')
+    })
+
+    $('.top').on('click', function(){
+        $('html, body').animate({
+            scrollTop: 0
+        }, 500)
+    })
+    
 })
