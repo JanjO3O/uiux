@@ -1,3 +1,7 @@
+/* body.scroll_lock {
+    overflow: hidden;
+    touch-action: none;
+} */
 .skip_nav{
     position: fixed;
     left: 0;
@@ -24,11 +28,23 @@
     align-items: center;
     border: 1px solid var(--color-white);
 }
+.header.fixed{
+    background-color: var(--color-white);
+    color: var(--color-B);
+    border-color: var(--color-B);
+}
+.header.hide{
+    transform: translateY(-200%);
+}
+
 .header .logo{
     display: block;
     background: url(../images/common/logo_w.svg) no-repeat center center / contain;
     width: calc(var(--header-h) * 2.35);
     height: calc(var(--header-h) * 0.45);
+}
+.header.fixed .logo{
+    background-image: url(../images/common/logo_B.svg);
 }
 @media screen and (min-width:769px){  /* 769 이상 - pc */
             .header .gnb .gnb_open{
@@ -39,6 +55,10 @@
                 align-items: center;
                 justify-content: center;
                 border-right: 1px solid var(--color-white);
+            }
+            .header.fixed .gnb .gnb_open{
+                fill: var(--color-B);
+                border-color: var(--color-B);
             }
             .header .gnb .gnb_wrap{
                 position: fixed;  /* gnb_logo,gnb_close 정렬 기준 */
@@ -136,6 +156,10 @@
                 padding: 0 30px;
                 border-left: 1px solid var(--color-white);
             }
+            .header.fixed .util{
+                color: var(--color-B);
+                border-color: var(--color-B);
+            }
             .header .util a.home{
                 display: block;
                 position: relative;
@@ -149,6 +173,9 @@
                 width: 1px;
                 height: 11px;
                 background-color: rgba(255, 255, 255, 0.6);
+            }
+            .header.fixed .util a.home::after{
+                background-color: rgba(0, 0, 0, 0.6);
             }
 }/*@media*/
 @media screen and (max-width:1370px){

@@ -4,6 +4,10 @@ $(document).ready(function(){
     let mobile_size = 768 //모바일 사이즈
     let window_w  //브라우저 넓이
 
+    let scrolling   //현재 스크롤된 값
+    let prev_scroll = 0  //이전 스크롤 값
+    let move_scroll  //얼마나 스크롤 되었는지 변화값
+
     function device_chk(){
         window_w = $(window).width()
         if(window_w > mobile_size){
@@ -30,6 +34,7 @@ $(document).ready(function(){
         if(device_status == 'pc'){
             depth2.removeAttr('style')
         }
+        menuOpen()
     })
     gnb_close.on('click focusin', function(){
         gnb.removeClass('open')
@@ -37,6 +42,7 @@ $(document).ready(function(){
             depth1.removeClass('open')
             depth2.hide()
         }
+        menuClose()
     })
 
     depth1.on('click', function(){
@@ -47,8 +53,41 @@ $(document).ready(function(){
             $(this).find('ul.depth2').show()
         }
     })
+
+
+    function menuOpen() {
+        $('html, body').on('scroll.menuLock touchmove.menuLock mousewheel.menuLock', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        });
+    }
+
+    function menuClose() {
+        $('html, body').off('.menuLock');
+    }
     
+   
+    function header_fixed(){
+        scrolling = $(window).scrollTop()
+        if(scrolling > 0){
+            $('.header').addClass('fixed')
+            move_scroll = prev_scroll - scrolling   // 마이너스가 내려가는 중 / 플러스가 올라가는 중
+            if(move_scroll > 0){   // +++++  -> 올라가는 중
+                $('.header').removeClass('hide')
+            }else{   // ---- -> 내려가는 중
+                $('.header').addClass('hide')
+            }
+        }else{
+            $('.header').removeClass('fixed')
+        }
+        prev_scroll = scrolling
+    }
     
+    header_fixed()  //로딩되고 단 한 번 실행
+    $(window).scroll(function(){  //스크롤 될 때마다 실행
+        header_fixed()
+    })
 
 
 
