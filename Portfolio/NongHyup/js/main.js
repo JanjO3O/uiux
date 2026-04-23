@@ -39,5 +39,124 @@ $(document).ready(function(){
             scrollTop: 0
         }, 500)
     })
-    
+
+    AOS.init({
+        offset: 150, // 해당 콘텐츠가 하단에서 몇 px 위로 올라와에 나타나는 효과가 나타날지 셋팅하는 값
+        duration: 500, // 애니메이션 효과가 작동되는 시간
+        easing: 'ease', // 가속도
+    });
+
+    let device_status //브라우저 상태 -> pc인지 모바일인지
+    let mobile_size = 768 //모바일 사이즈
+    let window_w  //브라우저 넓이
+
+    let prev_scroll = 0  //이전 스크롤 값
+    let move_scroll  //얼마나 스크롤 되었는지 변화값
+
+    function device_chk(){
+        window_w = $(window).width()
+        if(window_w > mobile_size){
+            device_status = 'pc'
+        }else{
+            device_status = 'mo'
+        }
+        console.log(device_status)
+    }
+    device_chk()  //문서 로딩되고 단 한 번 실행
+    $(window).resize(function(){  //리사이즈 될 때마다 실행
+        device_chk()
+    })
+
+    let history_area = $('.history')
+    let history_line = $('.history .line')
+    let history_line_target
+    let history_name = $('.history .graph ul li')
+    let history_start
+    let history_time = 50
+    let history_time_reset
+    let history_clock
+    let history_x = []
+    let history_y = []
+    let history_leng = history_name.length
+    let scrolling
+    let win_h 
+    let history_ing = false
+    // console.log(history_leng)
+    function history_set(){
+        scrolling = $(window).scrollTop()
+        win_h = $(window).height()
+        history_start = history_area.offset().top - win_h + (win_h * 0.5)
+
+        for(i=0; i<history_leng; i++){
+            history_x[i] = history_name.eq(i).offset().left
+            history_y[i] = history_name.eq(i).offset().top
+        }
+
+        if(scrolling < history_start){
+            console.log('시작전')
+            history_ing = false
+            history_name.removeClass('active')
+        }else if(scrolling > history_area.offset().top){ //완전히 화면 위로 올라가서 안보일때
+            console.log('끝')
+            history_ing = false
+            history_name.removeClass('active')
+        }else{
+            console.log('해도됨')
+            if(history_ing == false){
+                history_ing = true
+                history_time_reset = 0
+                history_clock = setInterval(history_draw, 100)
+            }
+        }
+    }
+
+    function history_draw(){
+        if(device_status == 'pc'){
+            history_time_reset++
+        
+            if(history_time <= history_time_reset){
+                clearInterval(history_clock)
+            }
+
+            history_line.width((history_time_reset * 2) + '%')
+            history_line_target = history_line.offset().left + history_line.outerWidth()
+            for(i=0; i<history_leng; i++){
+                //console.log(history_x[i], history_line_target)
+                if(history_x[i] <= history_line_target){
+                    history_name.eq(i).addClass('active')
+                }
+            }
+        // }else{
+        //     history_time_reset++
+
+        //     if(history_time <= history_time_reset){
+        //         clearInterval(history_clock)
+        //     }
+
+        //     history_line.height((history_time_reset * 2) + '%')
+        //     history_line_target = history_line.offset().top + history_line.outerHeight()
+        //     for(i=0; i<history_leng; i++){
+        //         console.log(history_y[i], history_line_target)
+        //         if(history_y[i] <= history_line_target){
+        //             history_name.eq(i).addClass('active')
+        //         }
+        //     }
+        }
+        
+    }
+    // history_set()
+    // $(window).scroll(function(){
+    //     history_set()
+    // })
+    // $(window).resize(function(){
+    //     history_set()
+    // })
+
+    // history_draw()
+    // $(window).scroll(function(){
+    //     history_draw()
+    // })
+    // $(window).resize(function(){
+    //     history_draw()
+    // })
 })

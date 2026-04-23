@@ -92,7 +92,17 @@ body::-webkit-scrollbar-track{
 
 .history{
     background-color: var(--bg-color-I2);
-    padding: clamp(60px, 11vw, 120px) 0 clamp(70px, 8vw, 80px) 0;
+    padding: clamp(60px, 11vw, 120px) 0 80px 0;
+    position: relative;
+}
+.history .line {
+    position: absolute;
+    left: 0;
+    bottom: 204px;
+    width: 0;
+    height: 4px;
+    background-color: var(--color-green1);
+    transition: width 0.5s;
 }
 .history h2{
     font-size: var(--font-size-sub3);
@@ -101,27 +111,20 @@ body::-webkit-scrollbar-track{
     margin-bottom: var(--gap);
 }
 .history .graph{
-    display: flex;
-    align-items: flex-end;
     width: 100%;
     margin-bottom: 126px;
     position: relative;
 }
-.history .graph::after{
-    content: "";
-    position: absolute;
-    left: calc(calc(100vw - var(--wrapper-width)) / 2 * -1);
-    bottom: 0;
-    width: 100vw;
-    height: 4px;
-    background-color: var(--color-green1);
-}
-.history .box{
-    position: relative;
+.history ul li:first-child{
     width: 31.59%;
     height: 224px;
 }
-.history .box::before{
+.history ul li .box{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.history ul li .box::before{
     content: "";
     position: absolute;  /* box 기준 정렬 */
     left: 8px;
@@ -130,7 +133,7 @@ body::-webkit-scrollbar-track{
     height: calc(100% - 49px);
     background-color: var(--color-green1);
 }
-.history .box::after{
+.history ul li .box::after{
     content: "";
     position: absolute;
     left: 0;
@@ -139,8 +142,13 @@ body::-webkit-scrollbar-track{
     height: 18px;
     background-color: var(--color-green1);
     border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s;
 }
-.history .box .dot{
+.history ul li.active .box::after{
+    opacity: 1;
+}
+.history ul li .box .dot{
     position: absolute;  /* box 기준 정렬 */
     left: 0;
     top: 27px;
@@ -148,8 +156,14 @@ body::-webkit-scrollbar-track{
     height: 18px;
     background-color: var(--color-green1);
     border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s;
+    transition-delay: 0.1s;
 }
-.history .box .dot::after{
+.history ul li.active .box .dot{
+    opacity: 1;
+}
+.history ul li:first-child .box .dot::after{
     content: "";
     position: absolute;
     left: 50%;
@@ -182,36 +196,53 @@ body::-webkit-scrollbar-track{
         opacity: 0;
     }
 }
-.history .box strong{
-    margin-left: 34px;
+.history ul li:first-child .box strong{
     font-size: var(--font-size-sub2);
+    display: flex;
+    flex-direction: column;
+}
+.history ul li:first-child .box strong .hide,
+.history ul li:first-child .box strong .word{
+    margin: 0;
+}
+.history ul li .box strong{
+    margin-left: 34px;
+    font-size: var(--font-size-sub3);
     font-weight: var(--font-weight-B);
     line-height: var(--line-height-tit);
     color: var(--color-green1);
     display: flex;
 }
+.history ul li:not(li:first-child) .box strong{
+    flex-direction: column;
+}
 .history ul{
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    width: calc(100vw - 468px);
+    width: 100%;
     position: relative;
 }
 .history ul li{
+    opacity: 0;
     width: calc(16.66% - 15px);
     cursor: pointer;
+    transition: opacity 0.3s;
 }
-.history ul li:nth-child(even){
+.history ul li.active{
+    opacity: 1;
+}
+.history ul li:nth-child(odd):not(li:first-child){
     transform: translateY(100%);
 }
-.history ul li .box{
+.history ul li:not(li:first-child) .box{
     position: relative;
     width: 100%;
     height: 126px;
     display: flex;
     align-items: flex-start;
 }
-.history ul li:nth-child(even) .box{
+.history ul li:nth-child(odd):not(li:first-child) .box{
     align-items: flex-end;
 }
 .history ul li .box::before{
@@ -219,22 +250,31 @@ body::-webkit-scrollbar-track{
     position: absolute;
     top: 32px;
     height: calc(100% - 27px);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.4s;
 }
-.history ul li:nth-child(even) .box::before{
+.history ul li.active .box::before{
+    transform: scaleY(1);
+}
+.history ul li:nth-child(odd):not(:first-child) .box::before{
+    transform-origin: top;
+}
+.history ul li:nth-child(odd):not(li:first-child) .box::before{
     top: 4px;
 }
-.history ul li:nth-child(even) .box::after{
+.history ul li:nth-child(odd):not(li:first-child) .box::after{
     position: absolute;
     top: -9px;
 }
-.history ul li .box .dot{
+.history ul li:not(li:first-child) .box .dot{
     position: absolute;
     left: 3px;
     top: 20px;
     width: 12px;
     height: 12px;
 }
-.history ul li:nth-child(even) .box .dot{
+.history ul li:nth-child(odd):not(li:first-child) .box .dot{
     top: auto;
     bottom: 20px;
 }
@@ -255,41 +295,34 @@ body::-webkit-scrollbar-track{
 .history ul li:hover .box .dot::after{
     transform: translate(-50%, -50%) scale(1);
 }
-.history ul li .box strong{
-    font-size: var(--font-size-sub3);
-    flex-direction: column;
-}
 .history ul li .box strong span{
     font-weight: var(--font-weight-R);
 }
-@media screen and (max-width:1540px){  /* wrapper 풀리는 지점 */
-            .history .graph::after{
-                left: calc(var(--wrapper-margin) * -1);
+@media screen and (max-width:1220px){
+            .history ul li:first-child .box strong .hide{
+                display: none;
             }
-            .history ul{
-                width: 67.36%;
+            .history ul li:first-child{
+                width: calc(16.66% - 15px);
             }
 }/*@media*/
 @media screen and (max-width:1024px){
-            .history .box{
-                width: 25%;
-            }
-            .history .box .dot{
+            .history ul li:first-child .box .dot{
                 width: 15px;
                 height: 15px;
                 left: 2px;
                 top: 30px;
             }
-            .history .box::after{
+            .history ul li .box::after{
                 width: 15px;
                 height: 15px;
                 left: 1px;
                 bottom: -6px;
             }
-            .history .box strong{
+            .history ul li .box strong{
                 margin-left: 25px;
             }
-            .history ul li .box .dot{
+            .history ul li:not(li:first-child) .box .dot{
                 width: 10px;
                 height: 10px;
                 left: 4px;
@@ -300,38 +333,42 @@ body::-webkit-scrollbar-track{
             .history h2{
                 margin-bottom: 40px;
             }
-            .history .graph{
-                flex-direction: column;
-                align-items: center;
-                gap: 16px 0;
-            }
-            .history .graph::after{
-                transform: translateX(-50%) translateY(0) rotate(90deg);
+            .history .line{
                 left: 50%;
                 bottom: auto;
-                top: 410px;
-                width: 660px;
+                top: 199px;
+                width: 4px;
+                height: 660px;
+                transform: translateX(-50%);
             }
-            .history .box{
+            .history ul li:first-child{
+                width: 100%;
+                height: auto;
+            }
+            .history ul li:first-child .box{
                 width: 100%;
                 height: auto;
                 text-align: center;
                 display: flex;
                 justify-content: center;
                 margin-bottom: var(--gap);
+                padding: 0;
             }
-            .history .box::before{
+            .history ul li:first-child .box::before{
                 display: none;
             }
-            .history .box::after{
+            .history ul li:first-child .box::after{
                 left: 50%;
                 bottom: -25px;
                 transform: translateX(-50%);
                 width: 14px;
                 height: 14px;
             }
-            .history .box .dot{
+            .history ul li:first-child .box .dot{
                 display: none;
+            }
+            .history ul li:first-child .box strong{
+                margin: 0;
             }
             .history ul{
                 width: 100%;
@@ -341,7 +378,7 @@ body::-webkit-scrollbar-track{
             .history ul li{
                 width: 50%;
             }
-            .history ul li:nth-child(even){
+            .history ul li:nth-child(odd):not(li:first-child){
                 transform: translateX(-100%);
             }
             .history ul li:last-child{
@@ -353,7 +390,7 @@ body::-webkit-scrollbar-track{
                 justify-content: flex-start;
                 padding-left: 55px;
             }
-            .history ul li:nth-child(even) .box{
+            .history ul li:nth-child(odd):not(li:first-child) .box{
                 justify-content: flex-end;
                 align-items: flex-start;
                 padding-right: 75px;
@@ -369,11 +406,11 @@ body::-webkit-scrollbar-track{
                 display: block;
                 width: 55px;
                 height: 2px;
-                left: 5px;
+                left: 8px;
                 top: auto;
-                bottom: 0;
+                bottom: -1px;
             }
-            .history ul li:nth-child(even) .box::before{
+            .history ul li:nth-child(odd):not(li:first-child) .box::before{
                 left: auto;
                 right: 5px;
                 top: auto;
@@ -383,10 +420,10 @@ body::-webkit-scrollbar-track{
                 display: none;
             }
             .history ul li .box::after{
-                left: 0;
-                bottom: -4px;
+                left: -7px;
+                bottom: -7px;
             }
-            .history ul li:nth-child(even) .box::after{
+            .history ul li:nth-child(odd):not(li:first-child) .box::after{
                 left: auto;
                 top: auto;
                 right: -14px;
@@ -406,7 +443,12 @@ body::-webkit-scrollbar-track{
                 width: 8px;
                 height: 8px;
             }
-            .history ul li:nth-child(even) .box .dot{
+            .history ul li:not(li:first-child) .box .dot{
+                left: 62px;
+                top: auto;
+                bottom: -5px;
+            }
+            .history ul li:nth-child(odd):not(li:first-child) .box .dot{
                 top: 55px;
                 bottom: auto;
                 left: auto;

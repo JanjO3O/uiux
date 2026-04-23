@@ -55,24 +55,25 @@ $(document).ready(function(){
     })
 
 
-    function menuOpen() {
-        $('html, body').on('scroll.menuLock touchmove.menuLock mousewheel.menuLock', function(e){
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        });
-    }
+    // function menuOpen() {
+    //     $('html, body').on('scroll.menuLock touchmove.menuLock mousewheel.menuLock', function(e){
+    //         e.preventDefault();
+    //         e.stopPropagation();
+    //         return false;
+    //     });
+    // }
 
-    function menuClose() {
-        $('html, body').off('.menuLock');
-    }
+    // function menuClose() {
+    //     $('html, body').off('.menuLock');
+    // }
     
    
     function header_fixed(){
         scrolling = $(window).scrollTop()
+        move_scroll = prev_scroll - scrolling   // 마이너스가 내려가는 중 / 플러스가 올라가는 중
+        
         if(scrolling > 0){
             $('.header').addClass('fixed')
-            move_scroll = prev_scroll - scrolling   // 마이너스가 내려가는 중 / 플러스가 올라가는 중
             if(move_scroll > 0){   // +++++  -> 올라가는 중
                 $('.header').removeClass('hide')
             }else{   // ---- -> 내려가는 중
