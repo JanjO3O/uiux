@@ -336,14 +336,15 @@ body::-webkit-scrollbar-track{
             .history .line{
                 left: 50%;
                 bottom: auto;
-                top: 199px;
+                top: 229px;
                 width: 4px;
-                height: 660px;
+                height: 700px;
                 transform: translateX(-50%);
             }
             .history ul li:first-child{
                 width: 100%;
                 height: auto;
+                margin-bottom: var(--gap);
             }
             .history ul li:first-child .box{
                 width: 100%;
@@ -359,6 +360,7 @@ body::-webkit-scrollbar-track{
             }
             .history ul li:first-child .box::after{
                 left: 50%;
+                top: auto;
                 bottom: -25px;
                 transform: translateX(-50%);
                 width: 14px;
@@ -368,22 +370,34 @@ body::-webkit-scrollbar-track{
                 display: none;
             }
             .history ul li:first-child .box strong{
-                margin: 0;
+                flex-direction: row;
+                align-items: flex-end;
+                margin-left: 0;
+            }
+            .history ul li:first-child .box strong .hide{
+                display: inline-block;
+            }
+            .history ul li:first-child .box strong .word{
+                margin-left: -25px;
             }
             .history ul{
                 width: 100%;
                 flex-direction: column;
-                gap: 60px 0;
+                /* gap: 60px 0; */
             }
             .history ul li{
                 width: 50%;
+            }
+            .history ul li:nth-child(2){
+                margin-top: 60px;
             }
             .history ul li:nth-child(odd):not(li:first-child){
                 transform: translateX(-100%);
             }
             .history ul li:last-child{
                 width: 100%;
-                transform: translateX(0);
+                margin-top: 20px;
+                transform: translate(0, 0) !important;
             }
             .history ul li .box{
                 height: 60px;
@@ -397,43 +411,42 @@ body::-webkit-scrollbar-track{
                 padding-left: 0;
             }
             .history ul li:last-child .box{
-                justify-content: center;
-                margin-bottom: 0;
+                justify-content: center !important;
+                align-items: flex-start !important;
                 margin-top: var(--gap);
-                padding: 0;
+                padding: 0 !important;
             }
             .history ul li .box::before{
                 display: block;
                 width: 55px;
                 height: 2px;
                 left: 8px;
-                top: auto;
-                bottom: -1px;
+                top: 53px;
             }
             .history ul li:nth-child(odd):not(li:first-child) .box::before{
                 left: auto;
-                right: 5px;
-                top: auto;
-                bottom: 0;
+                right: 8px;
+                top: 53px;
             }
             .history ul li:last-child .box::before{
                 display: none;
             }
             .history ul li .box::after{
                 left: -7px;
-                bottom: -7px;
+                bottom: auto;
+                top: 46px;
             }
-            .history ul li:nth-child(odd):not(li:first-child) .box::after{
+            .history ul li:nth-child(odd):not(li:first-child, li:last-child) .box::after{
                 left: auto;
-                top: auto;
-                right: -14px;
-                bottom: -6px;
+                right: -7px;
+                top: 46px;
             }
             .history ul li:last-child .box::after{
                 left: 50%;
-                top: -26px;
                 right: auto;
+                top: -22px !important;
                 bottom: auto;
+                transform: translateX(-50%);
             }
             .history ul li .box .dot{
                 display: block;
@@ -445,14 +458,13 @@ body::-webkit-scrollbar-track{
             }
             .history ul li:not(li:first-child) .box .dot{
                 left: 62px;
-                top: auto;
-                bottom: -5px;
+                top: 49px;
             }
             .history ul li:nth-child(odd):not(li:first-child) .box .dot{
-                top: 55px;
-                bottom: auto;
                 left: auto;
-                right: 60px;
+                right: 62px;
+                top: 49px;
+                bottom: auto;
             }
             .history ul li:last-child .box .dot{
                 display: none;
@@ -461,9 +473,9 @@ body::-webkit-scrollbar-track{
                 text-align: left;
             }
             .history ul li:last-child .box strong{
-                flex-direction: row;
+                flex-direction: row !important;
                 gap: 0 3px;
-                margin: 0;
+                margin: 5px 0 0 0;
             }
 }/*@media*/
 
