@@ -34,7 +34,7 @@
     border-color: var(--color-B);
 }
 .header.hide{
-    transform: translateY(-150%);
+    opacity: 0;
 }
 
 .header .logo{
