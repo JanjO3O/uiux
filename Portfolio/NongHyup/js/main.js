@@ -70,9 +70,12 @@ $(document).ready(function(){
     let history_area = $('.history')
     let history_line = $('.history .line')
     let history_line_target
+    let history_line_start
+    let history_line_end
     let history_name = $('.history .graph ul li')
     let history_start
-    let history_time = 50
+    let history_end
+    let history_time = 60
     let history_time_reset
     let history_clock
     let history_x = []
@@ -82,10 +85,12 @@ $(document).ready(function(){
     let win_h 
     let history_ing = false
     // console.log(history_leng)
+
     function history_set(){
         scrolling = $(window).scrollTop()
         win_h = $(window).height()
         history_start = history_area.offset().top - win_h + (win_h * 0.5)
+        history_end = scrolling > history_area.offset().top
 
         for(i=0; i<history_leng; i++){
             history_x[i] = history_name.eq(i).offset().left
@@ -96,7 +101,7 @@ $(document).ready(function(){
             console.log('시작전')
             history_ing = false
             history_name.removeClass('active')
-        }else if(scrolling > history_area.offset().top){ //완전히 화면 위로 올라가서 안보일때
+        }else if(history_end){ //완전히 화면 위로 올라가서 안보일때
             console.log('끝')
             history_ing = false
             history_name.removeClass('active')
@@ -113,6 +118,11 @@ $(document).ready(function(){
     function history_draw(){
         if(device_status == 'pc'){
             history_time_reset++
+            history_line.css({
+                top: '',
+                height: 4,
+                width: 0
+            })
         
             if(history_time <= history_time_reset){
                 clearInterval(history_clock)
@@ -126,37 +136,56 @@ $(document).ready(function(){
                     history_name.eq(i).addClass('active')
                 }
             }
-        // }else{
-        //     history_time_reset++
+        }else{
+            history_time_reset++
 
-        //     if(history_time <= history_time_reset){
-        //         clearInterval(history_clock)
-        //     }
+            let history_area_top = history_area.offset().top
 
-        //     history_line.height((history_time_reset * 2) + '%')
-        //     history_line_target = history_line.offset().top + history_line.outerHeight()
-        //     for(i=0; i<history_leng; i++){
-        //         console.log(history_y[i], history_line_target)
-        //         if(history_y[i] <= history_line_target){
-        //             history_name.eq(i).addClass('active')
-        //         }
-        //     }
+            // 🔥 시작: 두번째 li
+            history_line_start = history_name.eq(1).offset().top
+
+            // 🔥 끝: 마지막 li (필요하면 eq(6) 유지해도 됨)
+            history_line_end = history_name.eq(6).offset().top
+
+            // 🔥 line 위치를 두번째 li에 맞춤
+            history_line.css({
+                top: history_line_start - history_area_top,
+                width: 4
+            })
+
+            // 전체 길이
+            let history_line_total = history_line_end - history_line_start
+
+            // px 기준 증가
+            let history_line_h = history_time_reset * (history_line_total / history_time)
+
+            // 🔥 끝에서 멈춤
+            if(history_line_h >= history_line_total){
+                history_line_h = history_line_total
+                clearInterval(history_clock)
+            }
+
+            history_line.height(history_line_h)
+
+            history_line_target = history_line.offset().top + history_line.outerHeight()
+
+            for(let i=0; i<history_leng; i++){
+                if(history_y[i] <= history_line_target){
+                    history_name.eq(i).addClass('active')
+                }
+            }
         }
         
     }
-    // history_set()
-    // $(window).scroll(function(){
-    //     history_set()
-    // })
-    // $(window).resize(function(){
-    //     history_set()
-    // })
+    history_set()
+    history_draw()
+    $(window).scroll(function(){
+        history_set()
+        history_draw()
+    })
+    $(window).resize(function(){
+        history_set()
+        history_draw()
+    })
 
-    // history_draw()
-    // $(window).scroll(function(){
-    //     history_draw()
-    // })
-    // $(window).resize(function(){
-    //     history_draw()
-    // })
 })

@@ -55,17 +55,17 @@ $(document).ready(function(){
     })
 
 
-    // function menuOpen() {
-    //     $('html, body').on('scroll.menuLock touchmove.menuLock mousewheel.menuLock', function(e){
-    //         e.preventDefault();
-    //         e.stopPropagation();
-    //         return false;
-    //     });
-    // }
+    function menuOpen() {
+        $('html, body').on('scroll.menuLock touchmove.menuLock mousewheel.menuLock', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        });
+    }
 
-    // function menuClose() {
-    //     $('html, body').off('.menuLock');
-    // }
+    function menuClose() {
+        $('html, body').off('.menuLock');
+    }
     
    
     function header_fixed(){
