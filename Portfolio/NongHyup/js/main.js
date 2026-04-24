@@ -1,51 +1,5 @@
 $(document).ready(function(){
 
-    const vision_swiper = new Swiper('.vision .swiper', {
-        autoplay: {  /* 팝업 자동 실행 */
-            delay: 5000,
-            disableOnInteraction: true,
-        },
-        effect: "fade", /* fade 효과 */
-
-        loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
-
-        pagination: {  /* 몇개의 팝업이 있는지 보여주는 동그라미 */
-            el: '.vision .paging', /* 해당 요소의 class명 */
-            clickable: true,  /* 클릭하면 해당 팝업으로 이동할 것인지 값 */
-            renderBullet: function (i, className) {
-                return '<button class="' + className + '"><svg viewBox="0 0 73 73" xmlns="http://www.w3.org/2000/svg"><circle cx="36.5" cy="36.5" r="35.5" class="circle"></circle></svg></button>';
-            /* svg에는 넓이높이 삭제, svg안에 circle이든 path든 fill/storke 삭제, 그리고 반드시 circle 클래스 추가 */
-            }
-        },
-        navigation: {
-		    nextEl: '.vision .next',
-		    prevEl: '.vision .prev',  
-	    },
-    });
-
-    
-    $('.counseling .list_wrap ul.list > li').on('mouseenter', function(){
-        let idx = $(this).index()
-        $('.counseling')
-            .removeClass('bg1 bg2 bg3')
-            .addClass('bg' + (idx + 1))
-    })
-    $('.counseling .list_wrap ul.list > li').on('mouseleave', function(){
-        $('.counseling').removeClass('bg1 bg2 bg3')
-    })
-
-    $('.top').on('click', function(){
-        $('html, body').animate({
-            scrollTop: 0
-        }, 500)
-    })
-
-    AOS.init({
-        offset: 150, // 해당 콘텐츠가 하단에서 몇 px 위로 올라와에 나타나는 효과가 나타날지 셋팅하는 값
-        duration: 500, // 애니메이션 효과가 작동되는 시간
-        easing: 'ease', // 가속도
-    });
-
     let device_status //브라우저 상태 -> pc인지 모바일인지
     let mobile_size = 768 //모바일 사이즈
     let window_w  //브라우저 넓이
@@ -141,13 +95,13 @@ $(document).ready(function(){
 
             let history_area_top = history_area.offset().top
 
-            // 🔥 시작: 두번째 li
+            // 시작: 두번째 li
             history_line_start = history_name.eq(1).offset().top
 
-            // 🔥 끝: 마지막 li (필요하면 eq(6) 유지해도 됨)
+            // 끝: 마지막 li (필요하면 eq(6) 유지해도 됨)
             history_line_end = history_name.eq(6).offset().top
 
-            // 🔥 line 위치를 두번째 li에 맞춤
+            // line 위치를 두번째 li에 맞춤
             history_line.css({
                 top: history_line_start - history_area_top,
                 width: 4
@@ -159,7 +113,7 @@ $(document).ready(function(){
             // px 기준 증가
             let history_line_h = history_time_reset * (history_line_total / history_time)
 
-            // 🔥 끝에서 멈춤
+            // 끝에서 멈춤
             if(history_line_h >= history_line_total){
                 history_line_h = history_line_total
                 clearInterval(history_clock)
@@ -187,5 +141,58 @@ $(document).ready(function(){
         history_set()
         history_draw()
     })
+
+
+
+
+    const vision_swiper = new Swiper('.vision .swiper', {
+        autoplay: {  /* 팝업 자동 실행 */
+            delay: 5000,
+            disableOnInteraction: true,
+        },
+        effect: "fade", /* fade 효과 */
+
+        loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
+
+        pagination: {  /* 몇개의 팝업이 있는지 보여주는 동그라미 */
+            el: '.vision .paging', /* 해당 요소의 class명 */
+            clickable: true,  /* 클릭하면 해당 팝업으로 이동할 것인지 값 */
+            renderBullet: function (i, className) {
+                return '<button class="' + className + '"><svg viewBox="0 0 73 73" xmlns="http://www.w3.org/2000/svg"><circle cx="36.5" cy="36.5" r="35.5" class="circle"></circle></svg></button>';
+            /* svg에는 넓이높이 삭제, svg안에 circle이든 path든 fill/storke 삭제, 그리고 반드시 circle 클래스 추가 */
+            }
+        },
+        navigation: {
+		    nextEl: '.vision .next',
+		    prevEl: '.vision .prev',  
+	    },
+    });
+
+    
+    $('.counseling .list_wrap ul.list > li').on('mouseenter', function(){
+        let idx = $(this).index()
+        $('.counseling')
+            .removeClass('bg1 bg2 bg3')
+            .addClass('bg' + (idx + 1))
+    })
+    $('.counseling .list_wrap ul.list > li').on('mouseleave', function(){
+        $('.counseling').removeClass('bg1 bg2 bg3')
+    })
+
+
+
+
+    $('.top').on('click', function(){
+        $('html, body').animate({
+            scrollTop: 0
+        }, 500)
+    })
+
+
+    AOS.init({
+        offset: 150, // 해당 콘텐츠가 하단에서 몇 px 위로 올라와에 나타나는 효과가 나타날지 셋팅하는 값
+        duration: 500, // 애니메이션 효과가 작동되는 시간
+        easing: 'ease', // 가속도
+    });
 
 })
