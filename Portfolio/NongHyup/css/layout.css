@@ -279,8 +279,8 @@
                 gap: 50px 0;
             }
             .header .gnb .gnb_wrap ul.depth1::-webkit-scrollbar{
-                width: 5px;
-                height: 5px;
+                width: 6px;
+                height: 6px;
             }
             .header .gnb .gnb_wrap ul.depth1::-webkit-scrollbar-thumb{
                 height: 30%;

@@ -74,13 +74,17 @@ $(document).ready(function(){
         
         if(scrolling > 0){
             $('.header').addClass('fixed')
-            if(move_scroll > 0){   // +++++  -> 올라가는 중
+            if(gnb.hasClass('open')){
                 $('.header').removeClass('hide')
-            }else{   // ---- -> 내려가는 중
-                $('.header').addClass('hide')
+            }else{
+                if(move_scroll > 0){   // +++++  -> 올라가는 중
+                    $('.header').removeClass('hide')
+                }else{   // ---- -> 내려가는 중
+                    $('.header').addClass('hide')
+                }
             }
         }else{
-            $('.header').removeClass('fixed')
+            $('.header').removeClass('fixed hide')
         }
         prev_scroll = scrolling
     }
