@@ -73,6 +73,9 @@
                 transform: translateX(-120%);
                 transition: transform 0.6s;
             }
+            .header.fixed.hide .gnb.open .gnb_wrap{
+                position: fixed !important;
+            }
             .header .gnb.open .gnb_wrap{
                 transform: translateX(0);
             }
@@ -257,7 +260,7 @@
                 z-index: 100;
                 width: 100%;
                 height: clamp(600px, 85vw, 900px);  /* visual 높이 */
-                padding-top: var(--header-h);
+                padding: var(--header-h) 0;
                 background-color: var(--bg-color-I);
                 transform: translateX(120%);
                 transition: 0.6s;
