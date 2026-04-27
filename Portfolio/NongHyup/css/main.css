@@ -3,7 +3,7 @@
 @import url(fonts.css);
 @import url(layout.css);
 
-body{
+html,body{
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -98,6 +98,7 @@ body::-webkit-scrollbar-track{
     background-color: var(--bg-color-I2);
     padding: clamp(60px, 11vw, 120px) 0 80px 0;
     position: relative;
+    overflow: hidden;
 }
 .history .line {
     position: absolute;
