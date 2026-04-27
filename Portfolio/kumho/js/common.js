@@ -137,16 +137,6 @@ $(document).ready(function(){
         }
     })
 
-    // $('.header .util .sitemap_btn').on('click', function(){
-    //     if($('.header').hasClass('menu_open')){
-    //         $('.header').removeClass('menu_open')
-    //         $('.header .sitemap .sitemap_wrap ul.depth1 > li').removeClass('open')
-    //         $('.header .sitemap .sitemap_wrap ul.depth1 > li > ul.depth2').slideUp(300, function(){
-    //             $(this).removeAttr('style')
-    //         })
-    //     }
-    // })
-
 
 
     let trackAnim;
