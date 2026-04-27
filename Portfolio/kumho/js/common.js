@@ -58,6 +58,11 @@ $(document).ready(function(){
             $(this).attr('title', '메뉴 닫기')  //attr-> 주어진 조건에 맞는 속성값을 갖고오는건데,, 여기선 sitemap_btn에 있는 title값을 '메뉴 닫기'값으로 변경하라는 뜻
         }else{
             $(this).attr('title', '메뉴 열기')
+            $('.header').removeClass('menu_open')
+            $('.header .sitemap .sitemap_wrap ul.depth1 > li').removeClass('open')
+            $('.header .sitemap .sitemap_wrap ul.depth1 > li > ul.depth2').slideUp(300, function(){
+                $(this).removeAttr('style')
+            })
         }
     })
     
@@ -125,13 +130,27 @@ $(document).ready(function(){
     $('.header .sitemap .sitemap_bg').on('click', function(){
         if(device_status == 'mo'){
             $('.header').removeClass('menu_open')
+            $('.header .sitemap .sitemap_wrap ul.depth1 > li').removeClass('open')
+            $('.header .sitemap .sitemap_wrap ul.depth1 > li > ul.depth2').slideUp(300, function(){
+                $(this).removeAttr('style')
+            })
         }
     })
+
+    // $('.header .util .sitemap_btn').on('click', function(){
+    //     if($('.header').hasClass('menu_open')){
+    //         $('.header').removeClass('menu_open')
+    //         $('.header .sitemap .sitemap_wrap ul.depth1 > li').removeClass('open')
+    //         $('.header .sitemap .sitemap_wrap ul.depth1 > li > ul.depth2').slideUp(300, function(){
+    //             $(this).removeAttr('style')
+    //         })
+    //     }
+    // })
 
 
 
     let trackAnim;
-    $('.header .sitemap .sitemap_wrap ul.depth1 > li > button').on('mouseenter', function(){
+    $('.header .sitemap .sitemap_wrap ul.depth1 > li > button').on('click', function(){
         if(device_status == 'mo'){
             let btn = $(this)
             let wrap = $('.header .sitemap .sitemap_wrap')
@@ -185,6 +204,10 @@ $(document).ready(function(){
             trackAnim = requestAnimationFrame(animateIndicator)
         }
     })
+
+   
+
+
 
     $('.top').on('click', function(){
         $('html, body').animate({
