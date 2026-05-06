@@ -314,3 +314,63 @@
     line-height: var(--line-height-tit);
     color: var(--color-3d);
 }
+
+
+
+.works02{
+    background-color: #F1EAE2;
+    height: 950px;
+    padding: 70px 110px;
+}
+.works02 .inner{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.works02 .inner .text{
+    display: flex;
+    flex-direction: column;
+}
+.works02 .inner .text h2{
+    font-size: 26px;
+    line-height: var(--line-height-tit);
+}
+.works02 .inner .text strong{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 80px;
+    line-height: var(--line-height-tit);
+    margin: 0.375em 0 0.625em 0;
+}
+.works02 .inner .text a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38.05%;
+    height: 60px;
+    border: 1px solid #2d2d2d;
+    border-radius: 60px;
+    padding: 13px 60px;
+    text-align: center;
+}
+.works02 .inner .text a:hover{
+    background-color: #1d1d1d;
+    color: #fff;
+    font-weight: var(--font-weight-B);
+}
+.works02 .inner .photo{
+    width: 36.47%;
+    height: 750px;
+    overflow: hidden;
+}
+.works02 .inner .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
+}
+.works02 .inner .box{
+    position: absolute;  /* inner 기준 */
+    left: 0;
+    bottom: 0;
+}
