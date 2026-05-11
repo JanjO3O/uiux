@@ -3,6 +3,11 @@
 @import url(default.css);
 
 
+.full_area{
+    height: 100vh;
+}
+
+
 
 .header{
     position: fixed;
@@ -86,6 +91,8 @@
 }
 .visual .photo{
     overflow: hidden;
+    width: 100%;
+    height: 100%;
 }
 .visual .photo img{
     width: 100%;
@@ -212,9 +219,24 @@
 
 
 
+.works_list{
+    overflow: hidden;
+}
+.works_list > ul{
+    display: flex;
+    width: max-content;
+}
+.works_list > ul > li{
+    display: block;
+    flex-shrink: 0;
+    min-width: 100vw;
+    height: 100vh;
+}
+
+
+
 .works01{
-    height: 950px;
-    margin-top: 150px;
+    background-color: #FFFBEF;
 }
 .works01 .inner{
     display: flex;
@@ -224,7 +246,7 @@
 .works01 h2{
     font-size: 50px;
     line-height: var(--line-height-tit);
-    margin: 25px 55px 0 100px;
+    margin: 97px 55px 0 100px;
 }
 .works01 a:not(.view){
     position: absolute; /* inner 기준 정렬 */
@@ -331,7 +353,6 @@
     background-color: #F1EAE2;
     height: 950px;
     padding: 70px 110px;
-    margin-top: 250px;
 }
 .works02 .inner{
     position: relative;
@@ -430,5 +451,160 @@
 
 .works03{
     background-color: #FFFBEF;
-    padding: 78px 0 78px 113px;
+}
+.works03 .inner{
+    padding: 75px 0 75px 113px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+.works03 .inner .tit{
+    width: 68.73%;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(255, 251, 239, 0.65);
+    padding: 30px 40px 30px 0;
+    position: relative;
+    z-index: 2; /* photo에 깔려서 준 값 */
+}
+.works03 .inner .tit::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 30px;
+    width: 100%;
+    height: 1px;
+    background-color: #A58E5C;
+}
+.works03 .inner .tit h2{
+    font-size: 26px;
+    font-weight: var(--font-weight-B);
+    line-height: var(--line-height-tit);
+}
+.works03 .inner .tit strong{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 80px;
+    line-height: var(--line-height-tit);
+    letter-spacing: 5%;
+    color: #A68446;
+}
+.works03 .inner .list{
+    position: relative;  /* device 정렬 기준 */
+    width: 50.75%;
+}
+.works03 .inner .list ul{
+    display: flex;
+    flex-direction: column;
+    gap: 70px 0;
+}
+.works03 .inner .list ul li{
+    display: flex;
+    flex-direction: column;
+    gap: 16px 0;
+}
+.works03 .inner .list ul li strong{
+    font-size: 30px;
+    font-weight: var(--font-weight-B);
+    line-height: var(--line-height-tit);
+}
+.works03 .inner .list ul li span{
+    font-size: 30px;
+    line-height: var(--line-height-tit);
+    color: #3d3d3d;
+}
+.works03 .inner .list .device{
+    display: block;
+    position: absolute;
+    right: 0;
+    top: calc(50% - 166.5px);
+    width: 51.58%;
+    height: 333px;
+}
+.works03 .inner .list .device:hover{
+    animation: device 3s linear infinite;
+}
+@keyframes device {
+    0%{transform: rotate(-10deg);}
+    50%{transform: rotate(10deg);}
+    100%{transform: rotate(-10deg);}
+}
+.works03 .inner .list .device .photo.pc{
+    overflow: hidden;
+    width: 90.27%;
+    height: 277px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.works03 .inner .list .device .photo.mo{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    width: 24.74%;
+    height: 217px;
+}
+.works03 .inner .list .device .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
+}
+.works03 .inner > a{
+    display: block;
+    position: absolute; /* inner 기준 정렬 */
+    right: 0;
+    top: 0;
+    width: 39.58%;
+    height: 100%;
+}
+.works03 .inner > a > .photo{
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.works03 .inner > a > .photo > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
+    transition: 0.4s;
+}
+.works03 .inner > a:hover > .photo > img{
+    transform: scale3d(1.125, 1.125, 1);
+}
+.works03 .inner .more{
+    display: block;
+    position: absolute;  /* inner 기준 */
+    right: 40px;
+    bottom: 40px;
+    top: auto;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: #A78548;
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='39' viewBox='0 0 52 39' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M32.4003 39L28.7465 35.2595L41.9865 22.0868H0V16.9132H41.9865L28.7465 3.74048L32.4003 0L52 19.5L32.4003 39Z' fill='white'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 52px;
+}
+.works03 .inner .more:hover{
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='39' viewBox='0 0 52 39' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M32.4003 39L28.7465 35.2595L41.9865 22.0868H0V16.9132H41.9865L28.7465 3.74048L32.4003 0L52 19.5L32.4003 39Z' fill='%23A78548'/%3E%3C/svg%3E%0A");
+}
+
+
+
+.footer .photo{
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.footer .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
 }
