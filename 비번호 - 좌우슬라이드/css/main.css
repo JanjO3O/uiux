@@ -1,0 +1,160 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li{
+    list-style: none;
+}
+a{
+    color: inherit;
+    text-decoration: none;  /* 밑줄 삭제 */
+}
+.blind{
+    display: none;
+}
+body{
+    font-family: '맑은고딕';
+    font-size: 17px;
+    color: #333;
+    background-color: #fff;
+}
+.wrapper{
+    width: 1200px;
+    margin: 0 auto; /* 가운데 정렬 */
+    position: relative; /* popup 정렬 기준을 위함 */
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 10px 0 0 0;
+    position: relative;
+    z-index: 100;
+}
+header nav ul.depth1{
+    display: flex;
+}
+header nav ul.depth1 > li{
+    position: relative;
+}
+header nav ul.depth1 > li > a{
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 80px;
+    color: #1d1d1d;
+    padding: 0 40px;
+}
+header nav ul.depth1 > li.active > a{
+    background-color: #0066ad;
+    color: #fff;
+}
+header nav ul.depth1 > li > ul.depth2{
+    position: absolute;
+    left: 0;
+    top: 80px;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    border: 1px solid #30a313;
+    color: #30a313;
+    display: none;
+}
+header nav ul.depth1 > li.active > ul.depth2{
+    display: block;
+}
+header nav ul.depth1 > li > ul.depth2 > li > a{
+    display: block;
+    padding: 10px 0;
+}
+header nav ul.depth1 > li > ul.depth2 > li > a:hover,
+header nav ul.depth1 > li > ul.depth2 > li > a:focus{
+    background-color: #30a313;
+    color: #fff;
+    font-weight: 700;
+}
+.visual{
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+.visual ul{
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: 0.5s;
+}
+.group{
+    height: 200px;
+    padding: 10px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+.bbs{
+    width: 400px;
+    position: relative; /* li tab_cont 정렬 기준 */
+}
+.bbs > ul{
+    display: flex;
+}
+.bbs ul li button{
+    border: 1px solid #666;
+    border-bottom: 0;
+    background-color: #666;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+.bbs ul li.active button{
+    border-color: #1d1d1d;
+    border-bottom: 0;
+    background-color: #fff;
+    color: #1d1d1d;
+}
+.bbs ul li .tab_cont{
+    position: absolute; /* bbs 기준 정렬 */
+    left: 0;
+    top: 50px;
+    width: 100%;
+    display: none;
+}
+.bbs ul li.active .tab_cont{
+    display: block;
+}
+.bbs ul li.notice .tab_cont ul li a{
+    display: flex;
+    justify-content: space-between;
+}
+.popup{
+    position: absolute; /* wrapper 기준 정렬 */
+    left: 50%;
+    top: 50%;
+    z-index: 101; /* header보다 위 */
+    transform: translate(-50%, -50%);
+    background-color: #0066ad;
+    color: #fff;
+    width: 600px;
+    padding: 50px;
+    display: none;
+}
+.popup p{
+    margin: 30px 0;
+}
+.popup .close{
+    text-align: right;
+}
+.popup .close button{
+    background-color: #30a313;
+    border: 0;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 5px 20px;
+    cursor: pointer;
+}
