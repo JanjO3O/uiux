@@ -1,0 +1,241 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul, li{
+    list-style: none;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.blind{
+    display: none;
+}
+.wrapper{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+body{
+    font-family: '맑은고딕', 'Malgun Gothic', '돋움';
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    position: relative;
+    z-index: 100;
+}
+header h1 a{
+    display: block;
+    width: 200px;
+    height: 40px;
+}
+header h1 a img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
+}
+header nav ul.depth1{
+    display: flex;
+}
+header nav ul.depth1 > li{
+    position: relative;
+}
+header nav ul.depth1 > li > a{
+    display: block;
+    line-height: 60px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    width: 130px;
+    background-color: #0066ad;
+    color: #fff;
+}
+header nav ul.depth1 > li.active > a,
+header nav ul.depth1 > li > a:focus{
+    background-color: #be29ce;
+    color: #fff;
+}
+header nav ul.depth1 > li > ul.depth2{
+    position: absolute;
+    left: 0;
+    top: 60px;
+    width: 100%;
+    background-color: #be29ce;
+    text-align: center;
+    display: none;
+}
+header nav ul.depth1 > li > ul.depth2 > li > a{
+    display: block;
+    padding: 5px 0;
+}
+header nav ul.depth1 > li > ul.depth2 > li > a:hover,
+header nav ul.depth1 > li > ul.depth2 > li > a:focus{
+    background-color: #0066ad;
+    color: #fff;
+    font-weight: 700;
+}
+.visual{
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+.visual ul{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 900px;
+}
+.visual ul li{
+    width: 100%;
+    height: 300px;
+}
+.visual ul li a{
+    display: block;
+    height: 100%;
+}
+    /* 좌우 슬라이드 */
+    /* .visual ul{
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 3600px;
+    }
+    .visual ul li{
+        width: 1200px;
+        height: 100%;
+    }
+    .visual ul li a{
+        display: block;
+        width: 100%;
+        height: 300px;
+    } */
+
+.contents{
+    display: flex;
+    height: 200px;
+    padding: 10px 0 0 0;
+}
+.contents .bbs{
+    width: 400px;
+    position: relative; /* li tab_cont 정렬 기준 */
+}
+.contents .bbs > ul{
+    display: flex;
+}
+.contents .bbs > ul li button{
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    background-color: #ccc;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    width: 150px;
+    padding: 10px;
+    text-align: center;
+}
+.contents .bbs > ul li.active button{
+    background-color: #be29ce;
+    color: #fff;
+    border-color: #be29ce;
+}
+.contents .bbs ul li .tab_cont{
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    display: none;
+}
+.contents .bbs ul li.active .tab_cont{
+    display: block;
+}
+.contents .bbs ul li .tab_cont ul{
+    color: #fff;
+    background-color: #be29ce;
+    height: 130px;
+}
+.contents .bbs ul li.notice .tab_cont ul li a{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #fff;
+}
+.contents .bbs ul li.notice .tab_cont ul li:last-child a{
+    border-bottom: none;
+}
+.contents .bbs ul li.gallery .tab_cont ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 10px;
+}
+.contents .bbs ul li.gallery .tab_cont ul li{
+    width: 100px;
+}
+.contents .bbs ul li.gallery .tab_cont ul li a{
+    display: block;
+    height: 100px;
+}
+.contents .bbs ul li.gallery .tab_cont ul li a img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
+}
+.contents .banner,
+.contents .direct{
+    padding-left: 10px;
+}
+.contents .banner a,
+.contents .direct a{
+    display: block;
+    height: 100%;
+}
+.popup{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 101;
+    width: 500px;
+    height: 250px;
+    background-color: #0066ad;
+    color: #fff;
+    padding: 30px;
+    display: none;
+}
+.popup h2{
+    font-size: 22px;
+    font-weight: 700;
+}
+.popup p{
+    margin: 20px 0;
+}
+.popup .close{
+    text-align: right;
+}
+.popup .close button{
+    background-color: #fff;
+    padding: 5px 15px;
+    text-align: center;
+    color: #1d1d1d;
+    font-weight: 700;
+}
+footer{
+    display: none;
+}
