@@ -39,7 +39,7 @@ $(document).ready(function(){
     $('.pop_open').on('click', function(){
         $('.popup').show()
     })
-    $('.popup .close').on('click', function(){
+    $('.popup .close button').on('click', function(){
         $('.popup').hide()
     })
 
